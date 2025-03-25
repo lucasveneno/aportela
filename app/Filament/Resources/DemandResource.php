@@ -28,7 +28,7 @@ class DemandResource extends Resource
         return $form
             ->schema([
                 Select::make('user_id')
-                    ->relationship('user', 'name')
+                    ->relationship('users', 'name')
                     ->searchable()
                     ->required(),
                 /*Select::make('area_id')

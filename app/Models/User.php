@@ -19,5 +19,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $casts = [
         'email_verified_at' => 'immutable_datetime',
+        'region_id' => 'array',
     ];
 }

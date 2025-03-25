@@ -31,11 +31,11 @@ class DemandResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('user_id')
+                /*Select::make('user_id')
                     ->options(User::all()->where('role', 'assesor')->pluck('name', 'id'))
                     ->searchable()
                     ->preload()
-                    ->label(__('User')),
+                    ->label(__('User')),*/
                 Select::make('area_id')
                     ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()

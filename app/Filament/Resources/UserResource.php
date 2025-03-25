@@ -45,6 +45,7 @@ class UserResource extends Resource
                         [
                             'user' => 'User',
                             'assessor' => 'Assessor',
+                            'citizen' => 'Citizen',
                         ]
                     )
                     ->searchable()

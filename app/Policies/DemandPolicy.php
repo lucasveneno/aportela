@@ -43,7 +43,8 @@ class DemandPolicy
      */
     public function update(User $user, Demand $demand): bool
     {
-        return true;
+        return $user->is_admin === '1' || in_array($user->role, ['user', 'assessor']);
+
     }
 
     /**

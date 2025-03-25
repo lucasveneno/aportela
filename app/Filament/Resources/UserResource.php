@@ -42,7 +42,6 @@ class UserResource extends Resource
                         [
                             'user' => 'User',
                             'assessor' => 'Assessor',
-                            'admin' => 'Admin'
                         ]
                     )
                     ->searchable()

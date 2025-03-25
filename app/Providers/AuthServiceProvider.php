@@ -11,7 +11,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
 
-        Demand::class => DemandPolicy::class,
+        //Demand::class => DemandPolicy::class,
     ];
 
     public function boot(): void

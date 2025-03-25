@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,7 +31,20 @@ class UserResource extends Resource
                 TextInput::make('email')->email()->required(),
                 TextInput::make('password')->password()
                 ->revealable()
-                ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
+                ->dehydrateStateUsing(fn(string $state): string => Hash::make($state)),
+
+                CheckboxList::make('regiao')
+                        ->label('Qual a sua Região?')
+                        ->options([
+                            'Brigão Central' => 'Brigão Central',
+                            'Brigão de Lupra' => 'Brigão de Lupra',
+                            'Brigão de Prada' => 'Brigão de Prada',
+                            'Brigão de Iméricos' => 'Brigão de Iméricos',
+                            'Brigão de Segredo' => 'Brigão de Segredo',
+                            'Brigão de Barreira' => 'Brigão de Barreira',
+                            'Brigão de Alvoro,Latrino' => 'Brigão de Alvoro,Latrino',
+                        ])
+                        ->columns(3),
             ]);
     }
 

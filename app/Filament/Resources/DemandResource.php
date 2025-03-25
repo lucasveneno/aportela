@@ -34,7 +34,7 @@ class DemandResource extends Resource
                     ->relationship('users', 'name')
                     ->searchable()
                     ->required(),*/
-                Select::make('targeting_location')
+                Select::make('area_id')
                     ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()
                     ->multiple()

@@ -6,6 +6,10 @@ use App\Filament\Resources\DemandResource\Pages;
 use App\Filament\Resources\DemandResource\RelationManagers;
 use App\Models\Demand;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,21 +27,25 @@ class DemandResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('area_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('pending'),
-                Forms\Components\Toggle::make('requires_councilor')
+                Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->searchable()
                     ->required(),
+                Select::make('area_id')
+                    ->relationship('area', 'name')
+                    ->required(),
+                Textarea::make('description')->required(),
+                Toggle::make('requires_councilor'),
+                Select::make('status')->options([
+                    'pending' => 'Pending',
+                    'in_progress' => 'In Progress',
+                    'resolved' => 'Resolved',
+                ])->default('pending'),
+                FileUpload::make('files')
+                    ->multiple()
+                    ->disk('public')
+                    ->directory('demand_files')
+                    ->preserveFilenames(),
             ]);
     }
 

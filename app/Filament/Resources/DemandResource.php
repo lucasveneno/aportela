@@ -30,10 +30,10 @@ class DemandResource extends Resource
     {
         return $form
             ->schema([
-                /*Select::make('user_id')
+                Select::make('user_id')
                     ->relationship('users', 'name')
                     ->searchable()
-                    ->required(),*/
+                    ->required(),
                 Select::make('area_id')
                     ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()

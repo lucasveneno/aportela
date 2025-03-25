@@ -30,10 +30,10 @@ class DemandResource extends Resource
                 /*Select::make('user_id')
                     ->relationship('user', 'name')
                     ->searchable()
-                    ->required(),*/
+                    ->required(),
                 Select::make('area_id')
                     ->relationship('area', 'name')
-                    ->required(),
+                    ->required(),*/
                 Textarea::make('description')->required(),
                 Toggle::make('requires_councilor'),
                 Select::make('status')->options([

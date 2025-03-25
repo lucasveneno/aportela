@@ -34,7 +34,6 @@ class DemandResource extends Resource
                 Select::make('user_id')
                     ->options(User::all()->where('role', 'assesor')->pluck('name', 'id'))
                     ->searchable()
-                    ->multiple()
                     ->preload()
                     ->label(__('User')),
                 Select::make('area_id')

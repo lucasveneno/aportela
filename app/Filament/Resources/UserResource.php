@@ -48,9 +48,9 @@ class UserResource extends Resource
                 Select::make('role')
                     ->options(
                         [
-                            'user' => 'user',
-                            'assessor' => 'assessor',
-                            'admin' => 'admin'
+                            'user' => 'User',
+                            'assessor' => 'Assessor',
+                            'admin' => 'Admin'
                         ]
                     )
                     ->searchable()

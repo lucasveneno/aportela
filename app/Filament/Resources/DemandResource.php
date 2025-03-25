@@ -55,7 +55,7 @@ class DemandResource extends Resource
                     ->multiple()
                     ->disk('public') // The disk where files will be stored
                     ->directory('demand_files') // Directory within the disk
-                    ->visibility('public'), // If you're using public visibility
+                    //->visibility('public'), // If you're using public visibility
             ]);
     }
 

@@ -9,7 +9,11 @@ class Demand extends Model
 {
     use HasFactory;
 
-    
+    public function demandFiles()
+    {
+        return $this->hasMany(DemandFile::class);
+    }
+
     protected $casts = [
         'area_id' => 'array',
     ];

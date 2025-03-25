@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('cpf')->nullable(); // roles: admin, assessor, citizen
-            $table->string('address')->nullable(); // roles: admin, assessor, citizen
-            $table->string('zip')->nullable(); // roles: admin, assessor, citizen
             $table->string('phone')->nullable(); // roles: admin, assessor, citizen
             $table->string('instagram')->nullable(); // roles: admin, assessor, citizen
             $table->string('facebook')->nullable(); // roles: admin, assessor, citizen
+
+            $table->string('lat')->nullable(); // roles: admin, assessor, citizen
+            $table->string('long')->nullable(); // roles: admin, assessor, citizen
+            $table->string('address')->nullable(); // roles: admin, assessor, citizen
+            $table->string('address')->nullable(); // roles: admin, assessor, citizen
+            $table->string('zip')->nullable(); // roles: admin, assessor, citizen
+
         });
     }
 
@@ -28,11 +33,14 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('cpf');
-            $table->dropColumn('address');
-            $table->dropColumn('zip');
             $table->dropColumn('phone');
             $table->dropColumn('instagram');
             $table->dropColumn('facebook');
+
+            $table->dropColumn('address');
+            $table->dropColumn('zip');
+
+
         });
     }
 };

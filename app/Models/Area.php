@@ -13,8 +13,6 @@ class Area extends Model
 
     public static function schema(Blueprint $table)
     {
-        $table->id();
         $table->string('name');
-        $table->timestamps();
     }
 }

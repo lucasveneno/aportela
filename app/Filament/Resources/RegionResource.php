@@ -7,6 +7,7 @@ use App\Filament\Resources\RegionResource\RelationManagers;
 use App\Models\Region;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -26,7 +27,12 @@ class RegionResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')->required(),
-
+                ToggleButtons::make('status')
+                    ->options([
+                        'draft' => 'Draft',
+                        'scheduled' => 'Scheduled',
+                        'published' => 'Published'
+                    ])
             ]);
     }
 

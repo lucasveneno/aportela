@@ -40,9 +40,6 @@ class DemandResource extends Resource
                     ->multiple()
                     ->preload()
                     ->label(__('Area')),
-                Select::make('area_id')
-                    ->relationship('area', 'name')
-                    ->required(),
                 Textarea::make('description')->required(),
                 Toggle::make('requires_councilor'),
                 Select::make('status')->options([

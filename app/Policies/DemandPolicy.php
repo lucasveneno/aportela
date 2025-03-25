@@ -30,7 +30,8 @@ class DemandPolicy
     public function create(User $user): bool
     {
         //return $user->role === 'citizen';
-        return in_array($user->role, ['admin', 'assessor']);
+
+        return $user->is_admin === '1' || in_array($user->role, ['user', 'assessor']);
 
     }
 

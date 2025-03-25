@@ -9,6 +9,8 @@ class Demand extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id'];
+
     public function demandFiles()
     {
         return $this->hasMany(DemandFile::class);

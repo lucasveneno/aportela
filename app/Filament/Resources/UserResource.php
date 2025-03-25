@@ -13,7 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Illuminate\Support\Facades\Hash;
 
 class UserResource extends Resource
 {
@@ -27,6 +27,9 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->required(),
+                TextInput::make('password')
+                    ->password()
+                    ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
             ]);
     }
 

@@ -13,6 +13,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -39,6 +40,9 @@ class RegionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title'),
+                ToggleColumn::make('status')
+                ->onColor('success')
+                ->offColor('danger')
 
             ])
             ->filters([

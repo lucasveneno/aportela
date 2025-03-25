@@ -13,6 +13,6 @@ class Area extends Model
 
     public static function schema(Blueprint $table)
     {
-        $table->string('name');
+        $table->string('title');
     }
 }

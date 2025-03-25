@@ -58,10 +58,10 @@ class UserResource extends Resource
                     ->preload()
                     ->label(__('Region')),
 
-                Toggle::make('is_admin')
+                /*Toggle::make('is_admin')
                     ->onColor('success')
                     ->offColor('danger')
-                    ->label(__('Is admin?')),
+                    ->label(__('Is admin?')),*/
 
 
 

@@ -54,7 +54,6 @@ class UserResource extends Resource
                         ]
                     )
                     ->searchable()
-                    ->multiple()
                     ->preload()
                     ->label(__('Region')),
             ]);

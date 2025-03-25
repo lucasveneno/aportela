@@ -11,7 +11,6 @@ class Demand extends Model
 
     
     protected $casts = [
-        'email_verified_at' => 'immutable_datetime',
         'area_id' => 'array',
     ];
 }

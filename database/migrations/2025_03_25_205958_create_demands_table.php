@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('status')->default('pending'); // pending, in progress, resolved
             $table->boolean('requires_councilor')->default(false);
-            $table->string('files')->nullable();
+            $table->json('files')->nullable();
             $table->timestamps();
         });
     }

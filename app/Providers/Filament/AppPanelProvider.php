@@ -51,7 +51,6 @@ class AppPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                Authorize::class,
             ])
             ->authMiddleware([
                 Authenticate::class,

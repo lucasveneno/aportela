@@ -31,16 +31,19 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->required(),
-                TextInput::make('password')->password()
-                ->revealable()
-                ->dehydrateStateUsing(fn(string $state): string => Hash::make($state)),
+              
+                TextInput::make('password')
+                    ->password()
+                    ->revealable()
+                    ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
+                    ->dehydrated(fn(?string $state): bool => filled($state)),
 
                 Select::make('region_id')
                     ->options(Region::all()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()
                     ->multiple()
                     ->preload()
-                    ->label(__('Region')),                
+                    ->label(__('Region')),
             ]);
     }
 

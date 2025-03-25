@@ -27,7 +27,7 @@ class AreaResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->required(),
+                TextInput::make('name')->required(),
                 Toggle::make('status')
                     ->onColor('success')
                     ->offColor('danger')
@@ -38,7 +38,7 @@ class AreaResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title'),
+                TextColumn::make('name'),
                 ToggleColumn::make('status')
                 ->onColor('success')
                 ->offColor('danger')

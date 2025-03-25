@@ -45,7 +45,7 @@ class UserResource extends Resource
                     ->preload()
                     ->label(__('Region')),
 
-                Select::make('region_id')
+                Select::make('role')
                     ->options(
                         [
                             'user' => 'user',

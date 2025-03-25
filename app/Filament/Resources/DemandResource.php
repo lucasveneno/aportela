@@ -39,11 +39,7 @@ class DemandResource extends Resource
                     ->searchable()
                     ->multiple()
                     ->preload()
-                    ->label(__('name')),
-                Placeholder::make('')
-                    ->content(function (Get $get): string {
-                        return __('name');
-                    }),
+                    ->label(__('Area')),
                 /*Select::make('area_id')
                     ->relationship('area', 'name')
                     ->required(),*/

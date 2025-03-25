@@ -13,7 +13,9 @@ class DemandPolicy
      */
     public function viewAny(User $user): bool
     {
-        return in_array($user->role, ['admin', 'assessor']);
+        //return in_array($user->role, ['admin', 'assessor']);
+        return $user->is_admin === '1' || in_array($user->role, ['user', 'assessor']);
+
     }
 
     /**

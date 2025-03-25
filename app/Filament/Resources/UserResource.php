@@ -35,12 +35,12 @@ class UserResource extends Resource
                 ->revealable()
                 ->dehydrateStateUsing(fn(string $state): string => Hash::make($state)),
 
-                Select::make('area_id')
+                Select::make('region_id')
                     ->options(Region::all()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()
                     ->multiple()
                     ->preload()
-                    ->label(__('Area')),                
+                    ->label(__('Region')),                
             ]);
     }
 

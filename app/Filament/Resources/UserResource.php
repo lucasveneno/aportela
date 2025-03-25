@@ -37,14 +37,6 @@ class UserResource extends Resource
                     ->revealable()
                     ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
                     ->dehydrated(fn(?string $state): bool => filled($state)),
-
-                Select::make('region_id')
-                    ->options(Region::all()->where('status', 1)->pluck('name', 'id'))
-                    ->searchable()
-                    ->multiple()
-                    ->preload()
-                    ->label(__('Region')),
-
                 Select::make('role')
                     ->options(
                         [
@@ -56,6 +48,14 @@ class UserResource extends Resource
                     ->searchable()
                     ->preload()
                     ->label(__('Permission')),
+                Select::make('region_id')
+                    ->options(Region::all()->where('status', 1)->pluck('name', 'id'))
+                    ->searchable()
+                    ->multiple()
+                    ->preload()
+                    ->label(__('Region')),
+
+
             ]);
     }
 

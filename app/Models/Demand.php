@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Demand extends Model
 {
     use HasFactory;
+
+    
+    protected $casts = [
+        'email_verified_at' => 'immutable_datetime',
+        'area_id' => 'array',
+    ];
 }

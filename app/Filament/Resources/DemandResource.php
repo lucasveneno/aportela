@@ -4,13 +4,16 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DemandResource\Pages;
 use App\Filament\Resources\DemandResource\RelationManagers;
+use App\Models\Area;
 use App\Models\Demand;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,10 +30,20 @@ class DemandResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('user_id')
+                /*Select::make('user_id')
                     ->relationship('users', 'name')
                     ->searchable()
-                    ->required(),
+                    ->required(),*/
+                Select::make('targeting_location')
+                    ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
+                    ->searchable()
+                    ->multiple()
+                    ->preload()
+                    ->label(__('name')),
+                Placeholder::make('')
+                    ->content(function (Get $get): string {
+                        return __('name');
+                    }),
                 /*Select::make('area_id')
                     ->relationship('area', 'name')
                     ->required(),*/

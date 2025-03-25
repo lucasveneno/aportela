@@ -28,7 +28,9 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->required(),
-                TextInput::make('password')->password()->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
+                TextInput::make('password')->password()
+                ->revealable()
+                ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
             ]);
     }
 

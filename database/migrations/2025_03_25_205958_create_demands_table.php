@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('demands', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Requester
-            $table->foreignId('area_id')->constrained()->onDelete('cascade'); // Demand Area
+            //$table->foreignId('area_id')->constrained()->onDelete('cascade'); // Demand Area
+            $table->json('area_id')->nullable();
             $table->text('description');
             $table->string('status')->default('pending'); // pending, in progress, resolved
             $table->boolean('requires_councilor')->default(false);

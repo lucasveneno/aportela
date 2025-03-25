@@ -49,7 +49,7 @@ class UserResource extends Resource
                     ->options(
                         [
                             'user' => 'user',
-                            'assesor' => 'assesor',
+                            'assessor' => 'assessor',
                             'admin' => 'admin'
                         ]
                     )

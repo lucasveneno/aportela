@@ -29,7 +29,7 @@ class UserResource extends Resource
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->required(),
                 TextInput::make('password')->password()
-                   // ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
+                // ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
             ]);
     }
 

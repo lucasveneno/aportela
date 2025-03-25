@@ -108,4 +108,10 @@ class DemandResource extends Resource
             'edit' => Pages\EditDemand::route('/{record}/edit'),
         ];
     }
+
+    public static function mutateBeforeCreate($data): array
+    {
+        $data['user_id'] = auth()->id(); // Ensure user is set
+        return $data;
+    }
 }

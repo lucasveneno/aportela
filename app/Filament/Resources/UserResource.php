@@ -45,7 +45,7 @@ class UserResource extends Resource
                     ->preload()
                     ->label(__('Region')),
 
-                Select::make('Permissão')
+                Select::make('role')
                     ->options(
                         [
                             'user' => 'User',
@@ -55,7 +55,7 @@ class UserResource extends Resource
                     )
                     ->searchable()
                     ->preload()
-                    ->label(__('Region')),
+                    ->label(__('Permission')),
             ]);
     }
 

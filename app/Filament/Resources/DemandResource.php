@@ -6,6 +6,7 @@ use App\Filament\Resources\DemandResource\Pages;
 use App\Filament\Resources\DemandResource\RelationManagers;
 use App\Models\Area;
 use App\Models\Demand;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
@@ -31,9 +32,11 @@ class DemandResource extends Resource
         return $form
             ->schema([
                 Select::make('user_id')
-                    ->relationship('users', 'name')
+                    ->options(User::all()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()
-                    ->required(),
+                    ->multiple()
+                    ->preload()
+                    ->label(__('User')),
                 Select::make('area_id')
                     ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()

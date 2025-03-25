@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('region_id')->nullable();
             $table->string('role')->default('user'); // roles: admin, assessor, citizen
         });
     }
@@ -22,6 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('region_id');
             $table->dropColumn('role');
         });
     }

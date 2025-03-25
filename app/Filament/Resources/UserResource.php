@@ -31,7 +31,7 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->required(),
-              
+
                 TextInput::make('password')
                     ->password()
                     ->revealable()
@@ -40,6 +40,19 @@ class UserResource extends Resource
 
                 Select::make('region_id')
                     ->options(Region::all()->where('status', 1)->pluck('name', 'id'))
+                    ->searchable()
+                    ->multiple()
+                    ->preload()
+                    ->label(__('Region')),
+
+                Select::make('region_id')
+                    ->options(
+                        [
+                            'user' => 'user',
+                            'assesor' => 'assesor',
+                            'admin' => 'admin'
+                        ]
+                    )
                     ->searchable()
                     ->multiple()
                     ->preload()

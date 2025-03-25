@@ -54,7 +54,7 @@ class DemandResource extends Resource
                 FileUpload::make('files')
                     ->multiple()
                     ->disk('public') // The disk where files will be stored
-                    ->directory('demand_files') // Directory within the disk
+                    ->directory('app/demand_files') // Directory within the disk
                     //->visibility('public'), // If you're using public visibility
             ]);
     }

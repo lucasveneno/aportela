@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -53,6 +54,12 @@ class UserResource extends Resource
                     ->multiple()
                     ->preload()
                     ->label(__('Region')),
+
+                Toggle::make('is_admin')
+                    ->onColor('success')
+                    ->offColor('danger')
+                    ->label(__('Is admin?')),
+
 
 
             ]);

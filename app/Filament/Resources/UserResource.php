@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-use Forms\Components\TextInput;
+use Filament\Forms\Components\TextInput;
 
 class UserResource extends Resource
 {

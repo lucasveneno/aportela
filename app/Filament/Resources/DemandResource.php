@@ -83,12 +83,14 @@ class DemandResource extends Resource
                
                 //Geocomplete::make('full_address'),
 
-                Map::make('location')
+                /*Map::make('location')
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         $set('latitude', $state['lat']);
                         $set('longitude', $state['lng']);
-                    }),
+                    }),*/
+
+                    Geocomplete::make('full_alocationddress'),
 
                 TextInput::make('latitude')
                     ->reactive()

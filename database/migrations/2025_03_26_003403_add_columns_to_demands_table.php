@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('demands', function (Blueprint $table) {
             $table->string('zicityp')->nullable(); // roles: admin, assessor, citizen
             $table->string('zip')->nullable(); // roles: admin, assessor, citizen
-            $table->string('formatted_address')->nullable(); // roles: admin, assessor, citizen
+            $table->string('address')->nullable(); // roles: admin, assessor, citizen
             $table->string('latitude')->nullable(); // roles: admin, assessor, citizen
             $table->string('longitude')->nullable(); // roles: admin, assessor, citizen
         });
@@ -28,7 +28,7 @@ return new class extends Migration
         Schema::table('demands', function (Blueprint $table) {
             $table->dropColumn('city');
             $table->dropColumn('zip');
-            $table->dropColumn('formatted_address');
+            $table->dropColumn('address');
             $table->dropColumn('latitude');
             $table->dropColumn('longitude');
         });

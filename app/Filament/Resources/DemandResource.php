@@ -97,11 +97,7 @@ class DemandResource extends Resource
                         ]);
                     })
                     ->lazy(), // important to use lazy, to avoid updates as you type
-                TextInput::make('zip')
-                    ->reactive()
-                    ->lazy(), // important to use lazy, to avoid updates as you type
-
-                // TextInput::make('zip'),
+                
 
             ]);
     }

@@ -79,15 +79,13 @@ class DemandResource extends Resource
                     ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button 
             */
 
-            Map::make('location')
-    ->reactive()
-    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-        $set('latitude', $state['lat']);
-        $set('longitude', $state['lng']);
-    }),
-                //Geocomplete::make('location') // field name must be the computed attribute name on your model
-                //    ->isLocation()
-                //    ->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
+                Map::make('location')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                        $set('latitude', $state['lat']);
+                        $set('longitude', $state['lng']);
+                    }),
+
             ]);
     }
 

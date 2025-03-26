@@ -94,7 +94,10 @@ class DemandResource extends Resource
                     //->height(fn() => '400px') // map height (width is controlled by Filament options)
                     ->defaultZoom(5) // default zoom level when opening form
                     ->autocomplete('full_address') // field on form to use as Places geocompletion field
-
+                    ->placeUpdatedUsing(function (callable $set, array $place) {
+                        // do whatever you need with the $place results, and $set your field(s)
+                        $set('full_address', $place);
+                    })
 
                     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                     ->reverseGeocode([

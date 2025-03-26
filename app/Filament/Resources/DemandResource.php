@@ -63,13 +63,6 @@ class DemandResource extends Resource
                     ->directory('demand_files'), // Directory within the disk
                 //->visibility('public'), // If you're using public visibility
 
-                /*Map::make('location')
-                    ->reactive()
-                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('latitude', $state['lat']);
-                        $set('longitude', $state['lng']);
-                    }),
-                    */
 
                 Fieldset::make('Location')
                     ->schema([

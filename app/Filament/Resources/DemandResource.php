@@ -64,12 +64,6 @@ class DemandResource extends Resource
 
             Geocomplete::make('location')
                     ->isLocation()
-                    ->reverseGeocode([
-                        //'city'   => '%L',
-                        'zip'    => '%z',
-                        //'state'  => '%A1',
-                        //'street' => '%n %S',
-                    ])
                     ->countries(['br']) // restrict autocomplete results to these countries
                     //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
                     ->updateLatLng() // update the lat/lng fields on your form when a Place is selected

@@ -94,7 +94,7 @@ class Demand extends Model
         if (is_array($location)) {
             $this->attributes['latitude'] = $location['lat'];
             $this->attributes['longitude'] = $location['lng'];
-            unset($this->attributes['location']);
+            unset($this->attributes['full_address']);
         }
     }
 

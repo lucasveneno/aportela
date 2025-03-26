@@ -94,7 +94,7 @@ class Demand extends Model
         if (is_array($location)) {
             $this->attributes['latitude'] = $location['lat'];
             $this->attributes['longitude'] = $location['lng'];
-            unset($this->attributes['full_address']);
+            unset($this->attributes['location']);
         }
     }
 
@@ -122,6 +122,6 @@ class Demand extends Model
      */
     public static function getComputedLocation(): string
     {
-        return 'full_address';
+        return 'location';
     }
 }

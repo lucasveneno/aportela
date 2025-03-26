@@ -23,7 +23,7 @@ class Demand extends Model
     ];
 
     protected $appends = [
-        'formatted_address',
+        'full_address',
     ];
 
 

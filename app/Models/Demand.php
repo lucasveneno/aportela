@@ -22,7 +22,7 @@ class Demand extends Model
     ];
 
     protected $appends = [
-        'location',
+        //'location',
     ];
 
 

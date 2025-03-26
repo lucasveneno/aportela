@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('demands', function (Blueprint $table) {
+            $table->string('full_address')->nullable(); // roles: admin, assessor, citizen
             $table->string('latitude')->nullable(); // roles: admin, assessor, citizen
             $table->string('longitude')->nullable(); // roles: admin, assessor, citizen
         });
@@ -23,6 +24,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('demands', function (Blueprint $table) {
+            $table->dropColumn('full_address');
             $table->dropColumn('latitude');
             $table->dropColumn('longitude');
         });

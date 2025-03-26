@@ -122,6 +122,6 @@ class Demand extends Model
      */
     public static function getComputedLocation(): string
     {
-        return 'location';
+        return 'full_address';
     }
 }

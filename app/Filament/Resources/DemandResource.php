@@ -68,7 +68,7 @@ class DemandResource extends Resource
                         $set('longitude', $state['lng']);
                     }),
 
-                TextInput::make('latitude')
+                /*TextInput::make('latitude')
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         $set('location', [
@@ -86,7 +86,7 @@ class DemandResource extends Resource
                         ]);
                     })
                     ->lazy(), // important to use lazy, to avoid updates as you type
-
+*/
 
             ]);
     }

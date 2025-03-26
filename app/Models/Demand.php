@@ -44,7 +44,7 @@ class Demand extends Model
         'area_id' => 'array',
         'files' => 'array',
         'full_address' => 'array',
-        'location' => 'array',
+        //'location' => 'array',
     ];
 
 

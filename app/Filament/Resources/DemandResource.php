@@ -84,12 +84,7 @@ class DemandResource extends Resource
                     ->defaultZoom(5) // default zoom level when opening form
                     ->autocomplete('full_address') // field on form to use as Places geocompletion field
 
-                    ->autocomplete(
-                        fieldName: 'airport_name',
-                        types: ['airport'],
-                        placeField: 'name',
-                        countries: ['BR'],
-                    )
+                    
                     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                     ->reverseGeocode([
                         'street' => '%n %S',

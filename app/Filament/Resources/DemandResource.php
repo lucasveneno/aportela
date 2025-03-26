@@ -82,6 +82,13 @@ class DemandResource extends Resource
                     //->height(fn() => '400px') // map height (width is controlled by Filament options)
                     ->defaultZoom(5) // default zoom level when opening form
                     ->autocomplete('full_address') // field on form to use as Places geocompletion field
+
+                    ->autocomplete(
+                        fieldName: 'airport_name',
+                        types: ['airport'],
+                        placeField: 'name',
+                        countries: ['BR'],
+                    )
                     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                     ->reverseGeocode([
                         'street' => '%n %S',
@@ -100,7 +107,9 @@ class DemandResource extends Resource
                         'https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml',
                     ]) // array of KML layer URLs to add to the map
                     ->geoJson('https://fgm.test/storage/AGEBS01.geojson') // GeoJSON file, URL or JSON
-                    ->geoJsonContainsField('geojson') // field to capture GeoJSON polygon(s) which contain the map marker
+                    ->geoJsonContainsField('geojson'), // field to capture GeoJSON polygon(s) which contain the map marker
+
+                    Textarea::make('full_address')->required(),
 
             ]);
     }

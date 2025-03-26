@@ -66,7 +66,7 @@ class DemandResource extends Resource
 
                 Fieldset::make('')
                     ->schema([
-                        Geocomplete::make('location')
+                        Geocomplete::make('full_address')
                             ->isLocation()
                             ->countries(['br']) // restrict autocomplete results to these countries
                             //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
@@ -98,12 +98,12 @@ class DemandResource extends Resource
                             })
                             ->lazy(), // important to use lazy, to avoid updates as you type
                         
-                        /*Map::make('location')
+                        Map::make('location')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
                                 $set('latitude', $state['lat']);
                                 $set('longitude', $state['lng']);
-                            }),*/
+                            }),
                     ]),
 
 

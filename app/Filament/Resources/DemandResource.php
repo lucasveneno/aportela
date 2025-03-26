@@ -7,6 +7,7 @@ use App\Filament\Resources\DemandResource\RelationManagers;
 use App\Models\Area;
 use App\Models\Demand;
 use App\Models\User;
+use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
@@ -56,6 +57,9 @@ class DemandResource extends Resource
                     ->disk('public') // The disk where files will be stored
                     ->directory('demand_files') // Directory within the disk
                     //->visibility('public'), // If you're using public visibility
+
+
+                    Map::make('location'),
             ]);
     }
 

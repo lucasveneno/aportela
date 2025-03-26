@@ -22,6 +22,7 @@ class Demand extends Model
         'zip',
         'address',
         'city',
+        'state',
     ];
 
 

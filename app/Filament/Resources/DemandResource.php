@@ -60,11 +60,12 @@ class DemandResource extends Resource
                     ->disk('public') // The disk where files will be stored
                     ->directory('demand_files'), // Directory within the disk
                 //->visibility('public'), // If you're using public visibility
-                
+
                 Map::make('location')
-                    ->placeUpdatedUsing(function (callable $set, array $place) {
-                        // do whatever you need with the $place results, and $set your field(s)
-                        $set('city', 'foo wibble');
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                        $set('latitude', $state['lat']);
+                        $set('longitude', $state['lng']);
                     }),
 
                 TextInput::make('latitude')

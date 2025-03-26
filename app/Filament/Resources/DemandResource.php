@@ -101,7 +101,7 @@ class DemandResource extends Resource
                 TextInput::make('latitude')
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('formatted_address', [
+                        $set('lo', [
                             'lat' => floatVal($state),
                             'lng' => floatVal($get('longitude')),
                         ]);

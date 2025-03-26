@@ -24,6 +24,7 @@ class Demand extends Model
         'zip',
         'address',
         'location',
+        'formatted_address',
     ];
 
     protected $appends = [

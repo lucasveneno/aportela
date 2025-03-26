@@ -15,6 +15,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -86,6 +87,8 @@ class DemandResource extends Resource
                         $set('longitude', $state['lng']);
                         $set('zip', $state['zip']);
                     }),
+
+                TextInput::make('zip'),
 
             ]);
     }

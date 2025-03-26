@@ -80,48 +80,27 @@ class DemandResource extends Resource
                     ->placeholder('Start typing an address ...')
                     ->geolocate() // add a suffix button which requests and reverse geocodes the device location
                     ->geolocateIcon('heroicon-o-map') // override the default icon for the geolocate button
-                    ->geocodeOnLoad() // server side geocode of lat/lng to address when form is loaded
-                    ->updateLatLng(), // update the lat/lng fields on your form when a Place is selected, 
-                   
-                /*Map::make('location')
-                    ->mapControls([
-                        'mapTypeControl'    => true,
-                        'scaleControl'      => true,
-                        'streetViewControl' => false,
-                        'rotateControl'     => true,
-                        'fullscreenControl' => true,
-                        'searchBoxControl'  => false, // creates geocomplete field inside map
-                        'zoomControl'       => true,
-                    ])
-                    //->height(fn() => '400px') // map height (width is controlled by Filament options)
-                    ->defaultZoom(5) // default zoom level when opening form
-                    ->autocomplete('full_address') // field on form to use as Places geocompletion field
-                    ->placeUpdatedUsing(function (callable $set, array $place) {
-                        // do whatever you need with the $place results, and $set your field(s)
-                        $set('full_address', $place);
-                    })
+                    ->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 
-                    ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
-                    ->reverseGeocode([
-                        'street' => '%n %S',
-                        'city' => '%L',
-                        'state' => '%A1',
-                        'zip' => '%z',
-                    ]) // reverse geocode marker location to form fields, see notes below
-                    ->debug() // prints reverse geocode format strings to the debug console
-                    //->defaultLocation([39.526610, -107.727261]) // default for new forms
-                    ->draggable() // allow dragging to move marker
-                    ->clickable(false) // allow clicking to move marker
-                    ->geolocate() // adds a button to request device location and set map marker accordingly
-                    ->geolocateLabel('Get Location') // overrides the default label for geolocate button
-                    ->geolocateOnLoad(true, false) // geolocate on load, second arg 'always' (default false, only for new form))
-                    ->layers([
-                        'https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml',
-                    ]) // array of KML layer URLs to add to the map
-                    ->geoJson('https://fgm.test/storage/AGEBS01.geojson') // GeoJSON file, URL or JSON
-                    ->geoJsonContainsField('geojson'), // field to capture GeoJSON polygon(s) which contain the map marker
-*/
-                //TextColumn::make('full_address')->required(),
+
+                TextInput::make('latitude')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                        $set('location', [
+                            'lat' => floatVal($state),
+                            'lng' => floatVal($get('longitude')),
+                        ]);
+                    })
+                    ->lazy(), // important to use lazy, to avoid updates as you type
+                TextInput::make('longitude')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                        $set('location', [
+                            'lat' => floatval($get('latitude')),
+                            'lng' => floatVal($state),
+                        ]);
+                    })
+                    ->lazy(), // important to use lazy, to avoid updates as you type
 
             ]);
     }

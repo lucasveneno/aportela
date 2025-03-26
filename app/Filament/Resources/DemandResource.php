@@ -82,7 +82,7 @@ class DemandResource extends Resource
                         TextInput::make('full_address')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                                $set('full_address', $state);
+                                $set('full_address', $get('location'));
                             })
                             ->lazy(), // important to use lazy, to avoid updates as you type
 

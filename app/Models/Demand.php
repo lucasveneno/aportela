@@ -19,13 +19,11 @@ class Demand extends Model
 
      protected $fillable = [
         'user_id',
-        'location',
         'full_address',
     ];
 
     protected $appends = [
         'location',
-        'full_address',
     ];
 /**
      * The following code was generated for use with Filament Google Maps

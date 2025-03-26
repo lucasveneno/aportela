@@ -60,12 +60,11 @@ class DemandResource extends Resource
 
 
                 Map::make('location')
-                    ->autocomplete(
-                        fieldName: 'airport_name',
-                        types: ['airport'],
-                        placeField: 'name',
-                        countries: ['US', 'CA', 'MX'],
-                    )
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                        $set('latitude', $state['lat']);
+                        $set('longitude', $state['lng']);
+                    }),
             ]);
     }
 

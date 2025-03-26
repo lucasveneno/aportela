@@ -7,6 +7,7 @@ use App\Filament\Resources\DemandResource\RelationManagers;
 use App\Models\Area;
 use App\Models\Demand;
 use App\Models\User;
+use Cheesegrits\FilamentGoogleMaps\Fields\Geocomplete;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -59,11 +60,9 @@ class DemandResource extends Resource
                 //->visibility('public'), // If you're using public visibility
 
 
-                Map::make('location')
-                    ->placeUpdatedUsing(function (callable $set, array $place) {
-                        // do whatever you need with the $place results, and $set your field(s)
-                        $set('city', 'foo wibble');
-                    }),
+                Geocomplete::make('location') // field name must be the computed attribute name on your model
+                ->isLocation()
+                ->geocodeOnLoad(), 
             ]);
     }
 

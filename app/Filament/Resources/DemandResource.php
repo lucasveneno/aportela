@@ -11,6 +11,7 @@ use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Fields\Geocomplete;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
@@ -70,44 +71,49 @@ class DemandResource extends Resource
                     }),
                     */
 
-                Geocomplete::make('full_address')
-                    ->isLocation()
-                    ->countries(['br']) // restrict autocomplete results to these countries
-                    //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
-                    ->updateLatLng() // update the lat/lng fields on your form when a Place is selected
-                    ->maxLength(1024)
-                    //->prefix('Choose:')
-                    ->placeholder('Start typing an address ...')
-                    ->geolocate() // add a suffix button which requests and reverse geocodes the device location
-                    ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
-                //->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
+                Fieldset::make('Location')
+                    ->schema([
+                        Geocomplete::make('full_address')
+                            ->isLocation()
+                            ->countries(['br']) // restrict autocomplete results to these countries
+                            //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
+                            ->updateLatLng() // update the lat/lng fields on your form when a Place is selected
+                            ->maxLength(1024)
+                            //->prefix('Choose:')
+                            ->placeholder('Start typing an address ...')
+                            ->geolocate() // add a suffix button which requests and reverse geocodes the device location
+                            ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
+                        //->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 
 
-                TextInput::make('latitude')
-                    ->reactive()
-                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('location', [
-                            'lat' => floatVal($state),
-                            'lng' => floatVal($get('longitude')),
-                        ]);
-                    })
-                    ->lazy(), // important to use lazy, to avoid updates as you type
-                TextInput::make('longitude')
-                    ->reactive()
-                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('location', [
-                            'lat' => floatval($get('latitude')),
-                            'lng' => floatVal($state),
-                        ]);
-                    })
-                    ->lazy(), // important to use lazy, to avoid updates as you type
+                        TextInput::make('latitude')
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                                $set('location', [
+                                    'lat' => floatVal($state),
+                                    'lng' => floatVal($get('longitude')),
+                                ]);
+                            })
+                            ->lazy(), // important to use lazy, to avoid updates as you type
+                        TextInput::make('longitude')
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                                $set('location', [
+                                    'lat' => floatval($get('latitude')),
+                                    'lng' => floatVal($state),
+                                ]);
+                            })
+                            ->lazy(), // important to use lazy, to avoid updates as you type
 
-                Map::make('location')
-                    ->reactive()
-                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('latitude', $state['lat']);
-                        $set('longitude', $state['lng']);
-                    }),
+                        Map::make('location')
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                                $set('latitude', $state['lat']);
+                                $set('longitude', $state['lng']);
+                            }),
+                    ]),
+
+
 
             ]);
     }

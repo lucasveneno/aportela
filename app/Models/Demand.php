@@ -23,6 +23,7 @@ class Demand extends Model
         'state',
         'zip',
         'address',
+        'location',
     ];
 
     protected $appends = [

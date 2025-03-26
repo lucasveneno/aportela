@@ -76,7 +76,7 @@ class DemandResource extends Resource
                         'streetViewControl' => false,
                         'rotateControl'     => true,
                         'fullscreenControl' => true,
-                        'searchBoxControl'  => true, // creates geocomplete field inside map
+                        'searchBoxControl'  => false, // creates geocomplete field inside map
                         'zoomControl'       => true,
                     ])
                     ->height(fn() => '400px') // map height (width is controlled by Filament options)

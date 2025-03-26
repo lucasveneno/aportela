@@ -56,10 +56,16 @@ class DemandResource extends Resource
                     ->multiple()
                     ->disk('public') // The disk where files will be stored
                     ->directory('demand_files'), // Directory within the disk
-                    //->visibility('public'), // If you're using public visibility
+                //->visibility('public'), // If you're using public visibility
 
 
-                    Map::make('location'),
+                Map::make('location')
+                    ->autocomplete(
+                        fieldName: 'airport_name',
+                        types: ['airport'],
+                        placeField: 'name',
+                        countries: ['US', 'CA', 'MX'],
+                    )
             ]);
     }
 
@@ -114,5 +120,4 @@ class DemandResource extends Resource
             'edit' => Pages\EditDemand::route('/{record}/edit'),
         ];
     }
-
 }

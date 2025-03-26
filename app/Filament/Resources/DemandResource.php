@@ -79,8 +79,8 @@ class DemandResource extends Resource
                     //->prefix('Choose:')
                     ->placeholder('Start typing an address ...')
                     ->geolocate() // add a suffix button which requests and reverse geocodes the device location
-                    ->geolocateIcon('heroicon-o-map') // override the default icon for the geolocate button
-                    ->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
+                    ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
+                    //->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 
 
                 TextInput::make('latitude')

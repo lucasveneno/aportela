@@ -78,17 +78,7 @@ class DemandResource extends Resource
                             ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
                         //->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 
-                        
-                        TextInput::make('full_address')
-                            ->reactive()
-                            ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                                $set('location', [
-                                    'formatted_address' => floatVal($state),
-                                    'lat' => floatVal($get('latitude')),
-                                    'lng' => floatVal($get('longitude')),
-                                ]);
-                            })
-                            ->lazy(), // important to use lazy, to avoid updates as you type
+                    
 
                         TextInput::make('latitude')
                             ->reactive()

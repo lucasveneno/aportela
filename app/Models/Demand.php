@@ -121,7 +121,7 @@ class Demand extends Model
 
     protected $casts = [
         'area_id' => 'array',
-        //'formatted_address' => 'string',
+        'formatted_address' => 'array',
         'files' => 'array',
     ];
 }

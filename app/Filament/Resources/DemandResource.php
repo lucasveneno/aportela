@@ -90,7 +90,9 @@ class DemandResource extends Resource
                         $set('longitude', $state['lng']);
                     }),*/
 
-                    Geocomplete::make('location'),
+                    Geocomplete::make('location') // field name must be the computed attribute name on your model
+                    ->isLocation()
+                    ->geocodeOnLoad(), 
 
                 TextInput::make('latitude')
                     ->reactive()

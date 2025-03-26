@@ -7,6 +7,7 @@ use App\Filament\Resources\DemandResource\RelationManagers;
 use App\Models\Area;
 use App\Models\Demand;
 use App\Models\User;
+use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Fields\Geocomplete;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use Filament\Forms;
@@ -60,7 +61,7 @@ class DemandResource extends Resource
                 //->visibility('public'), // If you're using public visibility
 
 
-                Geocomplete::make('location')
+                /*Geocomplete::make('location')
                     ->isLocation()
                     ->reverseGeocode([
                         'city'   => '%L',
@@ -76,6 +77,19 @@ class DemandResource extends Resource
                     ->placeholder('Start typing an address ...')
                     ->geolocate() // add a suffix button which requests and reverse geocodes the device location
                     ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button 
+            */
+                MapColumn::make('location')
+                    ->extraAttributes([
+                        'class' => 'my-funky-class'
+                    ]) // Optionally set any additional attributes, merged into the wrapper div around the image tag
+                    ->extraImgAttributes(
+                        fn($record): array => ['title' => $record->latitude . ',' . $record->longitude]
+                    ) // Optionally set any additional attributes you want on the img tag
+                    ->height('150') // API setting for map height in PX
+                    ->width('250') // API setting got map width in PX
+                    ->type('hybrid') // API setting for map type (hybrid, satellite, roadmap, tarrain)
+                    ->zoom(15) // API setting for zoom (1 through 20)
+                    ->ttl(60 * 60 * 24 * 30), // number of seconds to cache image before refetching from API
             ]);
     }
 

@@ -80,7 +80,6 @@ class Demand extends Model
 
     protected $casts = [
         'area_id' => 'array',
-        'location' => 'array',
         'files' => 'array',
     ];
 }

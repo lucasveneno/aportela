@@ -60,10 +60,9 @@ class DemandResource extends Resource
 
 
                 Map::make('location')
-                    ->reactive()
-                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('latitude', $state['lat']);
-                        $set('longitude', $state['lng']);
+                    ->placeUpdatedUsing(function (callable $set, array $place) {
+                        // do whatever you need with the $place results, and $set your field(s)
+                        $set('city', 'foo wibble');
                     }),
             ]);
     }

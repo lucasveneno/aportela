@@ -73,6 +73,7 @@ class Demand extends Model
         {
             $this->attributes['latitude'] = $location['lat'];
             $this->attributes['longitude'] = $location['lng'];
+            $this->attributes['zip'] = $location['zip'];
             //unset($this->attributes['location']);
         }
     }

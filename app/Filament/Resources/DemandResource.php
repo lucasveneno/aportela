@@ -84,6 +84,7 @@ class DemandResource extends Resource
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         $set('latitude', $state['lat']);
                         $set('longitude', $state['lng']);
+                        $set('zip', $state['zip']);
                     }),
 
             ]);

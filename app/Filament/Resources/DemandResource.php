@@ -101,16 +101,25 @@ class DemandResource extends Resource
                 TextInput::make('latitude')
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('lo', [
+                        $set('location', [
                             'lat' => floatVal($state),
                             'lng' => floatVal($get('longitude')),
                         ]);
                     })
                     ->lazy(), // important to use lazy, to avoid updates as you type
-                TextInput::make('longitude')
+                    TextInput::make('longitude')
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('formatted_address', [
+                        $set('location', [
+                            'lat' => floatval($get('latitude')),
+                            'lng' => floatVal($state),
+                        ]);
+                    })
+                    ->lazy(), // important to use lazy, to avoid updates as you type
+                    TextInput::make('zip')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                        $set('location', [
                             'lat' => floatval($get('latitude')),
                             'lng' => floatVal($state),
                         ]);

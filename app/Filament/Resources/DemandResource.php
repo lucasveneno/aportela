@@ -66,7 +66,7 @@ class DemandResource extends Resource
 
                 Fieldset::make('')
                     ->schema([
-                        Geocomplete::make('full_address')
+                        Geocomplete::make('location')
                             ->isLocation()
                             ->countries(['br']) // restrict autocomplete results to these countries
                             //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats

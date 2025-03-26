@@ -81,7 +81,7 @@ class DemandResource extends Resource
             */
 
                
-            Geocomplete::make('location')
+            Geocomplete::make('formatted_address')
             ->isLocation()
             ->reverseGeocode([
                 'city'   => '%L',
@@ -101,7 +101,7 @@ class DemandResource extends Resource
                 TextInput::make('latitude')
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('location', [
+                        $set('formatted_address', [
                             'lat' => floatVal($state),
                             'lng' => floatVal($get('longitude')),
                         ]);
@@ -110,7 +110,7 @@ class DemandResource extends Resource
                 TextInput::make('longitude')
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('location', [
+                        $set('formatted_address', [
                             'lat' => floatval($get('latitude')),
                             'lng' => floatVal($state),
                         ]);

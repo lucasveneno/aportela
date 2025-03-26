@@ -90,7 +90,7 @@ class DemandResource extends Resource
                         $set('longitude', $state['lng']);
                     }),*/
 
-                    Geocomplete::make('full_alocationddress'),
+                    Geocomplete::make('location'),
 
                 TextInput::make('latitude')
                     ->reactive()

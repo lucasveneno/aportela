@@ -19,6 +19,7 @@ class Demand extends Model
 
      protected $fillable = [
         'user_id',
+        'location',
     ];
 
     protected $appends = [
@@ -43,7 +44,6 @@ class Demand extends Model
         'area_id' => 'array',
         'files' => 'array',
         'full_address' > 'array',
-        'location' > 'array',
     ];
 
 

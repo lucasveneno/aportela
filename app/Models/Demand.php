@@ -22,6 +22,10 @@ class Demand extends Model
         'latitude',
         'longitude',
     ];
+
+    protected $appends = [
+        'location',
+    ];
 /**
      * The following code was generated for use with Filament Google Maps
      *

@@ -87,7 +87,7 @@ class DemandResource extends Resource
                         'streetViewControl' => true,
                         'rotateControl'     => true,
                         'fullscreenControl' => true,
-                        'searchBoxControl'  => false, // creates geocomplete field inside map
+                        'searchBoxControl'  => true, // creates geocomplete field inside map
                         'zoomControl'       => false,
                     ])
                     ->reactive()

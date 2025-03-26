@@ -105,7 +105,7 @@ class DemandResource extends Resource
                     ->geoJson('https://fgm.test/storage/AGEBS01.geojson') // GeoJSON file, URL or JSON
                     ->geoJsonContainsField('geojson'), // field to capture GeoJSON polygon(s) which contain the map marker
 
-                    TextColumn::make('full_address')->required(),
+                    //TextColumn::make('full_address')->required(),
 
             ]);
     }

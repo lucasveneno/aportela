@@ -21,6 +21,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -109,7 +110,7 @@ class DemandResource extends Resource
                     ->geoJson('https://fgm.test/storage/AGEBS01.geojson') // GeoJSON file, URL or JSON
                     ->geoJsonContainsField('geojson'), // field to capture GeoJSON polygon(s) which contain the map marker
 
-                    Textarea::make('full_address')->required(),
+                    TextColumn::make('full_address')->required(),
 
             ]);
     }

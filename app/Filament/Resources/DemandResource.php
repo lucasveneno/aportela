@@ -60,9 +60,22 @@ class DemandResource extends Resource
                 //->visibility('public'), // If you're using public visibility
 
 
-                Geocomplete::make('location') // field name must be the computed attribute name on your model
-                ->isLocation()
-                ->geocodeOnLoad(), 
+                Geocomplete::make('location')
+                    ->isLocation()
+                    ->reverseGeocode([
+                        'city'   => '%L',
+                        'zip'    => '%z',
+                        'state'  => '%A1',
+                        'street' => '%n %S',
+                    ])
+                    ->countries(['us']) // restrict autocomplete results to these countries
+                    ->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
+                    ->updateLatLng() // update the lat/lng fields on your form when a Place is selected
+                    ->maxLength(1024)
+                    ->prefix('Choose:')
+                    ->placeholder('Start typing an address ...')
+                    ->geolocate() // add a suffix button which requests and reverse geocodes the device location
+                    ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button 
             ]);
     }
 

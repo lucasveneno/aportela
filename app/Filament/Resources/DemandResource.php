@@ -87,7 +87,7 @@ class DemandResource extends Resource
                         $set('longitude', $state['lng']);
                     }),
 
-                TextInput::make('zip'),
+               // TextInput::make('zip'),
 
             ]);
     }

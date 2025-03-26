@@ -80,23 +80,7 @@ class DemandResource extends Resource
                     ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button 
             */
 
-                Map::make('location')
-                    ->mapControls([
-                        'mapTypeControl'    => true,
-                        'scaleControl'      => true,
-                        'streetViewControl' => true,
-                        'rotateControl'     => true,
-                        'fullscreenControl' => true,
-                        'searchBoxControl'  => true, // creates geocomplete field inside map
-                        'zoomControl'       => false,
-                    ])
-                    ->reactive()
-                    ->autocomplete('location') // field on form to use as Places geocompletion field
-                    ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
-                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('latitude', $state['lat']);
-                        $set('longitude', $state['lng']);
-                    }),
+            Map::make('location'),
 
                 // TextInput::make('zip'),
 

@@ -87,7 +87,7 @@ class DemandResource extends Resource
                                     'lng' => floatVal($get('longitude')),
                                 ]);
                             })
-                            ->lazy()->hidden(), // important to use lazy, to avoid updates as you type
+                            ->lazy(), // important to use lazy, to avoid updates as you type
                         TextInput::make('longitude')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
@@ -96,7 +96,7 @@ class DemandResource extends Resource
                                     'lng' => floatVal($state),
                                 ]);
                             })
-                            ->lazy()->hidden(), // important to use lazy, to avoid updates as you type
+                            ->lazy(), // important to use lazy, to avoid updates as you type
                         
                         Map::make('location')
                             ->reactive()

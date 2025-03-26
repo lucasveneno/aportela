@@ -51,7 +51,7 @@ class Demand extends Model
     public function getLocationAttribute(): array
     {
         return [
-            "this" => (float)$this,
+            "this" => $this,
             "lat" => (float)$this->latitude,
             "lng" => (float)$this->longitude,
         ];

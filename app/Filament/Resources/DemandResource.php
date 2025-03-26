@@ -102,6 +102,13 @@ class DemandResource extends Resource
                     })
                     ->lazy(), // important to use lazy, to avoid updates as you type
 
+                Map::make('location')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                        $set('latitude', $state['lat']);
+                        $set('longitude', $state['lng']);
+                    }),
+
             ]);
     }
 

@@ -81,7 +81,7 @@ class DemandResource extends Resource
                     ->geolocate() // add a suffix button which requests and reverse geocodes the device location
                     ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
 
-                Map::make('location')
+                /*Map::make('location')
                     ->mapControls([
                         'mapTypeControl'    => true,
                         'scaleControl'      => true,
@@ -118,7 +118,7 @@ class DemandResource extends Resource
                     ]) // array of KML layer URLs to add to the map
                     ->geoJson('https://fgm.test/storage/AGEBS01.geojson') // GeoJSON file, URL or JSON
                     ->geoJsonContainsField('geojson'), // field to capture GeoJSON polygon(s) which contain the map marker
-
+*/
                 //TextColumn::make('full_address')->required(),
 
             ]);

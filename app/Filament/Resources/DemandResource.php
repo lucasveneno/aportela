@@ -64,7 +64,7 @@ class DemandResource extends Resource
                 //->visibility('public'), // If you're using public visibility
 
 
-                Fieldset::make('Location')
+                Fieldset::make('')
                     ->schema([
                         Geocomplete::make('full_address')
                             ->isLocation()

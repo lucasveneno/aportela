@@ -76,13 +76,13 @@ class DemandResource extends Resource
                             ->placeholder('Start typing an address ...')
                             ->geolocate() // add a suffix button which requests and reverse geocodes the device location
                             ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
-                        //->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
+                           // ->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 
-                        
+
                         TextInput::make('full_address')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                                $set('full_address', $get('location'));
+                                $set('full_address', $get('location')['formatted_address']);
                             })
                             ->lazy(), // important to use lazy, to avoid updates as you type
 
@@ -104,7 +104,7 @@ class DemandResource extends Resource
                                 ]);
                             })
                             ->lazy(), // important to use lazy, to avoid updates as you type
-                        
+
                         Map::make('location')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {

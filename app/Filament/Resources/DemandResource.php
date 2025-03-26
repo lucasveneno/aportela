@@ -83,6 +83,7 @@ class DemandResource extends Resource
                 Map::make('location')
                     ->reactive()
                     ->autocomplete('location') // field on form to use as Places geocompletion field
+                    ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         $set('latitude', $state['lat']);
                         $set('longitude', $state['lng']);

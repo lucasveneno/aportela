@@ -20,7 +20,6 @@ class Demand extends Model
     protected $fillable = [
         'user_id',
         'full_address',
-        'location',
     ];
 
     protected $appends = [

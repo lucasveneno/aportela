@@ -81,6 +81,15 @@ class DemandResource extends Resource
             */
 
                 Map::make('location')
+                    ->mapControls([
+                        'mapTypeControl'    => true,
+                        'scaleControl'      => true,
+                        'streetViewControl' => true,
+                        'rotateControl'     => true,
+                        'fullscreenControl' => true,
+                        'searchBoxControl'  => false, // creates geocomplete field inside map
+                        'zoomControl'       => false,
+                    ])
                     ->reactive()
                     ->autocomplete('location') // field on form to use as Places geocompletion field
                     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
@@ -89,7 +98,7 @@ class DemandResource extends Resource
                         $set('longitude', $state['lng']);
                     }),
 
-               // TextInput::make('zip'),
+                // TextInput::make('zip'),
 
             ]);
     }

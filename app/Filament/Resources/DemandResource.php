@@ -70,6 +70,23 @@ class DemandResource extends Resource
                     }),
                     */
 
+                Geocomplete::make('full_address')
+                    ->isLocation()
+                    ->reverseGeocode([
+                        'city'   => '%L',
+                        'zip'    => '%z',
+                        'state'  => '%A1',
+                        'street' => '%n %S',
+                    ])
+                    ->countries(['br']) // restrict autocomplete results to these countries
+                    ->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
+                    ->updateLatLng() // update the lat/lng fields on your form when a Place is selected
+                    ->maxLength(1024)
+                    ->prefix('Choose:')
+                    ->placeholder('Start typing an address ...')
+                    ->geolocate() // add a suffix button which requests and reverse geocodes the device location
+                    ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
+
                 Map::make('location')
                     ->mapControls([
                         'mapTypeControl'    => true,
@@ -84,7 +101,7 @@ class DemandResource extends Resource
                     ->defaultZoom(5) // default zoom level when opening form
                     ->autocomplete('full_address') // field on form to use as Places geocompletion field
 
-                    
+
                     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                     ->reverseGeocode([
                         'street' => '%n %S',
@@ -105,7 +122,7 @@ class DemandResource extends Resource
                     ->geoJson('https://fgm.test/storage/AGEBS01.geojson') // GeoJSON file, URL or JSON
                     ->geoJsonContainsField('geojson'), // field to capture GeoJSON polygon(s) which contain the map marker
 
-                    //TextColumn::make('full_address')->required(),
+                //TextColumn::make('full_address')->required(),
 
             ]);
     }

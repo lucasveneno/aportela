@@ -64,9 +64,9 @@ class DemandResource extends Resource
                 //->visibility('public'), // If you're using public visibility
 
 
-                Fieldset::make('addrress')
+                Fieldset::make('Location')
                     ->schema([
-                        Geocomplete::make('location')
+                        Geocomplete::make('full_address')
                             ->isLocation()
                             ->countries(['br']) // restrict autocomplete results to these countries
                             //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
@@ -78,8 +78,7 @@ class DemandResource extends Resource
                             ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
                         //->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 
-                    
-
+                        /*
                         TextInput::make('latitude')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
@@ -88,7 +87,7 @@ class DemandResource extends Resource
                                     'lng' => floatVal($get('longitude')),
                                 ]);
                             })
-                            ->lazy(), // important to use lazy, to avoid updates as you type
+                            ->lazy()->hidden(), // important to use lazy, to avoid updates as you type
                         TextInput::make('longitude')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
@@ -97,8 +96,8 @@ class DemandResource extends Resource
                                     'lng' => floatVal($state),
                                 ]);
                             })
-                            ->lazy(), // important to use lazy, to avoid updates as you type
-                        
+                            ->lazy()->hidden(), // important to use lazy, to avoid updates as you type
+                        */
                         Map::make('location')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {

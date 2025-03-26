@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('demands', function (Blueprint $table) {
             $table->string('city')->nullable(); // roles: admin, assessor, citizen
+            $table->string('state')->nullable(); // roles: admin, assessor, citizen
             $table->string('zip')->nullable(); // roles: admin, assessor, citizen
             $table->string('address')->nullable(); // roles: admin, assessor, citizen
             $table->string('latitude')->nullable(); // roles: admin, assessor, citizen
@@ -27,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('demands', function (Blueprint $table) {
             $table->dropColumn('city');
+            $table->dropColumn('state');
             $table->dropColumn('zip');
             $table->dropColumn('address');
             $table->dropColumn('latitude');

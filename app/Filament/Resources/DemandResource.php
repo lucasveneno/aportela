@@ -90,7 +90,7 @@ class DemandResource extends Resource
                         'zip' => '%z',
                     ]) // reverse geocode marker location to form fields, see notes below
                     ->debug() // prints reverse geocode format strings to the debug console
-                    ->defaultLocation([39.526610, -107.727261]) // default for new forms
+                    //->defaultLocation([39.526610, -107.727261]) // default for new forms
                     ->draggable() // allow dragging to move marker
                     ->clickable(false) // allow clicking to move marker
                     ->geolocate() // adds a button to request device location and set map marker accordingly

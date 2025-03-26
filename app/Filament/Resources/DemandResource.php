@@ -81,7 +81,7 @@ class DemandResource extends Resource
             */
 
                
-            Geocomplete::make('formatted_address')
+            Geocomplete::make('location')
             ->isLocation()
             ->reverseGeocode([
                 'city'   => '%L',

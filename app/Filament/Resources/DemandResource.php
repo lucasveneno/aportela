@@ -79,12 +79,7 @@ class DemandResource extends Resource
                            // ->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 
 
-                        TextInput::make('full_address')
-                            ->reactive()
-                            ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                                $set('full_address', $get('location')['formatted_address']);
-                            })
-                            ->lazy(), // important to use lazy, to avoid updates as you type
+                        TextInput::make('full_address'), // important to use lazy, to avoid updates as you type
 
                         TextInput::make('latitude')
                             ->reactive()

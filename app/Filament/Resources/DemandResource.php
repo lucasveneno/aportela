@@ -83,7 +83,7 @@ class DemandResource extends Resource
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
                                 $set('location', [
-                                    'formatted_address' => floatVal($state),
+                                    'formatted_address' => $state,
                                     'lat' => floatVal($get('latitude')),
                                     'lng' => floatVal($get('longitude')),
                                 ]);

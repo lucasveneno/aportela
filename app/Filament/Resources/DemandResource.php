@@ -60,19 +60,13 @@ class DemandResource extends Resource
                     ->disk('public') // The disk where files will be stored
                     ->directory('demand_files'), // Directory within the disk
                 //->visibility('public'), // If you're using public visibility
+                
+                Map::make('location')
+                    ->placeUpdatedUsing(function (callable $set, array $place) {
+                        // do whatever you need with the $place results, and $set your field(s)
+                        $set('city', 'foo wibble');
+                    }),
 
-
-            Geocomplete::make('location')
-                    ->isLocation()
-                    ->countries(['br']) // restrict autocomplete results to these countries
-                    //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
-                    ->updateLatLng() // update the lat/lng fields on your form when a Place is selected
-                    ->maxLength(1024)
-                    ->prefix('Choose:')
-                    ->placeholder('Start typing an address ...')
-                    ->geolocate() // add a suffix button which requests and reverse geocodes the device location
-                    ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button 
-            
                 TextInput::make('latitude')
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
@@ -91,7 +85,7 @@ class DemandResource extends Resource
                         ]);
                     })
                     ->lazy(), // important to use lazy, to avoid updates as you type
-                
+
 
             ]);
     }

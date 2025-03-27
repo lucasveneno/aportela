@@ -128,7 +128,6 @@ class DemandResource extends Resource
                         
 
 
-                            ->required(),
                     ])
                     ->columns(2)
                     ->collapsed(),

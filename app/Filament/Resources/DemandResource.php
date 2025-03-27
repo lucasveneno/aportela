@@ -104,16 +104,16 @@ class DemandResource extends Resource
                             Radio::make('priority')
                                 ->label('')
                                 ->options([
-                                    'max' => 'Prioridade Máxima ',
-                                    'high' => 'Prioridade Alta ',
-                                    'medium' => 'Prioridade Média',
-                                    'low' => 'Prioridade Baixa '
+                                    'max' => __('resources.demands.max'),
+                                    'high' => __('resources.demands.high'),
+                                    'medium' => __('resources.demands.medium'),
+                                    'low' => __('resources.demands.low')
                                 ])
                                 ->descriptions([
-                                    'max' => 'Urgente - Ação Imediata',
-                                    'high' => 'Importante - Planejamento Rápido',
-                                    'medium' => 'Necessária - Médio Prazo',
-                                    'low' => 'Melhoria - Longo Prazo'
+                                    'max' => __('resources.demands.max_description'),
+                                    'high' => __('resources.demands.high_description'),
+                                    'medium' => __('resources.demands.medium_description'),
+                                    'low' => __('resources.demands.low_description')
                                 ]),
                         ]),
                         Section::make([

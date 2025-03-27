@@ -117,6 +117,9 @@ return [
         'applicant_email' => 'E-mail',
         'applicant_instagram' => 'Instagram',
         'applicant_facebook' => 'Facebook',
+
+
+        'draft' => 'Salvar demanda como rascunho?',
     ],
 
 

@@ -195,17 +195,6 @@ class DemandResource extends Resource
                     ]),
 
 
-
-
-
-
-
-
-
-
-
-
-
                 Section::make(__('resources.demands.section_location_title'))
                     ->description(__('resources.demands.section_location_description'))
 
@@ -272,6 +261,13 @@ class DemandResource extends Resource
                             ->disk('public') // The disk where files will be stored
                             ->directory('demand_files'), // Directory within the disk
                     ])->columns(1),
+
+                ToggleButtons::make('draft')
+                    ->label(__('resources.demands.draft'))
+                    ->boolean()
+                    ->default(0)
+                    ->inline()
+                    ->live(), // Makes it update in real-time
 
                 Toggle::make('status')->label('Salvar como rascunho')
                     ->onColor('success')

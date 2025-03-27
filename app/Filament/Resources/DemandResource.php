@@ -190,6 +190,7 @@ class DemandResource extends Resource
 
                         Map::make('location')
                             ->reactive()
+                            ->defaultLocation(['-20.4648517', '-54.6218477'])
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
                                 $set('latitude', $state['lat']);
                                 $set('longitude', $state['lng']);

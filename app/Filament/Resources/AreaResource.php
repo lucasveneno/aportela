@@ -46,8 +46,8 @@ class AreaResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                ToggleColumn::make('status')
+                TextColumn::make('name')->label(__('resources.areas.name')),
+                ToggleColumn::make('status')->label(__('resources.areas.status'))
                     ->onColor('success')
                     ->offColor('danger')
             ])

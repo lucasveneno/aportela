@@ -85,8 +85,8 @@ return [
         'area' => 'Área',
         'category' => 'Categoria',
         // Priority box
-        'priority_title' => 'Prioridade',
-        'priority_subtitle' => ' Selecione a prioridade desta demanda. ',
+        'section_title' => 'Prioridade',
+        'section_description' => ' Selecione a prioridade desta demanda. ',
         'max' => 'Prioridade Máxima',
         'max_description' => 'Urgente - Ação Imediata',
 

@@ -95,8 +95,8 @@ class DemandResource extends Resource
 
 
 
-                Section::make('Priority')
-                    ->description('Selecione a prioridade desta demanda.')
+                Section::make(__('resources.demands.section_title'))
+                    ->description(__('resources.demands.section_description'))
                     ->schema([
 
 

@@ -106,7 +106,7 @@ class DemandResource extends Resource
                 ])->columns(1),
 
                 Repeater::make('members')
-                    ->label('Solicitante')
+                    ->label(__('resources.demands.applicant'))
                     ->schema([
                         TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
                         Select::make('applicant_role')

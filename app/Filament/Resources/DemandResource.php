@@ -30,6 +30,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
 
 class DemandResource extends Resource
 {
@@ -66,6 +67,13 @@ class DemandResource extends Resource
                 Section::make('')
                     ->schema([
 
+                        Placeholder::make('documentation')
+                            ->content(new HtmlString('Critérios para Definição de Prioridades:<br />
+                            ✔ Impacto na população (saúde, segurança, mobilidade).<br />
+                            ✔ Risco de acidentes ou danos materiais.<br />
+                            ✔ Custo-benefício (recursos disponíveis x benefício gerado).<br />
+                            ✔ Demanda popular (reclamações frequentes).')),
+
                         Radio::make('priority')
                             ->options([
                                 'max' => 'Prioridade Máxima ',
@@ -78,13 +86,10 @@ class DemandResource extends Resource
                                 'high' => 'Importante - Planejamento Rápido',
                                 'medium' => 'Necessária - Médio Prazo',
                                 'low' => 'Melhoria - Longo Prazo'
-                            ])->hintIcon('heroicon-m-question-mark-circle', tooltip: 'Critérios para Definição de Prioridades:
+                            ])->hintIcon('heroicon-m-question-mark-circle', tooltip: '
 
-✔ Impacto na população (saúde, segurança, mobilidade).
-✔ Risco de acidentes ou danos materiais.
-✔ Custo-benefício (recursos disponíveis x benefício gerado).
-✔ Demanda popular (reclamações frequentes).'),
-                    ])    ,
+'),
+                    ]),
 
 
 

@@ -80,10 +80,6 @@ class CategoryResource extends Resource
         ];
     }
 
-
-
-
-
     public static function getNavigationLabel(): string
     {
         return __('resources.categories.plural_label'); // Navigation menu label
@@ -98,6 +94,6 @@ class CategoryResource extends Resource
 
     public static function getNavigationGroup(): string
     {
-        return __('Demandas');
+        return __('resources.demands_group');
     }
 }

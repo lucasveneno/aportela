@@ -2,6 +2,9 @@
 
 return [
 
+    'demands_group' => 'Demandas',
+
+
     /*
     |--------------------------------------------------------------------------
     | Resources Menu Language Lines

@@ -129,12 +129,11 @@ class DemandResource extends Resource
                             ->default(__('resources.demands.low')),
 
 
-
-
                         TextInput::make('prioridade')
                             ->label('Nível de Prioridade')
                             ->disabled()
-                            ->dehydrated(),
+                            ->dehydrated()
+                            ->columnSpan(1),
 
                         Placeholder::make('descricao_prioridade')
                             ->label('Justificativa')
@@ -296,6 +295,7 @@ class DemandResource extends Resource
     public static function calcularPrioridade(array $criterios): string
     {
         $total = count($criterios);
+
         $pesos = [
             'impacto_populacao' => 5,
             'risco_acidentes' => 5,  // Aumentei o peso por ser crítico

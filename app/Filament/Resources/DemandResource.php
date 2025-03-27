@@ -81,19 +81,9 @@ class DemandResource extends Resource
 
                     ])->columns(2),
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+                Section::make([
+                    RichEditor::make('description')->label(__('resources.demands.description'))->required(),
+                ])->columns(1),
 
                 Section::make(__('resources.demands.section_title'))
                     ->description(__('resources.demands.section_description'))
@@ -133,9 +123,7 @@ class DemandResource extends Resource
 
 
 
-                Section::make([
-                    RichEditor::make('description')->required(),
-                ])->columns(1),
+
 
                 Section::make([
                     FileUpload::make('files')

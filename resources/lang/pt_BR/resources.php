@@ -84,6 +84,7 @@ return [
         'classify_demand' => 'Classificar demanda',
         'area' => 'Área',
         'category' => 'Categoria',
+        'description' => 'Descrição da demanda',
         // Priority box
         'section_title' => 'Prioridade',
         'section_description' => ' Selecione a prioridade desta demanda. ',

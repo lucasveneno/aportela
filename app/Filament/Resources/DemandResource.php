@@ -19,6 +19,7 @@ use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -103,6 +104,19 @@ class DemandResource extends Resource
                         ])
                         ->label(__('resources.demands.description'))->required(),
                 ])->columns(1),
+
+                Repeater::make('members')
+                    ->schema([
+                        TextInput::make('name')->required(),
+                        Select::make('role')
+                            ->options([
+                                'member' => 'Member',
+                                'administrator' => 'Administrator',
+                                'owner' => 'Owner',
+                            ])
+                            ->required(),
+                    ])
+                    ->columns(2),
 
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))

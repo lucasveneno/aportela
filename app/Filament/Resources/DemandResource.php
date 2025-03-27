@@ -119,7 +119,7 @@ class DemandResource extends Resource
                                 ])
                                 ->reactive()
                                 ->afterStateUpdated(fn($state, callable $set) => [
-                                    //$set('prioridade', self::calcularPrioridade($state)),
+                                    $set('prioridade', self::calcularPrioridade($state)),
                                     $set('descricao_prioridade', self::descricaoPrioridade(self::calcularPrioridade($state)))
                                 ]),
                             //->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
@@ -319,9 +319,9 @@ class DemandResource extends Resource
     public static function descricaoPrioridade(string $prioridade): string
     {
         return match ($prioridade) {
-            'max' => __('resources.demands.max_description'),
-            'high' => __('resources.demands.high_description'),
-            'medium' => __('resources.demands.medium_description'),
+            4 => __('resources.demands.max_description'),
+            3 => __('resources.demands.high_description'),
+            2 => __('resources.demands.medium_description'),
             default => __('resources.demands.low_description'),
         };
     }

@@ -79,13 +79,15 @@ class CategoryResource extends Resource
         ];
     }
 
-    public static function getNavigationLabel(): string
+    
+
+    public static function getPluralModelLabel(): string
     {
-        return __('resources.menu.categories');
+        return __('resources.menu.categories'); // Plural label
     }
 
-    public static function getRecordTitleAttribute(): ?string
+    public static function getNavigationLabel(): string
     {
-        return 'novo'; // Singular label for relation manager
+        return __('resources.menu.categories'); // Navigation menu label
     }
 }

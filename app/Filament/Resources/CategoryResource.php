@@ -91,7 +91,7 @@ class CategoryResource extends Resource
         return __('resources.categories.label'); // Navigation menu label
     }
 
-    protected static function getCreatePageTitle(): string
+    protected static function getContentTabLabel(): string
     {
         return 'Cadastrar Nova Área'; // Your custom title
     }

@@ -86,6 +86,11 @@ class CategoryResource extends Resource
 
     }
 
+    public static function getPluralModelLabel(): string
+    {
+        return __('resources.categories.plural_label'); // Navigation menu label
+    }
+
     public static function getModelLabel(): string
     {
         return __('resources.categories.label'); // Navigation menu label
@@ -96,4 +101,6 @@ class CategoryResource extends Resource
     {
         return __('resources.demands_group');
     }
+
+    
 }

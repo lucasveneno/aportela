@@ -26,6 +26,8 @@ return [
     */
 
     'areas' => [
+        'label' => 'Áreas',
+        'plural_label' => 'Área',
         'name' => 'Nome',
         'status' => 'Status',
     ],

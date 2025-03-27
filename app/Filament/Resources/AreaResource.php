@@ -71,4 +71,26 @@ class AreaResource extends Resource
             'edit' => Pages\EditArea::route('/{record}/edit'),
         ];
     }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('resources.areas.plural_label'); // Navigation menu label
+
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('resources.areas.plural_label'); // Navigation menu label
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('resources.areas.label'); // Navigation menu label
+
+    }
+
+    public static function getNavigationGroup(): string
+    {
+        return __('resources.demands_group');
+    }
 }

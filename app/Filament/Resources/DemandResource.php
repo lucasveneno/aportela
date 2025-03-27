@@ -107,37 +107,12 @@ class DemandResource extends Resource
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([
-                        CheckboxList::make('criterios')
-                        ->label('Selection Criteria')
-                        ->options([
-                            'impact' => 'Impact on Population',
-                            'safety' => 'Safety Risk',
-                            'cost' => 'Cost-Benefit',
-                        ])
-                        ->bulkToggleable()
-                        ->gridDirection('row')
-                        ->columns(1)
-                        ->options(function () {
-                            return [
-                                'impact' => $this->makeOptionWithTooltip(
-                                    label: 'Impact on Population',
-                                    tooltip: 'Measures health, mobility, and overall wellbeing effects'
-                                ),
-                                'safety' => $this->makeOptionWithTooltip(
-                                    label: 'Safety Risk',
-                                    tooltip: 'Potential for accidents or material damages'
-                                ),
-                                'cost' => $this->makeOptionWithTooltip(
-                                    label: 'Cost-Benefit',
-                                    tooltip: 'Ratio between required resources and expected benefits'
-                                ),
-                            ];
-                        }),
+
                         Section::make([
                             CheckboxList::make('criterios')
                                 ->label('Critérios de Priorização')
                                 ->options([
-                                    'impacto_populacao' => 'Impacto na população (saúde, segurança, mobilidade, bem-estar...)',
+                                    'impacto_populacao' => 'Impacto na população (saúde, segurança, mobilidade...)',
                                     'risco_acidentes' => 'Risco de acidentes ou danos materiais',
                                     'custo_beneficio' => 'Custo-benefício (recursos x benefício)',
                                     'demanda_popular' => 'Demanda popular (reclamações frequentes)',
@@ -361,14 +336,6 @@ class DemandResource extends Resource
             default =>  __('resources.demands.low_description'),
         };
     }
-
-    protected function makeOptionWithTooltip(string $label, string $tooltip): string
-{
-    return view('components.checkbox-option', [
-        'label' => $label,
-        'tooltip' => $tooltip
-    ])->render();
-}
 
     /*
 Melhorias implementadas:

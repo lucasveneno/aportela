@@ -107,7 +107,7 @@ return [
         // Applicant data
         'section_applicant_title' => 'Identificação do Solicitante',
         'section_applicant_description' => 'Informe os dados obrigatórios da pessoa ou entidade que está formalizando esta demanda.',
-        'applicant_demand_origin' => 'Origem da demanda',
+        'applicant_demand_origin' => 'Esta demanda tem um solicitante?',
         'applicant' => 'Solicitante da demanda',
         'applicant_name' => 'Nome',
         'applicant_role' => 'Tipo',

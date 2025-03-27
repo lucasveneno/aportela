@@ -131,7 +131,7 @@ class DemandResource extends Resource
                                 ->label('Prioridade Calculada')
                                 ->disabled(), // Apenas leitura para o usuário
 
-                            TextInput::make('descricao_prioridade')
+                            Textarea::make('descricao_prioridade')
                                 ->label('Descrição da Prioridade')
                                 ->disabled()
                                 ->default(__('resources.demands.low_description')), // Descrição inicial

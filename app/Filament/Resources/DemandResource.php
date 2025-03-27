@@ -191,9 +191,11 @@ class DemandResource extends Resource
                     ->default(1),
                 Toggle::make('requires_councilor')->label('Requervisitadovereador(a)'),
 
-
+                Section::make('Priority')
+                ->description('Selecione a prioridade desta demanda.')
+                ->schema([
                 RichEditor::make('description')->required(),
-
+                ])->columns(1),
             ]);
     }
 

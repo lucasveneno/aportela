@@ -54,11 +54,6 @@ class CategoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\CreateAction::make()
-                    ->label('Adicionar Novo')
-                    ->modalHeading('Formulário de Cadastro')
-                    ->modalButton('Salvar Novo')
-                    ->successNotificationTitle('Registro criado com sucesso!'),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -91,7 +86,8 @@ class CategoryResource extends Resource
 
     public static function getCreatePageTitle(): string
     {
-        return __('resources.categories.create_category');
+        return 'novo';// __('resources.categories.create_category');
         // Altera o título da página de criação
     }
+    
 }

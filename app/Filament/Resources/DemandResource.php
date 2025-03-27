@@ -112,10 +112,10 @@ class DemandResource extends Resource
                             CheckboxList::make('criterios')
                                 ->label('Critérios para Definição de Prioridade')
                                 ->options([
-                                    'impacto_populacao' => 'Impacto na população (saúde, segurança, mobilidade).',
-                                    'risco_acidentes' => 'Risco de acidentes ou danos materiais.',
-                                    'custo_beneficio' => 'Custo-benefício (recursos disponíveis x benefício gerado).',
-                                    'demanda_popular' => 'Demanda popular (reclamações frequentes).',
+                                    'impacto_populacao' => 'Impacto na população (saúde, segurança, mobilidade, bem-estar)',
+                                    'risco_acidentes' => 'Risco de acidentes ou danos materiais',
+                                    'custo_beneficio' => 'Custo-benefício (recursos disponíveis x benefício gerado)',
+                                    'demanda_popular' => 'Demanda popular (reclamações frequentes)',
                                 ])
                                 ->reactive()
                                 ->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente

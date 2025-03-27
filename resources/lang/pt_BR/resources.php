@@ -88,9 +88,16 @@ return [
         'priority_title' => 'Prioridade',
         'priority_subtitle' => ' Selecione a prioridade desta demanda. ',
         'max' => 'Prioridade Máxima',
+        'max_description' => 'Urgente - Ação Imediata',
+
         'high' => 'Prioridade Alta',
+        'high_description' => 'Importante - Planejamento Rápido',
+
         'medium' => 'Prioridade Média',
+        'medium_description' => 'Necessária - Médio Prazo',
+
         'low' => 'Prioridade Baixa',
+        'low_description' => 'Melhoria - Longo Prazo',
 
     ],
 

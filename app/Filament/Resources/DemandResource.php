@@ -54,14 +54,14 @@ class DemandResource extends Resource
                 Toggle::make('requires_councilor'),
                 Radio::make('priority')
                 ->options([
-                    'draft' => 'Draft',
-                    'scheduled' => 'Scheduled',
-                    'published' => 'Published'
+                    'high' => 'Prioridade Alta ',
+                    'medium' => 'Prioridade Média',
+                    'low' => 'Prioridade Baixa '
                 ])
                 ->descriptions([
-                    'draft' => 'Is not visible.',
-                    'scheduled' => 'Will be visible.',
-                    'published' => 'Is visible.'
+                    'high' => '(Importante - Planejamento Rápido)',
+                    'medium' => '(Necessária - Médio Prazo)',
+                    'published' => '(Melhoria - Longo Prazo)'
                 ]),
                 
                 Select::make('status')->options([

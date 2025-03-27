@@ -87,7 +87,7 @@ return [
         'description' => 'Descrição da demanda',
         // Priority box
         'section_priority_title' => 'Prioridade',
-        'section_priority_description' => 'Selecione os critérios para Definição de Prioridade',
+        'section_priority_description' => 'Selecione os critérios para definição de prioridade',
         'max' => 'Prioridade Máxima (Ação imediata)',
         'max_description' => 'Situações importantes e críticas que exigem resposta imediata para evitar problemas futuros, como riscos à segurança, saúde ou grandes impactos na mobilidade.',
         'high' => 'Prioridade Alta (Planejamento rápido)',

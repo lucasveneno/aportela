@@ -86,7 +86,7 @@ class CategoryResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('resources.categories.label'); // Navigation menu label
+        return __('resources.categories.plural_label'); // Navigation menu label
 
     }
 

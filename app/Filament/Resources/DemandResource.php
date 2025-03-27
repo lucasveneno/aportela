@@ -65,8 +65,7 @@ class DemandResource extends Resource
                                 Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
                                 Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
                             ]),
-                        Section::make('Critérios para Definição de Prioridades:')
-                            ->description('Prevent abuse by limiting the number of requests per period')
+                        Section::make('')
                             ->schema([
 
                                 Radio::make('priority')

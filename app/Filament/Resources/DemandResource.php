@@ -352,15 +352,15 @@ class DemandResource extends Resource
         };
     }
 
-    public static function descricaoPrioridade($criterios): string
-    {
-        $peso = count($criterios); // Conta os checkboxes marcados
-
-        return match ($peso) {
-            4 => __('resources.demands.max_description'),
-            3 => __('resources.demands.high_description'),
-            2 => __('resources.demands.medium_description'),
-            default => __('resources.demands.low_description'),
-        };
-    }
+    public static function descricaoPrioridade(array $criterios): string
+{
+    $prioridade = self::calcularPrioridade($criterios);
+    
+    return match ($prioridade) {
+        __('resources.demands.max') => __('resources.demands.max_description'),
+        __('resources.demands.high') => __('resources.demands.high_description'),
+        __('resources.demands.medium') => __('resources.demands.medium_description'),
+        default => __('resources.demands.low_description'),
+    };
+}
 }

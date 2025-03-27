@@ -63,23 +63,23 @@ class DemandResource extends Resource
 
                 //Toggle::make('requires_councilor'),
 
-                Fieldset::make('Critérios para Definição de Prioridades')
-                    ->schema([
-                        Placeholder::make('')
-                            ->content(new HtmlString('
-                            ✔ Impacto na população (saúde, segurança, mobilidade).<br />
-                            ✔ Risco de acidentes ou danos materiais.<br />
-                            ✔ Custo-benefício (recursos disponíveis x benefício gerado).<br />
-                            ✔ Demanda popular (reclamações frequentes).
-                            ')),
-                    ]),
+                
 
                 Section::make('Priority')
                     ->description('afsdf')
                     ->schema([
 
 
-
+                        Fieldset::make('Critérios para Definição de Prioridades')
+                        ->schema([
+                            Placeholder::make('')
+                                ->content(new HtmlString('
+                                ✔ Impacto na população (saúde, segurança, mobilidade).<br />
+                                ✔ Risco de acidentes ou danos materiais.<br />
+                                ✔ Custo-benefício (recursos disponíveis x benefício gerado).<br />
+                                ✔ Demanda popular (reclamações frequentes).
+                                ')),
+                        ]),
                         Radio::make('priority')
                         ->label('')
                             ->options([

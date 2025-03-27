@@ -115,7 +115,7 @@ class DemandResource extends Resource
 
 
                     Section::make([
-                        Repeater::make('members')
+                        Repeater::make('applicants')
                             ->label(__('resources.demands.applicant'))
                             ->schema([
                                 TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),

@@ -108,12 +108,20 @@ class DemandResource extends Resource
                 Repeater::make('members')
                     ->schema([
                         TextInput::make('name')->required(),
+
+                        Select::make('user_id')  // Store the user ID
+                            ->label('User')
+                            ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
+                            ->searchable()  // Allow searching through users
+                            ->required(),
                         Select::make('role')
                             ->options([
                                 'member' => 'Member',
                                 'administrator' => 'Administrator',
                                 'owner' => 'Owner',
                             ])
+
+
                             ->required(),
                     ])
                     ->columns(2),

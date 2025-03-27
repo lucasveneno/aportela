@@ -301,4 +301,16 @@ class DemandResource extends Resource
     {
         return __('resources.demands_group');
     }
+
+    public static function calcularPrioridade($criterios): string
+    {
+        $peso = count($criterios); // Conta os checkboxes marcados
+
+        return match ($peso) {
+            4 => 'Máxima',
+            3 => 'Alta',
+            2 => 'Média',
+            default => 'Baixa',
+        };
+    }
 }

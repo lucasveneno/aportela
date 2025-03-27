@@ -34,9 +34,9 @@ return [
     */
 
     'categories' => [
-        'label' => 'Category',
+        'label' => 'Categoria',
         'plural_label' => 'Categorias',
-        'create_category' => 'Criar categoria',
+        //'create_category' => 'Criar categoria',
         'area' => 'Área',
         'name' => 'Nome',
     ],

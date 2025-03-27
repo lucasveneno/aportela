@@ -75,12 +75,13 @@ class DemandResource extends Resource
                     ]),
 
                 Section::make('Priority')
-                    ->content('afsdf')
+                    ->description('afsdf')
                     ->schema([
 
 
 
                         Radio::make('priority')
+                        ->label('')
                             ->options([
                                 'max' => 'Prioridade Máxima ',
                                 'high' => 'Prioridade Alta ',

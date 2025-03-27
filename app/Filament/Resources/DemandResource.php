@@ -45,47 +45,55 @@ class DemandResource extends Resource
     {
         return $form
             ->schema([
-                /*Select::make('user_id')
-                    ->options(User::all()->where('role', 'assesor')->pluck('name', 'id'))
-                    ->searchable()
-                    ->preload()
-                    ->label(__('User')),*/
-                Select::make('area_id')
-                    ->label(__('Area'))
-                    ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
-                    ->searchable()
-                    ->preload()
-                    ->live() // This makes the field update the form in real-time
-                    ->afterStateUpdated(function ($state, Select $component) {
-                        // When area changes, update the category options
-                        $component->getContainer()
-                            ->getComponent('category_id')
-                            ->options(
-                                $state ? Category::where('area_id', $state)
-                                    //->where('status', 1)
-                                    ->pluck('name', 'id')
-                                    : []
-                            );
-                    }),
+
+                Split::make([
+                    Section::make([
+                        Select::make('area_id')
+                            ->label(__('Area'))
+                            ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
+                            ->searchable()
+                            ->preload()
+                            ->live() // This makes the field update the form in real-time
+                            ->afterStateUpdated(function ($state, Select $component) {
+                                // When area changes, update the category options
+                                $component->getContainer()
+                                    ->getComponent('category_id')
+                                    ->options(
+                                        $state ? Category::where('area_id', $state)
+                                            //->where('status', 1)
+                                            ->pluck('name', 'id')
+                                            : []
+                                    );
+                            }),
+                    ]),
+                    Section::make([
+                        Select::make('category_id')
+                            ->label(__('Category'))
+                            ->options(fn(Get $get): array => Category::query()
+                                ->where('area_id', $get('area_id'))
+                                ->pluck('name', 'id')
+                                ->toArray())
+                            ->searchable()
+                            ->preload()
+                            ->key('category_id'), // Important for the afterStateUpdated to find this field
+                    ]),
+                    Section::make([
+                        Select::make('status')->options([
+                            'pending' => 'Pending',
+                            'in_progress' => 'In Progress',
+                            'resolved' => 'Resolved',
+                        ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
+                        RichEditor::make('description')->required(),
+                    ]),
+                ])->from('md'),
 
 
 
-                Select::make('category_id')
-                    ->label(__('Category'))
-                    ->options(fn(Get $get): array => Category::query()
-                        ->where('area_id', $get('area_id'))
-                        ->pluck('name', 'id')
-                        ->toArray())
-                    ->searchable()
-                    ->preload()
-                    ->key('category_id'), // Important for the afterStateUpdated to find this field
 
-                Select::make('status')->options([
-                    'pending' => 'Pending',
-                    'in_progress' => 'In Progress',
-                    'resolved' => 'Resolved',
-                ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
-                RichEditor::make('description')->required(),
+
+
+
+
 
 
                 //Toggle::make('requires_councilor'),

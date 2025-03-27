@@ -60,6 +60,10 @@ class DemandResource extends Resource
                     ->schema([
                         Placeholder::make('Critérios para Definição de Prioridades:')
                             ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                        Placeholder::make('Critérios para Definição de Prioridades:')
+                            ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                        Placeholder::make('Critérios para Definição de Prioridades:')
+                            ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
                         Radio::make('priority')
                             ->options([
                                 'max' => 'Prioridade Máxima ',

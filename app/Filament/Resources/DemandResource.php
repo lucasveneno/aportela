@@ -322,6 +322,8 @@ class DemandResource extends Resource
         return __('resources.demands_group');
     }
 
+    
+
     public static function calcularPrioridade(array $criterios): string
     {
         $pesos = [
@@ -338,12 +340,12 @@ class DemandResource extends Resource
             fn($total, $criterio) => $total + ($pesos[$criterio] ?? 0),
             0
         );
-        // Define os níveis de prioridade com base na pontuaçã
+
         return match (true) {
-            $pontuacao >= 20 => __('resources.demands.max'),      // Muito Alta/Urgente
-            $pontuacao >= 15 => __('resources.demands.high'),      // Alta
-            $pontuacao >= 10 => __('resources.demands.medium'),    // Média
-            default => __('resources.demands.low'),                     // Baixa
+            $pontuacao >= 20 => __('resources.demands.max'),
+            $pontuacao >= 15 => __('resources.demands.high'),
+            $pontuacao >= 10 => __('resources.demands.medium'),
+            default => __('resources.demands.low'),
         };
     }
 

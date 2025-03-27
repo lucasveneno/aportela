@@ -70,15 +70,7 @@ class DemandResource extends Resource
                     ->schema([
 
                         Split::make([
-                            Section::make([
-                                Placeholder::make('Critérios para Definição de Prioridades:')
-                                    ->content(new HtmlString('
-                                ✔ Impacto na população (saúde, segurança, mobilidade).<br />
-                                ✔ Risco de acidentes ou danos materiais.<br />
-                                ✔ Custo-benefício (recursos disponíveis x benefício gerado).<br />
-                                ✔ Demanda popular (reclamações frequentes).
-                                ')),
-                            ]),
+                            
                             Section::make([
                                 Radio::make('priority')
                                     ->label('')
@@ -94,6 +86,15 @@ class DemandResource extends Resource
                                         'medium' => 'Necessária - Médio Prazo',
                                         'low' => 'Melhoria - Longo Prazo'
                                     ]),
+                            ]),
+                            Section::make([
+                                Placeholder::make('Critérios para Definição de Prioridades:')
+                                    ->content(new HtmlString('
+                                ✔ Impacto na população (saúde, segurança, mobilidade).<br />
+                                ✔ Risco de acidentes ou danos materiais.<br />
+                                ✔ Custo-benefício (recursos disponíveis x benefício gerado).<br />
+                                ✔ Demanda popular (reclamações frequentes).
+                                ')),
                             ]),
                         ])->from('lg'),
 

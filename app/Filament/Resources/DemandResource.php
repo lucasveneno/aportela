@@ -273,7 +273,7 @@ class DemandResource extends Resource
                     Section::make([
                         Toggle::make('requires_councilor')->label('Vereador(a) precisa ir até o local?'),
                     ])
-                ])->from('lg'),
+                ]),
             ]);
     }
 

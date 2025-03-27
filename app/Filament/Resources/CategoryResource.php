@@ -79,7 +79,7 @@ class CategoryResource extends Resource
         ];
     }
 
-    
+
 
     public static function getPluralModelLabel(): string
     {
@@ -89,5 +89,10 @@ class CategoryResource extends Resource
     public static function getNavigationLabel(): string
     {
         return __('resources.categories.label'); // Navigation menu label
+    }
+
+    protected static function getCreatePageTitle(): string
+    {
+        return 'Cadastrar Nova Área'; // Your custom title
     }
 }

@@ -94,8 +94,8 @@ class DemandResource extends Resource
                                         'medium' => 'Necessária - Médio Prazo',
                                         'low' => 'Melhoria - Longo Prazo'
                                     ]),
-                            ])->grow(false),
-                        ])->from('md'),
+                            ]),
+                        ])->from('lg'),
 
 
 

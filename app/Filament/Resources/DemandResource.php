@@ -112,10 +112,13 @@ class DemandResource extends Resource
                             CheckboxList::make('criterios')
                                 //->label('')
                                 ->options([
-                                    'impacto_populacao' => 'Impacto na população (saúde, segurança, mobilidade, bem-estar)',
+
+                                    'impacto_populacao' => 'Impacto na população (saúde, segurança, bem-estar)',
                                     'risco_acidentes' => 'Risco de acidentes ou danos materiais',
-                                    'custo_beneficio' => 'Custo-benefício (recursos disponíveis x benefício gerado)',
+                                    'custo_beneficio' => 'Custo-benefício (recursos x benefício)',
                                     'demanda_popular' => 'Demanda popular (reclamações frequentes)',
+                                    'alinhamento_metas' => 'Alinhamento com metas municipais',
+                                    'viabilidade_tecnica' => 'Viabilidade técnica de implementação',
                                 ])
                                 ->reactive()
                                 ->afterStateUpdated(fn($state, callable $set) => [
@@ -129,7 +132,9 @@ class DemandResource extends Resource
 
                             TextInput::make('prioridade')
                                 ->label('Prioridade Calculada')
-                                ->disabled(), // Apenas leitura para o usuário
+                                ->dehydrated()
+                                ->columnSpan(1),
+                                //->disabled(), // Apenas leitura para o usuário
 
                             /*TextInput::make('descricao_prioridade')
                                 ->label('Descrição da Prioridade')
@@ -353,14 +358,14 @@ class DemandResource extends Resource
     }
 
     public static function descricaoPrioridade(array $criterios): string
-{
-    $prioridade = self::calcularPrioridade($criterios);
-    
-    return match ($prioridade) {
-        __('resources.demands.max') => __('resources.demands.max_description'),
-        __('resources.demands.high') => __('resources.demands.high_description'),
-        __('resources.demands.medium') => __('resources.demands.medium_description'),
-        default => __('resources.demands.low_description'),
-    };
-}
+    {
+        $prioridade = self::calcularPrioridade($criterios);
+
+        return match ($prioridade) {
+            __('resources.demands.max') => __('resources.demands.max_description'),
+            __('resources.demands.high') => __('resources.demands.high_description'),
+            __('resources.demands.medium') => __('resources.demands.medium_description'),
+            default => __('resources.demands.low_description'),
+        };
+    }
 }

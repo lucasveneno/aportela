@@ -312,7 +312,7 @@ class DemandResource extends Resource
             4 => __('resources.demands.max'),
             3 => __('resources.demands.high'),
             2 => __('resources.demands.medium'),
-            default => __('resources.demands.low'),
+            1 => __('resources.demands.low'),
         };
     }
 
@@ -322,7 +322,7 @@ class DemandResource extends Resource
             4 => __('resources.demands.max_description'),
             3 => __('resources.demands.high_description'),
             2 => __('resources.demands.medium_description'),
-            default => __('resources.demands.low_description'),
+            1 => __('resources.demands.low_description'),
         };
     }
 }

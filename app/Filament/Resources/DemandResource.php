@@ -69,7 +69,7 @@ class DemandResource extends Resource
                             })->required(),
 
                         Select::make('category_id')
-                            ->label(__('Category'))
+                            ->label(__('resources.demands.category'))
                             ->options(fn(Get $get): array => Category::query()
                                 ->where('area_id', $get('area_id'))
                                 ->pluck('name', 'id')

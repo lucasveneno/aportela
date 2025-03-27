@@ -266,13 +266,9 @@ class DemandResource extends Resource
                     ->label(__('resources.demands.draft'))
                     ->boolean()
                     ->default(0)
-                    ->inline()
-                    ->live(), // Makes it update in real-time
+                    ->inline(), // Makes it update in real-time
 
-                Toggle::make('status')->label('Salvar como rascunho')
-                    ->onColor('success')
-                    ->offColor('danger')
-                    ->default(1),
+                
 
                 Toggle::make('requires_councilor')->label('Vereador(a) precisa ir até o local?'),
 

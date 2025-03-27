@@ -24,8 +24,8 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Mis Clientes';
-
+    protected static bool $hasTitleCaseModelLabel = false;
+    
     public static function form(Form $form): Form
     {
         return $form

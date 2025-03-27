@@ -87,7 +87,10 @@ return [
         // Priority box
         'priority_title' => 'Prioridade',
         'priority_subtitle' => ' Selecione a prioridade desta demanda. ',
-        'category' => 'Categoria',
+        'max' => 'Prioridade Máxima',
+        'high' => 'Prioridade Alta',
+        'medium' => 'Prioridade Média',
+        'low' => 'Prioridade Baixa',
 
     ],
 

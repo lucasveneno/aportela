@@ -29,11 +29,11 @@ class AreaResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')->required(),
-                Toggle::make('status')
-                    ->label('Habilitar esta área?')
 
-                    ->onColor('success')
-                    ->offColor('danger'),
+                ToggleButtons::make('status')
+                    ->label('Habilitar esta área?')
+                    ->boolean()
+                    ->inline(),
 
 
             ]);

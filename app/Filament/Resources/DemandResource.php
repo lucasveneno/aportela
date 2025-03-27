@@ -57,7 +57,7 @@ class DemandResource extends Resource
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',
                     'resolved' => 'Resolved',
-                ])->default('pending')->searchable(),
+                ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
                 Textarea::make('description')->required(),
 
 
@@ -87,9 +87,7 @@ class DemandResource extends Resource
                                 'high' => 'Importante - Planejamento Rápido',
                                 'medium' => 'Necessária - Médio Prazo',
                                 'low' => 'Melhoria - Longo Prazo'
-                            ])->hintIcon('heroicon-m-question-mark-circle', tooltip: '
-
-'),
+                            ]),
                     ]),
 
 

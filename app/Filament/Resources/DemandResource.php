@@ -48,7 +48,7 @@ class DemandResource extends Resource
 
 
                 Section::make('Classificar demanda')
-                    ->description('Selecione a prioridade desta demanda.')
+                    //->description('Selecione a prioridade desta demanda.')
                     ->schema([
                         Select::make('area_id')
                             ->label(__('Area'))

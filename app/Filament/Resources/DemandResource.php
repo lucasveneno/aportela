@@ -118,7 +118,11 @@ class DemandResource extends Resource
                                     'demanda_popular' => 'Demanda popular (reclamações frequentes)',
                                 ])
                                 ->reactive()
-                                ->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
+                                ->afterStateUpdated(fn($state, callable $set) => [
+                                    $set('prioridade', self::calcularPrioridade($state)),
+                                    $set('descricao_prioridade', self::descricaoPrioridade(self::calcularPrioridade($state)))
+                                ]),
+                            //->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
 
                             Hidden::make('prioridade')
                                 ->default('Baixa'), // Prioridade inicial
@@ -126,6 +130,12 @@ class DemandResource extends Resource
                             TextInput::make('prioridade')
                                 ->label('Prioridade Calculada')
                                 ->disabled(), // Apenas leitura para o usuário
+
+                            TextInput::make('descricao_prioridade')
+                                ->label('Descrição da Prioridade')
+                                ->disabled()
+                                ->default('Baixa prioridade: Melhorias de longo prazo.'), // Descrição inicial
+
                         ]),
                         Section::make([
                             Radio::make('priority')
@@ -311,6 +321,16 @@ class DemandResource extends Resource
             3 => 'Alta',
             2 => 'Média',
             default => 'Baixa',
+        };
+    }
+
+    public static function descricaoPrioridade(string $prioridade): string
+    {
+        return match ($prioridade) {
+            'Máxima' => 'Urgente: Requer ação imediata devido a risco elevado.',
+            'Alta' => 'Importante: Deve ser tratado rapidamente para evitar problemas futuros.',
+            'Média' => 'Necessária: Precisa ser resolvida dentro de um prazo médio.',
+            default => 'Baixa prioridade: Melhorias de longo prazo.',
         };
     }
 }

@@ -136,8 +136,7 @@ class DemandResource extends Resource
                         TextInput::make('prioridade')
                             ->label('Nível de Prioridade')
                             ->disabled()
-                            ->dehydrated()
-                            ->columnSpan(1),
+                            ->dehydrated(),
 
                         Placeholder::make('descricao_prioridade')
                             ->label('Justificativa')

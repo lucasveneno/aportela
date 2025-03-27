@@ -53,9 +53,10 @@ class DemandResource extends Resource
                     ->preload()
                     ->label(__('Area')),
                 Textarea::make('description')->required(),
-                Toggle::make('requires_councilor'),
+                
 
                 Split::make([
+                    Toggle::make('requires_councilor'),
                     Section::make([
                         Placeholder::make('Critérios para Definição de Prioridades:')
                             ->content('✔ Impacto na população (saúde, segurança, mobilidade).')

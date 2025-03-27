@@ -359,4 +359,17 @@ class DemandResource extends Resource
             default => __('resources.demands.low_description'),
         };
     }
+
+    private static function calcularPontuacao(array $criterios): int
+    {
+        $pesos = [
+            'impacto_populacao' => 5,
+            'risco_acidentes' => 5,
+            // ... outros pesos
+        ];
+
+        return array_sum(
+            array_map(fn($c) => $pesos[$c] ?? 0, $criterios)
+        );
+    }
 }

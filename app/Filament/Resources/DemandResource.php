@@ -199,6 +199,7 @@ class DemandResource extends Resource
                                 'zoomControl'       => true,
                             ])
                             ->autocomplete('full_address') // field on form to use as Places geocompletion field
+                            ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                             ->reactive()
                             ->defaultLocation(['-20.4648517', '-54.6218477'])
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {

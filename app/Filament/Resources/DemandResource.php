@@ -138,7 +138,7 @@ class DemandResource extends Resource
                             Placeholder::make('descricao_prioridade')
                                 ->label('Justificativa')
                                 ->content(fn($get) => self::descricaoPrioridade($get('criterios') ?? [])),
-                        ])->columnSpan('full'),
+                        ])->grow(false),
 
 
 

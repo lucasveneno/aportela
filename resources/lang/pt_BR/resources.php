@@ -80,12 +80,13 @@ return [
     'demands' => [
         'label' => 'Demanda',
         'plural_label' => 'Demandas',
+        // Classify box
         'classify_demand' => 'Classificar demanda',
         'area' => 'Área',
         'category' => 'Categoria',
-
-        'classify_demand' => 'Classificar demanda',
-        'area' => 'Área',
+        // Priority box
+        'priority_title' => 'Prioridade',
+        'priority_subtitle' => ' Selecione a prioridade desta demanda. ',
         'category' => 'Categoria',
 
     ],

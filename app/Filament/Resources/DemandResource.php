@@ -153,15 +153,7 @@ class DemandResource extends Resource
                                     'low' => __('resources.demands.low_description')
                                 ]),
                         ]),
-                        Section::make([
-                            Placeholder::make('Critérios para Definição de Prioridades:')
-                                ->content(new HtmlString('
-                                ✔ Impacto na população (saúde, segurança, mobilidade...).<br />
-                                ✔ Risco de acidentes ou danos materiais.<br />
-                                ✔ Custo-benefício (recursos disponíveis x benefício gerado).<br />
-                                ✔ Demanda popular (reclamações frequentes).
-                                ')),
-                        ]),
+                        
 
 
 

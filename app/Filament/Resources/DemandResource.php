@@ -349,6 +349,7 @@ class DemandResource extends Resource
 
     public static function descricaoPrioridade(array $criterios): string
     {
+        $total = count($criterios);
         $prioridade = self::calcularPrioridade($criterios);
 
         return match ($prioridade) {

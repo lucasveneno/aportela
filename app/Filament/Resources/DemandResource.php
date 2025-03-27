@@ -189,6 +189,15 @@ class DemandResource extends Resource
                             ->lazy(), // important to use lazy, to avoid updates as you type
 
                         Map::make('location')
+                            ->mapControls([
+                                'mapTypeControl'    => false,
+                                'scaleControl'      => false,
+                                'streetViewControl' => false,
+                                'rotateControl'     => true,
+                                'fullscreenControl' => true,
+                                'searchBoxControl'  => false, // creates geocomplete field inside map
+                                'zoomControl'       => true,
+                            ])
                             ->reactive()
                             ->defaultLocation(['-20.4648517', '-54.6218477'])
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {

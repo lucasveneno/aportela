@@ -53,17 +53,19 @@ class DemandResource extends Resource
                 Textarea::make('description')->required(),
                 Toggle::make('requires_councilor'),
                 Radio::make('priority')
-                ->options([
-                    'high' => 'Prioridade Alta ',
-                    'medium' => 'Prioridade Média',
-                    'low' => 'Prioridade Baixa '
-                ])
-                ->descriptions([
-                    'high' => '(Importante - Planejamento Rápido)',
-                    'medium' => '(Necessária - Médio Prazo)',
-                    'published' => '(Melhoria - Longo Prazo)'
-                ]),
-                
+                    ->options([
+                        'max' => 'Prioridade Máxima ',
+                        'high' => 'Prioridade Alta ',
+                        'medium' => 'Prioridade Média',
+                        'low' => 'Prioridade Baixa '
+                    ])
+                    ->descriptions([
+                        'max' => '(Urgente - Ação Imediata)',
+                        'high' => '(Importante - Planejamento Rápido)',
+                        'medium' => '(Necessária - Médio Prazo)',
+                        'published' => '(Melhoria - Longo Prazo)'
+                    ]),
+
                 Select::make('status')->options([
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',

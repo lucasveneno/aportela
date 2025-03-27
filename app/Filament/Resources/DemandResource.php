@@ -142,7 +142,7 @@ class DemandResource extends Resource
 
 
 
-                        ])->from('lg'),
+                        ]),
 
                     ]),
 

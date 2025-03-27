@@ -44,11 +44,12 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('resources.categories.name'))
                     ->sortable(),
 
 
                 TextColumn::make('area_id')
-                    ->label('Area')
+                    ->label(__('resources.categories.area'))
                     ->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A'),
             ])
             ->filters([
@@ -101,6 +102,4 @@ class CategoryResource extends Resource
     {
         return __('resources.demands_group');
     }
-
-    
 }

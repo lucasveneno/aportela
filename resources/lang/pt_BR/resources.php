@@ -90,16 +90,19 @@ return [
         'section_priority_description' => 'Selecione os critérios para Definição de Prioridade',
         'max' => 'Prioridade Máxima (Ação imediata)',
         'max_description' => 'Situações importantes e críticas que exigem resposta imediata para evitar problemas futuros, como riscos à segurança, saúde ou grandes impactos na mobilidade.',
-
         'high' => 'Prioridade Alta (Planejamento rápido)',
         'high_description' => 'Questões relevantes que precisam ser resolvidas rapidamente para evitar agravamentos, como infraestrutura essencial ou serviços públicos deficientes.',
-
         'medium' => 'Prioridade Média (Médio prazo)',
         'medium_description' => 'Melhorias necessárias, mas que podem ser planejadas dentro de um prazo médio razoável sem impactos imediatos graves.',
-
         'low' => 'Prioridade Baixa (Longo prazo)',
         'low_description' => 'Ajustes e melhorias de longo prazo que aumentam a qualidade de vida, mas que não afetam diretamente a segurança ou o funcionamento essencial da cidade.',
 
+        //
+        'section_location_title' => 'Prioridade',
+        'section_location_description' => 'Selecione os critérios para Definição de Prioridade',
+        //
+        'section_files_title' => 'Prioridade',
+        'section_files_description' => 'Selecione os critérios para Definição de Prioridade',
     ],
 
 

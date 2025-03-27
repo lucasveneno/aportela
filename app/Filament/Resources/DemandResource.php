@@ -76,7 +76,7 @@ class DemandResource extends Resource
                         ->preload()
                         ->key('category_id'), // Important for the afterStateUpdated to find this field
 
-                    
+
                 ])->columns(2),
 
 
@@ -185,12 +185,12 @@ class DemandResource extends Resource
                             }),
                     ]),
 
-                    Select::make('status')->options([
-                        'pending' => 'Pending',
-                        'in_progress' => 'In Progress',
-                        'resolved' => 'Resolved',
-                    ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
-                    RichEditor::make('description')->required(),
+                Toggle::make('status')
+                    ->onColor('success')
+                    ->offColor('danger'),
+
+                
+                RichEditor::make('description')->required(),
 
             ]);
     }

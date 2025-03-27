@@ -261,7 +261,7 @@ class DemandResource extends Resource
                             ->disk('public') // The disk where files will be stored
                             ->directory('demand_files'), // Directory within the disk
                     ])->columns(1),
-                Split::make([
+                Section::make([
                     Section::make([
                         ToggleButtons::make('draft')
                             ->label(__('resources.demands.draft'))

@@ -123,7 +123,7 @@ class DemandResource extends Resource
                                     $set('prioridade', self::calcularPrioridade($state));
                                     //$set('descricao_prioridade', self::descricaoPrioridade($state));
                                 })->columns(2),
-                            ]),//->columnSpan('full'), // Makes section span full width
+                        ]), //->columnSpan('full'), // Makes section span full width
                         Hidden::make('prioridade')
                             ->default(__('resources.demands.low')),
 
@@ -344,4 +344,50 @@ class DemandResource extends Resource
             default => $pontuacao . ' - ' . __('resources.demands.low_description'),
         };
     }
+
+    /*
+Melhorias implementadas:
+
+    Novos Critérios:
+
+        Adicionados alinhamento_metas e viabilidade_tecnica com pesos adequados
+
+    Layout Aprimorado:
+
+        Organização em 3 colunas para melhor visualização
+
+        CheckboxList com 2 colunas para os critérios
+
+    Lógica de Pontuação:
+
+        Pesos revisados (risco de acidentes agora tem peso 5)
+
+        Novas faixas de classificação:
+
+            Crítico (20+ pontos)
+
+            Alta (15-19)
+
+            Média (10-14)
+
+            Baixa (<10)
+
+    Descrições Contextuais:
+
+        Justificativas mais detalhadas para cada nível
+
+        Linguagem mais clara para o usuário final
+
+    Otimizações:
+
+        Método separado para cálculo de pontuação
+
+        Uso de array_reduce para cálculo mais limpo
+
+        Melhor tratamento do estado inicial
+
+    Terminologia:
+
+        Campos renomeados para maior clareza ("Justificativa" em vez de "Descrição")
+    */
 }

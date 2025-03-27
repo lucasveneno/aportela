@@ -52,6 +52,11 @@ class DemandResource extends Resource
                     ->multiple()
                     ->preload()
                     ->label(__('Area')),
+                Select::make('status')->options([
+                    'pending' => 'Pending',
+                    'in_progress' => 'In Progress',
+                    'resolved' => 'Resolved',
+                ])->default('pending'),
                 Textarea::make('description')->required(),
 
 
@@ -88,11 +93,7 @@ class DemandResource extends Resource
 
 
 
-                Select::make('status')->options([
-                    'pending' => 'Pending',
-                    'in_progress' => 'In Progress',
-                    'resolved' => 'Resolved',
-                ])->default('pending'),
+
 
 
                 FileUpload::make('files')

@@ -26,5 +26,10 @@ return [
     'area' => 'Área',
     'category' => 'Categoria',
     'priority' => 'Prioridade',
+    
+    //users
+    'password' => 'Senha',
+    'permission' => 'Permissão',
+
 
 ];

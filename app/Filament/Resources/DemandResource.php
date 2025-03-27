@@ -132,7 +132,7 @@ class DemandResource extends Resource
 
                     ])
                     ->columns(3)
-                    ->collapsed(),
+                    ->collapsed()->columnSpan('full'),
 
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))

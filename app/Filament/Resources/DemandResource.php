@@ -247,7 +247,7 @@ class DemandResource extends Resource
                                 'mapTypeControl'    => false,
                                 'scaleControl'      => false,
                                 'streetViewControl' => false,
-                                'rotateControl'     => true,
+                                'rotateControl'     => false,
                                 'fullscreenControl' => true,
                                 'searchBoxControl'  => false, // creates geocomplete field inside map
                                 'zoomControl'       => true,

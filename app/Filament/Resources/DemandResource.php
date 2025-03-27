@@ -295,6 +295,7 @@ class DemandResource extends Resource
 
     public static function calcularPrioridade(array $criterios): string
     {
+        $total = count($criterios);
         $pesos = [
             'impacto_populacao' => 5,
             'risco_acidentes' => 5,  // Aumentei o peso por ser crítico

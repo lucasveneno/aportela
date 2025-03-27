@@ -27,6 +27,7 @@ use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Components\ViewField;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -105,35 +106,45 @@ class DemandResource extends Resource
                         ->label(__('resources.demands.description'))->required(),
                 ])->columns(1),
 
-                Repeater::make('members')
-                    ->label(__('resources.demands.applicant'))
-                    ->schema([
-                        TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
-                        Select::make('applicant_role')
-                            ->label(__('resources.demands.applicant_role'))
-                            ->options([
-                                'member' => 'Member',
-                                'administrator' => 'Administrator',
-                                'owner' => 'Owner',
-                            ]),
-                        TextInput::make('applicant_cpf')->label(__('resources.demands.applicant_cpf'))->required(),
-                        TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
-                        TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),
-                        TextInput::make('applicant_email')->label(__('resources.demands.applicant_email'))->required(),
-                        TextInput::make('applicant_instagram')->label(__('resources.demands.applicant_instagram'))->required(),
-                        TextInput::make('applicant_facebook')->label(__('resources.demands.applicant_facebook'))->required(),
+                Section::make([
 
-                        Select::make('user_id')  // Store the user ID
-                            ->label('User')
-                            ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
-                            ->searchable()  // Allow searching through users
-                            ->required(),
+                    ToggleButtons::make('status')
+                        ->label(__('resources.demands.applicant'))
+                        ->boolean()
+                        ->default(1)
+                        ->inline(),
+
+                    Repeater::make('members')
+                        ->label(__('resources.demands.applicant'))
+                        ->schema([
+                            TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
+                            Select::make('applicant_role')
+                                ->label(__('resources.demands.applicant_role'))
+                                ->options([
+                                    'member' => 'Member',
+                                    'administrator' => 'Administrator',
+                                    'owner' => 'Owner',
+                                ]),
+                            TextInput::make('applicant_cpf')->label(__('resources.demands.applicant_cpf'))->required(),
+                            TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
+                            TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),
+                            TextInput::make('applicant_email')->label(__('resources.demands.applicant_email'))->required(),
+                            TextInput::make('applicant_instagram')->label(__('resources.demands.applicant_instagram'))->required(),
+                            TextInput::make('applicant_facebook')->label(__('resources.demands.applicant_facebook'))->required(),
+
+                            Select::make('user_id')  // Store the user ID
+                                ->label('User')
+                                ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
+                                ->searchable()  // Allow searching through users
+                                ->required(),
 
 
 
-                    ])
-                    ->columns(3)
-                    ->columnSpan('full'),
+                        ])
+                        ->columns(3)
+                        ->columnSpan('full'),
+
+                ])->columns(1),
 
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))

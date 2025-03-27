@@ -59,11 +59,12 @@ class DemandResource extends Resource
                     'resolved' => 'Resolved',
                 ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
 
-                Select::make('category')->options([
-                    'pending' => 'Pending',
-                    'in_progress' => 'In Progress',
-                    'resolved' => 'Resolved',
-                ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
+                Select::make('category_id')
+                    ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
+                    ->searchable()
+                    //->multiple()
+                    ->preload()
+                    ->label(__('Area')),
                 Textarea::make('description')->required(),
 
 

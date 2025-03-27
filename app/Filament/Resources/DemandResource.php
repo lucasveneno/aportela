@@ -344,6 +344,19 @@ class DemandResource extends Resource
         );
     }
 
+    public static function titlePrioridade(array $criterios): string
+    {
+        $total = count($criterios);
+        $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso
+
+        return match (true) {
+            $pontuacao >= 20 => $pontuacao . ' - ' . __('resources.demands.max'),
+            $pontuacao >= 15 => $pontuacao . ' - ' . __('resources.demands.high'),
+            $pontuacao >= 10 => $pontuacao . ' - ' . __('resources.demands.medium'),
+            default => $pontuacao . ' - ' . __('resources.demands.low'),
+        };
+    }
+
     public static function descricaoPrioridade(array $criterios): string
     {
         $total = count($criterios);

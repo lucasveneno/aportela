@@ -41,8 +41,8 @@ class RegionResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 ToggleColumn::make('status')
-                ->onColor('success')
-                ->offColor('danger')
+                    ->onColor('success')
+                    ->offColor('danger')
 
             ])
             ->filters([
@@ -78,6 +78,11 @@ class RegionResource extends Resource
     {
         return __('resources.regions.plural_label'); // Navigation menu label
 
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('resources.regions.plural_label'); // Navigation menu label
     }
 
     public static function getModelLabel(): string

@@ -107,7 +107,7 @@ class DemandResource extends Resource
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([
-                        
+
                         Section::make([
                             CheckboxList::make('criterios')
                                 ->label('Critérios de Priorização')
@@ -123,14 +123,12 @@ class DemandResource extends Resource
                                 ->afterStateUpdated(function ($state, callable $set) {
                                     $set('prioridade', self::calcularPrioridade($state));
                                     //$set('descricao_prioridade', self::descricaoPrioridade($state));
-                                }),//->columns(2),
-                        
+                                }), //->columns(2),
 
-
-
+                        ]),
                         Section::make([
                             Hidden::make('prioridade')
-                            ->default(__('resources.demands.low')),
+                                ->default(__('resources.demands.low')),
                             TextInput::make('prioridade')
                                 ->label('Nível de Prioridade')
                                 ->disabled()
@@ -138,10 +136,6 @@ class DemandResource extends Resource
                             Placeholder::make('descricao_prioridade')
                                 ->label('Justificativa')
                                 ->content(fn($get) => self::descricaoPrioridade($get('criterios') ?? [])),
-                        ]),
-
-
-
                         ]),
 
                     ]),

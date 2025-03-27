@@ -51,13 +51,15 @@ class DemandResource extends Resource
         return $form
             ->schema([
 
-                TextInput::make('demand_code')
-                    ->label('Código da Demanda')
-                    ->default('DEM-' . date('Ymd') . '-' .  Str::upper(Str::random(8)))
-                    ->disabled()
-                    ->dehydrated()
-                    ->unique(ignoreRecord: true)
-                    ->helperText('Código gerado automaticamente'),
+                Section::make([
+                    TextInput::make('demand_code')
+                        ->label('Código da Demanda')
+                        ->default('DEM-' . date('Ymd') . '-' .  Str::upper(Str::random(8)))
+                        ->disabled()
+                        ->dehydrated()
+                        ->unique(ignoreRecord: true)
+                        ->helperText('Código gerado automaticamente'),
+                ]),
 
                 Section::make(__('resources.demands.classify_demand'))
                     //->description('Selecione a prioridade desta demanda.')

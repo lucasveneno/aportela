@@ -33,8 +33,8 @@ class CategoryResource extends Resource
                     ->searchable()
                     //->multiple()
                     ->preload()
-                    ->label(__('resources.areas.area')),
-                TextInput::make('name')->label(__('resources.areas.name')),
+                    ->label(__('resources.categories.area')),
+                TextInput::make('name')->label(__('resources.categories.name')),
             ]);
     }
 

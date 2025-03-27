@@ -151,7 +151,7 @@ class DemandResource extends Resource
 
                     ])
                         ->columns(1)
-                ])->visible(fn(Get $get): bool => $get('applicant')), // Shows only when toggle is on,
+                ])->visible(fn(Get $get): bool => $get('applicant_demand_origin')), // Shows only when toggle is on,
 
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))

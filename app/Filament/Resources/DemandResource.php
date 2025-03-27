@@ -121,11 +121,15 @@ class DemandResource extends Resource
                                 TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
                                 Select::make('applicant_role')
                                     ->label(__('resources.demands.applicant_role'))
+                                    ->searchable()
                                     ->options([
-                                        'member' => 'Member',
-                                        'administrator' => 'Administrator',
-                                        'owner' => 'Owner',
+                                        'leadership' => 'Leadership',
+                                        'citizen' => 'Citizen',
+                                        'government' => 'Government Employee',
+                                        'other' => 'Other'
                                     ]),
+
+                                    
                                 TextInput::make('applicant_cpf')->label(__('resources.demands.applicant_cpf'))->required(),
                                 TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
                                 TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),

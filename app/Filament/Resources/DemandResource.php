@@ -309,10 +309,10 @@ class DemandResource extends Resource
         $peso = count($criterios); // Conta os checkboxes marcados
 
         return match ($peso) {
-            4 => 'max',
-            3 => 'high',
-            2 => 'medium',
-            default => 'low',
+            4 => __('resources.demands.max'),
+            3 => __('resources.demands.high'),
+            2 => __('resources.demands.medium'),
+            default => __('resources.demands.low'),
         };
     }
 

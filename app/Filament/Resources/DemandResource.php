@@ -108,8 +108,6 @@ class DemandResource extends Resource
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([
 
-
-
                         CheckboxList::make('criterios')
                             ->label('Critérios de Priorização')
                             ->options([

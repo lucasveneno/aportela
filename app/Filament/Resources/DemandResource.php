@@ -131,10 +131,15 @@ class DemandResource extends Resource
                                 ->label('Prioridade Calculada')
                                 ->disabled(), // Apenas leitura para o usuário
 
-                            TextInput::make('descricao_prioridade')
+                            /*TextInput::make('descricao_prioridade')
                                 ->label('Descrição da Prioridade')
                                 ->disabled()
                                 ->default(__('resources.demands.low_description')), // Descrição inicial
+*/
+                            TextInput::make('descricao_prioridade')
+                                ->label('Descrição da Prioridade')
+                                ->disabled()
+                                ->placeholder(__('resources.demands.low_description')), // Placeholder text
 
                         ]),
                         /*Section::make([
@@ -153,7 +158,7 @@ class DemandResource extends Resource
                                     'low' => __('resources.demands.low_description')
                                 ]),
                         ]),*/
-                        
+
 
 
 

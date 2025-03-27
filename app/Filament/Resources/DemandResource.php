@@ -277,8 +277,8 @@ class DemandResource extends Resource
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(1),
-                    
-                Toggle::make('requires_councilor')->label('Representante precisa ir até o local?'),
+
+                Toggle::make('requires_councilor')->label('Vereador(a) precisa ir até o local?'),
 
 
             ]);

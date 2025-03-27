@@ -56,7 +56,7 @@ class DemandResource extends Resource
 
                 Section::make('Priority')
                     ->description('Prevent abuse by limiting the number of requests per period')
-                    ->columns(1)
+                    ->columns(2)
                     ->schema([
                         Placeholder::make('Critérios para Definição de Prioridades:')
                             ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),

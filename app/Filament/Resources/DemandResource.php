@@ -49,7 +49,7 @@ class DemandResource extends Resource
                 Select::make('area_id')
                     ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()
-                    ->multiple()
+                    //->multiple()
                     ->preload()
                     ->label(__('Area')),
                 Select::make('status')->options([

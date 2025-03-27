@@ -53,38 +53,36 @@ class DemandResource extends Resource
                     ->preload()
                     ->label(__('Area')),
                 Textarea::make('description')->required(),
-                
 
-                Split::make([
-                    Toggle::make('requires_councilor'),
-                    Section::make([
-                        Placeholder::make('Critérios para Definição de Prioridades:')
-                            ->content('✔ Impacto na população (saúde, segurança, mobilidade).')
-                            ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                        Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                        Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+
+                Toggle::make('requires_councilor'),
+                Section::make([
+                    Placeholder::make('Critérios para Definição de Prioridades:')
+                        ->content('✔ Impacto na população (saúde, segurança, mobilidade).')
+                        ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                    Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                    Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                ]),
+                Section::make('Critérios para Definição de Prioridades:')
+                    ->description('Prevent abuse by limiting the number of requests per period')
+                    ->schema([
+
+                        Radio::make('priority')
+                            ->options([
+                                'max' => 'Prioridade Máxima ',
+                                'high' => 'Prioridade Alta ',
+                                'medium' => 'Prioridade Média',
+                                'low' => 'Prioridade Baixa '
+                            ])
+                            ->descriptions([
+                                'max' => 'Urgente - Ação Imediata',
+                                'high' => 'Importante - Planejamento Rápido',
+                                'medium' => 'Necessária - Médio Prazo',
+                                'low' => 'Melhoria - Longo Prazo'
+                            ]),
                     ]),
-                    Section::make('Critérios para Definição de Prioridades:')
-                        ->description('Prevent abuse by limiting the number of requests per period')
-                        ->schema([
 
-                            Radio::make('priority')
-                                ->options([
-                                    'max' => 'Prioridade Máxima ',
-                                    'high' => 'Prioridade Alta ',
-                                    'medium' => 'Prioridade Média',
-                                    'low' => 'Prioridade Baixa '
-                                ])
-                                ->descriptions([
-                                    'max' => 'Urgente - Ação Imediata',
-                                    'high' => 'Importante - Planejamento Rápido',
-                                    'medium' => 'Necessária - Médio Prazo',
-                                    'low' => 'Melhoria - Longo Prazo'
-                                ]),
-                        ]),
 
-                ])
-                ,
 
 
 

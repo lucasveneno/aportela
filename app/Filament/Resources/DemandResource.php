@@ -191,7 +191,7 @@ class DemandResource extends Resource
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(1),
-                Toggle::make('requires_councilor')->label('Requervisitadovereador(a)'),
+                Toggle::make('requires_councilor')->label('Representante precisa estar presente no local?'),
 
                 Section::make([
                     RichEditor::make('description')->required(),

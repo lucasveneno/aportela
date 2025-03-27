@@ -38,6 +38,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 class DemandResource extends Resource
 {
@@ -54,6 +55,13 @@ class DemandResource extends Resource
                 Section::make(__('resources.demands.classify_demand'))
                     //->description('Selecione a prioridade desta demanda.')
                     ->schema([
+                        TextInput::make('demand_code')
+                            ->label('Código da Demanda')
+                            ->default('DEM-' . date('Ymd') . '-' . Str::random(4))
+                            ->disabled()
+                            ->dehydrated()
+                            ->unique(ignoreRecord: true)
+                            ->helperText('Código gerado automaticamente'),
                         Select::make('area_id')
                             ->label(__('resources.demands.area'))
                             ->options(Area::query()->where('status', 1)->pluck('name', 'id'))

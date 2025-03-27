@@ -4,16 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Resources Language Lines
+    | Resources Menu Language Lines
     |--------------------------------------------------------------------------
     */
 
-    'areas' => 'Áreas',
-    'categories' => 'Categorias',
-    'demands' => 'Demandas',
-    'regions' => 'Regiões',
-    'users' => 'Usuários',
-
+    'menu' => [
+        'areas' => 'Áreas',
+        'categories' => 'Categorias',
+        'demands' => 'Demandas',
+        'regions' => 'Regiões',
+        'users' => 'Usuários',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +38,18 @@ return [
         'status' => 'Status',
     ],
 
-    
+    /*
+    |--------------------------------------------------------------------------
+    | Categories Resource Page Language Lines
+    |--------------------------------------------------------------------------
+    */
+
+    'categories' => [
+        'area' => 'Área',
+        'name' => 'Nome',
+    ],
+
+
     /*
     |--------------------------------------------------------------------------
     | Regions Resource Page Language Lines

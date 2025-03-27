@@ -51,6 +51,13 @@ class DemandResource extends Resource
                 Textarea::make('description')->required(),
                 Toggle::make('requires_councilor'),
                 Toggle::make('urgent'),
+
+                ViewField::make('rating')
+    ->view('filament.forms.components.range-slider')
+    ->viewData([
+        'min' => 1,
+        'max' => 5,
+    ]),
                 Select::make('status')->options([
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',

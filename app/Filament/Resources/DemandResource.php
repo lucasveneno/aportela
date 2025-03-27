@@ -278,10 +278,10 @@ class DemandResource extends Resource
                         ->label(__('resources.demands.requires_councilor_on_site'))
 
                         ->options([
-                            'draft' => 'Não',
-                            'scheduled' => 'Sim, mas não é urgente',
-                            'published' => 'sim, urgentemente'
-                        ])->inline(),
+                            0 => 'Não',
+                            1 => 'Sim, mas não é urgente',
+                            2 => 'sim, urgentemente'
+                        ])->default(0)->inline(),
 
                     Section::make([
                         ToggleButtons::make('requires_councilor')

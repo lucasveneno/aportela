@@ -114,41 +114,40 @@ class DemandResource extends Resource
                         ->default(1)
                         ->inline()
                         ->live(), // Makes it update in real-time
+                    Section::make([
+                        Repeater::make('members')
+                            ->label(__('resources.demands.applicant'))
+                            ->schema([
+                                TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
+                                Select::make('applicant_role')
+                                    ->label(__('resources.demands.applicant_role'))
+                                    ->options([
+                                        'member' => 'Member',
+                                        'administrator' => 'Administrator',
+                                        'owner' => 'Owner',
+                                    ]),
+                                TextInput::make('applicant_cpf')->label(__('resources.demands.applicant_cpf'))->required(),
+                                TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
+                                TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),
+                                TextInput::make('applicant_email')->label(__('resources.demands.applicant_email'))->required(),
+                                TextInput::make('applicant_instagram')->label(__('resources.demands.applicant_instagram'))->required(),
+                                TextInput::make('applicant_facebook')->label(__('resources.demands.applicant_facebook'))->required(),
 
-                    Repeater::make('members')
-                        ->label(__('resources.demands.applicant'))
-                        ->schema([
-                            TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
-                            Select::make('applicant_role')
-                                ->label(__('resources.demands.applicant_role'))
-                                ->options([
-                                    'member' => 'Member',
-                                    'administrator' => 'Administrator',
-                                    'owner' => 'Owner',
-                                ]),
-                            TextInput::make('applicant_cpf')->label(__('resources.demands.applicant_cpf'))->required(),
-                            TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
-                            TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),
-                            TextInput::make('applicant_email')->label(__('resources.demands.applicant_email'))->required(),
-                            TextInput::make('applicant_instagram')->label(__('resources.demands.applicant_instagram'))->required(),
-                            TextInput::make('applicant_facebook')->label(__('resources.demands.applicant_facebook'))->required(),
-
-                            Select::make('user_id')  // Store the user ID
-                                ->label('User')
-                                ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
-                                ->searchable()  // Allow searching through users
-                                ->required(),
+                                Select::make('user_id')  // Store the user ID
+                                    ->label('User')
+                                    ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
+                                    ->searchable()  // Allow searching through users
+                                    ->required(),
 
 
 
-                        ])
-                        ->columns(3)
-                        ->columnSpan('full'),
+                            ])
+                            ->columns(3)
+                            ->columnSpan('full'),
 
-                ])
-                ->columns(1)
-                ->hidden(fn (Get $get): bool => !$get('applicant')), // Hides when toggle is off,
-
+                    ])
+                        ->columns(1)
+                ])->visible(fn(Get $get): bool => $get('applicant')), // Shows only when toggle is on,
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([

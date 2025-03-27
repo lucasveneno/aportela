@@ -76,7 +76,6 @@ class DemandResource extends Resource
                     ->label(__('Category'))
                     ->options(fn(Get $get): array => Category::query()
                         ->where('area_id', $get('area_id'))
-                        ->where('status', 1)
                         ->pluck('name', 'id')
                         ->toArray())
                     ->searchable()

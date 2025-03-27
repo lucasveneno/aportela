@@ -69,29 +69,37 @@ class DemandResource extends Resource
                     ->description('Selecione a prioridade desta demanda.')
                     ->schema([
 
-
-                        Placeholder::make('Critérios para Definição de Prioridades:')
-                            ->content(new HtmlString('
+                        Split::make([
+                            Section::make([
+                                Placeholder::make('Critérios para Definição de Prioridades:')
+                                    ->content(new HtmlString('
                                 ✔ Impacto na população (saúde, segurança, mobilidade).<br />
                                 ✔ Risco de acidentes ou danos materiais.<br />
                                 ✔ Custo-benefício (recursos disponíveis x benefício gerado).<br />
                                 ✔ Demanda popular (reclamações frequentes).
                                 ')),
-
-                        Radio::make('priority')
-                            ->label('')
-                            ->options([
-                                'max' => 'Prioridade Máxima ',
-                                'high' => 'Prioridade Alta ',
-                                'medium' => 'Prioridade Média',
-                                'low' => 'Prioridade Baixa '
-                            ])
-                            ->descriptions([
-                                'max' => 'Urgente - Ação Imediata',
-                                'high' => 'Importante - Planejamento Rápido',
-                                'medium' => 'Necessária - Médio Prazo',
-                                'low' => 'Melhoria - Longo Prazo'
                             ]),
+                            Section::make([
+                                Radio::make('priority')
+                                    ->label('')
+                                    ->options([
+                                        'max' => 'Prioridade Máxima ',
+                                        'high' => 'Prioridade Alta ',
+                                        'medium' => 'Prioridade Média',
+                                        'low' => 'Prioridade Baixa '
+                                    ])
+                                    ->descriptions([
+                                        'max' => 'Urgente - Ação Imediata',
+                                        'high' => 'Importante - Planejamento Rápido',
+                                        'medium' => 'Necessária - Médio Prazo',
+                                        'low' => 'Melhoria - Longo Prazo'
+                                    ]),
+                            ])->grow(false),
+                        ])->from('md'),
+
+
+
+
                     ]),
 
 

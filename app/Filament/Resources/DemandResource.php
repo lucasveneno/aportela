@@ -263,6 +263,9 @@ class DemandResource extends Resource
                     ])->columns(1),
                 Section::make([
                     Section::make([
+                        Toggle::make('requires_councilor')->label('Vereador(a) precisa ir até o local?'),
+                    ]),
+                    Section::make([
                         ToggleButtons::make('draft')
                             ->label(__('resources.demands.draft'))
                             ->boolean()
@@ -270,9 +273,7 @@ class DemandResource extends Resource
                             ->inline(), // Makes it update in real-time
                     ]),
 
-                    Section::make([
-                        Toggle::make('requires_councilor')->label('Vereador(a) precisa ir até o local?'),
-                    ])
+
                 ]),
             ]);
     }

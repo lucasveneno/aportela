@@ -106,7 +106,7 @@ class DemandResource extends Resource
                         ->label(__('resources.demands.description'))->required(),
                 ])->columns(1),
                 
-                ToggleButtons::make('resources.demands.applicant_demand_origin')
+                ToggleButtons::make('applicant_demand_origin')
                     ->label(__('resources.demands.applicant_demand_origin'))
                     ->boolean()
                     ->default(1)

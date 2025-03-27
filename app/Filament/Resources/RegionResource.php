@@ -41,7 +41,7 @@ class RegionResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 ToggleButtons::make('status')
-                    ->label('Habilitar esta área?')
+                    ->label('Habilitar esta :label?')
                     ->boolean()
                     ->default(1)
                     ->inline(),

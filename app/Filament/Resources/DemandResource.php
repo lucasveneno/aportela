@@ -89,7 +89,7 @@ class DemandResource extends Resource
 
 
 
-                //Toggle::make('requires_councilor'),
+
 
 
 
@@ -189,8 +189,9 @@ class DemandResource extends Resource
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(1),
+                Toggle::make('requires_councilor')->label('Requervisitadovereador(a)'),
 
-                
+
                 RichEditor::make('description')->required(),
 
             ]);

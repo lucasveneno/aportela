@@ -77,6 +77,15 @@ return [
 
     ],
 
+    'demands' => [
+        'label' => 'Demanda',
+        'plural_label' => 'Demandas',
+        'name' => 'Nome',
+        'status' => 'Status',
+        'enable_this' => 'Habilitar esta área?',
+
+    ],
+
 
 
 ];

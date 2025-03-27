@@ -250,4 +250,27 @@ class DemandResource extends Resource
             'edit' => Pages\EditDemand::route('/{record}/edit'),
         ];
     }
+
+
+    public static function getNavigationLabel(): string
+    {
+        return __('resources.demands.plural_label'); // Navigation menu label
+
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('resources.demands.plural_label'); // Navigation menu label
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('resources.demands.label'); // Navigation menu label
+
+    }
+
+    public static function getNavigationGroup(): string
+    {
+        return __('resources.demands_group');
+    }
 }

@@ -86,8 +86,6 @@ class CategoryResource extends Resource
 
     public static function getCreatePageTitle(): string
     {
-        return 'novo';// __('resources.categories.create_category');
-        // Altera o título da página de criação
+        return 'Novo Registro'; // Altera o título da página de criação
     }
-    
 }

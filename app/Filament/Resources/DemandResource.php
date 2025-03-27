@@ -78,8 +78,8 @@ class DemandResource extends Resource
                                 'high' => 'Importante - Planejamento Rápido',
                                 'medium' => 'Necessária - Médio Prazo',
                                 'low' => 'Melhoria - Longo Prazo'
-                            ]),
-                    ])    ->hintIcon('heroicon-m-question-mark-circle', tooltip: 'Need some more information?'),
+                            ])->hintIcon('heroicon-m-question-mark-circle', tooltip: 'Need some more information?'),
+                    ])    ,
 
 
 

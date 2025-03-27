@@ -47,11 +47,11 @@ class DemandResource extends Resource
             ->schema([
 
 
-                Section::make('Classificar demanda')
+                Section::make(__('resources.demands.classify_demand'))
                     //->description('Selecione a prioridade desta demanda.')
                     ->schema([
                         Select::make('area_id')
-                            ->label(__('Area'))
+                        ->label(__('resources.demands.area'))
                             ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
                             ->searchable()
                             ->preload()

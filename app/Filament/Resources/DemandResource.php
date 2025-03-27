@@ -50,6 +50,7 @@ class DemandResource extends Resource
                     ->label(__('Area')),
                 Textarea::make('description')->required(),
                 Toggle::make('requires_councilor'),
+                Toggle::make('urgent'),
                 Select::make('status')->options([
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',
@@ -78,7 +79,7 @@ class DemandResource extends Resource
                             ->geolocateIcon('heroicon-o-map'), // override the default icon for the geolocate button
                         //->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 
-                        
+
                         TextInput::make('latitude')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
@@ -97,7 +98,7 @@ class DemandResource extends Resource
                                 ]);
                             })
                             ->lazy(), // important to use lazy, to avoid updates as you type
-                        
+
                         Map::make('location')
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {

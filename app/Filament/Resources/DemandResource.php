@@ -67,6 +67,7 @@ class DemandResource extends Resource
 
                 Section::make('Priority')
                     ->description('afsdf')
+                    ->aside()
                     ->schema([
 
 

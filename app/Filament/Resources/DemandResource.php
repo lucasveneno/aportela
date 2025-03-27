@@ -290,33 +290,6 @@ class DemandResource extends Resource
         return __('resources.demands_group');
     }
 
-
-
-    public static function calcularPrioridade(array $criterios): string
-    {
-        $pesos = [
-            'impacto_populacao' => 5,
-            'risco_acidentes' => 5,  // Aumentei o peso por ser crítico
-            'custo_beneficio' => 3,
-            'demanda_popular' => 2,
-            'alinhamento_metas' => 4,  // Novo critério com peso alto
-            'viabilidade_tecnica' => 3, // Novo critério
-        ];
-
-        $pontuacao = array_reduce(
-            array_keys($criterios),
-            fn($total, $criterio) => $total + ($pesos[$criterio] ?? 0),
-            0
-        );
-
-        return match (true) {
-            $pontuacao >= 20 => __('resources.demands.max'),
-            $pontuacao >= 15 => __('resources.demands.high'),
-            $pontuacao >= 10 => __('resources.demands.medium'),
-            default => __('resources.demands.low'),
-        };
-    }
-
     private static function calcularPontuacao(array $criterios): int
     {
         $pesos = [
@@ -344,7 +317,7 @@ class DemandResource extends Resource
         );
     }
 
-    public static function titlePrioridade(array $criterios): string
+    public static function calcularPrioridade(array $criterios): string
     {
         $total = count($criterios);
         $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso

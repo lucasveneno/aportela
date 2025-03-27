@@ -14,6 +14,7 @@ use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
@@ -83,7 +84,9 @@ class DemandResource extends Resource
                     'in_progress' => 'In Progress',
                     'resolved' => 'Resolved',
                 ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
-                Textarea::make('description')->required(),
+                
+
+                MarkdownEditor::make('description')->required(),
 
 
                 //Toggle::make('requires_councilor'),

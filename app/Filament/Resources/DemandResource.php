@@ -319,9 +319,9 @@ class DemandResource extends Resource
     public static function descricaoPrioridade(string $prioridade): string
     {
         return match ($prioridade) {
-            4 => __('resources.demands.max_description'),
-            3 => __('resources.demands.high_description'),
-            2 => __('resources.demands.medium_description'),
+            'max' => __('resources.demands.max_description'),
+            'high' => __('resources.demands.high_description'),
+            'medium' => __('resources.demands.medium_description'),
             default => __('resources.demands.low_description'),
         };
     }

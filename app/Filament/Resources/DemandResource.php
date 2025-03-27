@@ -134,7 +134,7 @@ class DemandResource extends Resource
                             TextInput::make('descricao_prioridade')
                                 ->label('Descrição da Prioridade')
                                 ->disabled()
-                                ->default('Baixa prioridade: Melhorias de longo prazo.'), // Descrição inicial
+                                ->default(__('resources.demands.low_description')), // Descrição inicial
 
                         ]),
                         /*Section::make([

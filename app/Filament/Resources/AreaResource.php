@@ -31,7 +31,7 @@ class AreaResource extends Resource
                 TextInput::make('name')->required(),
 
                 ToggleButtons::make('status')
-                    ->label('Habilitar esta área?')
+                    ->label(__('resources.areas.enable_this'))
                     ->boolean()
                     ->default(1)
                     ->inline(),

@@ -30,7 +30,7 @@ class RegionResource extends Resource
             ->schema([
                 TextInput::make('name')->required(),
                 ToggleButtons::make('status')
-                    ->label(__('resources.regions.enable_this_region'))
+                    ->label(__('resources.regions.enable_this'))
                     ->boolean()
                     ->default(1)
                     ->inline(),

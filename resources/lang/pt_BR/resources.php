@@ -30,6 +30,8 @@ return [
         'plural_label' => 'Áreas',
         'name' => 'Nome',
         'status' => 'Status',
+        'enable_this' => 'Habilitar esta área?',
+
     ],
 
     /*
@@ -57,7 +59,7 @@ return [
         'plural_label' => 'Regiões',
         'name' => 'Nome',
         'status' => 'Status',
-        'enable_this_region' => 'Habilitar esta região?',
+        'enable_this' => 'Habilitar esta região?',
     ],
 
     /*

@@ -57,7 +57,7 @@ class DemandResource extends Resource
                     ->schema([
                         TextInput::make('demand_code')
                             ->label('Código da Demanda')
-                            ->default('DEM-' . date('Ymd') . '-' . Str::random(4))
+                            ->default('DEM-' . date('Ymd') . '-' .  Str::upper(Str::random(7)))
                             ->disabled()
                             ->dehydrated()
                             ->unique(ignoreRecord: true)

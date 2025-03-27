@@ -78,7 +78,12 @@ class DemandResource extends Resource
                                 'high' => 'Importante - Planejamento Rápido',
                                 'medium' => 'Necessária - Médio Prazo',
                                 'low' => 'Melhoria - Longo Prazo'
-                            ])->hintIcon('heroicon-m-question-mark-circle', tooltip: 'Need some more information?'),
+                            ])->hintIcon('heroicon-m-question-mark-circle', tooltip: 'Critérios para Definição de Prioridades:
+
+✔ Impacto na população (saúde, segurança, mobilidade).
+✔ Risco de acidentes ou danos materiais.
+✔ Custo-benefício (recursos disponíveis x benefício gerado).
+✔ Demanda popular (reclamações frequentes).'),
                     ])    ,
 
 

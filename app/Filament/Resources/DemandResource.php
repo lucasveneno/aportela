@@ -112,7 +112,7 @@ class DemandResource extends Resource
                             CheckboxList::make('criterios')
                                 ->label('Critérios de Priorização')
                                 ->options([
-                                    'impacto_populacao' => 'Impacto na população (saúde, segurança,mobilidade, bem-estar)',
+                                    'impacto_populacao' => 'Impacto na população (saúde, segurança,mobilidade...)',
                                     'risco_acidentes' => 'Risco de acidentes ou danos materiais',
                                     'custo_beneficio' => 'Custo-benefício (recursos x benefício)',
                                     'demanda_popular' => 'Demanda popular (reclamações frequentes)',

@@ -98,11 +98,11 @@ return [
         'low_description' => 'Ajustes e melhorias de longo prazo que aumentam a qualidade de vida, mas que não afetam diretamente a segurança ou o funcionamento essencial da cidade.',
 
         //
-        'section_location_title' => 'Prioridade',
-        'section_location_description' => 'Selecione os critérios para Definição de Prioridade',
-        //
-        'section_files_title' => 'Prioridade',
-        'section_files_description' => 'Selecione os critérios para Definição de Prioridade',
+        'section_location_title' => 'Localização do Ocorrido',
+        'section_location_description' => 'Informe o endereço exato ou as coordenadas geográficas onde a solicitação deve ser atendida.',
+
+        'section_files_title' => 'Adicione arquivos a esta solicitação',
+        'section_files_description' => 'Obrigatório para análise: Fotos do local, documentos oficiais ou relatórios técnicos. Tamanho máximo total: 25MB. Todos os arquivos serão mantidos em sigilo.',
     ],
 
 

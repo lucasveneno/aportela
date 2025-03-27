@@ -294,8 +294,6 @@ class DemandResource extends Resource
 
     public static function calcularPrioridade(array $criterios): string
     {
-        $total = count($criterios);
-
         $pesos = [
             'impacto_populacao' => 5,
             'risco_acidentes' => 5,  // Aumentei o peso por ser crítico
@@ -312,10 +310,10 @@ class DemandResource extends Resource
         );
 
         return match (true) {
-            $pontuacao >= 20 => $pontuacao . ' - ' . __('resources.demands.max'),
-            $pontuacao >= 15 => $pontuacao . ' - ' . __('resources.demands.high'),
-            $pontuacao >= 10 => $pontuacao . ' - ' . __('resources.demands.medium'),
-            default => $pontuacao . ' - ' . __('resources.demands.low'),
+            $pontuacao >= 20 => __('resources.demands.critical'),
+            $pontuacao >= 15 => __('resources.demands.high'),
+            $pontuacao >= 10 => __('resources.demands.medium'),
+            default => __('resources.demands.low'),
         };
     }
 

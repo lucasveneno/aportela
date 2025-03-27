@@ -108,9 +108,7 @@ class DemandResource extends Resource
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([
 
-                        Section::make([
-                            
-                            CheckboxList::make('criterios')
+                        CheckboxList::make('criterios')
                                 ->label('Critérios de Priorização')
                                 ->options([
                                     'impacto_populacao' => 'Impacto na população (saúde, segurança, bem-estar)',
@@ -126,6 +124,9 @@ class DemandResource extends Resource
                                     $set('prioridade', self::calcularPrioridade($state));
                                     $set('descricao_prioridade', self::descricaoPrioridade($state));
                                 }),
+                        Section::make([
+                            
+                            
 
                             Hidden::make('prioridade')
                                 ->default(__('resources.demands.low')),

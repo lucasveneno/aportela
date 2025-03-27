@@ -39,7 +39,6 @@ return [
     'categories' => [
         'label' => 'Categoria',
         'plural_label' => 'Categorias',
-        //'create_category' => 'Criar categoria',
         'area' => 'Área',
         'name' => 'Nome',
     ],
@@ -52,6 +51,8 @@ return [
     */
 
     'regions' => [
+        'label' => 'Região',
+        'plural_label' => 'Regiões',
         'name' => 'Nome',
         'status' => 'Status',
     ],

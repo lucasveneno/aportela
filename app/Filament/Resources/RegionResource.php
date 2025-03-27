@@ -73,4 +73,21 @@ class RegionResource extends Resource
             'edit' => Pages\EditRegion::route('/{record}/edit'),
         ];
     }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('resources.regions.plural_label'); // Navigation menu label
+
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('resources.regions.label'); // Navigation menu label
+
+    }
+
+    public static function getNavigationGroup(): string
+    {
+        return __('resources.demands_group');
+    }
 }

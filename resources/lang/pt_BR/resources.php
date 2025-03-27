@@ -34,6 +34,7 @@ return [
     */
 
     'categories' => [
+        'create_category' => 'Criar categoria',
         'area' => 'Área',
         'name' => 'Nome',
     ],

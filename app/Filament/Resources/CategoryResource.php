@@ -83,4 +83,10 @@ class CategoryResource extends Resource
     {
         return __('resources.menu.categories');
     }
+
+    public static function getCreatePageTitle(): string
+    {
+        return __('resources.categories.create_category');
+        // Altera o título da página de criação
+    }
 }

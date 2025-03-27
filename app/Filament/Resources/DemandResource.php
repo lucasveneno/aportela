@@ -104,13 +104,13 @@ class DemandResource extends Resource
                         ->label(__('resources.demands.description'))->required(),
                 ])->columns(1),
 
-                Section::make(__('resources.demands.section_title'))
-                    ->description(__('resources.demands.section_description'))
+                Section::make(__('resources.demands.section_priority'))
+                    ->description(__('resources.demands.section_priority_description'))
                     ->schema([
 
                         Section::make([
                             CheckboxList::make('criterios')
-                                ->label('Critérios para Definição de Prioridade')
+                                //->label('')
                                 ->options([
                                     'impacto_populacao' => 'Impacto na população (saúde, segurança, mobilidade, bem-estar)',
                                     'risco_acidentes' => 'Risco de acidentes ou danos materiais',

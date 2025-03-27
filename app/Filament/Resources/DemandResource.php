@@ -152,7 +152,9 @@ class DemandResource extends Resource
 
 
 
-                Fieldset::make('')
+                Section::make(__('resources.demands.section_location_title'))
+                    ->description(__('resources.demands.section_location_description'))
+
                     ->schema([
                         Geocomplete::make('full_address')
                             //->isLocation()
@@ -192,7 +194,7 @@ class DemandResource extends Resource
                                 $set('latitude', $state['lat']);
                                 $set('longitude', $state['lng']);
                             }),
-                    ]),
+                    ])->columns(1),
 
 
                 Section::make(__('resources.demands.section_files_title'))

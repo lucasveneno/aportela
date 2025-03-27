@@ -47,37 +47,39 @@ class DemandResource extends Resource
             ->schema([
 
 
-                Section::make([
-                    Select::make('area_id')
-                        ->label(__('Area'))
-                        ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
-                        ->searchable()
-                        ->preload()
-                        ->live() // This makes the field update the form in real-time
-                        ->afterStateUpdated(function ($state, Select $component) {
-                            // When area changes, update the category options
-                            $component->getContainer()
-                                ->getComponent('category_id')
-                                ->options(
-                                    $state ? Category::where('area_id', $state)
-                                        //->where('status', 1)
-                                        ->pluck('name', 'id')
-                                        : []
-                                );
-                        }),
+                Section::make('Priority')
+                    ->description('Selecione a prioridade desta demanda.')
+                    ->schema([
+                        Select::make('area_id')
+                            ->label(__('Area'))
+                            ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
+                            ->searchable()
+                            ->preload()
+                            ->live() // This makes the field update the form in real-time
+                            ->afterStateUpdated(function ($state, Select $component) {
+                                // When area changes, update the category options
+                                $component->getContainer()
+                                    ->getComponent('category_id')
+                                    ->options(
+                                        $state ? Category::where('area_id', $state)
+                                            //->where('status', 1)
+                                            ->pluck('name', 'id')
+                                            : []
+                                    );
+                            }),
 
-                    Select::make('category_id')
-                        ->label(__('Category'))
-                        ->options(fn(Get $get): array => Category::query()
-                            ->where('area_id', $get('area_id'))
-                            ->pluck('name', 'id')
-                            ->toArray())
-                        ->searchable()
-                        ->preload()
-                        ->key('category_id'), // Important for the afterStateUpdated to find this field
+                        Select::make('category_id')
+                            ->label(__('Category'))
+                            ->options(fn(Get $get): array => Category::query()
+                                ->where('area_id', $get('area_id'))
+                                ->pluck('name', 'id')
+                                ->toArray())
+                            ->searchable()
+                            ->preload()
+                            ->key('category_id'), // Important for the afterStateUpdated to find this field
 
 
-                ])->columns(2),
+                    ])->columns(2),
 
 
 
@@ -191,10 +193,8 @@ class DemandResource extends Resource
                     ->default(1),
                 Toggle::make('requires_councilor')->label('Requervisitadovereador(a)'),
 
-                Section::make('Priority')
-                ->description('Selecione a prioridade desta demanda.')
-                ->schema([
-                RichEditor::make('description')->required(),
+                Section::make([
+                    RichEditor::make('description')->required(),
                 ])->columns(1),
             ]);
     }

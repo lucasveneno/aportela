@@ -105,7 +105,7 @@ return [
         'section_files_description' => 'Obrigatório para análise: Fotos do local, documentos oficiais ou relatórios técnicos. Tamanho máximo total: 25MB. Todos os arquivos serão mantidos em sigilo.',
 
         // Applicant data
-        'applicant'=>'Solicitante',
+        'applicant'=>'Origem da demanda',
         'applicant_name'=>'Nome',
         'applicant_role'=>'Tipo',
         'applicant_cpf'=>'CPF',

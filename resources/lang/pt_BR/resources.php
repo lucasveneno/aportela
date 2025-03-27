@@ -98,7 +98,7 @@ return [
         'medium_description' => 'Melhorias necessárias, mas que podem ser planejadas dentro de um prazo razoável sem impactos imediatos graves.',
 
         'low' => 'Prioridade Baixa (Longo prazo)',
-        'low_description' => 'Ajustes e melhorias que aumentam a qualidade de vida, mas que não afetam diretamente a segurança ou o funcionamento essencial da cidade.',
+        'low_description' => 'Ajustes e melhorias de longo prazo que aumentam a qualidade de vida, mas que não afetam diretamente a segurança ou o funcionamento essencial da cidade.',
 
     ],
 

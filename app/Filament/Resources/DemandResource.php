@@ -106,10 +106,11 @@ class DemandResource extends Resource
                 ])->columns(1),
 
                 Repeater::make('members')
+                    ->label('Solicitante')
                     ->schema([
-                        TextInput::make('applicant')->label(__('resources.demands.applicant'))->required(),
+                        TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
                         Select::make('applicant_role')
-                        ->label(__('resources.demands.applicant_role'))
+                            ->label(__('resources.demands.applicant_role'))
                             ->options([
                                 'member' => 'Member',
                                 'administrator' => 'Administrator',
@@ -127,7 +128,7 @@ class DemandResource extends Resource
                             ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
                             ->searchable()  // Allow searching through users
                             ->required(),
-                        
+
 
 
                     ])

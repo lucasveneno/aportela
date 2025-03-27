@@ -82,7 +82,7 @@ class DemandResource extends Resource
                                 ]),
                         ]),
 
-                ])->from('md')                        ->columns(2)
+                ])->from('md')                        ->columns(1)
                 ,
 
 

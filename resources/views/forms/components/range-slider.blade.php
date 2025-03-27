@@ -19,9 +19,9 @@
             class="focus:outline-none focus:bg-primary-200 dark:focus:bg-primary-900 disabled:opacity-70 disabled:cursor-not-allowed filament-forms-range-component border-gray-300 bg-gray-200 dark:bg-white/10 w-90"
             {!! $isRequired() ? 'required' : null !!}
             {{ $applyStateBindingModifiers('wire:model') }}="{{ $getStatePath() }}"
-            min="{{ $getMin()}}"
-            max="{{ $getMax()}}"
-            step="{{ $getStep()}}"
+            min="1"
+            max="10"
+            step="1"
             {!! $isDisabled() ? 'disabled' : null !!} />
 
     </div>

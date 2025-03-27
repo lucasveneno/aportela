@@ -312,7 +312,7 @@ class DemandResource extends Resource
         return __('resources.demands_group');
     }
 
-    public static function calcularPrioridade($criterios): string
+    public static function calcularPrioridade(array $criterios): string
     {
         //$peso = count($criterios); // Conta os checkboxes marcados
 

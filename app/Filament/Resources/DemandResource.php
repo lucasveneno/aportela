@@ -65,7 +65,6 @@ class DemandResource extends Resource
                     ]),
                     Section::make('Critérios para Definição de Prioridades:')
                         ->description('Prevent abuse by limiting the number of requests per period')
-                        ->columns(2)
                         ->schema([
 
                             Radio::make('priority')
@@ -83,7 +82,8 @@ class DemandResource extends Resource
                                 ]),
                         ]),
 
-                ])->from('md'),
+                ])->from('md')                        ->columns(2)
+                ,
 
 
 

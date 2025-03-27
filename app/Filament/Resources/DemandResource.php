@@ -107,7 +107,32 @@ class DemandResource extends Resource
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([
-
+                        CheckboxList::make('criterios')
+                        ->label('Selection Criteria')
+                        ->options([
+                            'impact' => 'Impact on Population',
+                            'safety' => 'Safety Risk',
+                            'cost' => 'Cost-Benefit',
+                        ])
+                        ->bulkToggleable()
+                        ->gridDirection('row')
+                        ->columns(1)
+                        ->options(function () {
+                            return [
+                                'impact' => $this->makeOptionWithTooltip(
+                                    label: 'Impact on Population',
+                                    tooltip: 'Measures health, mobility, and overall wellbeing effects'
+                                ),
+                                'safety' => $this->makeOptionWithTooltip(
+                                    label: 'Safety Risk',
+                                    tooltip: 'Potential for accidents or material damages'
+                                ),
+                                'cost' => $this->makeOptionWithTooltip(
+                                    label: 'Cost-Benefit',
+                                    tooltip: 'Ratio between required resources and expected benefits'
+                                ),
+                            ];
+                        }),
                         Section::make([
                             CheckboxList::make('criterios')
                                 ->label('Critérios de Priorização')

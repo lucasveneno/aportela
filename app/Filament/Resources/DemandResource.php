@@ -125,12 +125,13 @@ class DemandResource extends Resource
                                     //$set('descricao_prioridade', self::descricaoPrioridade($state));
                                 }),//->columns(2),
                         ])->columnSpan('full'), // Makes section span full width
-                        Hidden::make('prioridade')
-                            ->default(__('resources.demands.low')),
+                        
 
 
 
                         Section::make([
+                            Hidden::make('prioridade')
+                            ->default(__('resources.demands.low')),
                             TextInput::make('prioridade')
                                 ->label('Nível de Prioridade')
                                 ->disabled()
@@ -138,7 +139,7 @@ class DemandResource extends Resource
                             Placeholder::make('descricao_prioridade')
                                 ->label('Justificativa')
                                 ->content(fn($get) => self::descricaoPrioridade($get('criterios') ?? [])),
-                        ])->grow(false),
+                        ]),
 
 
 

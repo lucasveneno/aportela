@@ -29,9 +29,11 @@ class RegionResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')->required(),
-                Toggle::make('status')
-                    ->onColor('success')
-                    ->offColor('danger')
+                ToggleButtons::make('status')
+                    ->label('Habilitar esta :label?')
+                    ->boolean()
+                    ->default(1)
+                    ->inline(),
             ]);
     }
 
@@ -40,11 +42,9 @@ class RegionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                ToggleButtons::make('status')
-                    ->label('Habilitar esta :label?')
-                    ->boolean()
-                    ->default(1)
-                    ->inline(),
+                ToggleColumn::make('status')
+                    ->onColor('success')
+                    ->offColor('danger')
 
             ])
             ->filters([

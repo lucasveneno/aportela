@@ -83,11 +83,11 @@ class CategoryResource extends Resource
 
     public static function getPluralModelLabel(): string
     {
-        return __('resources.menu.categories'); // Plural label
+        return __('resources.categories.plural_label'); // Plural label
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('resources.menu.categories'); // Navigation menu label
+        return __('resources.categories.label'); // Navigation menu label
     }
 }

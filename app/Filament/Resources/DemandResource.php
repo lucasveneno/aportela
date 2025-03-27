@@ -114,7 +114,7 @@ class DemandResource extends Resource
                         ToggleButtons::make('applicant_demand_origin')
                             ->label(__('resources.demands.applicant_demand_origin'))
                             ->boolean()
-                            ->default(1)
+                            ->default(0)
                             ->inline()
                             ->live(), // Makes it update in real-time
 

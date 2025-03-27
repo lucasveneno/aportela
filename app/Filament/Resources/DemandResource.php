@@ -60,10 +60,10 @@ class DemandResource extends Resource
                         'low' => 'Prioridade Baixa '
                     ])
                     ->descriptions([
-                        'max' => '(Urgente - Ação Imediata)',
-                        'high' => '(Importante - Planejamento Rápido)',
-                        'medium' => '(Necessária - Médio Prazo)',
-                        'published' => '(Melhoria - Longo Prazo)'
+                        'max' => 'Urgente - Ação Imediata',
+                        'high' => 'Importante - Planejamento Rápido',
+                        'medium' => 'Necessária - Médio Prazo',
+                        'published' => 'Melhoria - Longo Prazo'
                     ]),
 
                 Select::make('status')->options([

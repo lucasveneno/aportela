@@ -56,7 +56,7 @@ class DemandResource extends Resource
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',
                     'resolved' => 'Resolved',
-                ])->default('pending'),
+                ])->default('pending')->searchable(),
                 Textarea::make('description')->required(),
 
 

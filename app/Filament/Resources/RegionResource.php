@@ -43,7 +43,7 @@ class RegionResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label(__('resources.regions.name')),
+                TextColumn::make('name')->label(__('resources.regions.name'))->sortable(),
                 ToggleColumn::make('status')
                     ->label(__('resources.regions.status'))
                     ->onColor('success')

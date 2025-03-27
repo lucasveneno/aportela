@@ -132,8 +132,8 @@ class DemandResource extends Resource
                         TextInput::make('prioridade')
                             ->label('Nível de Prioridade')
                             ->disabled(),
-                            //->dehydrated()
-                            //->columnSpan(1),
+                        //->dehydrated()
+                        //->columnSpan(1),
 
                         Placeholder::make('descricao_prioridade')
                             ->label('Justificativa')
@@ -312,10 +312,10 @@ class DemandResource extends Resource
         );
 
         return match (true) {
-            $pontuacao >= 20 => __('resources.demands.max'),
-            $pontuacao >= 15 => __('resources.demands.high'),
-            $pontuacao >= 10 => __('resources.demands.medium'),
-            default => __('resources.demands.low'),
+            $pontuacao >= 20 => $pontuacao . ' - ' . __('resources.demands.max'),
+            $pontuacao >= 15 => $pontuacao . ' - ' . __('resources.demands.high'),
+            $pontuacao >= 10 => $pontuacao . ' - ' . __('resources.demands.medium'),
+            default => $pontuacao . ' - ' . __('resources.demands.low'),
         };
     }
 

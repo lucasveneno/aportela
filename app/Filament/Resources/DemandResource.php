@@ -187,7 +187,8 @@ class DemandResource extends Resource
 
                 Toggle::make('status')->label('Rascunho?')
                     ->onColor('success')
-                    ->offColor('danger'),
+                    ->offColor('danger')
+                    ->default(1),
 
                 
                 RichEditor::make('description')->required(),

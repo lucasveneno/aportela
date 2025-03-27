@@ -310,7 +310,7 @@ class DemandResource extends Resource
 
         return match ($peso) {
             4 => __('resources.demands.max'),
-            3 => __('resources.demands.medium'),
+            3 => __('resources.demands.high'),
             2 => __('resources.demands.medium'),
             default => __('resources.demands.low'),
         };

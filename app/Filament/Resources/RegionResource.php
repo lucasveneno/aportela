@@ -40,9 +40,11 @@ class RegionResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                ToggleColumn::make('status')
-                    ->onColor('success')
-                    ->offColor('danger')
+                ToggleButtons::make('status')
+                    ->label('Habilitar esta área?')
+                    ->boolean()
+                    ->default(1)
+                    ->inline(),
 
             ])
             ->filters([

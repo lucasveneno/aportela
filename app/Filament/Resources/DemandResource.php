@@ -142,7 +142,7 @@ class DemandResource extends Resource
                                 ->content(fn($get) => self::descricaoPrioridade($get('criterios') ?? []))
                                 ->columnSpan(2),
 
-                        ])->columns(2),
+                        ])->columns(1),
 
 
 

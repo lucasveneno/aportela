@@ -28,7 +28,9 @@ class AreaResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required(),
+                TextInput::make('name')
+                ->label(__('resources.areas.name'))
+                ->required(),
 
                 ToggleButtons::make('status')
                     ->label(__('resources.areas.enable_this'))

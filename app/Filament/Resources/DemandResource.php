@@ -107,19 +107,25 @@ class DemandResource extends Resource
 
                 Repeater::make('members')
                     ->schema([
-                        TextInput::make('name')->required(),
+                        TextInput::make('applicant')->label(__('resources.demands.applicant'))->required(),
+                        Select::make('applicant_role')
+                        ->label(__('resources.demands.applicant_role'))
+                            ->options([
+                                'member' => 'Member',
+                                'administrator' => 'Administrator',
+                                'owner' => 'Owner',
+                            ]),
+                        TextInput::make('cpf')->label(__('resources.demands.cpf'))->required(),
+                        TextInput::make('applicant')->label(__('resources.demands.applicant'))->required(),
+                        TextInput::make('applicant')->label(__('resources.demands.applicant'))->required(),
+                        TextInput::make('applicant')->label(__('resources.demands.applicant'))->required(),
 
                         Select::make('user_id')  // Store the user ID
                             ->label('User')
                             ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
                             ->searchable()  // Allow searching through users
                             ->required(),
-                        Select::make('role')
-                            ->options([
-                                'member' => 'Member',
-                                'administrator' => 'Administrator',
-                                'owner' => 'Owner',
-                            ])
+                        
 
 
                             ->required(),

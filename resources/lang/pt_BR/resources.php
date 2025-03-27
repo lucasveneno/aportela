@@ -103,6 +103,16 @@ return [
 
         'section_files_title' => 'Adicione arquivos a esta solicitação',
         'section_files_description' => 'Obrigatório para análise: Fotos do local, documentos oficiais ou relatórios técnicos. Tamanho máximo total: 25MB. Todos os arquivos serão mantidos em sigilo.',
+
+        //
+        'applicant'=>'Solicitante',
+        'applicant_role'=>'Tipo',
+        'applicant_cpf'=>'CPF',
+        'applicant_full_address'=>'Endereço',
+        'applicant_phone'=>'Telefone',
+        'applicant_email'=>'E-mail',
+        'applicant_instagram'=>'Instagram',
+        'applicant_facebook'=>'Facebook',
     ],
 
 

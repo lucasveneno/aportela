@@ -65,7 +65,7 @@ class DemandResource extends Resource
                                     : []
                             );
                     }),
-                
+
 
 
                 Select::make('category_id')
@@ -77,11 +77,12 @@ class DemandResource extends Resource
                     ->searchable()
                     ->preload()
                     ->key('category_id'), // Important for the afterStateUpdated to find this field
-                    Select::make('status')->options([
-                        'pending' => 'Pending',
-                        'in_progress' => 'In Progress',
-                        'resolved' => 'Resolved',
-                    ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
+
+                Select::make('status')->options([
+                    'pending' => 'Pending',
+                    'in_progress' => 'In Progress',
+                    'resolved' => 'Resolved',
+                ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
                 Textarea::make('description')->required(),
 
 

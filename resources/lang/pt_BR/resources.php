@@ -105,16 +105,18 @@ return [
         'section_files_description' => 'Obrigatório para análise: Fotos do local, documentos oficiais ou relatórios técnicos. Tamanho máximo total: 25MB. Todos os arquivos serão mantidos em sigilo.',
 
         // Applicant data
-        'applicant_demand_origin'=>'Origem da demanda',
-        'applicant'=>'Solicitante da demanda',
-        'applicant_name'=>'Nome',
-        'applicant_role'=>'Tipo',
-        'applicant_cpf'=>'CPF',
-        'applicant_full_address'=>'Endereço',
-        'applicant_phone'=>'Telefone',
-        'applicant_email'=>'E-mail',
-        'applicant_instagram'=>'Instagram',
-        'applicant_facebook'=>'Facebook',
+        'section_applicant_title' => 'Identificação do Solicitante',
+        'section_applicant_description' => 'Informe os dados obrigatórios da pessoa ou entidade que está formalizando esta demanda.',
+        'applicant_demand_origin' => 'Origem da demanda',
+        'applicant' => 'Solicitante da demanda',
+        'applicant_name' => 'Nome',
+        'applicant_role' => 'Tipo',
+        'applicant_cpf' => 'CPF',
+        'applicant_full_address' => 'Endereço',
+        'applicant_phone' => 'Telefone',
+        'applicant_email' => 'E-mail',
+        'applicant_instagram' => 'Instagram',
+        'applicant_facebook' => 'Facebook',
     ],
 
 

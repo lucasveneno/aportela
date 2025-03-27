@@ -118,7 +118,7 @@ return [
         'applicant_instagram' => 'Instagram',
         'applicant_facebook' => 'Facebook',
 
-
+        'requires_councilor_on_site' => 'Vereador(a) precisa ir até o local?',
         'draft' => 'Salvar demanda como rascunho?',
     ],
 

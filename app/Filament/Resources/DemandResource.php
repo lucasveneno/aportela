@@ -262,8 +262,13 @@ class DemandResource extends Resource
                             ->directory('demand_files'), // Directory within the disk
                     ])->columns(1),
                 Section::make([
+
                     Section::make([
-                        Toggle::make('requires_councilor')->label('Vereador(a) precisa ir até o local?'),
+                        ToggleButtons::make('requires_councilor')
+                            ->label(__('resources.demands.requires_councilor_on_site'))
+                            ->boolean()
+                            ->default(0)
+                            ->inline(), // Makes it update in real-time
                     ]),
                     Section::make([
                         ToggleButtons::make('draft')

@@ -17,6 +17,7 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -54,14 +55,25 @@ class DemandResource extends Resource
                 Textarea::make('description')->required(),
                 Toggle::make('requires_councilor'),
 
+                Split::make([
+                    Section::make([
+                        Placeholder::make('Critérios para Definição de Prioridades:')
+                            ->content('✔ Impacto na população (saúde, segurança, mobilidade).')
+                            ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                        Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                        Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                    ]),
+                    Section::make([
+                        Toggle::make('is_published'),
+                        Toggle::make('is_featured'),
+                    ])->grow(false),
+                ])->from('md'),
+
                 Section::make('Critérios para Definição de Prioridades:')
                     ->description('Prevent abuse by limiting the number of requests per period')
                     ->columns(2)
                     ->schema([
-                        Placeholder::make('Critérios para Definição de Prioridades:')
-                            ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                        Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                        Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+
                         Radio::make('priority')
                             ->options([
                                 'max' => 'Prioridade Máxima ',

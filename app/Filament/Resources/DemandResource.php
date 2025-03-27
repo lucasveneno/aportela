@@ -63,31 +63,28 @@ class DemandResource extends Resource
                         Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
                         Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
                     ]),
-                    Section::make([
-                        Toggle::make('is_published'),
-                        Toggle::make('is_featured'),
-                    ])->grow(false),
+                    Section::make('Critérios para Definição de Prioridades:')
+                        ->description('Prevent abuse by limiting the number of requests per period')
+                        ->columns(2)
+                        ->schema([
+
+                            Radio::make('priority')
+                                ->options([
+                                    'max' => 'Prioridade Máxima ',
+                                    'high' => 'Prioridade Alta ',
+                                    'medium' => 'Prioridade Média',
+                                    'low' => 'Prioridade Baixa '
+                                ])
+                                ->descriptions([
+                                    'max' => 'Urgente - Ação Imediata',
+                                    'high' => 'Importante - Planejamento Rápido',
+                                    'medium' => 'Necessária - Médio Prazo',
+                                    'low' => 'Melhoria - Longo Prazo'
+                                ]),
+                        ]),
+
                 ])->from('md'),
 
-                Section::make('Critérios para Definição de Prioridades:')
-                    ->description('Prevent abuse by limiting the number of requests per period')
-                    ->columns(2)
-                    ->schema([
-
-                        Radio::make('priority')
-                            ->options([
-                                'max' => 'Prioridade Máxima ',
-                                'high' => 'Prioridade Alta ',
-                                'medium' => 'Prioridade Média',
-                                'low' => 'Prioridade Baixa '
-                            ])
-                            ->descriptions([
-                                'max' => 'Urgente - Ação Imediata',
-                                'high' => 'Importante - Planejamento Rápido',
-                                'medium' => 'Necessária - Médio Prazo',
-                                'low' => 'Melhoria - Longo Prazo'
-                            ]),
-                    ]),
 
 
                 Select::make('status')->options([

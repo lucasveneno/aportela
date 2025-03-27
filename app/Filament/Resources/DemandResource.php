@@ -324,40 +324,25 @@ class DemandResource extends Resource
 
     public static function calcularPrioridade(array $criterios): string
     {
-        //$peso = count($criterios); // Conta os checkboxes marcados
-
-        /*
-        
-        return match ($peso) {
-            4 => __('resources.demands.max'),
-            3 => __('resources.demands.high'),
-            2 => __('resources.demands.medium'),
-            default => __('resources.demands.low'),
-        };
-        */
-        // Definição dos pesos para cada critério (customizável)
         $pesos = [
-            'impacto_populacao' => 5,       // Impacto na população
-            'risco_acidentes' => 4,         // Risco de acidentes/danos
-            'custo_beneficio' => 3,         // Custo-benefício
-            'demanda_popular' => 2,         // Demanda popular
-            'alinhamento_metas' => 3,       // Novo critério: Alinhamento com metas municipais
-            'viabilidade_tecnica' => 2,     // Novo critério: Viabilidade técnica
+            'impacto_populacao' => 5,
+            'risco_acidentes' => 5,  // Aumentei o peso por ser crítico
+            'custo_beneficio' => 3,
+            'demanda_popular' => 2,
+            'alinhamento_metas' => 4,  // Novo critério com peso alto
+            'viabilidade_tecnica' => 3, // Novo critério
         ];
 
-        // Calcula a pontuação total baseada nos critérios marcados
-        $pontuacaoTotal = 0;
-        foreach ($criterios as $criterio => $marcado) {
-            if ($marcado && isset($pesos[$criterio])) {
-                $pontuacaoTotal += $pesos[$criterio];
-            }
-        }
-
-        // Define os níveis de prioridade com base na pontuação
+        $pontuacao = array_reduce(
+            array_keys($criterios),
+            fn($total, $criterio) => $total + ($pesos[$criterio] ?? 0),
+            0
+        );
+        // Define os níveis de prioridade com base na pontuaçã
         return match (true) {
-            $pontuacaoTotal >= 25 => __('resources.demands.max'),      // Muito Alta/Urgente
-            $pontuacaoTotal >= 18 => __('resources.demands.high'),      // Alta
-            $pontuacaoTotal >= 10 => __('resources.demands.medium'),    // Média
+            $pontuacao >= 20 => __('resources.demands.max'),      // Muito Alta/Urgente
+            $pontuacao >= 15 => __('resources.demands.high'),      // Alta
+            $pontuacao >= 10 => __('resources.demands.medium'),    // Média
             default => __('resources.demands.low'),                     // Baixa
         };
     }

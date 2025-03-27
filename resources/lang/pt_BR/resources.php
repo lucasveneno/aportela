@@ -80,9 +80,13 @@ return [
     'demands' => [
         'label' => 'Demanda',
         'plural_label' => 'Demandas',
-        'name' => 'Nome',
-        'status' => 'Status',
-        'enable_this' => 'Habilitar esta área?',
+        'classify_demand' => 'Classificar demanda',
+        'area' => 'Área',
+        'category' => 'Categoria',
+
+        'classify_demand' => 'Classificar demanda',
+        'area' => 'Área',
+        'category' => 'Categoria',
 
     ],
 

@@ -63,9 +63,9 @@ class DemandResource extends Resource
 
                 //Toggle::make('requires_councilor'),
 
-                Fieldset::make('Label')
+                Fieldset::make('Critérios para Definição de Prioridades')
                 ->schema([
-                    Placeholder::make('Critérios para Definição de Prioridades:')
+                    Placeholder::make('')
                             ->content(new HtmlString('
                             ✔ Impacto na população (saúde, segurança, mobilidade).<br />
                             ✔ Risco de acidentes ou danos materiais.<br />

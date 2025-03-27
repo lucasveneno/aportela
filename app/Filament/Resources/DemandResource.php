@@ -133,16 +133,21 @@ class DemandResource extends Resource
 
 
 
+                Section::make([
+                    RichEditor::make('description')->required(),
+                ])->columns(1),
+
+                Section::make([
+                    FileUpload::make('files')
+                        ->multiple()
+                        ->disk('public') // The disk where files will be stored
+                        ->directory('demand_files'), // Directory within the disk
+                ])->columns(1),
 
 
 
 
 
-                FileUpload::make('files')
-                    ->multiple()
-                    ->disk('public') // The disk where files will be stored
-                    ->directory('demand_files'), // Directory within the disk
-                //->visibility('public'), // If you're using public visibility
 
 
                 Fieldset::make('')
@@ -193,9 +198,7 @@ class DemandResource extends Resource
                     ->default(1),
                 Toggle::make('requires_councilor')->label('Representante precisa estar presente no local?'),
 
-                Section::make([
-                    RichEditor::make('description')->required(),
-                ])->columns(1),
+
             ]);
     }
 

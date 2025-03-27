@@ -289,7 +289,7 @@ class DemandResource extends Resource
                             ->label(__('resources.demands.requires_councilor_on_site'))
                             ->boolean()
                             ->default(0)
-                            ->inline(), // Makes it update in real-time
+                            ->inline(),
 
                     ]),
                     Section::make([

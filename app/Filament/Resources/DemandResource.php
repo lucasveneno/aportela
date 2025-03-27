@@ -118,7 +118,6 @@ class DemandResource extends Resource
                                     'alinhamento_metas' => 'Alinhamento com metas municipais',
                                     'viabilidade_tecnica' => 'Viabilidade técnica de implementação',
                                 ])
-                                ->columns(1)
                                 ->reactive()
                                 ->afterStateUpdated(function ($state, callable $set) {
                                     $set('prioridade', self::calcularPrioridade($state));

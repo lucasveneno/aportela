@@ -261,18 +261,19 @@ class DemandResource extends Resource
                             ->disk('public') // The disk where files will be stored
                             ->directory('demand_files'), // Directory within the disk
                     ])->columns(1),
+                Split::make([
+                    Section::make([
+                        ToggleButtons::make('draft')
+                            ->label(__('resources.demands.draft'))
+                            ->boolean()
+                            ->default(0)
+                            ->inline(), // Makes it update in real-time
+                    ]),
 
-                ToggleButtons::make('draft')
-                    ->label(__('resources.demands.draft'))
-                    ->boolean()
-                    ->default(0)
-                    ->inline(), // Makes it update in real-time
-
-                
-
-                Toggle::make('requires_councilor')->label('Vereador(a) precisa ir até o local?'),
-
-
+                    Section::make([
+                        Toggle::make('requires_councilor')->label('Vereador(a) precisa ir até o local?'),
+                    ])
+                ])->from('md'),
             ]);
     }
 

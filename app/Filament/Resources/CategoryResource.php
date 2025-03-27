@@ -47,7 +47,7 @@ class CategoryResource extends Resource
 
 
                 TextColumn::make('area_id')
-                    ->label('Area Name')
+                    ->label('Area')
                     ->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A'),
             ])
             ->filters([

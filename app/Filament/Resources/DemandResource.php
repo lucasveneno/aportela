@@ -322,10 +322,10 @@ class DemandResource extends Resource
         $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso
 
         return match (true) {
-            $pontuacao >= 20 => $pontuacao . ' - ' . __('resources.demands.max'),
-            $pontuacao >= 15 => $pontuacao . ' - ' . __('resources.demands.high'),
-            $pontuacao >= 10 => $pontuacao . ' - ' . __('resources.demands.medium'),
-            default => $pontuacao . ' - ' . __('resources.demands.low'),
+            $pontuacao >= 20 =>  __('resources.demands.max'),
+            $pontuacao >= 15 =>  __('resources.demands.high'),
+            $pontuacao >= 10 =>  __('resources.demands.medium'),
+            default =>  __('resources.demands.low'),
         };
     }
 
@@ -335,10 +335,10 @@ class DemandResource extends Resource
         $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso
 
         return match (true) {
-            $pontuacao >= 20 => $pontuacao . ' - ' . __('resources.demands.max_description'),
-            $pontuacao >= 15 => $pontuacao . ' - ' . __('resources.demands.high_description'),
-            $pontuacao >= 10 => $pontuacao . ' - ' . __('resources.demands.medium_description'),
-            default => $pontuacao . ' - ' . __('resources.demands.low_description'),
+            $pontuacao >= 20 =>  __('resources.demands.max_description'),
+            $pontuacao >= 15 =>  __('resources.demands.high_description'),
+            $pontuacao >= 10 =>  __('resources.demands.medium_description'),
+            default =>  __('resources.demands.low_description'),
         };
     }
 

@@ -12,8 +12,10 @@ use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Fields\Geocomplete;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use Filament\Forms;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
@@ -106,7 +108,25 @@ class DemandResource extends Resource
                     ->description(__('resources.demands.section_description'))
                     ->schema([
 
+                        Section::make([
+                            CheckboxList::make('criterios')
+                                ->label('Critérios para Definição de Prioridade')
+                                ->options([
+                                    'impacto_populacao' => 'Impacto na população (saúde, segurança, mobilidade).',
+                                    'risco_acidentes' => 'Risco de acidentes ou danos materiais.',
+                                    'custo_beneficio' => 'Custo-benefício (recursos disponíveis x benefício gerado).',
+                                    'demanda_popular' => 'Demanda popular (reclamações frequentes).',
+                                ])
+                                ->reactive()
+                                ->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
 
+                            Hidden::make('prioridade')
+                                ->default('Baixa'), // Prioridade inicial
+
+                            TextInput::make('prioridade')
+                                ->label('Prioridade Calculada')
+                                ->disabled(), // Apenas leitura para o usuário
+                        ]),
                         Section::make([
                             Radio::make('priority')
                                 ->label('')

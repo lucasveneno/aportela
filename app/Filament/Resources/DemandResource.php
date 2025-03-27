@@ -97,6 +97,23 @@ class DemandResource extends Resource
                     ])->columns(2),
 
                 Section::make([
+                    /*ToggleButtons::make('requires_councilor')
+                            ->label(__('resources.demands.requires_councilor_on_site'))
+                            ->options([
+                                0 => 'Não',
+                                1 => 'Sim, mas não é urgente',
+                                2 => 'sim, urgentemente'
+                            ])->default(0)->inline(),
+                        */
+                    ToggleButtons::make('requires_councilor')
+                        ->label(__('resources.demands.requires_councilor_on_site'))
+                        ->boolean()
+                        ->default(0)
+                        ->inline(),
+
+                ]),
+
+                Section::make([
                     RichEditor::make('description')
                         ->toolbarButtons([
                             //'attachFiles',
@@ -276,22 +293,7 @@ class DemandResource extends Resource
 
 
 
-                    Section::make([
-                        /*ToggleButtons::make('requires_councilor')
-                            ->label(__('resources.demands.requires_councilor_on_site'))
-                            ->options([
-                                0 => 'Não',
-                                1 => 'Sim, mas não é urgente',
-                                2 => 'sim, urgentemente'
-                            ])->default(0)->inline(),
-                        */
-                        ToggleButtons::make('requires_councilor')
-                            ->label(__('resources.demands.requires_councilor_on_site'))
-                            ->boolean()
-                            ->default(0)
-                            ->inline(),
 
-                    ]),
                     Section::make([
                         ToggleButtons::make('draft')
                             ->label(__('resources.demands.draft'))

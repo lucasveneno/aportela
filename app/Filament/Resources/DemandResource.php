@@ -60,7 +60,7 @@ class DemandResource extends Resource
                             ->getComponent('category_id')
                             ->options(
                                 $state ? Category::where('area_id', $state)
-                                    ->where('status', 1)
+                                    //->where('status', 1)
                                     ->pluck('name', 'id')
                                     : []
                             );

@@ -107,7 +107,7 @@ class DemandResource extends Resource
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([
-                        Split::make([
+                        
                         Section::make([
                             CheckboxList::make('criterios')
                                 ->label('Critérios de Priorização')
@@ -124,7 +124,6 @@ class DemandResource extends Resource
                                     $set('prioridade', self::calcularPrioridade($state));
                                     //$set('descricao_prioridade', self::descricaoPrioridade($state));
                                 }),//->columns(2),
-                        ])->columnSpan('full'), // Makes section span full width
                         
 
 

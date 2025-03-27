@@ -26,7 +26,7 @@
             min="{{ $getMin()}}"
             max="{{ $getMax()}}"
             step="{{ $getStep()}}"
-            dusk="filament.forms.{{ $getStatePath() }}"
+            dusk="forms.{{ $getStatePath() }}"
             {!! $isDisabled() ? 'disabled' : null !!}
         />
 

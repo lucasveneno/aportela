@@ -125,7 +125,7 @@ class DemandResource extends Resource
                             //->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
 
                             Hidden::make('prioridade')
-                                ->default('Baixa'), // Prioridade inicial
+                                ->default('low'), // Prioridade inicial
 
                             TextInput::make('prioridade')
                                 ->label('Prioridade Calculada')

@@ -107,24 +107,24 @@ class DemandResource extends Resource
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([
-
-                        CheckboxList::make('criterios')
-                            ->label('Critérios de Priorização')
-                            ->options([
-                                'impacto_populacao' => 'Impacto na população (saúde, segurança,mobilidade, bem-estar)',
-                                'risco_acidentes' => 'Risco de acidentes ou danos materiais',
-                                'custo_beneficio' => 'Custo-benefício (recursos x benefício)',
-                                'demanda_popular' => 'Demanda popular (reclamações frequentes)',
-                                'alinhamento_metas' => 'Alinhamento com metas municipais',
-                                'viabilidade_tecnica' => 'Viabilidade técnica de implementação',
-                            ])
-                            ->columns(1)
-                            ->reactive()
-                            ->afterStateUpdated(function ($state, callable $set) {
-                                $set('prioridade', self::calcularPrioridade($state));
-                                //$set('descricao_prioridade', self::descricaoPrioridade($state));
-                            }),
-
+                        Section::make([
+                            CheckboxList::make('criterios')
+                                ->label('Critérios de Priorização')
+                                ->options([
+                                    'impacto_populacao' => 'Impacto na população (saúde, segurança,mobilidade, bem-estar)',
+                                    'risco_acidentes' => 'Risco de acidentes ou danos materiais',
+                                    'custo_beneficio' => 'Custo-benefício (recursos x benefício)',
+                                    'demanda_popular' => 'Demanda popular (reclamações frequentes)',
+                                    'alinhamento_metas' => 'Alinhamento com metas municipais',
+                                    'viabilidade_tecnica' => 'Viabilidade técnica de implementação',
+                                ])
+                                ->columns(1)
+                                ->reactive()
+                                ->afterStateUpdated(function ($state, callable $set) {
+                                    $set('prioridade', self::calcularPrioridade($state));
+                                    //$set('descricao_prioridade', self::descricaoPrioridade($state));
+                                }),
+                        ]),
                         Hidden::make('prioridade')
                             ->default(__('resources.demands.low')),
 

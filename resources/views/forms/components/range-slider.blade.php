@@ -1,6 +1,3 @@
-
-
-
 <x-dynamic-component
     :id="$getId()"
     :label="$getLabel()"
@@ -11,11 +8,10 @@
     :required="$isRequired()"
     :state-path="$getStatePath()"
     :component="$getFieldWrapperView()"
-    :field="$field"
->
-    <div x-data="{
-        state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }}
-    }">
+    :field="$field">
+
+    <div x-data="{ state: $wire.$entangle('{{ $getStatePath() }}') }">
+        <!-- Interact with the `state` property in Alpine.js -->
         <input
             id="{{$getId()}}"
             type="range"
@@ -26,19 +22,8 @@
             min="{{ $getMin()}}"
             max="{{ $getMax()}}"
             step="{{ $getStep()}}"
-            dusk="forms.{{ $getStatePath() }}"
-            {!! $isDisabled() ? 'disabled' : null !!}
-        />
+            {!! $isDisabled() ? 'disabled' : null !!} />
 
-        @if (($steps = $getSteps()) && $getDisplaySteps() === true)
-        <ul class="flex justify-between w-full px-[10px]">
-            @foreach ($steps as $key => $step)
-                @include('filament-range-field::forms.components._range-slider-step', [
-                    'state' => $getStepsAssoc() ? $key : $loop->iteration,
-                    'step' => $step
-                ])
-            @endforeach
-        </ul>
-        @endif
     </div>
 </x-dynamic-component>
+

@@ -8,6 +8,7 @@ use App\Models\Area;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -30,7 +31,11 @@ class AreaResource extends Resource
                 TextInput::make('name')->required(),
                 Toggle::make('status')
                     ->onColor('success')
-                    ->offColor('danger')
+                    ->offColor('danger'),
+
+                ToggleButtons::make('statusc')
+                    ->label('Like this post?')
+                    ->boolean()
             ]);
     }
 
@@ -40,8 +45,8 @@ class AreaResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 ToggleColumn::make('status')
-                ->onColor('success')
-                ->offColor('danger')
+                    ->onColor('success')
+                    ->offColor('danger')
             ])
             ->filters([
                 //

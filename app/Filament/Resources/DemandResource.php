@@ -130,15 +130,13 @@ class DemandResource extends Resource
 
 
                         Section::make([
-                            Placeholder::make('descricao_prioridade')
-                                ->label('Justificativa')
-                                ->content(fn($get) => self::descricaoPrioridade($get('criterios') ?? [])),
-
                             TextInput::make('prioridade')
                                 ->label('Nível de Prioridade')
                                 ->disabled()
                                 ->dehydrated(),
-                            //->columnSpan(1),
+                            Placeholder::make('descricao_prioridade')
+                                ->label('Justificativa')
+                                ->content(fn($get) => self::descricaoPrioridade($get('criterios') ?? [])),
                         ]),
 
 

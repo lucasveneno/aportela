@@ -66,7 +66,7 @@ class DemandResource extends Resource
 
 
                 Section::make('Priority')
-                    ->description('afsdf')
+                    ->description('Selecione a prioridade desta demanda.')
                     ->schema([
 
 

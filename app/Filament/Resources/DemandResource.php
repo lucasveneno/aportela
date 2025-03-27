@@ -14,6 +14,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -51,14 +52,18 @@ class DemandResource extends Resource
                     ->label(__('Area')),
                 Textarea::make('description')->required(),
                 Toggle::make('requires_councilor'),
-                Toggle::make('urgent'),
-
-                ViewField::make('rating')
-                    ->view('forms.components.range-slider')
-                    ->viewData([
-                        'min' => 1,
-                        'max' => 5,
-                    ]),
+                Radio::make('priority')
+                ->options([
+                    'draft' => 'Draft',
+                    'scheduled' => 'Scheduled',
+                    'published' => 'Published'
+                ])
+                ->descriptions([
+                    'draft' => 'Is not visible.',
+                    'scheduled' => 'Will be visible.',
+                    'published' => 'Is visible.'
+                ]),
+                
                 Select::make('status')->options([
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',

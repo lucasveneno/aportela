@@ -63,7 +63,7 @@ class DemandResource extends Resource
                         'max' => 'Urgente - Ação Imediata',
                         'high' => 'Importante - Planejamento Rápido',
                         'medium' => 'Necessária - Médio Prazo',
-                        'published' => 'Melhoria - Longo Prazo'
+                        'low' => 'Melhoria - Longo Prazo'
                     ]),
 
                 Select::make('status')->options([

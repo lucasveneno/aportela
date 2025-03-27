@@ -84,8 +84,8 @@ class CategoryResource extends Resource
         return __('resources.menu.categories');
     }
 
-    public static function getCreatePageTitle(): string
+    public static function getRecordTitleAttribute(): ?string
     {
-        return 'Novo Registro'; // Altera o título da página de criação
+        return 'novo'; // Singular label for relation manager
     }
 }

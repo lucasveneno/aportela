@@ -134,12 +134,12 @@ class DemandResource extends Resource
                                 ->label('Prioridade Calculada')
                                 ->dehydrated()
                                 ->columnSpan(1),
-                                //->disabled(), // Apenas leitura para o usuário
+                            //->disabled(), // Apenas leitura para o usuário
 
                             /*TextInput::make('descricao_prioridade')
                                 ->label('Descrição da Prioridade')
                                 ->disabled()
-                                ->default(__('resources.demands.low_description')), // Descrição inicial*/
+                                ->default(__('resources.demands.low_description')), // Descrição inicial
                             Placeholder::make('descricao_prioridade')
                                 ->label('')
                                 ->content(
@@ -147,7 +147,12 @@ class DemandResource extends Resource
                                     $get('criterios')
                                         ? self::descricaoPrioridade($get('criterios'))
                                         : __('resources.demands.low_description')
-                                ),
+                                ),*/
+
+                            Placeholder::make('descricao_prioridade')
+                                ->label('Justificativa')
+                                ->content(fn($get) => self::descricaoPrioridade($get('criterios') ?? []))
+                                ->columnSpan(2),
 
                         ]),
                         /*Section::make([

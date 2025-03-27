@@ -70,7 +70,7 @@ class DemandResource extends Resource
                     ->schema([
 
 
-                        Placeholder::make('Critérios para Definição de Prioridades')
+                        Placeholder::make('Critérios para Definição de Prioridades:')
                             ->content(new HtmlString('
                                 ✔ Impacto na população (saúde, segurança, mobilidade).<br />
                                 ✔ Risco de acidentes ou danos materiais.<br />

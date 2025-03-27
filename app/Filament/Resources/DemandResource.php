@@ -119,8 +119,8 @@ class DemandResource extends Resource
                                 ])
                                 ->reactive()
                                 ->afterStateUpdated(fn($state, callable $set) => [
-                                    //$set('prioridade', self::calcularPrioridade($state)),
-                                    $set('descricao_prioridade', self::descricaoPrioridade(self::calcularPrioridade($state)))
+                                    $set('prioridade', self::calcularPrioridade($state)),
+                                    $set('descricao_prioridade', self::calcularPrioridade($state))
                                 ]),
                             //->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
 
@@ -316,7 +316,7 @@ class DemandResource extends Resource
         };
     }
 
-    public static function descricaoPrioridade(string $criterios): string
+    public static function descricaoPrioridade($criterios): string
     {
         $peso = count($criterios); // Conta os checkboxes marcados
 

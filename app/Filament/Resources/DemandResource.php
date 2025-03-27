@@ -321,8 +321,6 @@ class DemandResource extends Resource
 
     private static function calcularPontuacao(array $criterios): int
     {
-        $total = count($criterios);
-
         $pesos = [
             // Critérios Essenciais (alto impacto)
             'impacto_populacao' => 5,       // Saúde, segurança e bem-estar público

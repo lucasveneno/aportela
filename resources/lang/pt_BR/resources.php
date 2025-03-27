@@ -91,7 +91,7 @@ return [
         'max' => 'Prioridade Máxima (Ação imediata)',
         'max_description' => 'Situações críticas que exigem resposta imediata, como riscos à segurança, saúde ou grandes impactos na mobilidade.',
 
-        'high' => 'Prioridade Alta (Planejamento rápido',
+        'high' => 'Prioridade Alta (Planejamento rápido)',
         'high_description' => 'Questões relevantes que precisam ser resolvidas rapidamente para evitar agravamentos, como infraestrutura essencial ou serviços públicos deficientes.',
 
         'medium' => 'Prioridade Média (Médio prazo)',

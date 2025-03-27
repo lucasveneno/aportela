@@ -185,7 +185,7 @@ class DemandResource extends Resource
                             }),
                     ]),
 
-                Toggle::make('status')->label('Rascunho?')
+                Toggle::make('status')->label('É rascunho?')
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(1),

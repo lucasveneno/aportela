@@ -115,7 +115,7 @@ class DemandResource extends Resource
                                 'administrator' => 'Administrator',
                                 'owner' => 'Owner',
                             ]),
-                        TextInput::make('cpf')->label(__('resources.demands.cpf'))->required(),
+                        TextInput::make('applicant_cpf')->label(__('resources.demands.applicant_cpf'))->required(),
                         TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
                         TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),
                         TextInput::make('applicant_email')->label(__('resources.demands.applicant_email'))->required(),

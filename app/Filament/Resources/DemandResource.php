@@ -135,11 +135,12 @@ class DemandResource extends Resource
                                 ->label('Descrição da Prioridade')
                                 ->disabled()
                                 ->default(__('resources.demands.low_description')), // Descrição inicial*/
-                                Placeholder::make('descricao_prioridade')
+                            Placeholder::make('descricao_prioridade')
                                 ->label('')
-                                ->content(fn ($get) => 
-                                    $get('criterios') 
-                                        ? self::descricaoPrioridade($get('criterios')) 
+                                ->content(
+                                    fn($get) =>
+                                    $get('criterios')
+                                        ? self::descricaoPrioridade($get('criterios'))
                                         : __('resources.demands.low_description')
                                 ),
 
@@ -313,13 +314,41 @@ class DemandResource extends Resource
 
     public static function calcularPrioridade($criterios): string
     {
-        $peso = count($criterios); // Conta os checkboxes marcados
+        //$peso = count($criterios); // Conta os checkboxes marcados
 
+        /*
+        
         return match ($peso) {
             4 => __('resources.demands.max'),
             3 => __('resources.demands.high'),
             2 => __('resources.demands.medium'),
             default => __('resources.demands.low'),
+        };
+        */
+        // Definição dos pesos para cada critério (customizável)
+        $pesos = [
+            'impacto_populacao' => 5,       // Impacto na população
+            'risco_acidentes' => 4,         // Risco de acidentes/danos
+            'custo_beneficio' => 3,         // Custo-benefício
+            'demanda_popular' => 2,         // Demanda popular
+            'alinhamento_metas' => 3,       // Novo critério: Alinhamento com metas municipais
+            'viabilidade_tecnica' => 2,     // Novo critério: Viabilidade técnica
+        ];
+
+        // Calcula a pontuação total baseada nos critérios marcados
+        $pontuacaoTotal = 0;
+        foreach ($criterios as $criterio => $marcado) {
+            if ($marcado && isset($pesos[$criterio])) {
+                $pontuacaoTotal += $pesos[$criterio];
+            }
+        }
+
+        // Define os níveis de prioridade com base na pontuação
+        return match (true) {
+            $pontuacaoTotal >= 25 => __('resources.demands.max'),      // Muito Alta/Urgente
+            $pontuacaoTotal >= 18 => __('resources.demands.high'),      // Alta
+            $pontuacaoTotal >= 10 => __('resources.demands.medium'),    // Média
+            default => __('resources.demands.low'),                     // Baixa
         };
     }
 

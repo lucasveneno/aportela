@@ -121,7 +121,7 @@ class DemandResource extends Resource
                             ->columns(1)
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $set) {
-                                $set('prioridade', self::titlePrioridade($state));
+                                $set('prioridade', self::calcularPrioridade($state));
                                 $set('descricao_prioridade', self::descricaoPrioridade($state));
                             }),
 

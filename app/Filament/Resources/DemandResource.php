@@ -108,13 +108,12 @@ class DemandResource extends Resource
 
                 Section::make([
 
-                    ToggleButtons::make('status')
+                    ToggleButtons::make('applicant')
                         ->label(__('resources.demands.applicant'))
                         ->boolean()
                         ->default(1)
                         ->inline()
                         ->live(), // Makes it update in real-time
-,
 
                     Repeater::make('members')
                         ->label(__('resources.demands.applicant'))
@@ -148,7 +147,7 @@ class DemandResource extends Resource
 
                 ])
                 ->columns(1)
-                ->hidden(fn (Get $get): bool => !$get('show_advanced')), // Hides when toggle is off,
+                ->hidden(fn (Get $get): bool => !$get('applicant')), // Hides when toggle is off,
 
                 Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))

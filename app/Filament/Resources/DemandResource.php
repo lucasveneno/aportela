@@ -135,10 +135,13 @@ class DemandResource extends Resource
                                 ->label('Descrição da Prioridade')
                                 ->disabled()
                                 ->default(__('resources.demands.low_description')), // Descrição inicial*/
-
                                 Placeholder::make('descricao_prioridade')
                                 ->label('Descrição da Prioridade')
-                                ->content(__('resources.demands.low_description')), // Content for the placeholder
+                                ->content(fn ($get) => 
+                                    $get('criterios') 
+                                        ? self::descricaoPrioridade($get('criterios')) 
+                                        : __('resources.demands.low_description')
+                                ),
 
                         ]),
                         /*Section::make([

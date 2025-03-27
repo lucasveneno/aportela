@@ -144,15 +144,7 @@ class DemandResource extends Resource
 
 
 
-                Section::make(__('resources.demands.section_files_title'))
-                    ->description(__('resources.demands.section_files_description'))
-                    ->schema([
-                        FileUpload::make('files')
-                            ->label('')
-                            ->multiple()
-                            ->disk('public') // The disk where files will be stored
-                            ->directory('demand_files'), // Directory within the disk
-                    ])->columns(1),
+
 
 
 
@@ -201,6 +193,17 @@ class DemandResource extends Resource
                                 $set('longitude', $state['lng']);
                             }),
                     ]),
+
+
+                Section::make(__('resources.demands.section_files_title'))
+                    ->description(__('resources.demands.section_files_description'))
+                    ->schema([
+                        FileUpload::make('files')
+                            ->label('')
+                            ->multiple()
+                            ->disk('public') // The disk where files will be stored
+                            ->directory('demand_files'), // Directory within the disk
+                    ])->columns(1),
 
                 Toggle::make('status')->label('Salvar como rascunho')
                     ->onColor('success')

@@ -61,33 +61,25 @@ class DemandResource extends Resource
 
 
                 //Toggle::make('requires_councilor'),
-                Fieldset::make('')
-                    ->schema([
-                        Section::make('Critérios para Definição de Prioridades:')
-                            ->description('')
-                            ->schema([
-                                Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                                Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                                Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                            ]),
-                        Section::make('')
-                            ->schema([
 
-                                Radio::make('priority')
-                                    ->options([
-                                        'max' => 'Prioridade Máxima ',
-                                        'high' => 'Prioridade Alta ',
-                                        'medium' => 'Prioridade Média',
-                                        'low' => 'Prioridade Baixa '
-                                    ])
-                                    ->descriptions([
-                                        'max' => 'Urgente - Ação Imediata',
-                                        'high' => 'Importante - Planejamento Rápido',
-                                        'medium' => 'Necessária - Médio Prazo',
-                                        'low' => 'Melhoria - Longo Prazo'
-                                    ]),
+
+                Section::make('')
+                    ->schema([
+
+                        Radio::make('priority')
+                            ->options([
+                                'max' => 'Prioridade Máxima ',
+                                'high' => 'Prioridade Alta ',
+                                'medium' => 'Prioridade Média',
+                                'low' => 'Prioridade Baixa '
+                            ])
+                            ->descriptions([
+                                'max' => 'Urgente - Ação Imediata',
+                                'high' => 'Importante - Planejamento Rápido',
+                                'medium' => 'Necessária - Médio Prazo',
+                                'low' => 'Melhoria - Longo Prazo'
                             ]),
-                    ]),
+                    ])    ->hintIcon('heroicon-m-question-mark-circle', tooltip: 'Need some more information?'),
 
 
 

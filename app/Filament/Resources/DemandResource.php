@@ -350,12 +350,12 @@ class DemandResource extends Resource
     public static function descricaoPrioridade(array $criterios): string
     {
         $total = count($criterios);
-        $prioridade = self::calcularPrioridade($criterios);
+        $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso
 
-        return match ($prioridade) {
-            __('resources.demands.max') => __('resources.demands.max_description'),
-            __('resources.demands.high') => __('resources.demands.high_description'),
-            __('resources.demands.medium') => __('resources.demands.medium_description'),
+        return match (true) {
+            $pontuacao >= 20 => __('resources.demands.max_description'),
+            $pontuacao >= 15 => __('resources.demands.high_description'),
+            $pontuacao >= 10 => __('resources.demands.medium_description'),
             default => __('resources.demands.low_description'),
         };
     }
@@ -363,13 +363,27 @@ class DemandResource extends Resource
     private static function calcularPontuacao(array $criterios): int
     {
         $pesos = [
-            'impacto_populacao' => 5,
-            'risco_acidentes' => 5,
-            // ... outros pesos
+            // Critérios Essenciais (alto impacto)
+            'impacto_populacao' => 5,       // Saúde, segurança e bem-estar público
+            'risco_acidentes' => 5,         // Prevenção de perdas humanas/materiais
+
+            // Critérios Estratégicos
+            'alinhamento_metas' => 4,       // Prioridade governamental/ODS
+            'custo_beneficio' => 3,         // Eficiência de recursos
+
+            // Critérios Operacionais
+            'viabilidade_tecnica' => 3,     // Complexidade de implementação
+            'demanda_popular' => 2,         // Pressão social/reclamações
+
+            // Novos critérios sugeridos (exemplo)
+            'prazo_legal' => 4,             // Obrigações legais (se aplicável)
+            'retorno_economico' => 2,       // Geração de empregos/atividade
         ];
 
-        return array_sum(
-            array_map(fn($c) => $pesos[$c] ?? 0, $criterios)
+        return array_reduce(
+            $criterios,
+            fn(int $total, string $criterio) => $total + ($pesos[$criterio] ?? 0),
+            0
         );
     }
 }

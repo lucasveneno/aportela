@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\DemandResource\Pages;
 use App\Filament\Resources\DemandResource\RelationManagers;
 use App\Models\Area;
+use App\Models\Category;
 use App\Models\Demand;
 use App\Models\User;
 use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
@@ -48,23 +49,39 @@ class DemandResource extends Resource
                     ->preload()
                     ->label(__('User')),*/
                 Select::make('area_id')
-                    ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
+                    ->label(__('Area'))
+                    ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
                     ->searchable()
-                    //->multiple()
                     ->preload()
-                    ->label(__('Area')),
+                    ->live() // This makes the field update the form in real-time
+                    ->afterStateUpdated(function ($state, Select $component) {
+                        // When area changes, update the category options
+                        $component->getContainer()
+                            ->getComponent('category_id')
+                            ->options(
+                                $state ? Category::where('area_id', $state)
+                                    ->where('status', 1)
+                                    ->pluck('name', 'id')
+                                    : []
+                            );
+                    }),
                 Select::make('status')->options([
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',
                     'resolved' => 'Resolved',
                 ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
 
+
                 Select::make('category_id')
-                    ->options(Area::all()->where('status', 1)->pluck('name', 'id'))
+                    ->label(__('Category'))
+                    ->options(fn(Get $get): array => Category::query()
+                        ->where('area_id', $get('area_id'))
+                        ->where('status', 1)
+                        ->pluck('name', 'id')
+                        ->toArray())
                     ->searchable()
-                    //->multiple()
                     ->preload()
-                    ->label(__('Area')),
+                    ->key('category_id'), // Important for the afterStateUpdated to find this field
                 Textarea::make('description')->required(),
 
 

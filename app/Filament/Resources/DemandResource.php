@@ -116,9 +116,11 @@ class DemandResource extends Resource
                                 'owner' => 'Owner',
                             ]),
                         TextInput::make('cpf')->label(__('resources.demands.cpf'))->required(),
-                        TextInput::make('applicant')->label(__('resources.demands.applicant'))->required(),
-                        TextInput::make('applicant')->label(__('resources.demands.applicant'))->required(),
-                        TextInput::make('applicant')->label(__('resources.demands.applicant'))->required(),
+                        TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
+                        TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),
+                        TextInput::make('applicant_email')->label(__('resources.demands.applicant_email'))->required(),
+                        TextInput::make('applicant_instagram')->label(__('resources.demands.applicant_instagram'))->required(),
+                        TextInput::make('applicant_facebook')->label(__('resources.demands.applicant_facebook'))->required(),
 
                         Select::make('user_id')  // Store the user ID
                             ->label('User')

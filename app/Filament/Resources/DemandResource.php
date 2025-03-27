@@ -109,10 +109,10 @@ class DemandResource extends Resource
                     ->schema([
 
                         Section::make([
+                            
                             CheckboxList::make('criterios')
-                                //->label('')
+                                ->label('Critérios de Priorização')
                                 ->options([
-
                                     'impacto_populacao' => 'Impacto na população (saúde, segurança, bem-estar)',
                                     'risco_acidentes' => 'Risco de acidentes ou danos materiais',
                                     'custo_beneficio' => 'Custo-benefício (recursos x benefício)',
@@ -120,34 +120,21 @@ class DemandResource extends Resource
                                     'alinhamento_metas' => 'Alinhamento com metas municipais',
                                     'viabilidade_tecnica' => 'Viabilidade técnica de implementação',
                                 ])
+                                ->columns(2)
                                 ->reactive()
-                                ->afterStateUpdated(fn($state, callable $set) => [
-                                    $set('prioridade', self::calcularPrioridade($state)),
-                                    $set('descricao_prioridade', self::descricaoPrioridade($state))
-                                ]),
-                            //->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
+                                ->afterStateUpdated(function ($state, callable $set) {
+                                    $set('prioridade', self::calcularPrioridade($state));
+                                    $set('descricao_prioridade', self::descricaoPrioridade($state));
+                                }),
 
                             Hidden::make('prioridade')
-                                ->default(__('resources.demands.low')), // Prioridade inicial
+                                ->default(__('resources.demands.low')),
 
                             TextInput::make('prioridade')
-                                ->label('Prioridade Calculada')
+                                ->label('Nível de Prioridade')
+                                ->disabled()
                                 ->dehydrated()
                                 ->columnSpan(1),
-                            //->disabled(), // Apenas leitura para o usuário
-
-                            /*TextInput::make('descricao_prioridade')
-                                ->label('Descrição da Prioridade')
-                                ->disabled()
-                                ->default(__('resources.demands.low_description')), // Descrição inicial
-                            Placeholder::make('descricao_prioridade')
-                                ->label('')
-                                ->content(
-                                    fn($get) =>
-                                    $get('criterios')
-                                        ? self::descricaoPrioridade($get('criterios'))
-                                        : __('resources.demands.low_description')
-                                ),*/
 
                             Placeholder::make('descricao_prioridade')
                                 ->label('Justificativa')
@@ -155,22 +142,7 @@ class DemandResource extends Resource
                                 ->columnSpan(2),
 
                         ]),
-                        /*Section::make([
-                            Radio::make('priority')
-                                ->label('')
-                                ->options([
-                                    'max' => __('resources.demands.max'),
-                                    'high' => __('resources.demands.high'),
-                                    'medium' => __('resources.demands.medium'),
-                                    'low' => __('resources.demands.low')
-                                ])
-                                ->descriptions([
-                                    'max' => __('resources.demands.max_description'),
-                                    'high' => __('resources.demands.high_description'),
-                                    'medium' => __('resources.demands.medium_description'),
-                                    'low' => __('resources.demands.low_description')
-                                ]),
-                        ]),*/
+
 
 
 
@@ -322,7 +294,7 @@ class DemandResource extends Resource
         return __('resources.demands_group');
     }
 
-    
+
 
     public static function calcularPrioridade(array $criterios): string
     {

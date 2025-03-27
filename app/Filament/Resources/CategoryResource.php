@@ -46,7 +46,7 @@ class CategoryResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('area_id')->exists([
-                    'area' => fn(Builder $query) =>  $query->where('id', $this),
+                    'areas' => fn(Builder $query) =>  $query->where('id', $this),
                 ])
             ])
             ->filters([

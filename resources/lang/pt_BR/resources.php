@@ -57,6 +57,7 @@ return [
         'plural_label' => 'Regiões',
         'name' => 'Nome',
         'status' => 'Status',
+        'enable_this_region' => 'Habilitar esta região?',
     ],
 
     /*

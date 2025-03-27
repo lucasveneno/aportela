@@ -104,7 +104,7 @@ class DemandResource extends Resource
                         ->label(__('resources.demands.description'))->required(),
                 ])->columns(1),
 
-                Section::make(__('resources.demands.section_priority'))
+                Section::make(__('resources.demands.section_priority_title'))
                     ->description(__('resources.demands.section_priority_description'))
                     ->schema([
 

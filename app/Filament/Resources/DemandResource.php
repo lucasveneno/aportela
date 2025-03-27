@@ -51,7 +51,7 @@ class DemandResource extends Resource
                     //->description('Selecione a prioridade desta demanda.')
                     ->schema([
                         Select::make('area_id')
-                        ->label(__('resources.demands.area'))
+                            ->label(__('resources.demands.area'))
                             ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
                             ->searchable()
                             ->preload()
@@ -82,7 +82,24 @@ class DemandResource extends Resource
                     ])->columns(2),
 
                 Section::make([
-                    RichEditor::make('description')->label(__('resources.demands.description'))->required(),
+                    RichEditor::make('description')
+                        ->toolbarButtons([
+                            //'attachFiles',
+                            'blockquote',
+                            'bold',
+                            'bulletList',
+                            'codeBlock',
+                            'h2',
+                            'h3',
+                            'italic',
+                            'link',
+                            'orderedList',
+                            'redo',
+                            'strike',
+                            'underline',
+                            'undo',
+                        ])
+                        ->label(__('resources.demands.description'))->required(),
                 ])->columns(1),
 
                 Section::make(__('resources.demands.section_title'))

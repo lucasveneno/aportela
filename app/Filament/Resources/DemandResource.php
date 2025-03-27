@@ -125,7 +125,7 @@ class DemandResource extends Resource
                             //->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
 
                             Hidden::make('prioridade')
-                                ->default(1), // Prioridade inicial
+                                ->default('low'), // Prioridade inicial
 
                             TextInput::make('prioridade')
                                 ->label('Prioridade Calculada')
@@ -134,7 +134,7 @@ class DemandResource extends Resource
                             TextInput::make('descricao_prioridade')
                                 ->label('Descrição da Prioridade')
                                 ->disabled()
-                                ->default(1), // Descrição inicial
+                                ->default('Baixa prioridade: Melhorias de longo prazo.'), // Descrição inicial
 
                         ]),
                         /*Section::make([
@@ -312,17 +312,17 @@ class DemandResource extends Resource
             4 => __('resources.demands.max'),
             3 => __('resources.demands.high'),
             2 => __('resources.demands.medium'),
-            1 => __('resources.demands.low'),
+            default => __('resources.demands.low'),
         };
     }
 
     public static function descricaoPrioridade(string $prioridade): string
     {
         return match ($prioridade) {
-            4 => __('resources.demands.max_description'),
-            3 => __('resources.demands.high_description'),
-            2 => __('resources.demands.medium_description'),
-            1 => __('resources.demands.low_description'),
+            'max' => __('resources.demands.max_description'),
+            'high' => __('resources.demands.high_description'),
+            'medium' => __('resources.demands.medium_description'),
+            default => __('resources.demands.low_description'),
         };
     }
 }

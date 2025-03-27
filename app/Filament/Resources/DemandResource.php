@@ -137,7 +137,7 @@ class DemandResource extends Resource
                                 ->default('Baixa prioridade: Melhorias de longo prazo.'), // Descrição inicial
 
                         ]),
-                        Section::make([
+                        /*Section::make([
                             Radio::make('priority')
                                 ->label('')
                                 ->options([
@@ -152,7 +152,7 @@ class DemandResource extends Resource
                                     'medium' => __('resources.demands.medium_description'),
                                     'low' => __('resources.demands.low_description')
                                 ]),
-                        ]),
+                        ]),*/
                         
 
 
@@ -309,20 +309,20 @@ class DemandResource extends Resource
         $peso = count($criterios); // Conta os checkboxes marcados
 
         return match ($peso) {
-            4 => 'Máxima',
-            3 => 'Alta',
-            2 => 'Média',
-            default => 'Baixa',
+            4 => 'max',
+            3 => 'high',
+            2 => 'medium',
+            default => 'low',
         };
     }
 
     public static function descricaoPrioridade(string $prioridade): string
     {
         return match ($prioridade) {
-            'Máxima' => 'Urgente: Requer ação imediata devido a risco elevado.',
-            'Alta' => 'Importante: Deve ser tratado rapidamente para evitar problemas futuros.',
-            'Média' => 'Necessária: Precisa ser resolvida dentro de um prazo médio.',
-            default => 'Baixa prioridade: Melhorias de longo prazo.',
+            'max' => __('resources.demands.max_description'),
+            'high' => __('resources.demands.high_description'),
+            'medium' => __('resources.demands.medium_description'),
+            default => __('resources.demands.low_description'),
         };
     }
 }

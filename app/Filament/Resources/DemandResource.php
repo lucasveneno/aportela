@@ -54,7 +54,7 @@ class DemandResource extends Resource
                 Toggle::make('urgent'),
 
                 ViewField::make('rating')
-                    ->view('filament.forms.components.range-slider')
+                    ->view('forms.components.range-slider')
                     ->viewData([
                         'min' => 1,
                         'max' => 5,

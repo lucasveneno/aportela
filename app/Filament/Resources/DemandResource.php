@@ -58,13 +58,13 @@ class DemandResource extends Resource
                 //Toggle::make('requires_councilor'),
                 Fieldset::make('')
                     ->schema([
-                        Section::make([
-                            Placeholder::make('Critérios para Definição de Prioridades:')
-                                ->content('✔ Impacto na população (saúde, segurança, mobilidade).')
-                                ->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                            Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                            Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
-                        ]),
+                        Section::make('Critérios para Definição de Prioridades:')
+                            ->description('')
+                            ->schema([
+                                Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                                Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                                Placeholder::make('')->content('✔ Impacto na população (saúde, segurança, mobilidade).'),
+                            ]),
                         Section::make('Critérios para Definição de Prioridades:')
                             ->description('Prevent abuse by limiting the number of requests per period')
                             ->schema([

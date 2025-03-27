@@ -33,6 +33,7 @@ class AreaResource extends Resource
                 ToggleButtons::make('status')
                     ->label('Habilitar esta área?')
                     ->boolean()
+                    ->default(1)
                     ->inline(),
 
 

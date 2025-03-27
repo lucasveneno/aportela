@@ -15,6 +15,7 @@ use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -52,19 +53,25 @@ class DemandResource extends Resource
                     ->label(__('Area')),
                 Textarea::make('description')->required(),
                 Toggle::make('requires_councilor'),
-                Radio::make('priority')
-                    ->options([
-                        'max' => 'Prioridade Máxima ',
-                        'high' => 'Prioridade Alta ',
-                        'medium' => 'Prioridade Média',
-                        'low' => 'Prioridade Baixa '
-                    ])
-                    ->descriptions([
-                        'max' => 'Urgente - Ação Imediata',
-                        'high' => 'Importante - Planejamento Rápido',
-                        'medium' => 'Necessária - Médio Prazo',
-                        'low' => 'Melhoria - Longo Prazo'
+
+                Section::make('Priority')
+                    ->description('Prevent abuse by limiting the number of requests per period')
+                    ->schema([
+                        Radio::make('priority')
+                            ->options([
+                                'max' => 'Prioridade Máxima ',
+                                'high' => 'Prioridade Alta ',
+                                'medium' => 'Prioridade Média',
+                                'low' => 'Prioridade Baixa '
+                            ])
+                            ->descriptions([
+                                'max' => 'Urgente - Ação Imediata',
+                                'high' => 'Importante - Planejamento Rápido',
+                                'medium' => 'Necessária - Médio Prazo',
+                                'low' => 'Melhoria - Longo Prazo'
+                            ]),
                     ]),
+
 
                 Select::make('status')->options([
                     'pending' => 'Pending',

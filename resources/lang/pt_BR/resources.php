@@ -14,4 +14,17 @@ return [
     'regions' => 'Regiões',
     'users' => 'Usuários',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Area Resource Page Language Lines
+    |--------------------------------------------------------------------------
+    */
+
+    'name' => 'Nome',
+    'status' => 'Status',
+    'area' => 'Área',
+    'category' => 'Categoria',
+    'priority' => 'Prioridade',
+
 ];

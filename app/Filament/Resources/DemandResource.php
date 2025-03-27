@@ -123,7 +123,7 @@ class DemandResource extends Resource
                                     $set('prioridade', self::calcularPrioridade($state));
                                     //$set('descricao_prioridade', self::descricaoPrioridade($state));
                                 })->columns(2),
-                        ])->columnSpan('full'), // Makes section span full width
+                            ]),//->columnSpan('full'), // Makes section span full width
                         Hidden::make('prioridade')
                             ->default(__('resources.demands.low')),
 

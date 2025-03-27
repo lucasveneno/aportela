@@ -26,6 +26,7 @@ class AppPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('app')
+            ->brandName('Filament Demo')
             ->path('app')
             ->login()
             ->colors([

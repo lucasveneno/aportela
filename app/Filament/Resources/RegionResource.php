@@ -28,7 +28,9 @@ class RegionResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required(),
+                TextInput::make('name')
+                    ->label(__('resources.regions.name'))
+                    ->required(),
                 ToggleButtons::make('status')
                     ->label(__('resources.regions.enable_this'))
                     ->boolean()
@@ -41,8 +43,9 @@ class RegionResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')->label(__('resources.regions.name')),
                 ToggleColumn::make('status')
+                    ->label(__('resources.regions.status'))
                     ->onColor('success')
                     ->offColor('danger')
 

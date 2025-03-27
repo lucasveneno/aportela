@@ -66,7 +66,7 @@ class DemandResource extends Resource
                                             ->pluck('name', 'id')
                                             : []
                                     );
-                            }),
+                            })->required(),
 
                         Select::make('category_id')
                             ->label(__('Category'))

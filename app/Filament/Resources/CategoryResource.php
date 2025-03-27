@@ -24,8 +24,7 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static bool $hasTitleCaseModelLabel = false;
-    
+
     public static function form(Form $form): Form
     {
         return $form
@@ -83,18 +82,22 @@ class CategoryResource extends Resource
 
 
 
-    public static function getPluralModelLabel(): string
-    {
-        return __('resources.categories.plural_label'); // Plural label
-    }
+
 
     public static function getNavigationLabel(): string
     {
         return __('resources.categories.label'); // Navigation menu label
+
     }
 
-    protected static function getContentTabLabel(): string
+    public static function getModelLabel(): string
     {
-        return 'Cadastrar Nova Área'; // Your custom title
+        return __('resources.categories.label'); // Navigation menu label
+
+    }
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Demandas');
     }
 }

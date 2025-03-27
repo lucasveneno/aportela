@@ -17,6 +17,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Split;
@@ -84,9 +85,7 @@ class DemandResource extends Resource
                     'in_progress' => 'In Progress',
                     'resolved' => 'Resolved',
                 ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
-                
-
-                MarkdownEditor::make('description')->required(),
+                RichEditor::make('description')->required(),
 
 
                 //Toggle::make('requires_councilor'),

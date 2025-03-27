@@ -18,6 +18,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ViewField;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
@@ -53,11 +54,11 @@ class DemandResource extends Resource
                 Toggle::make('urgent'),
 
                 ViewField::make('rating')
-    ->view('filament.forms.components.range-slider')
-    ->viewData([
-        'min' => 1,
-        'max' => 5,
-    ]),
+                    ->view('filament.forms.components.range-slider')
+                    ->viewData([
+                        'min' => 1,
+                        'max' => 5,
+                    ]),
                 Select::make('status')->options([
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',

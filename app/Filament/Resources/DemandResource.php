@@ -362,6 +362,14 @@ class DemandResource extends Resource
         };
     }
 
+    protected function makeOptionWithTooltip(string $label, string $tooltip): string
+{
+    return view('components.checkbox-option', [
+        'label' => $label,
+        'tooltip' => $tooltip
+    ])->render();
+}
+
     /*
 Melhorias implementadas:
 

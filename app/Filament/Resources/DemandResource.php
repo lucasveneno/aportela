@@ -82,7 +82,7 @@ class DemandResource extends Resource
                         'resolved' => 'Resolved',
                     ])->default('pending')->searchable()->hintIcon('heroicon-m-question-mark-circle', tooltip: ' '),
                     RichEditor::make('description')->required(),
-                ]),
+                ])->columns(3),
 
 
 

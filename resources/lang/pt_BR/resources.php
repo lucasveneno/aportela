@@ -106,6 +106,7 @@ return [
 
         // Applicant data
         'applicant_demand_origin'=>'Origem da demanda',
+        'applicant'=>'Solicitante da demanda',
         'applicant_name'=>'Nome',
         'applicant_role'=>'Tipo',
         'applicant_cpf'=>'CPF',

@@ -88,16 +88,16 @@ return [
         // Priority box
         'section_title' => 'Prioridade',
         'section_description' => ' Selecione a prioridade desta demanda. ',
-        'max' => 'Prioridade Máxima',
+        'max' => 'Prioridade Máxima (Ação imediata)',
         'max_description' => 'Situações críticas que exigem resposta imediata, como riscos à segurança, saúde ou grandes impactos na mobilidade.',
 
-        'high' => 'Prioridade Alta',
+        'high' => 'Prioridade Alta (Planejamento rápido',
         'high_description' => 'Questões relevantes que precisam ser resolvidas rapidamente para evitar agravamentos, como infraestrutura essencial ou serviços públicos deficientes.',
 
-        'medium' => 'Prioridade Média',
+        'medium' => 'Prioridade Média (Médio prazo)',
         'medium_description' => 'Melhorias necessárias, mas que podem ser planejadas dentro de um prazo razoável sem impactos imediatos graves.',
 
-        'low' => 'Prioridade Baixa',
+        'low' => 'Prioridade Baixa (Longo prazo)',
         'low_description' => 'Ajustes e melhorias que aumentam a qualidade de vida, mas que não afetam diretamente a segurança ou o funcionamento essencial da cidade.',
 
     ],

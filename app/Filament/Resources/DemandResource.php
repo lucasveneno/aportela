@@ -120,7 +120,7 @@ class DemandResource extends Resource
                                 ->reactive()
                                 ->afterStateUpdated(fn($state, callable $set) => [
                                     $set('prioridade', self::calcularPrioridade($state)),
-                                    $set('descricao_prioridade', self::calcularPrioridade($state))
+                                    $set('descricao_prioridade', self::descricaoPrioridade($state))
                                 ]),
                             //->afterStateUpdated(fn($state, callable $set) => $set('prioridade', self::calcularPrioridade($state))), // Atualiza a prioridade dinamicamente
 

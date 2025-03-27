@@ -185,7 +185,7 @@ class DemandResource extends Resource
                             }),
                     ]),
 
-                Toggle::make('status')->label('Esta solicitação é um rascunho?')
+                Toggle::make('status')->label('Salvar como rascunho')
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(1),

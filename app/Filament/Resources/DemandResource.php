@@ -319,18 +319,6 @@ class DemandResource extends Resource
         };
     }
 
-    public static function descricaoPrioridade(array $criterios): string
-    {
-        $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso
-
-        return match (true) {
-            $pontuacao >= 20 => $pontuacao . ' - ' . __('resources.demands.max_description'),
-            $pontuacao >= 15 => $pontuacao . ' - ' . __('resources.demands.high_description'),
-            $pontuacao >= 10 => $pontuacao . ' - ' . __('resources.demands.medium_description'),
-            default => $pontuacao . ' - ' . __('resources.demands.low_description'),
-        };
-    }
-
     private static function calcularPontuacao(array $criterios): int
     {
         $total = count($criterios);
@@ -358,5 +346,17 @@ class DemandResource extends Resource
             fn(int $total, string $criterio) => $total + ($pesos[$criterio] ?? 0),
             0
         );
+    }
+
+    public static function descricaoPrioridade(array $criterios): string
+    {
+        $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso
+
+        return match (true) {
+            $pontuacao >= 20 => $pontuacao . ' - ' . __('resources.demands.max_description'),
+            $pontuacao >= 15 => $pontuacao . ' - ' . __('resources.demands.high_description'),
+            $pontuacao >= 10 => $pontuacao . ' - ' . __('resources.demands.medium_description'),
+            default => $pontuacao . ' - ' . __('resources.demands.low_description'),
+        };
     }
 }

@@ -197,7 +197,7 @@ class DemandResource extends Resource
                         ->schema([
                             // ...
                         ]),
-                ]),
+                ])->columns(1)->columnSpanFull(),
 
 
 

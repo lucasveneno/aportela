@@ -52,9 +52,6 @@ class DemandResource extends Resource
         return $form
             ->schema([
 
-               
-
-
                 Section::make([
                     TextInput::make('demand_code')
                         ->label('Código da Demanda')

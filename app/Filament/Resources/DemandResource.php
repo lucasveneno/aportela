@@ -52,20 +52,7 @@ class DemandResource extends Resource
         return $form
             ->schema([
 
-                Wizard::make([
-                    Wizard\Step::make('Clasificação')
-                        ->schema([
-                            
-                        ]),
-                    Wizard\Step::make('Delivery')
-                        ->schema([
-                            
-                        ]),
-                    Wizard\Step::make('Billing')
-                        ->schema([
-                            // ...
-                        ]),
-                ])->columns(1)->columnSpanFull(),
+               
 
 
                 Section::make([

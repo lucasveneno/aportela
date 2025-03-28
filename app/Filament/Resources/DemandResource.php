@@ -55,143 +55,11 @@ class DemandResource extends Resource
                 Wizard::make([
                     Wizard\Step::make('Clasificação')
                         ->schema([
-                            Section::make([
-                                TextInput::make('demand_code')
-                                    ->label('Código da Demanda')
-                                    ->default('DEM-' . date('Ymd') . '-' .  Str::upper(Str::random(8)))
-                                    ->disabled()
-                                    ->dehydrated()
-                                    ->unique(ignoreRecord: true)
-                                    ->helperText('Código gerado automaticamente'),
-                            ]),
-
-                            Section::make(__('resources.demands.classify_demand'))
-                                //->description('Selecione a prioridade desta demanda.')
-                                ->schema([
-
-                                    Select::make('area_id')
-                                        ->label(__('resources.demands.area'))
-                                        ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
-                                        ->searchable()
-                                        ->preload()
-                                        ->live() // This makes the field update the form in real-time
-                                        ->afterStateUpdated(function ($state, Select $component) {
-                                            // When area changes, update the category options
-                                            $component->getContainer()
-                                                ->getComponent('category_id')
-                                                ->options(
-                                                    $state ? Category::where('area_id', $state)
-                                                        //->where('status', 1)
-                                                        ->pluck('name', 'id')
-                                                        : []
-                                                );
-                                        })->required(),
-
-                                    Select::make('category_id')
-                                        ->label(__('resources.demands.category'))
-                                        ->options(fn(Get $get): array => Category::query()
-                                            ->where('area_id', $get('area_id'))
-                                            ->pluck('name', 'id')
-                                            ->toArray())
-                                        ->searchable()
-                                        ->preload()
-                                        ->key('category_id'), // Important for the afterStateUpdated to find this field
-
-
-                                ])->columns(2),
-
-
-
-                            Section::make([
-                                RichEditor::make('description')
-                                    ->toolbarButtons([
-                                        //'attachFiles',
-                                        'blockquote',
-                                        'bold',
-                                        'bulletList',
-                                        'codeBlock',
-                                        'h2',
-                                        'h3',
-                                        'italic',
-                                        'link',
-                                        'orderedList',
-                                        'redo',
-                                        'strike',
-                                        'underline',
-                                        'undo',
-                                    ])
-                                    ->label(__('resources.demands.description'))->required(),
-                            ])->columns(1),
+                            
                         ]),
                     Wizard\Step::make('Delivery')
                         ->schema([
-                            Section::make([
-                                /*ToggleButtons::make('requires_councilor')
-                                        ->label(__('resources.demands.requires_councilor_on_site'))
-                                        ->options([
-                                            0 => 'Não',
-                                            1 => 'Sim, mas não é urgente',
-                                            2 => 'sim, urgentemente'
-                                        ])->default(0)->inline(),
-                                    */
-                                ToggleButtons::make('requires_councilor')
-                                    ->label(__('resources.demands.requires_councilor_on_site'))
-                                    ->boolean()
-                                    ->default(0)
-                                    ->inline(),
-
-                                Section::make(__('resources.demands.section_applicant_title'))
-                                    ->description(__('resources.demands.section_applicant_description'))
-                                    ->schema([
-
-                                        ToggleButtons::make('applicant_demand_origin')
-                                            ->label(__('resources.demands.applicant_demand_origin'))
-                                            ->boolean()
-                                            ->default(0)
-                                            ->inline()
-                                            ->live(), // Makes it update in real-time
-
-                                        Section::make([
-                                            Repeater::make('applicants')
-                                                ->label(__('resources.demands.applicant'))
-                                                ->schema([
-                                                    TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
-                                                    Select::make('applicant_role')
-                                                        ->label(__('resources.demands.applicant_role'))
-                                                        ->searchable()
-                                                        ->options([
-                                                            'leadership' => 'Leadership',
-                                                            'citizen' => 'Citizen',
-                                                            'government' => 'Government Employee',
-                                                            'other' => 'Other'
-                                                        ]),
-
-
-                                                    TextInput::make('applicant_cpf')->label(__('resources.demands.applicant_cpf'))->required(),
-                                                    TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
-                                                    TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),
-                                                    TextInput::make('applicant_email')->label(__('resources.demands.applicant_email'))->required(),
-                                                    TextInput::make('applicant_instagram')->label(__('resources.demands.applicant_instagram'))->required(),
-                                                    TextInput::make('applicant_facebook')->label(__('resources.demands.applicant_facebook'))->required(),
-
-                                                    Select::make('user_id')  // Store the user ID
-                                                        ->label('User')
-                                                        ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
-                                                        ->searchable()  // Allow searching through users
-                                                        ->required(),
-
-
-
-                                                ])
-                                                ->columns(3)
-                                                ->columnSpan('full'),
-
-                                        ])
-                                            ->columns(1)
-                                            ->visible(fn(Get $get): bool => $get('applicant_demand_origin')), // Shows only when toggle is on,
-                                    ]),
-
-                            ]),
+                            
                         ]),
                     Wizard\Step::make('Billing')
                         ->schema([
@@ -200,10 +68,142 @@ class DemandResource extends Resource
                 ])->columns(1)->columnSpanFull(),
 
 
+                Section::make([
+                    TextInput::make('demand_code')
+                        ->label('Código da Demanda')
+                        ->default('DEM-' . date('Ymd') . '-' .  Str::upper(Str::random(8)))
+                        ->disabled()
+                        ->dehydrated()
+                        ->unique(ignoreRecord: true)
+                        ->helperText('Código gerado automaticamente'),
+                ]),
+
+                Section::make(__('resources.demands.classify_demand'))
+                    //->description('Selecione a prioridade desta demanda.')
+                    ->schema([
+
+                        Select::make('area_id')
+                            ->label(__('resources.demands.area'))
+                            ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
+                            ->searchable()
+                            ->preload()
+                            ->live() // This makes the field update the form in real-time
+                            ->afterStateUpdated(function ($state, Select $component) {
+                                // When area changes, update the category options
+                                $component->getContainer()
+                                    ->getComponent('category_id')
+                                    ->options(
+                                        $state ? Category::where('area_id', $state)
+                                            //->where('status', 1)
+                                            ->pluck('name', 'id')
+                                            : []
+                                    );
+                            })->required(),
+
+                        Select::make('category_id')
+                            ->label(__('resources.demands.category'))
+                            ->options(fn(Get $get): array => Category::query()
+                                ->where('area_id', $get('area_id'))
+                                ->pluck('name', 'id')
+                                ->toArray())
+                            ->searchable()
+                            ->preload()
+                            ->key('category_id'), // Important for the afterStateUpdated to find this field
+
+
+                    ])->columns(2),
 
 
 
+                Section::make([
+                    RichEditor::make('description')
+                        ->toolbarButtons([
+                            //'attachFiles',
+                            'blockquote',
+                            'bold',
+                            'bulletList',
+                            'codeBlock',
+                            'h2',
+                            'h3',
+                            'italic',
+                            'link',
+                            'orderedList',
+                            'redo',
+                            'strike',
+                            'underline',
+                            'undo',
+                        ])
+                        ->label(__('resources.demands.description'))->required(),
+                ])->columns(1),
 
+
+                Section::make([
+                    /*ToggleButtons::make('requires_councilor')
+                            ->label(__('resources.demands.requires_councilor_on_site'))
+                            ->options([
+                                0 => 'Não',
+                                1 => 'Sim, mas não é urgente',
+                                2 => 'sim, urgentemente'
+                            ])->default(0)->inline(),
+                        */
+                    ToggleButtons::make('requires_councilor')
+                        ->label(__('resources.demands.requires_councilor_on_site'))
+                        ->boolean()
+                        ->default(0)
+                        ->inline(),
+
+                    Section::make(__('resources.demands.section_applicant_title'))
+                        ->description(__('resources.demands.section_applicant_description'))
+                        ->schema([
+
+                            ToggleButtons::make('applicant_demand_origin')
+                                ->label(__('resources.demands.applicant_demand_origin'))
+                                ->boolean()
+                                ->default(0)
+                                ->inline()
+                                ->live(), // Makes it update in real-time
+
+                            Section::make([
+                                Repeater::make('applicants')
+                                    ->label(__('resources.demands.applicant'))
+                                    ->schema([
+                                        TextInput::make('applicant_name')->label(__('resources.demands.applicant_name'))->required(),
+                                        Select::make('applicant_role')
+                                            ->label(__('resources.demands.applicant_role'))
+                                            ->searchable()
+                                            ->options([
+                                                'leadership' => 'Leadership',
+                                                'citizen' => 'Citizen',
+                                                'government' => 'Government Employee',
+                                                'other' => 'Other'
+                                            ]),
+
+
+                                        TextInput::make('applicant_cpf')->label(__('resources.demands.applicant_cpf'))->required(),
+                                        TextInput::make('applicant_full_address')->label(__('resources.demands.applicant_full_address'))->required(),
+                                        TextInput::make('applicant_phone')->label(__('resources.demands.applicant_phone'))->required(),
+                                        TextInput::make('applicant_email')->label(__('resources.demands.applicant_email'))->required(),
+                                        TextInput::make('applicant_instagram')->label(__('resources.demands.applicant_instagram'))->required(),
+                                        TextInput::make('applicant_facebook')->label(__('resources.demands.applicant_facebook'))->required(),
+
+                                        Select::make('user_id')  // Store the user ID
+                                            ->label('User')
+                                            ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
+                                            ->searchable()  // Allow searching through users
+                                            ->required(),
+
+
+
+                                    ])
+                                    ->columns(3)
+                                    ->columnSpan('full'),
+
+                            ])
+                                ->columns(1)
+                                ->visible(fn(Get $get): bool => $get('applicant_demand_origin')), // Shows only when toggle is on,
+                        ]),
+
+                ]),
 
 
                 Section::make(__('resources.demands.section_priority_title'))

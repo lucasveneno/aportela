@@ -55,7 +55,67 @@ class DemandResource extends Resource
                 Wizard::make([
                     Wizard\Step::make('Order')
                         ->schema([
-                            // ...
+                            Section::make([
+                                TextInput::make('demand_code')
+                                    ->label('Código da Demanda')
+                                    ->default('DEM-' . date('Ymd') . '-' .  Str::upper(Str::random(8)))
+                                    ->disabled()
+                                    ->dehydrated()
+                                    ->unique(ignoreRecord: true)
+                                    ->helperText('Código gerado automaticamente'),
+                            ]),
+            
+                            Section::make(__('resources.demands.classify_demand'))
+                                //->description('Selecione a prioridade desta demanda.')
+                                ->schema([
+            
+                                    Select::make('area_id')
+                                        ->label(__('resources.demands.area'))
+                                        ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
+                                        ->searchable()
+                                        ->preload()
+                                        ->live() // This makes the field update the form in real-time
+                                        ->afterStateUpdated(function ($state, Select $component) {
+                                            // When area changes, update the category options
+                                            $component->getContainer()
+                                                ->getComponent('category_id')
+                                                ->options(
+                                                    $state ? Category::where('area_id', $state)
+                                                        //->where('status', 1)
+                                                        ->pluck('name', 'id')
+                                                        : []
+                                                );
+                                        })->required(),
+            
+                                    Select::make('category_id')
+                                        ->label(__('resources.demands.category'))
+                                        ->options(fn(Get $get): array => Category::query()
+                                            ->where('area_id', $get('area_id'))
+                                            ->pluck('name', 'id')
+                                            ->toArray())
+                                        ->searchable()
+                                        ->preload()
+                                        ->key('category_id'), // Important for the afterStateUpdated to find this field
+            
+            
+                                ])->columns(2),
+            
+                            Section::make([
+                                /*ToggleButtons::make('requires_councilor')
+                                        ->label(__('resources.demands.requires_councilor_on_site'))
+                                        ->options([
+                                            0 => 'Não',
+                                            1 => 'Sim, mas não é urgente',
+                                            2 => 'sim, urgentemente'
+                                        ])->default(0)->inline(),
+                                    */
+                                ToggleButtons::make('requires_councilor')
+                                    ->label(__('resources.demands.requires_councilor_on_site'))
+                                    ->boolean()
+                                    ->default(0)
+                                    ->inline(),
+            
+                            ]),
                         ]),
                     Wizard\Step::make('Delivery')
                         ->schema([
@@ -67,67 +127,7 @@ class DemandResource extends Resource
                         ]),
                     ]),
 
-                Section::make([
-                    TextInput::make('demand_code')
-                        ->label('Código da Demanda')
-                        ->default('DEM-' . date('Ymd') . '-' .  Str::upper(Str::random(8)))
-                        ->disabled()
-                        ->dehydrated()
-                        ->unique(ignoreRecord: true)
-                        ->helperText('Código gerado automaticamente'),
-                ]),
-
-                Section::make(__('resources.demands.classify_demand'))
-                    //->description('Selecione a prioridade desta demanda.')
-                    ->schema([
-
-                        Select::make('area_id')
-                            ->label(__('resources.demands.area'))
-                            ->options(Area::query()->where('status', 1)->pluck('name', 'id'))
-                            ->searchable()
-                            ->preload()
-                            ->live() // This makes the field update the form in real-time
-                            ->afterStateUpdated(function ($state, Select $component) {
-                                // When area changes, update the category options
-                                $component->getContainer()
-                                    ->getComponent('category_id')
-                                    ->options(
-                                        $state ? Category::where('area_id', $state)
-                                            //->where('status', 1)
-                                            ->pluck('name', 'id')
-                                            : []
-                                    );
-                            })->required(),
-
-                        Select::make('category_id')
-                            ->label(__('resources.demands.category'))
-                            ->options(fn(Get $get): array => Category::query()
-                                ->where('area_id', $get('area_id'))
-                                ->pluck('name', 'id')
-                                ->toArray())
-                            ->searchable()
-                            ->preload()
-                            ->key('category_id'), // Important for the afterStateUpdated to find this field
-
-
-                    ])->columns(2),
-
-                Section::make([
-                    /*ToggleButtons::make('requires_councilor')
-                            ->label(__('resources.demands.requires_councilor_on_site'))
-                            ->options([
-                                0 => 'Não',
-                                1 => 'Sim, mas não é urgente',
-                                2 => 'sim, urgentemente'
-                            ])->default(0)->inline(),
-                        */
-                    ToggleButtons::make('requires_councilor')
-                        ->label(__('resources.demands.requires_councilor_on_site'))
-                        ->boolean()
-                        ->default(0)
-                        ->inline(),
-
-                ]),
+                
 
                 Section::make([
                     RichEditor::make('description')

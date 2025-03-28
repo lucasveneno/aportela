@@ -34,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
     {
         seo()
             ->site(config('app.name'))
+            ->viewport('width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no')
             ->title(
                 modify: fn (string $title) => $title . ' - ' . config('app.name'),
                 default: 'Filament - Accelerated Laravel development framework: admin panel, form builder, table builder and more',

@@ -53,7 +53,7 @@ class DemandResource extends Resource
             ->schema([
 
                 Wizard::make([
-                    Wizard\Step::make('Order')
+                    Wizard\Step::make('Clasificação')
                         ->schema([
                             Section::make([
                                 TextInput::make('demand_code')

@@ -25,6 +25,11 @@ class AppPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->seo(
+                fn () => seo()
+                    ->viewport('width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no')
+                    // ... other SEO configurations
+            )
             ->id('app')
             ->brandName('Solicitação de demandas')
             ->path('app')

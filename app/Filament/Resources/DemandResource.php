@@ -29,6 +29,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Components\ViewField;
+use Filament\Forms\Components\Wizard;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
@@ -50,6 +51,21 @@ class DemandResource extends Resource
     {
         return $form
             ->schema([
+
+                Wizard::make([
+                    Wizard\Step::make('Order')
+                        ->schema([
+                            // ...
+                        ]),
+                    Wizard\Step::make('Delivery')
+                        ->schema([
+                            // ...
+                        ]),
+                    Wizard\Step::make('Billing')
+                        ->schema([
+                            // ...
+                        ]),
+                    ]),
 
                 Section::make([
                     TextInput::make('demand_code')

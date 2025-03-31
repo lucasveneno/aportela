@@ -1,5 +1,5 @@
 @props([
-    'darkMode' => false,
+    'darkMode' => true,
     'docSearch' => true,
 ])
 

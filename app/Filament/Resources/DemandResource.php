@@ -208,7 +208,7 @@ class DemandResource extends Resource
                                 ->reactive()
                                 ->afterStateUpdated(function ($state, callable $set) {
                                     $set('priority', self::calcularpriority($state));
-                                    //$set('descricao_priority', self::descricaopriority($state));
+                                    //$set('priority_description', self::descricaopriority($state));
                                 }), //->columns(2),
 
                         ]),
@@ -219,7 +219,7 @@ class DemandResource extends Resource
                                 ->label('Nível de priority')
                                 ->disabled()
                                 ->dehydrated(),
-                            Placeholder::make('descricao_priority')
+                            Placeholder::make('priority_description')
                                 ->label('Justificativa')
                                 ->content(fn($get) => self::descricaopriority($get('prioritization_criteria') ?? [])),
                         ]),

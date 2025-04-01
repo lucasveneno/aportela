@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('demand_code')->nullable(); // roles: admin, assessor, citizen
             $table->string('category_id')->nullable(); // roles: admin, assessor, citizen
             $table->string('applicant_demand_origin')->nullable(); // roles: admin, assessor, citizen
-            $table->json('applicants')->nullable(); // roles: admin, assessor, citizen
+            $table->string('applicants')->nullable(); // roles: admin, assessor, citizen
             $table->string('prioritization_criteria')->nullable(); // roles: admin, assessor, citizen
             $table->string('priority')->nullable(); // roles: admin, assessor, citizen
             $table->string('priority_description')->nullable(); // roles: admin, assessor, citizen

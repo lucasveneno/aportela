@@ -303,7 +303,6 @@ class DemandResource extends Resource
                     ->description(__('resources.demands.draft_description'))
                     ->schema([
 
-
                         ToggleButtons::make('draft')
                             ->label(__('resources.demands.draft_input'))
                             ->boolean()

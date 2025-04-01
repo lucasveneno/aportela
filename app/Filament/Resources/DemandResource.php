@@ -170,11 +170,11 @@ class DemandResource extends Resource
                                         TextInput::make('applicant_instagram')->label(__('resources.demands.applicant_instagram'))->required(),
                                         TextInput::make('applicant_facebook')->label(__('resources.demands.applicant_facebook'))->required(),
 
-                                        Select::make('user_id')  // Store the user ID
+                                        /*Select::make('user_id')  // Store the user ID
                                             ->label('User')
                                             ->options(User::query()->pluck('name', 'id'))  // Get all users as [id => name]
                                             ->searchable()  // Allow searching through users
-                                            ->required(),
+                                            ->required(),*/
 
 
 

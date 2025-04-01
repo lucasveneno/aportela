@@ -179,7 +179,7 @@ class DemandResource extends Resource
 
 
                                     ])
-                                    ->columns(3)
+                                    ->columns(2)
                                     ->columnSpan('full'),
 
                             ])

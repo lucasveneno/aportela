@@ -292,10 +292,10 @@ class DemandResource extends Resource
 
 
                     ToggleButtons::make('requires_councilor')
-                    ->label(__('resources.demands.requires_councilor_on_site'))
-                    ->boolean()
-                    ->default(0)
-                    ->inline(),
+                        ->label(__('resources.demands.requires_councilor_on_site'))
+                        ->boolean()
+                        ->default(0)
+                        ->inline(),
 
                     ToggleButtons::make('draft')
                         ->label(__('resources.demands.draft'))
@@ -305,7 +305,7 @@ class DemandResource extends Resource
 
 
 
-                ]),
+                ])->columns(2),
             ]);
     }
 

@@ -36,7 +36,7 @@ return new class extends Migration
             $table->dropColumn('prioritization_criteria');
             $table->dropColumn('priority');
             $table->dropColumn('priority_description');
-            $table->dropColumn('drafts');
+            $table->dropColumn('draft');
 
         });
     }

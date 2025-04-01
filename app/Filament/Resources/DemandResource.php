@@ -316,7 +316,7 @@ class DemandResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
+                TextColumn::make('demand_code')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('area_id')

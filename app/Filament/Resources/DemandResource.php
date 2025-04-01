@@ -344,7 +344,7 @@ class DemandResource extends Resource
             // Conditionally allow row click only for drafts
             ->recordUrl(
                 fn($record) => $record->draft
-                    ? 'edit/'.['record' => $record] 
+                    ? 'edit/'. $record 
                     : null
             )
             ->actions([

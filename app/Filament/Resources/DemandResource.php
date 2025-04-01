@@ -299,17 +299,19 @@ class DemandResource extends Resource
 
                 ]),
 
-                Section::make([
+                Section::make(__('resources.demands.draft'))
+                    ->description(__('resources.demands.draft_description'))
+                    ->schema([
 
 
-                    ToggleButtons::make('draft')
-                        ->label(__('resources.demands.draft'))
-                        ->boolean()
-                        ->default(0)
-                        ->inline(), // Makes it update in real-time
+                        ToggleButtons::make('draft')
+                            ->label(__('resources.demands.draft'))
+                            ->boolean()
+                            ->default(0)
+                            ->inline(), // Makes it update in real-time
 
 
-                ]),
+                    ]),
             ]);
     }
 

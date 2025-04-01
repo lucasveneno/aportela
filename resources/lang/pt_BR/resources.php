@@ -119,7 +119,9 @@ return [
         'applicant_facebook' => 'Facebook',
 
         'requires_councilor_on_site' => 'Vereador(a) precisa ir até o local?',
-        'draft' => 'Salvar demanda como rascunho?',
+        'draft' => 'Rascunho',
+        'draft_descrition' => '⚠️ Atenção: Se você não marcar esta opção, o formulário será enviado como finalizado e não será possível editá-lo posteriormente. Certifique-se de que todas as informações estão corretas antes de prosseguir.',
+        'draft_input' => 'Salvar demanda como rascunho?',
     ],
 
 

@@ -120,7 +120,13 @@ class DemandResource extends Resource
                         ->label(__('resources.demands.description'))->required(),
                 ])->columns(1),
 
-
+                Section::make([
+                    ToggleButtons::make('requires_councilor')
+                        ->label(__('resources.demands.requires_councilor_on_site'))
+                        ->boolean()
+                        ->default(0)
+                        ->inline(),
+                ]),
                 Section::make([
                     /*ToggleButtons::make('requires_councilor')
                             ->label(__('resources.demands.requires_councilor_on_site'))
@@ -130,11 +136,6 @@ class DemandResource extends Resource
                                 2 => 'sim, urgentemente'
                             ])->default(0)->inline(),
                         */
-                    ToggleButtons::make('requires_councilor')
-                        ->label(__('resources.demands.requires_councilor_on_site'))
-                        ->boolean()
-                        ->default(0)
-                        ->inline(),
 
                     Section::make(__('resources.demands.section_applicant_title'))
                         ->description(__('resources.demands.section_applicant_description'))

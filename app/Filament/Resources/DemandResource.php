@@ -305,7 +305,7 @@ class DemandResource extends Resource
 
 
                         ToggleButtons::make('draft')
-                            ->label(__('resources.demands.draft'))
+                            ->label(__('resources.demands.draft_input'))
                             ->boolean()
                             ->default(0)
                             ->inline(), // Makes it update in real-time

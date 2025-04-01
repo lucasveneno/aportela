@@ -63,7 +63,7 @@ class DemandResource extends Resource
                 ]),
 
                 Section::make(__('resources.demands.classify_demand'))
-                    //->description('Selecione a prioridade desta demanda.')
+                    //->description('Selecione a priority desta demanda.')
                     ->schema([
 
                         Select::make('area_id')
@@ -195,7 +195,7 @@ class DemandResource extends Resource
                     ->schema([
 
                         Section::make([
-                            CheckboxList::make('criterios')
+                            CheckboxList::make('prioritization_criteria')
                                 ->label('Critérios de Priorização')
                                 ->options([
                                     'impacto_populacao' => 'Impacto na população (saúde, segurança, mobilidade...)',
@@ -207,21 +207,21 @@ class DemandResource extends Resource
                                 ])
                                 ->reactive()
                                 ->afterStateUpdated(function ($state, callable $set) {
-                                    $set('prioridade', self::calcularPrioridade($state));
-                                    //$set('descricao_prioridade', self::descricaoPrioridade($state));
+                                    $set('priority', self::calcularpriority($state));
+                                    //$set('descricao_priority', self::descricaopriority($state));
                                 }), //->columns(2),
 
                         ]),
                         Section::make([
-                            Hidden::make('prioridade')
+                            Hidden::make('priority')
                                 ->default(__('resources.demands.low')),
-                            TextInput::make('prioridade')
-                                ->label('Nível de Prioridade')
+                            TextInput::make('priority')
+                                ->label('Nível de priority')
                                 ->disabled()
                                 ->dehydrated(),
-                            Placeholder::make('descricao_prioridade')
+                            Placeholder::make('descricao_priority')
                                 ->label('Justificativa')
-                                ->content(fn($get) => self::descricaoPrioridade($get('criterios') ?? [])),
+                                ->content(fn($get) => self::descricaopriority($get('prioritization_criteria') ?? [])),
                         ]),
 
                     ]),
@@ -386,7 +386,7 @@ class DemandResource extends Resource
         return __('resources.demands_group');
     }
 
-    private static function calcularPontuacao(array $criterios): int
+    private static function calcularPontuacao(array $prioritization_criteria): int
     {
         $pesos = [
             // Critérios Essenciais (alto impacto)
@@ -394,7 +394,7 @@ class DemandResource extends Resource
             'risco_acidentes' => 5,         // Prevenção de perdas humanas/materiais
 
             // Critérios Estratégicos
-            'alinhamento_metas' => 4,       // Prioridade governamental/ODS
+            'alinhamento_metas' => 4,       // priority governamental/ODS
             'custo_beneficio' => 3,         // Eficiência de recursos
 
             // Critérios Operacionais
@@ -407,16 +407,16 @@ class DemandResource extends Resource
         ];
 
         return array_reduce(
-            $criterios,
+            $prioritization_criteria,
             fn(int $total, string $criterio) => $total + ($pesos[$criterio] ?? 0),
             0
         );
     }
 
-    public static function calcularPrioridade(array $criterios): string
+    public static function calcularpriority(array $prioritization_criteria): string
     {
-        $total = count($criterios);
-        $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso
+        $total = count($prioritization_criteria);
+        $pontuacao = self::calcularPontuacao($prioritization_criteria); // Método separado para reuso
 
         return match (true) {
             $pontuacao >= 20 =>  __('resources.demands.max'),
@@ -426,10 +426,10 @@ class DemandResource extends Resource
         };
     }
 
-    public static function descricaoPrioridade(array $criterios): string
+    public static function descricaopriority(array $prioritization_criteria): string
     {
-        $total = count($criterios);
-        $pontuacao = self::calcularPontuacao($criterios); // Método separado para reuso
+        $total = count($prioritization_criteria);
+        $pontuacao = self::calcularPontuacao($prioritization_criteria); // Método separado para reuso
 
         return match (true) {
             $pontuacao >= 20 =>  __('resources.demands.max_description'),

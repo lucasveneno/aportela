@@ -341,7 +341,7 @@ class DemandResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()->disabled(fn ($record) => $record->draft === '1'),
+                Tables\Actions\EditAction::make()->disabled(fn ($record) => $record->draft !== true)
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

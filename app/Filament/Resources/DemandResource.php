@@ -323,7 +323,14 @@ class DemandResource extends Resource
                 Tables\Columns\TextColumn::make('area_id')
                     ->numeric()
                     ->sortable(),
-                IconColumn::make('draft')->label(__('resources.demands.draft'))->boolean(),
+                //IconColumn::make('draft')->boolean(),
+
+                IconColumn::make('draft')->label(__('resources.demands.draft'))
+                    ->icon(fn(string $state): string => match ($state) {
+                        'draft' => 'heroicon-o-pencil',
+                        'reviewing' => 'heroicon-o-clock',
+                        'published' => 'heroicon-o-check-circle',
+                    }),
                 IconColumn::make('requires_councilor')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

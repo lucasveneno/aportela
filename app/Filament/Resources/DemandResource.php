@@ -321,9 +321,12 @@ class DemandResource extends Resource
                 TextColumn::make('demand_code')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('area_id')
-                    ->numeric()
+
+                TextColumn::make('area_id')
+                    ->label(__('resources.categories.area'))
+                    ->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
                     ->sortable(),
+
                 //IconColumn::make('draft')->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

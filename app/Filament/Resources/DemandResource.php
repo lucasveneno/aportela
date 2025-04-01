@@ -11,6 +11,7 @@ use App\Models\User;
 use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Fields\Geocomplete;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
+use Filament\Actions\EditAction;
 use Filament\Forms;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Fieldset;
@@ -340,6 +341,11 @@ class DemandResource extends Resource
             ->filters([
                 //
             ])
+            ->recordUrl(
+                fn ($record) => $record->draft 
+                    ? EditAction::getUrl([$record]) 
+                    : null
+            )
             ->actions([
                 Tables\Actions\EditAction::make()->visible(fn ($record) => $record->draft === true),
             ])

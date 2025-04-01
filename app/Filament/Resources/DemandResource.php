@@ -40,7 +40,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
@@ -344,7 +343,9 @@ class DemandResource extends Resource
             ])
             // Conditionally allow row click only for drafts
             ->recordUrl(
-                fn (Model $record): string => route('demands.edit', ['record' => $record]),
+                fn($record) => $record->draft
+                    ? $this::getUrl('edit', ['record' => $record]) 
+                    : null
             )
             ->actions([
                 Tables\Actions\EditAction::make()->visible(fn($record) => $record->draft === true),

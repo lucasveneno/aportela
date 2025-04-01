@@ -287,6 +287,7 @@ class DemandResource extends Resource
                             ->disk('public') // The disk where files will be stored
                             ->directory('demand_files'), // Directory within the disk
                     ])->columns(1),
+                    
                 Section::make([
 
 
@@ -307,7 +308,7 @@ class DemandResource extends Resource
 
 
 
-                ])->columns(2)->columnSpanFull(),
+                ]),
             ]);
     }
 

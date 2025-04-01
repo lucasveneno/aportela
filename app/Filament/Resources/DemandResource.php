@@ -325,13 +325,6 @@ class DemandResource extends Resource
                     ->numeric()
                     ->sortable(),
                 //IconColumn::make('draft')->boolean(),
-
-                IconColumn::make('draft')->label(__('resources.demands.draft'))
-                    ->icon(fn(string $state): string => match ($state) {
-                        '1' => 'heroicon-o-pencil',
-                        //'reviewing' => 'heroicon-o-clock',
-                        'published' => 'heroicon-o-check-circle',
-                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

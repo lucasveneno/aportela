@@ -45,6 +45,7 @@ class Demand extends Model
         'area_id' => 'array',
         'files' => 'array',
         'full_address'=>'array',
+        'priority'=>'array',
         'applicants'=>'array',
     ];
 

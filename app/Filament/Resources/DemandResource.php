@@ -35,6 +35,7 @@ use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -321,8 +322,7 @@ class DemandResource extends Resource
                 Tables\Columns\TextColumn::make('area_id')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                ToggleColumn::make('draft'),
                 Tables\Columns\IconColumn::make('requires_councilor')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

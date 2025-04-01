@@ -309,7 +309,7 @@ class DemandResource extends Resource
 
 
                     ]),
-                ])->columns(2),
+                ])->columns(2)->columnSpanFull(),
             ]);
     }
 

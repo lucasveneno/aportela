@@ -341,7 +341,7 @@ class DemandResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->visible(fn ($record) => $record->draft === true),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

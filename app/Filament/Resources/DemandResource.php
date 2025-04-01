@@ -327,8 +327,8 @@ class DemandResource extends Resource
 
                 IconColumn::make('draft')->label(__('resources.demands.draft'))
                     ->icon(fn(string $state): string => match ($state) {
-                        'draft' => 'heroicon-o-pencil',
-                        'reviewing' => 'heroicon-o-clock',
+                        '1' => 'heroicon-o-pencil',
+                        //'reviewing' => 'heroicon-o-clock',
                         'published' => 'heroicon-o-check-circle',
                     }),
                 IconColumn::make('requires_councilor')

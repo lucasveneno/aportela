@@ -288,21 +288,19 @@ class DemandResource extends Resource
                             ->directory('demand_files'), // Directory within the disk
                     ])->columns(1),
                 Section::make([
-                    Section::make([
                         ToggleButtons::make('requires_councilor')
                             ->label(__('resources.demands.requires_councilor_on_site'))
                             ->boolean()
                             ->default(0)
                             ->inline(),
-                    ]),
-                    Section::make([
+                    
                         ToggleButtons::make('draft')
                             ->label(__('resources.demands.draft'))
                             ->boolean()
                             ->default(0)
                             ->inline(), // Makes it update in real-time
 
-                    ]),
+                    
                 ])->columns(2)->columnSpanFull(),
             ]);
     }

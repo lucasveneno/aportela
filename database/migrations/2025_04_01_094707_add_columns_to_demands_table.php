@@ -18,7 +18,6 @@ return new class extends Migration
             $table->json('applicants')->nullable(); // roles: admin, assessor, citizen
             $table->string('prioritization_criteria')->nullable(); // roles: admin, assessor, citizen
             $table->string('priority')->nullable(); // roles: admin, assessor, citizen
-            $table->string('priority_description')->nullable(); // roles: admin, assessor, citizen
         });
     }
 
@@ -34,7 +33,6 @@ return new class extends Migration
             $table->dropColumn('applicants');
             $table->dropColumn('prioritization_criteria');
             $table->dropColumn('priority');
-            $table->dropColumn('priority_description');
 
         });
     }

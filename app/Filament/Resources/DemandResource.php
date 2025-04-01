@@ -296,6 +296,8 @@ class DemandResource extends Resource
                         ->boolean()
                         ->default(0)
                         ->inline(),
+                ]),
+                Section::make([
 
                     ToggleButtons::make('draft')
                         ->label(__('resources.demands.draft'))

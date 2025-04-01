@@ -322,7 +322,7 @@ class DemandResource extends Resource
                 Tables\Columns\TextColumn::make('area_id')
                     ->numeric()
                     ->sortable(),
-                ToggleColumn::make('draft'),
+                ToggleColumn::make('draft')->label(__('resources.demands.draft')),
                 Tables\Columns\IconColumn::make('requires_councilor')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

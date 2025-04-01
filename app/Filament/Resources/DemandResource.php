@@ -341,13 +341,14 @@ class DemandResource extends Resource
             ->filters([
                 //
             ])
+            // Conditionally allow row click only for drafts
             ->recordUrl(
-                fn ($record) => $record->draft 
-                    ? EditAction::getUrl([$record]) 
+                fn($record) => $record->draft
+                    ? $this->getResource()::getUrl('edit', ['record' => $record])
                     : null
             )
             ->actions([
-                Tables\Actions\EditAction::make()->visible(fn ($record) => $record->draft === true),
+                Tables\Actions\EditAction::make()->visible(fn($record) => $record->draft === true),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

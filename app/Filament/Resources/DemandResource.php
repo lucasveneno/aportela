@@ -331,8 +331,6 @@ class DemandResource extends Resource
                         //'reviewing' => 'heroicon-o-clock',
                         'published' => 'heroicon-o-check-circle',
                     }),
-                IconColumn::make('requires_councilor')
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

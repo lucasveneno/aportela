@@ -34,6 +34,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
@@ -322,8 +323,8 @@ class DemandResource extends Resource
                 Tables\Columns\TextColumn::make('area_id')
                     ->numeric()
                     ->sortable(),
-                ToggleColumn::make('draft')->label(__('resources.demands.draft')),
-                Tables\Columns\IconColumn::make('requires_councilor')
+                IconColumn::make('draft')->label(__('resources.demands.draft'))->boolean(),
+                IconColumn::make('requires_councilor')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

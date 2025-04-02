@@ -344,7 +344,7 @@ class DemandResource extends Resource
             // Conditionally allow row click only for drafts
             ->recordUrl(function ($record) {
                 if ($record->draft) {
-                    return route($this->getResource()::getRouteBaseName() . '.edit', ['record' => $record]);
+                    return static::getUrl('edit', ['record' => $record]);
                 }
                 return null;
             })

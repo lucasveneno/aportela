@@ -342,9 +342,7 @@ class DemandResource extends Resource
                 //
             ])
             // Conditionally allow row click only for drafts
-
-            //->recordUrl(fn($record) => $record->draft ? '3/edit' . $record->id : null)
-            ->recordUrl(fn($record) => $record->draft ??  null)
+            ->recordUrl(fn($record) => $record->draft ? $record->id . '/edit' : null)
             ->actions([
                 Tables\Actions\EditAction::make()->visible(fn($record) => $record->draft === true),
             ])

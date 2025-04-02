@@ -350,7 +350,7 @@ class DemandResource extends Resource
             })*/
             ->recordUrl(fn($record) => $record->draft ? static::getUrl('edit', ['record' => $record]) : null)
             ->actions([
-                Tables\Actions\EditAction::make()->visible(fn($record) => $record->draft === true),
+                Tables\Actions\EditAction::make()->visible(fn($record) => $record->draft),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

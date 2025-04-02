@@ -37,9 +37,9 @@ class UserResource extends Resource
                     ->password()
                     ->revealable()
                     ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
-                    ->dehydrated(fn(?string $state): bool => filled($state))
-                    ->hidden(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\EditRecord) // Hide on create
-                    ->disabled(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\EditRecord), // Disable on edit
+                    ->dehydrated(fn(?string $state): bool => filled($state)),
+                    //->hidden(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\EditRecord) // Hide on create
+                    //->disabled(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\EditRecord), // Disable on edit
                 Select::make('role')
                     ->options(
                         [

@@ -98,6 +98,7 @@
 
         <p><strong>Unidade/Setor:</strong> {{ $sector }}</p>
         <p><strong>Responsável:</strong> {{ $requester }}</p>
+        <p><strong>Código da solicitaão:</strong> {{ $demand_code }}</p>
         <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
 
         <p class="date"><strong>Data da solicitação:</strong> {{ $date }}</p>

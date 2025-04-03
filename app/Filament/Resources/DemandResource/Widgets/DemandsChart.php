@@ -16,6 +16,8 @@ class DemandsChart extends ChartWidget
 
     protected int|string|array $columnSpan = 'full';
 
+    public ?string $filter = 'month';
+
 
     protected function getFilters(): ?array
     {

@@ -108,11 +108,6 @@
 
             <p class="date"><strong>Data da solicitação:</strong> {{ now()->format('d/m/Y H:i') }}</p>
 
-            <p>
-                <strong>Especificação:</strong>
-                <br /> {!! $record->description !!}
-            </p>
-
             <h3>Justificativa da Demanda</h3>
             <table>
                 <tr>
@@ -122,7 +117,9 @@
             <h3>Especificação da Demanda</h3>
             <table>
                 <tr>
-                    <td style="height: 100px;"></td>
+                    <td style="height: 100px;">
+                        {!! $record->description !!}
+                    </td>
                 </tr>
             </table>
         </div>

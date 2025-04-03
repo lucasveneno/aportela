@@ -140,7 +140,7 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                     ]
                 ],
             ],
-            'cutout' => '60%',
+            'cutout' => '0%',
         ];
     }
 

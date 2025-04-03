@@ -14,8 +14,6 @@
             margin: 20px;
         }
 
-        body {}
-
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -60,7 +58,8 @@
         }
 
         .content {
-            padding: 20px 0
+            padding: 20px 0;
+            font-size: 12px
         }
 
         .footer {
@@ -83,15 +82,48 @@
 
         <div class="container" id="content">
             <h2>Solicitação de Demanda</h2>
-            <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
-            <p><strong>Responsável:</strong> João da Silva</p>
-            <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
-            <p><strong>Data do Evento:</strong> 10/04/2025</p>
-            <p>
-                <strong>Especificação:</strong>
-                <br /> {!! $record->description !!}
-            </p>
+            <h2>FORMULÁRIO DE SOLICITAÇÃO DE DEMANDA</h2>
+            <h3>IMPRENSA UNIVERSITÁRIA</h3>
+            <table>
+                <tr>
+                    <th>Unidade/Setor</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Responsável pela solicitação</th>
+                    <td></td>
+                    <th>CPF ou SIAPE do responsável</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>E-mail</th>
+                    <td></td>
+                    <th>Telefone</th>
+                    <td></td>
+                </tr>
+            </table>
+            <h3>Justificativa da Demanda</h3>
+            <table>
+                <tr>
+                    <td style="height: 100px;"></td>
+                </tr>
+            </table>
+            <h3>Especificação da Demanda</h3>
+            <table>
+                <tr>
+                    <td style="height: 100px;"></td>
+                </tr>
+            </table>
         </div>
+        <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
+        <p><strong>Responsável:</strong> João da Silva</p>
+        <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
+        <p><strong>Data do Evento:</strong> 10/04/2025</p>
+        <p>
+            <strong>Especificação:</strong>
+            <br /> {!! $record->description !!}
+        </p>
+    </div>
     </div>
 
     <div class="footer">

@@ -366,6 +366,11 @@ class DemandResource extends Resource
             ->recordUrl(fn($record) => $record->draft ? static::getUrl('edit', ['record' => $record]) : null)
             ->actions([
                 Tables\Actions\EditAction::make()->visible(fn($record) => $record->draft),
+                Tables\Actions\Action::make('view')
+                    ->label('View Content') // No text, just icon
+                    ->icon('heroicon-o-eye')
+                    ->modalContent(fn($record) => $record->content),
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

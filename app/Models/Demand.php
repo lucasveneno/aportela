@@ -136,7 +136,7 @@ class Demand extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function getWidgets(): array
+    protected function getHeaderWidgets(): array
     {
         return [
             StatsOverview::class, // Add your widget here

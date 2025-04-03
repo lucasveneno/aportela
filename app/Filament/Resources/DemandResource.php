@@ -367,7 +367,7 @@ class DemandResource extends Resource
             ->recordUrl(fn($record) => $record->draft ? static::getUrl('edit', ['record' => $record]) : null)
             ->actions([
                 Tables\Actions\EditAction::make()->visible(fn($record) => $record->draft),
-                Tables\Actions\ViewAction::make()->visible(fn($record) => $record->draft), // Uses the ViewDemand page by default
+                Tables\Actions\ViewAction::make()->visible(fn($record) => !$record->draft), // Uses the ViewDemand page by default
 
             ])
             ->bulkActions([

@@ -15,6 +15,7 @@ class UsersDemandDistributionPieChart  extends ChartWidget
     protected int|string|array $columnSpan = 'lg';
 
     public ?string $filter = 'month'; // Global filter property
+    public int $totalDemands = 0;
 
     protected function getFilters(): array
     {
@@ -48,6 +49,8 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             }])
             ->orderByDesc('demands_count')
             ->get();
+
+        $this->totalDemands = $usersWithDemands->sum('demands_count');
 
         $colors = [
             '#6366f1',

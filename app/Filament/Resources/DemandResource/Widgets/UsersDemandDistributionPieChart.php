@@ -73,7 +73,7 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                     'hoverOffset' => 10,
                 ],
             ],
-            'labels' => $usersWithDemands->pluck('demands_count')->toArray(),
+            'labels' => $usersWithDemands->pluck('name')->toArray().': '.$usersWithDemands->pluck('demands_count')->toArray(),
 
         ];
 

@@ -399,6 +399,7 @@ class DemandResource extends Resource
             'index' => Pages\ListDemands::route('/'),
             'create' => Pages\CreateDemand::route('/create'),
             'edit' => Pages\EditDemand::route('/{record}/edit'),
+            'view' => Pages\ViewDemand::route('/{record}'),
         ];
     }
 

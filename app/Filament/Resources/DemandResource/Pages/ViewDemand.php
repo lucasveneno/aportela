@@ -40,6 +40,7 @@ class ViewDemand extends ViewRecord
                 'record' => $this->record,
                 'title' => $this->record->title,
                 'date' => now()->format('Y-m-d'),
+                'demand_code' => $this->record->demand_code
             ])
         );
 

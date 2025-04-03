@@ -14,7 +14,7 @@
         }
 
         html {
-            margin: 40px 50px
+            margin: 40px 50px;
         }
 
         body {
@@ -60,17 +60,17 @@
 
             .header {
                 text-align: center;
-                margin-bottom: 20px
+                margin-bottom: 20px;
             }
 
             .title {
                 font-size: 24px;
-                font-weight: bold
+                font-weight: bold;
             }
 
             .date {
                 color: #666;
-                margin-bottom: 30px
+                margin-bottom: 30px;
             }
 
             .content {
@@ -81,7 +81,7 @@
                 margin-top: 50px;
                 text-align: center;
                 font-size: 12px;
-                color: #999
+                color: #999;
             }
 
             .center {

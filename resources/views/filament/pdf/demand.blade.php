@@ -96,7 +96,7 @@
         <h2>ESTADO DE MATO GROSSO DO SUL</h2>
         <h3 class="title">{{ $title }}</h3>
 
-        <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
+        <p><strong>Unidade/Setor:</strong> {{ $sector }}</p>
         <p><strong>Responsável:</strong> {{ $requester }}</p>
         <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
 

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\DemandResource\Widgets;
 
+use App\Models\Demand;
 use Filament\Widgets\ChartWidget;
 
 class DemandsChart extends ChartWidget
@@ -10,17 +11,26 @@ class DemandsChart extends ChartWidget
 
     protected function getData(): array
     {
+        $data = Demand::model(Demand::class)
+            ->between(
+                start: now()->startOfYear(),
+                end: now()->endOfYear(),
+            )
+            ->perMonth()
+            ->count();
+
         return [
             'datasets' => [
                 [
-                    'label' => 'Demands created',
-                    'data' => [0, 10, 5, 2, 21, 32, 45, 74, 65, 45, 77, 89],
+                    'label' => 'Blog posts',
+                    'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
                 ],
             ],
-            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-
+            'labels' => $data->map(fn(TrendValue $value) => $value->date),
         ];
     }
+
+
 
     protected function getType(): string
     {

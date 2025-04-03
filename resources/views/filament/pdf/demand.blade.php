@@ -96,6 +96,11 @@
             .details>p {
                 margin: 0px;
             }
+
+            .description {
+
+                background: #666;
+            }
         }
     </style>
 </head>

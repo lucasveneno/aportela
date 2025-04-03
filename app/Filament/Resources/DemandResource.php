@@ -372,7 +372,7 @@ class DemandResource extends Resource
                     ->modalContent(fn($record) => $record->content),*/
 
                 Tables\Actions\Action::make('view')
-                    ->label('View Content')
+                    ->label('')// No text, just icon
                     ->icon('heroicon-o-eye')
                     ->action(function ($record, $livewire) {
                         $livewire->emit('openModal', 'view-content-modal', ['recordId' => $record->id]);

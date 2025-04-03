@@ -11,6 +11,16 @@ class DemandsChart extends ChartWidget
 {
     protected static ?string $heading = 'Chart';
 
+    protected function getFilters(): ?array
+    {
+        return [
+            'today' => 'Today',
+            'week' => 'Last week',
+            'month' => 'Last month',
+            'year' => 'This year',
+        ];
+    }
+
     protected function getData(): array
     {
         $data = Trend::model(Demand::class)
@@ -31,8 +41,6 @@ class DemandsChart extends ChartWidget
             'labels' => $data->map(fn(TrendValue $value) => $value->date),
         ];
     }
-
-
 
     protected function getType(): string
     {

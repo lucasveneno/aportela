@@ -76,8 +76,8 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                     //'hoverOffset' => 10,
                 ],
             ],
-            //'labels' => $usersWithDemands->pluck('name')->toArray(),
-            'labels' => $usersWithDemands->map(fn($user) => "{$user->name}: {$user->demands_count}"),
+            'labels' => $usersWithDemands->pluck('name')->toArray(),
+            //'labels' => $usersWithDemands->map(fn($user) => "{$user->name}: {$user->demands_count}"),
 
         ];
 

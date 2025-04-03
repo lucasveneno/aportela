@@ -113,7 +113,6 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             'responsive' => true,
             'plugins' => [
                 'legend' => [
-                    'display' => true,
                     'position' => 'right',
                     'labels' => [
                         'boxWidth' => 12,

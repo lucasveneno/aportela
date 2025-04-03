@@ -59,7 +59,7 @@ class DemandsChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Blog Posts',
+                    'label' => 'Demands',
                     'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
                 ],
             ],

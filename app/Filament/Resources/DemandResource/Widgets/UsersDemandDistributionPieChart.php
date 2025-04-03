@@ -31,8 +31,16 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             ->get();
 
         $colors = [
-            '#6366f1', '#ec4899', '#10b981', '#f59e0b', '#ef4444',
-            '#8b5cf6', '#3b82f6', '#14b8a6', '#f97316', '#64748b'
+            '#6366f1',
+            '#ec4899',
+            '#10b981',
+            '#f59e0b',
+            '#ef4444',
+            '#8b5cf6',
+            '#3b82f6',
+            '#14b8a6',
+            '#f97316',
+            '#64748b'
         ];
 
         $datasets = [
@@ -85,7 +93,7 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                 'tooltip' => [
                     'enabled' => true,
                     'callbacks' => [
-                        'label' => function($context) {
+                        'label' => function ($context) {
                             $label = $context->label ?? '';
                             $value = $context->raw ?? 0;
                             $total = array_sum($context->dataset->data);
@@ -101,13 +109,5 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                 'animateRotate' => true,
             ],
         ];
-    }
-
-    /**
-     * Get the widget description (optional)
-     */
-    public static function getDescription(): ?string
-    {
-        return 'Visual representation of demand distribution among team members (Admin only)';
     }
 }

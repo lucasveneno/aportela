@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\DemandResource\Pages;
 
 use App\Filament\Resources\DemandResource;
+use App\Models\Category;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
@@ -40,7 +41,9 @@ class ViewDemand extends ViewRecord
                 'record' => $this->record,
                 'title' => $this->record->title,
                 'date' => now()->format('Y-m-d'),
-                'demand_code' => $this->record->demand_code
+                'requester' => $this->record->demand_code,
+                'demand_code' => $this->record->demand_code,
+                'category ' =>  Category::query()->where('id', $this->record->category_id)->pluck('name', 'id')['name']
             ])
         );
 

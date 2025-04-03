@@ -88,25 +88,26 @@
 
 <body>
     <div class="header">
-        <div class="title">{{ $title }}</div>
+
+        <div class="center">
+            <img class="logo" src="./logo-cm-campo-grande.png" />
+        </div>
+        <h2>CÂMARA MUNICIPAL DE CAMPO GRANDE</h2>
+        <h2>ESTADO DE MATO GROSSO DO SUL</h2>
+        <h3 class="title">{{ $title }}</h3>
+
+        <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
+        <p><strong>Responsável:</strong> {{ $requester }}</p>
+        <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
+
+        <p class="date"><strong>Data da solicitação:</strong> {{ $date }}</p>
     </div>
 
     <div class="content">
 
 
         <div class="container" id="content">
-            <div class="center">
-                <img class="logo" src="./logo-cm-campo-grande.png" />
-            </div>
-            <h2>CÂMARA MUNICIPAL DE CAMPO GRANDE</h2>
-            <h2>ESTADO DE MATO GROSSO DO SUL</h2>
-            <h3>SOLICITAÇÃO DE DEMANDA</h3>
 
-            <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
-            <p><strong>Responsável:</strong> João da Silva</p>
-            <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
-
-            <p class="date"><strong>Data da solicitação:</strong> {{ now()->format('d/m/Y H:i') }}</p>
 
             <h3>Justificativa da Demanda</h3>
             <table>

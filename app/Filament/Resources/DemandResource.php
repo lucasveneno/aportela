@@ -374,7 +374,9 @@ class DemandResource extends Resource
                 Tables\Actions\Action::make('view')
                     ->label('View Content')
                     ->icon('heroicon-o-eye')
-                    ->url(fn($record) => route('filament.resources.posts.view', $record)),
+                    ->action(function ($record, $livewire) {
+                        $livewire->emit('openModal', 'view-content-modal', ['recordId' => $record->id]);
+                    }),
 
             ])
             ->bulkActions([

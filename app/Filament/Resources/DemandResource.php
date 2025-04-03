@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DemandResource\Pages;
 use App\Filament\Resources\DemandResource\RelationManagers;
+use App\Filament\Resources\DemandResource\Widgets\StatsOverview;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\Demand;
@@ -459,6 +460,13 @@ class DemandResource extends Resource
             $pontuacao >= 10 =>  __('resources.demands.medium_description'),
             default =>  __('resources.demands.low_description'),
         };
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            StatsOverview::class, // Add your widget here
+        ];
     }
 
     /*

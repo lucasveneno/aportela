@@ -43,6 +43,7 @@ class AppPanelProvider extends PanelProvider
             ->widgets([
                 //Widgets\AccountWidget::class,
                 DemandsChart::class,
+                DemandDistributionPieChart::class,
                 //Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([

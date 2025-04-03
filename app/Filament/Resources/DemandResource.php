@@ -375,13 +375,11 @@ class DemandResource extends Resource
             // Admins see:
             // 1. All non-draft posts from any user (draft = false)
             // 2. All posts (draft or not) if they belong to the current admin
-            $query->where(function ($query) {
+            return $query->where(function ($query) {
                 $query->where('draft', false)
                     ->orWhere('user_id', auth()->id());
             });
         }
-
-
         // Non-admin can only see their own posts (no draft filter)
         return $query->where('user_id', auth()->id());
     }

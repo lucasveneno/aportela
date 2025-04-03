@@ -96,6 +96,7 @@
             .details>p {
                 margin: 0px;
             }
+        }
     </style>
 </head>
 
@@ -129,14 +130,8 @@
             <h3>Justificativa da Demanda</h3>
             <div></div>
             <h3>Especificação da Demanda</h3>
-            <div>
-                <table>
-                    <tr>
-                        <td>
-                            {!! $record->description !!}
-                        </td>
-                    </tr>
-                </table>
+            <div class="description">
+                {!! $record->description !!}
             </div>
         </div>
 

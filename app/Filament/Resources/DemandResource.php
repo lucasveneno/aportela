@@ -27,6 +27,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -326,7 +327,7 @@ class DemandResource extends Resource
                     ->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
                     ->sortable(),
 
-                SelectFilter::make('status')
+                SelectColumn::make('status')
                     ->options([
                         'draft' => 'Draft',
                         'reviewing' => 'Reviewing',

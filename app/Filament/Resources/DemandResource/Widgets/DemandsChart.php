@@ -61,8 +61,11 @@ class DemandsChart extends ChartWidget
 
         $query = Demand::query();
         if (!auth()->user()->isAdmin()) {
-            $query->where('user_id', auth()->id());
+            //$query->where('user_id', auth()->id());
         }
+
+        $query->where('user_id', auth()->id());
+
 
         $data = Trend::query($query)
             ->between(start: $startDate, end: $endDate)

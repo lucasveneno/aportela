@@ -372,8 +372,13 @@ class DemandResource extends Resource
         $query = parent::getEloquentQuery();
 
         if (auth()->user()->isAdmin()) {
-            // Admin can see all draft posts (draft = true) from any user
-            return $query->where('draft', '0');
+            // Admins see:
+            // 1. All non-draft posts from any user (draft = false)
+            // 2. All posts (draft or not) if they belong to the current admin
+            $query->where(function ($query) {
+                $query->where('draft', false)
+                    ->orWhere('user_id', auth()->id());
+            });
         }
 
 

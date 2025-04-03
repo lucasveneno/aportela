@@ -122,7 +122,18 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                         ],
                     ],
                 ],
-                
+
+            ],
+            'tooltip' => [
+                'callbacks' => [
+                    'label' => function ($tooltipItem) {
+                        $percentage = round(($tooltipItem->raw / $this->totalDemands) * 100, 1);
+                        return "{$tooltipItem->label} ({$percentage}%)";
+                    },
+                    'footer' => function () {
+                        return "Total Demands: {$this->totalDemands}";
+                    }
+                ]
             ],
         ];
     }

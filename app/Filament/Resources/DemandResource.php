@@ -313,6 +313,13 @@ class DemandResource extends Resource
                     ->numeric()
                     ->sortable(),
 
+                TextColumn::make('user_id')
+                    ->label('User')
+                    ->formatStateUsing(function ($state) {
+                        $user = User::find($state);
+                        return $user ? $user->name : 'N/A';
+                    }),
+
                 TextColumn::make('area_id')
                     ->label(__('resources.categories.area'))
                     ->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')

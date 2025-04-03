@@ -369,16 +369,17 @@ class DemandResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        if(!auth()->user()->isAdmin()){
-            return parent::getEloquentQuery()
-            ->when(!auth()->user()->isAdmin(), fn($query) =>
-            $query->where('user_id', auth()->id()));
+        $query = parent::getEloquentQuery();
+
+        if (auth()->user()->isAdmin()) {
+            // Admin can see all draft posts (draft = true) from any user
+            $query->where('draft', true);
+        } else {
+            // Non-admin can only see their own posts (no draft filter)
+            $query->where('user_id', auth()->id());
         }
 
-        return parent::getEloquentQuery()
-            ->when(!auth()->user()->isAdmin(), fn($query) =>
-            $query->where('draft', false));
-
+        return $query;
     }
 
 

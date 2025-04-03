@@ -16,9 +16,6 @@ class DemandsChart extends ChartWidget
 
     protected int|string|array $columnSpan = 'full';
 
-    protected static ?string $heading = 'Demands Overview';
-    protected static ?string $maxHeight = '300px';
-    protected int|string|array $columnSpan = 'full';
 
     protected function getFilters(): ?array
     {

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Filament\Resources\DemandResource\Widgets\StatsOverview;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -133,5 +134,14 @@ class Demand extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    // In your Filament resource or dashboard
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            StatsOverview::class,
+            // ... other widgets
+        ];
     }
 }

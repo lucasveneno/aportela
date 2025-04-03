@@ -28,7 +28,7 @@ class DemandsChart extends ChartWidget
 
     protected function getData(): array
     {
-        $filters = $this->filters;
+        $filters = $this->filter;
 
         $data = Trend::model(Demand::class)
             ->between(

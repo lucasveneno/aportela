@@ -145,4 +145,12 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             'all' => 'All Time',
         } . ')';
     }
+
+    protected static ?array $options = [
+        'plugins' => [
+            'legend' => [
+                'display' => false,
+            ],
+        ],
+    ];
 }

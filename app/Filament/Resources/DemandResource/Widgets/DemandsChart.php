@@ -44,9 +44,9 @@ class DemandsChart extends ChartWidget
     protected function getFilters(): array
     {
         return [
-            'month' => 'This Month',
             'today' => 'Today',
-            'week' => 'This Week',
+            'week' => 'Last Week',
+            'month' => 'Last Month',
             'year' => 'This Year',
             'all' => 'All Time',
         ];
@@ -55,7 +55,7 @@ class DemandsChart extends ChartWidget
     protected function getData(): array
     {
 
-        $timePeriod = $this->filters['time_period'] ?? 'month';
+        $timePeriod = $this->filter ?? 'month';
 
         [$startDate, $endDate, $groupBy] = $this->getDateRangeAndGrouping($timePeriod);
 

@@ -452,17 +452,6 @@ class DemandResource extends Resource
         };
     }
 
-
-    protected function getHeaderWidgets(): array
-    {
-        return [
-            StatsOverview::make([
-                'status' => 'active',
-            ]),
-        ];
-    }
-
-
     /*
 Melhorias implementadas:
 

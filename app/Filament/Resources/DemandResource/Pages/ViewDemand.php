@@ -43,7 +43,7 @@ class ViewDemand extends ViewRecord
                 'date' => now()->format('Y-m-d'),
                 'requester' => $this->record->demand_code,
                 'demand_code' => $this->record->demand_code,
-                'category ' =>  Category::query()->where('id', $this->record->category_id)->pluck('name', 'id')['name']
+                'category' =>  Category::query()->where('id', $this->record->category_id)->pluck('name', 'id')['name']
             ])
         );
 

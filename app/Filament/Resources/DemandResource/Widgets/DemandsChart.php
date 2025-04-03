@@ -16,6 +16,10 @@ class DemandsChart extends ChartWidget
 
     protected int|string|array $columnSpan = 'full';
 
+    protected static ?string $heading = 'Demands Overview';
+    protected static ?string $maxHeight = '300px';
+    protected int|string|array $columnSpan = 'full';
+
     protected function getFilters(): ?array
     {
         return [
@@ -30,7 +34,7 @@ class DemandsChart extends ChartWidget
                 ])
                 ->default('month')
                 ->live() // This is the key change
-                ->afterStateUpdated(fn () => $this->updateChartData()),
+                ->afterStateUpdated(fn() => $this->updateChartData()),
         ];
     }
 
@@ -54,13 +58,13 @@ class DemandsChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Number of Demands',
-                    'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
+                    'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
                     'backgroundColor' => '#4f46e5',
                     'borderColor' => '#4f46e5',
                     'tension' => 0.1,
                 ],
             ],
-            'labels' => $data->map(fn (TrendValue $value) => $this->formatLabel($value->date, $groupBy)),
+            'labels' => $data->map(fn(TrendValue $value) => $this->formatLabel($value->date, $groupBy)),
         ];
     }
 
@@ -132,7 +136,7 @@ class DemandsChart extends ChartWidget
     public function getHeading(): string
     {
         $period = $this->filters['time_period'] ?? 'month';
-        return 'Demands (' . match($period) {
+        return 'Demands (' . match ($period) {
             'today' => 'Today',
             'week' => 'Last Week',
             'month' => 'Last Month',

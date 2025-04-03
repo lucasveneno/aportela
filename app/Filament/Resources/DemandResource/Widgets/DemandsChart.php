@@ -29,7 +29,7 @@ class DemandsChart extends ChartWidget
                     'all' => 'All Time',
                 ])
                 ->default('month')
-                ->reactive()
+                ->live() // This is the key change
                 ->afterStateUpdated(fn () => $this->updateChartData()),
         ];
     }

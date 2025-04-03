@@ -3,7 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Resources\DemandResource\Widgets\DemandsChart;
-use App\Filament\Resources\DemandResource\Widgets\UserDemandDistributionPieChart;
+use App\Filament\Resources\DemandResource\Widgets\UsersDemandDistributionPieChart;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -44,7 +44,7 @@ class AppPanelProvider extends PanelProvider
             ->widgets([
                 //Widgets\AccountWidget::class,
                 DemandsChart::class,
-                UserDemandDistributionPieChart::class,
+                UsersDemandDistributionPieChart::class,
                 //Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([

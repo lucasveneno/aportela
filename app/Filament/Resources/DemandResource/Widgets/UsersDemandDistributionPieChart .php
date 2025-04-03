@@ -7,7 +7,7 @@ use App\Models\User;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\Auth;
 
-class UserDemandDistributionPieChart  extends ChartWidget
+class UsersDemandDistributionPieChart  extends ChartWidget
 {
     protected static ?string $heading = 'Demand Distribution by User';
     protected static ?string $maxHeight = '400px';

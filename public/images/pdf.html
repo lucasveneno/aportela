@@ -83,31 +83,42 @@
             width: 150px;
             filter: grayscale(100);
         }
+
+        .details>p {
+            margin: 0px;
+            ;
+        }
     </style>
 </head>
 
 <body>
     <div class="header">
-        
-        <div class="center">
-                <img class="logo" src="./logo-cm-campo-grande.png" />
-            </div>
-            <h2>CÂMARA MUNICIPAL DE CAMPO GRANDE</h2>
-            <h2>ESTADO DE MATO GROSSO DO SUL</h2>
-            <h3 class="title">{{ $title }}</h3>
 
-            <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
-            <p><strong>Responsável:</strong> {{ $requester }}</p>
+        <div class="center">
+            <img class="logo" src="./logo-cm-campo-grande.png" />
+        </div>
+        <h2>CÂMARA MUNICIPAL DE CAMPO GRANDE</h2>
+        <h2>ESTADO DE MATO GROSSO DO SUL</h2>
+        <h3 class="title">{{ $title }}</h3>
+
+        <div class="details">
+            <p><strong>Unidade/Setor:</strong> {{ $area }}</p>
+            <p><strong>Responsável:</strong> Joao Goulart</p>
+            <p><strong>Solicitante:</strong> {{ $requester }}</p>
+            <p><strong>Código da solicitaão:</strong> {{ $demand_code }}</p>
             <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
 
             <p class="date"><strong>Data da solicitação:</strong> {{ $date }}</p>
+        </div>
+
+
     </div>
 
     <div class="content">
 
 
         <div class="container" id="content">
-            
+
 
             <h3>Justificativa da Demanda</h3>
             <table>

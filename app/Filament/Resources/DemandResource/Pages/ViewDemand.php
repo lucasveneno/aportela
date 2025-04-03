@@ -50,6 +50,18 @@ class ViewDemand extends ViewRecord
             ])
         );
 
+        // Set PDF options to remove margins
+        $pdf->setOptions([
+            'defaultFont' => 'sans-serif',
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true,
+            'margin_top' => 0,
+            'margin_right' => 0,
+            'margin_bottom' => 0,
+            'margin_left' => 0,
+            'padding' => 0,
+        ]);
+
         return response()->streamDownload(
             fn() => print($pdf->output()),
             "{$this->record->demand_code}.pdf"

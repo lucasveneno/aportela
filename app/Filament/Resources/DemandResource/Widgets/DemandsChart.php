@@ -55,6 +55,8 @@ class DemandsChart extends ChartWidget
     protected function getData(): array
     {
 
+        $timePeriod = $this->filters['time_period'] ?? 'month';
+
         [$startDate, $endDate, $groupBy] = $this->getDateRangeAndGrouping($timePeriod);
 
         $query = Demand::query();

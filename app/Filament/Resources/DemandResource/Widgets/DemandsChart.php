@@ -14,7 +14,7 @@ class DemandsChart extends ChartWidget
     protected static ?string $heading = 'Chart';
 
     public ?string $filter = 'today';
-    public ?string $filters;
+    public ?array $filters;
 
     protected function getFilters(): ?array
     {

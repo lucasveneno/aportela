@@ -80,6 +80,7 @@
 
 
         <div class="container" id="content">
+            <img id="logo" src="images/icon-camara-municipal-cg.png"/>
             <h2>Solicitação de Demanda</h2>
             <h2>FORMULÁRIO DE SOLICITAÇÃO DE DEMANDA</h2>
             <h3>IMPRENSA UNIVERSITÁRIA</h3>

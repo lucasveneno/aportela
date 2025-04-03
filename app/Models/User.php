@@ -26,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->is_admin == '1';
     }
-    
+
     public function hasRole($role): bool
     {
         return $this->role === $role;
@@ -35,5 +35,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getRole(): string
     {
         return $this->role;
+    }
+
+    public function demands(): HasMany
+    {
+        return $this->hasMany(Demand::class);
     }
 }

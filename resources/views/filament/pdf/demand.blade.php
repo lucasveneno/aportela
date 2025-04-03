@@ -12,7 +12,11 @@
             margin: 0 !important;
             padding: 0 !important;
         }
-        html{margin:40px 50px}
+
+        html {
+            margin: 40px 50px
+        }
+
         body {
             font-family: DejaVu Sans, sans-serif;
             line-height: 1.6;
@@ -132,13 +136,10 @@
                 </tr>
             </table>
             <h3>Especificação da Demanda</h3>
-            <table>
-                <tr>
-                    <td style="height: 100px;">
-                        {!! $record->description !!}
-                    </td>
-                </tr>
-            </table>
+            <div>
+                {!! $record->description !!}
+
+            </div>
         </div>
 
     </div>

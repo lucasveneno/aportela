@@ -13,6 +13,7 @@ class DemandsChart extends ChartWidget
     protected static ?string $heading = 'Chart';
 
     public ?string $filter = 'today';
+    public ?array $filters;
 
     protected function getFilters(): ?array
     {
@@ -28,7 +29,7 @@ class DemandsChart extends ChartWidget
 
     protected function getData(): array
     {
-        $filters = $this->filter;
+        $filters = $this->getFilters();
 
         $data = Trend::model(Demand::class)
             ->between(

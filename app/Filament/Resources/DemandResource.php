@@ -28,6 +28,7 @@ use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -324,6 +325,14 @@ class DemandResource extends Resource
                     ->label(__('resources.categories.area'))
                     ->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
                     ->sortable(),
+
+                SelectFilter::make('status')
+                    ->options([
+                        'draft' => 'Draft',
+                        'reviewing' => 'Reviewing',
+                        'published' => 'Published',
+                    ])
+                    ->attribute('status_id'),
 
                 //IconColumn::make('draft')->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

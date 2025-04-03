@@ -53,13 +53,11 @@ class DemandsChart extends ChartWidget
             $query->where('user_id', auth()->id());
         }
 
-
         // Get trend data
         $data = Trend::query($query)
             ->between(start: $startDate, end: $endDate)
             ->perMonth() // or perDay()/perWeek() based on your needs
             ->count();
-
 
         return [
             'datasets' => [

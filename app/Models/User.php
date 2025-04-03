@@ -21,4 +21,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'immutable_datetime',
         'region_id' => 'array',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function getRole(): string
+    {
+        return $this->role;
+    }
 }

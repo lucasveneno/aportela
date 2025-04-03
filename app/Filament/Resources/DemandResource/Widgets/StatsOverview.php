@@ -18,19 +18,29 @@ class StatsOverview extends BaseWidget
         $user = Auth::user();
         $isAdmin = $user->isAdmin();
 
-        // Base query
-        $query = Demand::query();
+        // Base queries
+        $baseQuery = Demand::query();
+        $monthlyQuery = Demand::whereBetween('created_at', [
+            now()->startOfMonth(),
+            now()->endOfMonth()
+        ]);
 
         if (!$isAdmin) {
-            $query->where('user_id', $user->id);
+            $baseQuery->where('user_id', $user->id);
+            $monthlyQuery->where('user_id', $user->id);
         }
 
-        $totalDemands = $query->count();
-        $pendingDemands = $query->where('status', 'pending')->count();
-        $completedDemands = $query->where('status', 'completed')->count();
+
+        $totalDemands = $baseQuery->count();
+
+        $monthlyDemands = $monthlyQuery->count();
+        $newDemands = $baseQuery->clone()->whereDate('created_at', today())->count();
+
+        $pendingDemands = $baseQuery->clone()->where('status', 'pending')->count();
+        $completedDemands = $baseQuery->clone()->where('status', 'completed')->count();
 
         return [
-            Stat::make('New Demands', Demand::whereDate('created_at', today())->count())
+            Stat::make('New Demands', $newDemands)
                 ->description('Today')
                 ->descriptionIcon('heroicon-o-arrow-trending-up')
                 ->color('info') //(primary, success, warning, danger, info)

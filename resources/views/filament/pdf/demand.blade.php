@@ -89,7 +89,6 @@
 <body>
     <div class="header">
         <div class="title">{{ $title }}</div>
-        <div class="date"> Generated on: {{ now()->format('d-m-Y H:i') }}</div>
     </div>
 
     <div class="content">
@@ -106,7 +105,9 @@
             <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
             <p><strong>Responsável:</strong> João da Silva</p>
             <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
-            <p><strong>Data do Evento:</strong> {{$date}}</p>
+
+            <p class="date"><strong>Data da solicitação:</strong> {{ now()->format('d-m-Y H:i') }}</p>
+
             <p>
                 <strong>Especificação:</strong>
                 <br /> {!! $record->description !!}

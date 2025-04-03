@@ -31,7 +31,11 @@ class DemandsChart extends ChartWidget
                 ])
                 ->default('month')
                 ->live() // This is the key change
-                ->afterStateUpdated(fn() => $this->updateChartData()),
+                ->afterStateUpdated(function () {
+                    if (method_exists($this, 'updateChartData')) {
+                        $this->updateChartData();
+                    }
+                }),
         ];
     }
 

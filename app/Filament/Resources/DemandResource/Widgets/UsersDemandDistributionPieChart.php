@@ -25,8 +25,8 @@ class UsersDemandDistributionPieChart  extends ChartWidget
     protected function getData(): array
     {
         $usersWithDemands = User::query()
+            ->whereHas('demands') // Only users with demands
             ->withCount('demands')
-            ->has('demands', '>', 0)
             ->orderByDesc('demands_count')
             ->get();
 
@@ -43,29 +43,21 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             '#64748b'
         ];
 
-        $datasets = [
-            [
-                'label' => 'Demands by User',
-                'data' => [],
-                'backgroundColor' => [],
-                'borderColor' => '#fff',
-                'borderWidth' => 1,
-                'hoverOffset' => 10,
-            ]
+        $data = [
+            'datasets' => [
+                [
+                    'label' => 'Demands by User',
+                    'data' => $usersWithDemands->pluck('demands_count')->toArray(),
+                    'backgroundColor' => array_slice($colors, 0, $usersWithDemands->count()),
+                    'borderColor' => '#fff',
+                    'borderWidth' => 1,
+                    'hoverOffset' => 10,
+                ],
+            ],
+            'labels' => $usersWithDemands->pluck('name')->toArray(),
         ];
 
-        $labels = [];
-
-        foreach ($usersWithDemands as $index => $user) {
-            $datasets[0]['data'][] = $user->demands_count;
-            $datasets[0]['backgroundColor'][] = $colors[$index % count($colors)];
-            $labels[] = $user->name;
-        }
-
-        return [
-            'datasets' => $datasets,
-            'labels' => $labels,
-        ];
+        return $data;
     }
 
     protected function getType(): string

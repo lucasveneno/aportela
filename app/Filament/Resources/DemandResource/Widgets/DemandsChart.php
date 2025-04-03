@@ -41,9 +41,15 @@ class DemandsChart extends ChartWidget
 
     protected function getData(): array
     {
-        $timePeriod = $this->filters['time_period'] ?? 'month';
+        $activeFilter = $this->filters['time_period'] ?? 'month';
 
-        [$startDate, $endDate, $groupBy] = $this->getDateRangeAndGrouping($timePeriod);
+        $dateRange = match ($activeFilter) {
+            'today' => [now()->startOfDay(), now()->endOfDay()],
+            'week' => [now()->subWeek()->startOfDay(), now()->endOfDay()],
+            'month' => [now()->subMonth()->startOfDay(), now()->endOfDay()],
+            'year' => [now()->startOfYear(), now()->endOfYear()],
+            default => [Demand::oldest()->value('created_at') ?? now()->subYear(), now()->endOfDay()],
+        };
 
         $query = Demand::query();
         if (!auth()->user()->isAdmin()) {
@@ -51,21 +57,20 @@ class DemandsChart extends ChartWidget
         }
 
         $data = Trend::query($query)
-            ->between(start: $startDate, end: $endDate)
-            ->{$groupBy}()
+            ->between(...$dateRange)
+            ->perMonth()
             ->count();
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Number of Demands',
+                    'label' => 'Demands',
                     'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
-                    'backgroundColor' => '#4f46e5',
-                    'borderColor' => '#4f46e5',
-                    'tension' => 0.1,
+                    'borderColor' => '#6366f1',
+                    'backgroundColor' => '#6366f1',
                 ],
             ],
-            'labels' => $data->map(fn(TrendValue $value) => $this->formatLabel($value->date, $groupBy)),
+            'labels' => $data->map(fn(TrendValue $value) => $value->date),
         ];
     }
 

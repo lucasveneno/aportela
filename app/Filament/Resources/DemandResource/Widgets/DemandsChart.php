@@ -54,15 +54,7 @@ class DemandsChart extends ChartWidget
 
     protected function getData(): array
     {
-        $activeFilter = $this->filters['time_period'] ?? 'month';
-
-        $dateRange = match ($activeFilter) {
-            'today' => [now()->startOfDay(), now()->endOfDay()],
-            'week' => [now()->subWeek()->startOfDay(), now()->endOfDay()],
-            'month' => [now()->subMonth()->startOfDay(), now()->endOfDay()],
-            'year' => [now()->startOfYear(), now()->endOfYear()],
-            default => [Demand::oldest()->value('created_at') ?? now()->subYear(), now()->endOfDay()],
-        };
+        $dateRange = $this->getDateRange();
 
         $query = Demand::query();
         if (!auth()->user()->isAdmin()) {
@@ -70,7 +62,7 @@ class DemandsChart extends ChartWidget
         }
 
         $data = Trend::query($query)
-            ->between(...$dateRange)
+            ->between(start: $dateRange['start'], end: $dateRange['end'])
             ->perMonth()
             ->count();
 
@@ -87,33 +79,28 @@ class DemandsChart extends ChartWidget
         ];
     }
 
-    protected function getDateRangeAndGrouping(string $timePeriod): array
+    protected function getDateRange(): array
     {
-        return match ($timePeriod) {
+        return match ($this->filter) {
             'today' => [
-                now()->startOfDay(),
-                now()->endOfDay(),
-                'perHour'
+                'start' => now()->startOfDay(),
+                'end' => now()->endOfDay()
             ],
             'week' => [
-                now()->subWeek()->startOfDay(),
-                now()->endOfDay(),
-                'perDay'
+                'start' => now()->subWeek()->startOfDay(),
+                'end' => now()->endOfDay()
             ],
             'month' => [
-                now()->subMonth()->startOfDay(),
-                now()->endOfDay(),
-                'perDay'
+                'start' => now()->subMonth()->startOfDay(),
+                'end' => now()->endOfDay()
             ],
             'year' => [
-                now()->startOfYear(),
-                now()->endOfYear(),
-                'perMonth'
+                'start' => now()->startOfYear(),
+                'end' => now()->endOfYear()
             ],
             default => [
-                Demand::oldest()->value('created_at') ?? now()->subYear()->startOfDay(),
-                now()->endOfDay(),
-                'perMonth'
+                'start' => Demand::oldest()->value('created_at') ?? now()->subYear(),
+                'end' => now()->endOfDay()
             ],
         };
     }

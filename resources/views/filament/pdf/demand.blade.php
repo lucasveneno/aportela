@@ -41,7 +41,7 @@
 <body>
     <div class="header">
         <div class="title">{{ $title }}</div>
-        <div class="date">Generated on: {{ $date }}</div>
+        <div class="date"> Generated on: {{ now()->format('d-m-Y H:i') }}</div>
     </div>
 
     <div class="content">
@@ -49,7 +49,7 @@
     </div>
 
     <div class="footer">
-        {{ config('app.name') }} | Page {PAGENO} of {nbpg}
+       
     </div>
 </body>
 

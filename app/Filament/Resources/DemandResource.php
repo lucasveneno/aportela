@@ -372,7 +372,7 @@ class DemandResource extends Resource
 
         return parent::getEloquentQuery()
             ->when(!auth()->user()->isAdmin(), fn($query) =>
-            $query->where('user_id', auth()->id()));
+            $query->where('user_id', auth()->id())->where('draft', false));
     }
 
 

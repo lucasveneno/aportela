@@ -24,9 +24,16 @@ class UsersDemandDistributionPieChart  extends ChartWidget
 
     protected function getData(): array
     {
+        // Get date range based on filter
+        [$startDate, $endDate] = $this->getDateRange();
+
         $usersWithDemands = User::query()
-            ->whereHas('demands') // Only users with demands
-            ->withCount('demands')
+            ->whereHas('demands', function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            })
+            ->withCount(['demands' => function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            }])
             ->orderByDesc('demands_count')
             ->get();
 
@@ -55,9 +62,32 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                 ],
             ],
             'labels' => $usersWithDemands->pluck('name')->toArray(),
+
         ];
 
         return $data;
+    }
+
+    protected function getDateRange(): array
+    {
+        return match ($this->filter) {
+            'week' => [
+                now()->subWeek()->startOfDay(),
+                now()->endOfDay()
+            ],
+            'month' => [
+                now()->subMonth()->startOfDay(),
+                now()->endOfDay()
+            ],
+            'year' => [
+                now()->startOfYear(),
+                now()->endOfYear()
+            ],
+            default => [
+                Demand::oldest()->value('created_at') ?? now()->subYear(),
+                now()->endOfDay()
+            ],
+        };
     }
 
     protected function getType(): string

@@ -19,7 +19,7 @@ class DemandsChart extends ChartWidget
     public ?string $filter = 'month';
 
 
-    protected function getFilters(): ?array
+    /*protected function getFilters(): ?array
     {
         return [
             Select::make('time_period')
@@ -38,6 +38,17 @@ class DemandsChart extends ChartWidget
                         $this->updateChartData();
                     }
                 }),
+        ];
+    }*/
+
+    protected function getFilters(): array
+    {
+        return [
+            'month' => 'This Month',
+            'today' => 'Today',
+            'week' => 'This Week',
+            'year' => 'This Year',
+            'all' => 'All Time',
         ];
     }
 

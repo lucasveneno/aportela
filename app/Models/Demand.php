@@ -136,13 +136,11 @@ class Demand extends Model
         return $this->belongsTo(User::class);
     }
 
-    // In your Filament resource or dashboard
-    protected function getHeaderWidgets(): array
+    public static function getWidgets(): array
     {
         return [
-            StatsOverview::make([
-                'status' => 'active',
-            ]),
+            StatsOverview::class, // Add your widget here
         ];
     }
+
 }

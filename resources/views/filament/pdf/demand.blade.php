@@ -59,7 +59,6 @@
 
         .content {
             padding: 20px 0;
-            font-size: 12px
         }
 
         .footer {
@@ -123,7 +122,6 @@
             <strong>Especificação:</strong>
             <br /> {!! $record->description !!}
         </p>
-    </div>
     </div>
 
     <div class="footer">

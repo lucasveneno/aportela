@@ -373,7 +373,7 @@ class DemandResource extends Resource
 
         if (auth()->user()->isAdmin()) {
             // Admin can see all draft posts (draft = true) from any user
-            return $query->where('draft', '1');
+            return $query->where('draft', '0');
         }
 
 

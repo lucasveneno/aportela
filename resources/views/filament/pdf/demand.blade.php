@@ -83,6 +83,11 @@
             width: 150px;
             filter: grayscale(100);
         }
+
+        .details>p {
+            margin: 0px;
+            ;
+        }
     </style>
 </head>
 
@@ -96,13 +101,17 @@
         <h2>ESTADO DE MATO GROSSO DO SUL</h2>
         <h3 class="title">{{ $title }}</h3>
 
-        <p><strong>Unidade/Setor:</strong> {{ $area }}</p>
-        <p><strong>Responsável:</strong> Joao Goulart</p>
-        <p><strong>Solicitante:</strong> {{ $requester }}</p>
-        <p><strong>Código da solicitaão:</strong> {{ $demand_code }}</p>
-        <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
+        <div class="details">
+            <p><strong>Unidade/Setor:</strong> {{ $area }}</p>
+            <p><strong>Responsável:</strong> Joao Goulart</p>
+            <p><strong>Solicitante:</strong> {{ $requester }}</p>
+            <p><strong>Código da solicitaão:</strong> {{ $demand_code }}</p>
+            <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
 
-        <p class="date"><strong>Data da solicitação:</strong> {{ $date }}</p>
+            <p class="date"><strong>Data da solicitação:</strong> {{ $date }}</p>
+        </div>
+
+
     </div>
 
     <div class="content">

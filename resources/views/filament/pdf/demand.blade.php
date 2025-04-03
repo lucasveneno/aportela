@@ -18,13 +18,10 @@
         }
 
         body {
+
             font-family: DejaVu Sans, sans-serif;
             line-height: 1.6;
             margin: 0.2cm;
-        }
-
-
-        body {
 
             .container {
                 max-width: 600px;
@@ -98,7 +95,6 @@
 
             .details>p {
                 margin: 0px;
-                ;
             }
     </style>
 </head>
@@ -130,26 +126,14 @@
 
 
         <div class="container" id="content">
-
-
             <h3>Justificativa da Demanda</h3>
-            <table>
-                <tr>
-                    <td style="height: 100px;"></td>
-                </tr>
-            </table>
+            <div></div>
             <h3>Especificação da Demanda</h3>
-            <div>
-                {!! $record->description !!}
-
-            </div>
+            <div>{!! $record->description !!}</div>
         </div>
 
     </div>
 
-    <div class="footer">
-
-    </div>
 </body>
 
 </html>

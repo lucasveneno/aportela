@@ -4,6 +4,8 @@ namespace App\Filament\Resources\DemandResource\Widgets;
 
 use App\Models\Demand;
 use Filament\Widgets\ChartWidget;
+use Flowframe\Trend\Trend;
+use Flowframe\Trend\TrendValue;
 
 class DemandsChart extends ChartWidget
 {
@@ -11,7 +13,7 @@ class DemandsChart extends ChartWidget
 
     protected function getData(): array
     {
-        $data = Demand::model(Demand::class)
+        $data = Trend::model(Demand::class)
             ->between(
                 start: now()->startOfYear(),
                 end: now()->endOfYear(),
@@ -22,7 +24,7 @@ class DemandsChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Blog posts',
+                    'label' => 'Demands',
                     'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
                 ],
             ],

@@ -8,8 +8,7 @@
 
     <title>{{ $title }}</title>
     <style>
-        @page { margin: 0; }
-        html { margin: 0px}
+        html{margin:40px 50px}
         body {
             font-family: DejaVu Sans, sans-serif;
             line-height: 1.6;

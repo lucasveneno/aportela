@@ -106,7 +106,7 @@
             <p><strong>Responsável:</strong> João da Silva</p>
             <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
 
-            <p class="date"><strong>Data da solicitação:</strong> {{ now()->format('d-m-Y H:i') }}</p>
+            <p class="date"><strong>Data da solicitação:</strong> {{ now()->format('d/m/Y H:i') }}</p>
 
             <p>
                 <strong>Especificação:</strong>

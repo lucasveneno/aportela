@@ -48,6 +48,13 @@ class StatsOverview extends BaseWidget
                 ->chart([2, 4, 3, 1, 5, 6, 7])
                 ->color('success'),
 
+            // For trend indicators
+            Stat::make('New Demands', Demand::whereDate('created_at', today())->count())
+                ->description('Today')
+                ->descriptionIcon('heroicon-o-arrow-trending-up')
+                ->color($increase ? 'success' : 'danger')
+                ->chart([7, 3, 4, 5, 6, 3, 5]),
+
             // Only show to admins
             /*$isAdmin ? Stat::make('Active Users', User::where('is_active', true)->count())
                 ->description('Currently active')

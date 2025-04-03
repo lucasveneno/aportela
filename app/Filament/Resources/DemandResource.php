@@ -369,7 +369,10 @@ class DemandResource extends Resource
                 Tables\Actions\Action::make('view')
                     ->label('View') // No text, just icon
                     ->icon('heroicon-o-eye')
-                    ->modalContent(fn($record) => $record->content),
+                    ->modalContent(function ($record) {
+                        return view('filament.pages.view', ['record' => $record]);
+                    })
+                    ->modalWidth('4xl'),
 
             ])
             ->bulkActions([

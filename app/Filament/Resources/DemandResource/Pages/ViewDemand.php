@@ -45,7 +45,7 @@ class ViewDemand extends ViewRecord
 
         return response()->streamDownload(
             fn() => print($pdf->output()),
-            "demand-{$this->record->id}.pdf"
+            "demand-{$this->record->demand_code}.pdf"
         );
     }
 

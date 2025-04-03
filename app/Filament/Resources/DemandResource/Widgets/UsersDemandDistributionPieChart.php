@@ -123,17 +123,14 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                 ],
                 'tooltip' => [
                     'callbacks' => [
-                        'label' => function($context) {
-                            $userTotal = $context->raw;
-                            $percentage = round(($userTotal / $this->totalDemands) * 100, 1);
-                            return [
-                                "User: {$context->label}",
-                                "Demands: {$userTotal}",
-                                "Percentage: {$percentage}%"
-                            ];
+                        'label' => function ($tooltipItem) {
+                            $label = $tooltipItem->label;
+                            $value = $tooltipItem->raw;
+                            $percentage = round(($value / $this->totalDemands) * 100, 1);
+                            return "{$label}: {$value} ({$percentage}%)";
                         },
-                        'footer' => function($context) {
-                            return "Total Demands: {$this->totalDemands}";
+                        'afterLabel' => function ($tooltipItem) {
+                            return "Total: {$this->totalDemands}";
                         }
                     ]
                 ],
@@ -152,6 +149,4 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             'all' => 'All Time',
         } . ')';
     }
-
-    
 }

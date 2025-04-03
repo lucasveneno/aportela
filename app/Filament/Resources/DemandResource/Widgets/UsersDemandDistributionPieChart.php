@@ -14,6 +14,18 @@ class UsersDemandDistributionPieChart  extends ChartWidget
     protected static ?string $pollingInterval = null;
     protected int|string|array $columnSpan = 'md';
 
+    public ?string $filter = 'month'; // Global filter property
+
+    protected function getFilters(): array
+    {
+        return [
+            'week' => 'Last Week',
+            'month' => 'Last Month',
+            'year' => 'This Year',
+            'all' => 'All Time',
+        ];
+    }
+
     /**
      * Determine if the widget should be visible
      */

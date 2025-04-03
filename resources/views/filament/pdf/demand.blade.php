@@ -106,12 +106,12 @@
             <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
             <p><strong>Responsável:</strong> João da Silva</p>
             <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
-            <p><strong>Data do Evento:</strong> 10/04/2025</p>
+            <p><strong>Data do Evento:</strong> {{$date}}</p>
             <p>
                 <strong>Especificação:</strong>
                 <br /> {!! $record->description !!}
             </p>
-            
+
             <h3>Justificativa da Demanda</h3>
             <table>
                 <tr>

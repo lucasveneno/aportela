@@ -45,7 +45,7 @@
     </div>
 
     <div class="content">
-        {!! $record->content !!}
+        {!! $record->description !!}
     </div>
 
     <div class="footer">

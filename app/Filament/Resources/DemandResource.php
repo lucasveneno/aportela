@@ -12,6 +12,7 @@ use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Fields\Geocomplete;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\FileUpload;
@@ -366,13 +367,7 @@ class DemandResource extends Resource
             ->recordUrl(fn($record) => $record->draft ? static::getUrl('edit', ['record' => $record]) : null)
             ->actions([
                 Tables\Actions\EditAction::make()->visible(fn($record) => $record->draft),
-                Tables\Actions\Action::make('view')
-                    ->label('View') // No text, just icon
-                    ->icon('heroicon-o-eye')
-                    ->modalContent(function ($record) {
-                        return view('filament.pages.view', ['record' => $record]);
-                    })
-                    ->modalWidth('4xl'),
+                ViewAction::make(), // Uses the ViewDemand page by default
 
             ])
             ->bulkActions([

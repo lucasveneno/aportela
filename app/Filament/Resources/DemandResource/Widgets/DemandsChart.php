@@ -4,6 +4,7 @@ namespace App\Filament\Resources\DemandResource\Widgets;
 
 use App\Models\Demand;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
@@ -13,41 +14,56 @@ class DemandsChart extends ChartWidget
     protected static ?string $heading = 'Chart';
 
     public ?string $filter = 'today';
-    public ?array $filters;
 
     protected function getFilters(): ?array
     {
         return [
-            DatePicker::make('start_date')
-                ->label('From')
-                ->default(now()->startOfYear()),
-            DatePicker::make('end_date')
-                ->label('To')
-                ->default(now()->endOfYear()),
+            Select::make('time_period')
+                ->label('Time Period')
+                ->options([
+                    'today' => 'Today',
+                    'week' => 'Last Week',
+                    'month' => 'Last Month',
+                    'year' => 'This Year',
+                    'all' => 'All Time',
+                ])
+                ->default('month')
+                ->reactive(),
         ];
     }
 
     protected function getData(): array
     {
-        $filters = $this->filters;
+        // Get the selected filter value
+        $timePeriod = $this->filters['time_period'] ?? 'month';
 
-        $data = Trend::model(Demand::class)
-            ->between(
-                //start: now()->startOfYear(),
-                //end: now()->endOfYear(),
-                start: $filters['start_date'] ?? now()->startOfYear(),
-                end: $filters['end_date'] ?? now()->endOfYear(),
-            )
-            ->perMonth()
+        // Determine date range based on filter
+        [$startDate, $endDate] = match ($timePeriod) {
+            'today' => [now()->startOfDay(), now()->endOfDay()],
+            'week' => [now()->subWeek()->startOfDay(), now()->endOfDay()],
+            'month' => [now()->subMonth()->startOfDay(), now()->endOfDay()],
+            'year' => [now()->startOfYear(), now()->endOfYear()],
+            default => [Demand::oldest()->value('created_at'), now()->endOfDay()],
+        };
+
+        // Base query with user restriction for non-admins
+        $query = Demand::query();
+        if (!auth()->user()->isAdmin()) {
+            $query->where('user_id', auth()->id());
+        }
+
+
+        // Get trend data
+        $data = Trend::query($query)
+            ->between(start: $startDate, end: $endDate)
+            ->perMonth() // or perDay()/perWeek() based on your needs
             ->count();
-
-
 
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Demands',
+                    'label' => 'Blog Posts',
                     'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
                 ],
             ],

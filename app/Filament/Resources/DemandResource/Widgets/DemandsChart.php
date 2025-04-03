@@ -54,7 +54,8 @@ class DemandsChart extends ChartWidget
 
     protected function getData(): array
     {
-        $dateRange = $this->getDateRange();
+
+        [$startDate, $endDate, $groupBy] = $this->getDateRangeAndGrouping($timePeriod);
 
         $query = Demand::query();
         if (!auth()->user()->isAdmin()) {
@@ -62,8 +63,8 @@ class DemandsChart extends ChartWidget
         }
 
         $data = Trend::query($query)
-            ->between(start: $dateRange['start'], end: $dateRange['end'])
-            ->perMonth()
+            ->between(start: $startDate, end: $endDate)
+            ->{$groupBy}()
             ->count();
 
         return [
@@ -71,13 +72,46 @@ class DemandsChart extends ChartWidget
                 [
                     'label' => 'Demands',
                     'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
-                    'borderColor' => '#6366f1',
-                    'backgroundColor' => '#6366f1',
+                    //'borderColor' => '#6366f1',
+                    //'backgroundColor' => '#6366f1',
                 ],
             ],
-            'labels' => $data->map(fn(TrendValue $value) => $value->date),
+
+            'labels' => $data->map(fn(TrendValue $value) => $this->formatLabel($value->date, $groupBy)),
         ];
     }
+
+    protected function getDateRangeAndGrouping(string $timePeriod): array
+    {
+        return match ($timePeriod) {
+            'today' => [
+                now()->startOfDay(),
+                now()->endOfDay(),
+                'perHour'
+            ],
+            'week' => [
+                now()->subWeek()->startOfDay(),
+                now()->endOfDay(),
+                'perDay'
+            ],
+            'month' => [
+                now()->subMonth()->startOfDay(),
+                now()->endOfDay(),
+                'perDay'
+            ],
+            'year' => [
+                now()->startOfYear(),
+                now()->endOfYear(),
+                'perMonth'
+            ],
+            default => [
+                Demand::oldest()->value('created_at') ?? now()->subYear()->startOfDay(),
+                now()->endOfDay(),
+                'perMonth'
+            ],
+        };
+    }
+
 
     protected function getDateRange(): array
     {

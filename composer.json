@@ -13,7 +13,7 @@
         "embed/embed": "^4.4",
         "filament/filament": "^3.0@beta",
         "flowframe/laravel-drift": "^0.2.0",
-        "flowframe/laravel-trend": "*",
+        "flowframe/laravel-trend": "^0.4.0",
         "guzzlehttp/guzzle": "^7.4",
         "http-interop/http-factory-guzzle": "^1.0",
         "intervention/image": "^2.7",

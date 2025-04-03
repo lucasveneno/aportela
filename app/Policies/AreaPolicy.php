@@ -13,7 +13,7 @@ class AreaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -21,7 +21,7 @@ class AreaPolicy
      */
     public function view(User $user, Area $area): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -29,7 +29,7 @@ class AreaPolicy
      */
     public function create(User $user): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -37,7 +37,7 @@ class AreaPolicy
      */
     public function update(User $user, Area $area): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -45,7 +45,7 @@ class AreaPolicy
      */
     public function delete(User $user, Area $area): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -53,7 +53,7 @@ class AreaPolicy
      */
     public function restore(User $user, Area $area): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -61,6 +61,6 @@ class AreaPolicy
      */
     public function forceDelete(User $user, Area $area): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 }

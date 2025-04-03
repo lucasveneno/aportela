@@ -52,7 +52,7 @@ class StatsOverview extends BaseWidget
             Stat::make('New Demands', Demand::whereDate('created_at', today())->count())
                 ->description('Today')
                 ->descriptionIcon('heroicon-o-arrow-trending-up')
-                ->color($increase ? 'success' : 'danger')
+                ->color('primary') //(primary, success, warning, danger, info)
                 ->chart([7, 3, 4, 5, 6, 3, 5]),
 
             // Only show to admins

@@ -15,13 +15,13 @@ class ViewDemand extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\Action::make('print')
+            /*Actions\Action::make('print')
                 ->label('Print')
                 ->icon('heroicon-o-printer')
                 ->color('primary')
                 ->action(function () {
                     $this->dispatch('print-page');
-                }),
+                }),*/
             Actions\Action::make('pdf')
                 ->label('Download PDF')
                 ->icon('heroicon-o-document-arrow-down')

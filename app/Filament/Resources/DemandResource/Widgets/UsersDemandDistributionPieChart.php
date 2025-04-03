@@ -124,10 +124,17 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                 ],
                 'tooltip' => [
                     'callbacks' => [
-                        'label' => function ($context) {
-                            $total = array_sum($context->dataset->data);
-                            $percentage = round(($context->raw / $total) * 100, 1);
-                            return "{$context->label}: {$context->raw} ({$percentage}%)";
+                        'label' => function($context) {
+                            $userTotal = $context->raw;
+                            $percentage = round(($userTotal / $this->totalDemands) * 100, 1);
+                            return [
+                                "User: {$context->label}",
+                                "Demands: {$userTotal}",
+                                "Percentage: {$percentage}%"
+                            ];
+                        },
+                        'footer' => function($context) {
+                            return "Total Demands: {$this->totalDemands}";
                         }
                     ]
                 ],

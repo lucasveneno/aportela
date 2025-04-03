@@ -69,37 +69,21 @@ class UsersDemandDistributionPieChart  extends ChartWidget
     {
         return [
             'responsive' => true,
-            'maintainAspectRatio' => false,
             'plugins' => [
                 'legend' => [
                     'position' => 'right',
-                    'labels' => [
-                        'boxWidth' => 12,
-                        'font' => [
-                            'size' => 12,
-                        ],
-                        'padding' => 12,
-                        'usePointStyle' => true,
-                    ],
                 ],
                 'tooltip' => [
-                    'enabled' => true,
                     'callbacks' => [
                         'label' => function ($context) {
-                            $label = $context->label ?? '';
-                            $value = $context->raw ?? 0;
                             $total = array_sum($context->dataset->data);
-                            $percentage = round(($value / $total) * 100, 1);
-                            return sprintf("%s: %d (%.1f%%)", $label, $value, $percentage);
+                            $percentage = round(($context->raw / $total) * 100, 1);
+                            return "{$context->label}: {$context->raw} ({$percentage}%)";
                         }
                     ]
                 ],
             ],
-            'cutout' => '65%',
-            'animation' => [
-                'animateScale' => true,
-                'animateRotate' => true,
-            ],
+            'cutout' => '60%',
         ];
     }
 }

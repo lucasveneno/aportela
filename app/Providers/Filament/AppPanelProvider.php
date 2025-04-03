@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Resources\DemandResource\Widgets\DemandsChart;
+use App\Filament\Resources\DemandResource\Widgets\StatsOverview;
 use App\Filament\Resources\DemandResource\Widgets\UsersDemandDistributionPieChart;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -45,6 +46,7 @@ class AppPanelProvider extends PanelProvider
                 //Widgets\AccountWidget::class,
                 DemandsChart::class,
                 UsersDemandDistributionPieChart::class,
+                StatsOverview::class,
                 //Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([

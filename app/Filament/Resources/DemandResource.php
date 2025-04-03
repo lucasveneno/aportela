@@ -327,12 +327,21 @@ class DemandResource extends Resource
                     ->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
                     ->sortable(),
 
-                SelectColumn::make('status')
-                    ->options([
-                        'draft' => 'Draft',
-                        'reviewing' => 'Reviewing',
-                        'published' => 'Published',
-                    ]),
+                TextColumn::make('status')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'published' => 'success',  // Green
+                        'reviewing' => 'warning',  // Yellow/Orange
+                        'draft'     => 'danger',  // Red
+                        default     => 'gray',     // Fallback
+                    })
+                    ->icon(fn(string $state): string => match ($state) {
+                        'published' => 'heroicon-o-check-circle',
+                        'reviewing' => 'heroicon-o-clock',
+                        'draft'     => 'heroicon-o-pencil',
+                        default     => 'heroicon-o-question-mark-circle',
+                    })
+                    ->formatStateUsing(fn(string $state): string => ucfirst($state)),
 
                 //IconColumn::make('draft')->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

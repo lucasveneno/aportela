@@ -98,9 +98,14 @@
             }
 
             .description {
-
-                background: #666;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
             }
+
         }
     </style>
 </head>

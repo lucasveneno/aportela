@@ -60,6 +60,7 @@ class ViewDemand extends ViewRecord
             'margin_bottom' => -20,
             'margin_left' => 0,
             'padding' => 0,
+            'font_height_ratio'=>1
         ]);
 
         return response()->streamDownload(

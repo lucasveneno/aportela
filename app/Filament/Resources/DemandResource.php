@@ -380,10 +380,6 @@ class DemandResource extends Resource
     public static function getEloquentQuery(): Builder
     {
 
-        if(){
-
-        }
-        
         return parent::getEloquentQuery()
             ->when(!auth()->user()->isAdmin(), fn($query) =>
             $query->where('user_id', auth()->id()));

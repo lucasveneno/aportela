@@ -467,7 +467,7 @@ class DemandResource extends Resource
     protected function getHeaderWidgets(): array
     {
         return [
-            StatsOverviewWidget::make([
+            StatsOverview::make([
                 'status' => 'active',
             ]),
         ];

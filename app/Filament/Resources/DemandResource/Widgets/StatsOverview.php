@@ -49,11 +49,11 @@ class StatsOverview extends BaseWidget
                 ->color('success'),
 
             // Only show to admins
-            $isAdmin ? Stat::make('Active Users', User::where('is_active', true)->count())
+            /*$isAdmin ? Stat::make('Active Users', User::where('is_active', true)->count())
                 ->description('Currently active')
                 ->descriptionIcon('heroicon-o-users')
                 ->chart([1, 2, 3, 4, 3, 2, 1])
-                ->color('info') : null,
+                ->color('info') : null,*/
         ];
     }
 

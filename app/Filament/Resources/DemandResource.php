@@ -464,6 +464,7 @@ class DemandResource extends Resource
 
     public static function getWidgets(): array
     {
+        
         return [
             StatsOverview::class, // Add your widget here
         ];

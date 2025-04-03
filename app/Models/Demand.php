@@ -140,8 +140,9 @@ class Demand extends Model
     protected function getHeaderWidgets(): array
     {
         return [
-            StatsOverview::class,
-            // ... other widgets
+            StatsOverview::make([
+                'status' => 'active',
+            ]),
         ];
     }
 }

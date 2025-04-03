@@ -177,7 +177,7 @@ class DemandsChart extends ChartWidget
 
     public function getHeading(): string
     {
-        $period = $this->filters['time_period'] ?? 'month';
+        $period = $this->filter ?? 'month';
         return 'Demands (' . match ($period) {
             'today' => 'Today',
             'week' => 'Last Week',

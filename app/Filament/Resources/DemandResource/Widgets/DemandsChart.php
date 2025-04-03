@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\DemandResource\Widgets;
 
 use App\Models\Demand;
+use Filament\Forms\Components\DatePicker;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
@@ -11,25 +12,36 @@ class DemandsChart extends ChartWidget
 {
     protected static ?string $heading = 'Chart';
 
+    public ?string $filter = 'today';
+
     protected function getFilters(): ?array
     {
         return [
-            'today' => 'Today',
-            'week' => 'Last week',
-            'month' => 'Last month',
-            'year' => 'This year',
+            DatePicker::make('start_date')
+                ->label('From')
+                ->default(now()->startOfYear()),
+            DatePicker::make('end_date')
+                ->label('To')
+                ->default(now()->endOfYear()),
         ];
     }
 
     protected function getData(): array
     {
+        $filters = $this->filters;
+
         $data = Trend::model(Demand::class)
             ->between(
-                start: now()->startOfYear(),
-                end: now()->endOfYear(),
+                //start: now()->startOfYear(),
+                //end: now()->endOfYear(),
+                start: $filters['start_date'] ?? now()->startOfYear(),
+                end: $filters['end_date'] ?? now()->endOfYear(),
             )
             ->perMonth()
             ->count();
+
+
+
 
         return [
             'datasets' => [

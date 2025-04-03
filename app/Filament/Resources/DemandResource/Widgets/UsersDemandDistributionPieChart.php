@@ -102,6 +102,12 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             'plugins' => [
                 'legend' => [
                     'position' => 'right',
+                    'labels' => [
+                        'boxWidth' => 12,
+                        'font' => [
+                            'size' => 12,
+                        ],
+                    ],
                 ],
                 'tooltip' => [
                     'callbacks' => [
@@ -115,5 +121,16 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             ],
             'cutout' => '60%',
         ];
+    }
+
+    public function getHeading(): string
+    {
+        $period = $this->filter ?? 'month';
+        return 'Demand Distribution (' . match ($period) {
+            'week' => 'Last Week',
+            'month' => 'Last Month',
+            'year' => 'This Year',
+            'all' => 'All Time',
+        } . ')';
     }
 }

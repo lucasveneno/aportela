@@ -97,7 +97,8 @@
         <h3 class="title">{{ $title }}</h3>
 
         <p><strong>Unidade/Setor:</strong> {{ $area }}</p>
-        <p><strong>Responsável:</strong> {{ $requester }}</p>
+        <p><strong>Responsável:</strong> Joao Goulart</p>
+        <p><strong>Solicitante:</strong> {{ $requester }}</p>
         <p><strong>Código da solicitaão:</strong> {{ $demand_code }}</p>
         <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
 

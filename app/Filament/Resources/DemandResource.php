@@ -462,12 +462,13 @@ class DemandResource extends Resource
         };
     }
 
-    protected function getHeaderWidgets(): array
+    public static function getWidgets(): array
     {
         return [
             StatsOverview::class, // Add your widget here
         ];
     }
+
 
     /*
 Melhorias implementadas:

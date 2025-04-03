@@ -37,7 +37,7 @@ class CategoryPolicy
      */
     public function update(User $user, Category $category): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoryPolicy
      */
     public function delete(User $user, Category $category): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -53,7 +53,7 @@ class CategoryPolicy
      */
     public function restore(User $user, Category $category): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 
     /**
@@ -61,6 +61,6 @@ class CategoryPolicy
      */
     public function forceDelete(User $user, Category $category): bool
     {
-        return $user->is_admin === '1' && in_array($user->role, ['user']);
+        return $user->is_admin && in_array($user->role, ['user']);
     }
 }

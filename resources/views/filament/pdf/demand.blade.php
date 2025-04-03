@@ -25,6 +25,13 @@
 
         h2 {
             text-align: center;
+            margin: 0px;
+        }
+
+        h3 {
+            text-align: center;
+            margin: 0px;
+
         }
 
         button {
@@ -67,6 +74,15 @@
             font-size: 12px;
             color: #999
         }
+
+        .center {
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            filter: grayscale(100);
+        }
     </style>
 </head>
 
@@ -80,28 +96,22 @@
 
 
         <div class="container" id="content">
-            <img id="logo" src="images/logo-cm-campo-grande.png"/>
-            <h2>Solicitação de Demanda</h2>
-            <h2>FORMULÁRIO DE SOLICITAÇÃO DE DEMANDA</h2>
-            <h3>IMPRENSA UNIVERSITÁRIA</h3>
-            <table>
-                <tr>
-                    <th>Unidade/Setor</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>Responsável pela solicitação</th>
-                    <td></td>
-                    <th>CPF ou SIAPE do responsável</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th>E-mail</th>
-                    <td></td>
-                    <th>Telefone</th>
-                    <td></td>
-                </tr>
-            </table>
+            <div class="center">
+                <img class="logo" src="./logo-cm-campo-grande.png" />
+            </div>
+            <h2>CÂMARA MUNICIPAL DE CAMPO GRANDE</h2>
+            <h2>ESTADO DE MATO GROSSO DO SUL</h2>
+            <h3>SOLICITAÇÃO DE DEMANDA</h3>
+
+            <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
+            <p><strong>Responsável:</strong> João da Silva</p>
+            <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
+            <p><strong>Data do Evento:</strong> 10/04/2025</p>
+            <p>
+                <strong>Especificação:</strong>
+                <br /> {!! $record->description !!}
+            </p>
+            
             <h3>Justificativa da Demanda</h3>
             <table>
                 <tr>
@@ -115,14 +125,7 @@
                 </tr>
             </table>
         </div>
-        <p><strong>Unidade/Setor:</strong> Infraestrutura</p>
-        <p><strong>Responsável:</strong> João da Silva</p>
-        <p><strong>Justificativa:</strong> Necessidade de reparo em via pública devido a buracos.</p>
-        <p><strong>Data do Evento:</strong> 10/04/2025</p>
-        <p>
-            <strong>Especificação:</strong>
-            <br /> {!! $record->description !!}
-        </p>
+
     </div>
 
     <div class="footer">

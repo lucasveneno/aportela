@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class UsersDemandDistributionPieChart  extends ChartWidget
 {
     protected static ?string $heading = 'Demand Distribution by User';
-    protected static ?string $maxHeight = '400px';
+    //protected static ?string $maxHeight = '400px';
     protected static ?string $pollingInterval = null;
     protected int|string|array $columnSpan = 'lg';
 

@@ -461,8 +461,7 @@ class DemandResource extends Resource
             default =>  __('resources.demands.low_description'),
         };
     }
-
-    public static function getWidgets(): array
+    protected function getHeaderWidgets(): array
     {
         
         return [

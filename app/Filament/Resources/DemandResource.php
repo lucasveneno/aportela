@@ -331,8 +331,7 @@ class DemandResource extends Resource
                         'draft' => 'Draft',
                         'reviewing' => 'Reviewing',
                         'published' => 'Published',
-                    ])
-                    ->attribute('status_id'),
+                    ]),
 
                 //IconColumn::make('draft')->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

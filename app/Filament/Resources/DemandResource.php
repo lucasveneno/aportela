@@ -40,6 +40,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
+use Filament\Widgets\StatsOverviewWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
@@ -461,11 +462,14 @@ class DemandResource extends Resource
             default =>  __('resources.demands.low_description'),
         };
     }
-    protected function getFooterWidgets(): array
+
+
+    protected function getHeaderWidgets(): array
     {
-        
         return [
-            StatsOverview::class, // Add your widget here
+            StatsOverviewWidget::make([
+                'status' => 'active',
+            ]),
         ];
     }
 

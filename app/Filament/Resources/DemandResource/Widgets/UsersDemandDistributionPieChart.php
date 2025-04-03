@@ -147,11 +147,5 @@ class UsersDemandDistributionPieChart  extends ChartWidget
         } . ')';
     }
 
-    protected static ?array $options = [
-        'plugins' => [
-            'legend' => [
-                'display' => false,
-            ],
-        ],
-    ];
+    
 }

@@ -83,9 +83,9 @@ class DemandMap extends MapTableWidget
 			Tables\Actions\EditAction::make()
 				->url(fn($record) => EditDemand::getUrl(['record' => $record])),
 			GoToAction::make()
-				->zoom(15)
+				->zoom(17)
 				->label('Ver no mapa'),
-			RadiusAction::make(),
+			//RadiusAction::make(),
 		];
 	}
 

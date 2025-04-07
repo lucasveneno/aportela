@@ -23,6 +23,8 @@ class DemandMap extends MapTableWidget
 
 	protected static ?string $mapId = 'incidents';
 
+    protected int|string|array $columnSpan = 'lg';
+
 	protected function getTableQuery(): Builder
 	{
 		return \App\Models\Demand::query()->latest();

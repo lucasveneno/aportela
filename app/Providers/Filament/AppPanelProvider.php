@@ -25,13 +25,11 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AppPanelProvider extends PanelProvider
 {
-    protected int|string|array $columnSpan = 'lg';
-
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->default()
-
+            
             ->id('app')
             ->brandName('Solicitação de demandas')
             ->path('app')

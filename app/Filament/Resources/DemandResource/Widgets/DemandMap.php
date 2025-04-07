@@ -44,6 +44,7 @@ class DemandMap extends MapTableWidget
 	protected function getTableColumns(): array
 	{
 		return [
+			TextColumn::make('demand_code'),
 			TextColumn::make('latitude'),
 			TextColumn::make('latitude'),
 			TextColumn::make('longitude'),

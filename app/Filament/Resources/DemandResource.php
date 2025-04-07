@@ -263,6 +263,7 @@ class DemandResource extends Resource
                                 'searchBoxControl'  => false, // creates geocomplete field inside map
                                 'zoomControl'       => true,
                             ])
+                            ->defaultZoom(5) // default zoom level when opening form
                             ->autocomplete('full_address') // field on form to use as Places geocompletion field
                             ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                             ->reactive()

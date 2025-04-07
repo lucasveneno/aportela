@@ -50,9 +50,8 @@ class DemandMap extends MapTableWidget
 				->label(__('resources.categories.area'))
 				->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
 				->sortable(),
-			TextColumn::make('latitude'),
-			TextColumn::make('latitude'),
-			TextColumn::make('longitude'),
+			//TextColumn::make('latitude'),
+			//TextColumn::make('longitude'),
 			MapColumn::make('location')
 				->extraImgAttributes(
 					fn($record): array => ['title' => $record->latitude . ',' . $record->longitude]

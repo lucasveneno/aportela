@@ -10,6 +10,7 @@ use Cheesegrits\FilamentGoogleMaps\Widgets\MapTableWidget;
 use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Filters\MapIsFilter;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 
 class DemandMap extends MapTableWidget
@@ -41,8 +42,8 @@ class DemandMap extends MapTableWidget
 	protected function getTableColumns(): array
 	{
 		return [
-			Tables\Columns\TextColumn::make('latitude'),
-			Tables\Columns\TextColumn::make('longitude'),
+			TextColumn::make('latitude'),
+			TextColumn::make('longitude'),
 			MapColumn::make('location')
 				->extraImgAttributes(
 					fn ($record): array => ['title' => $record->latitude . ',' . $record->longitude]

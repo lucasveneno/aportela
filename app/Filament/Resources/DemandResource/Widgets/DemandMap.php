@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\DemandResource\Widgets;
 
 use App\Filament\Resources\DemandResource\Pages\EditDemand;
+use App\Filament\Resources\DemandResource\Pages\ViewDemand;
 use App\Models\Demand;
 use Cheesegrits\FilamentGoogleMaps\Actions\GoToAction;
 use Cheesegrits\FilamentGoogleMaps\Actions\RadiusAction;
@@ -70,8 +71,10 @@ class DemandMap extends MapTableWidget
 	protected function getTableActions(): array
 	{
 		return [
-			Tables\Actions\ViewAction::make(),
+			//Tables\Actions\ViewAction::make(),
 			//Tables\Actions\EditAction::make(),
+			Tables\Actions\ViewAction::make()
+				->url(fn($record) => ViewDemand::getUrl(['record' => $record])),
 			Tables\Actions\EditAction::make()
 				->url(fn($record) => EditDemand::getUrl(['record' => $record])),
 			GoToAction::make()

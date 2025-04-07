@@ -45,11 +45,7 @@ class DemandMap extends MapTableWidget
 	protected function getTableColumns(): array
 	{
 		return [
-			TextColumn::make('demand_code'),
-			TextColumn::make('area_id')
-				->label(__('resources.categories.area'))
-				->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
-				->sortable(),
+
 			//TextColumn::make('latitude'),
 			//TextColumn::make('longitude'),
 			MapColumn::make('location')
@@ -60,6 +56,11 @@ class DemandMap extends MapTableWidget
 				->width('150')
 				->type('hybrid')
 				->zoom(16),
+			TextColumn::make('demand_code'),
+			TextColumn::make('area_id')
+				->label(__('resources.categories.area'))
+				->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
+				->sortable(),
 		];
 	}
 

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\DemandResource\Widgets;
 
+use App\Filament\Resources\DemandResource\Pages\EditDemand;
 use App\Models\Demand;
 use Cheesegrits\FilamentGoogleMaps\Actions\GoToAction;
 use Cheesegrits\FilamentGoogleMaps\Actions\RadiusAction;
@@ -30,12 +31,12 @@ class DemandMap extends MapTableWidget
 	protected function getTableQuery(): Builder
 	{
 		$query = Demand::query();
-        if (!auth()->user()->isAdmin()) {
-            $query->where('user_id', auth()->id());
-        }
+		if (!auth()->user()->isAdmin()) {
+			$query->where('user_id', auth()->id());
+		}
 
 		return $query->latest();
-		
+
 		//return \App\Models\Demand::query()->latest();
 	}
 
@@ -43,10 +44,11 @@ class DemandMap extends MapTableWidget
 	{
 		return [
 			TextColumn::make('latitude'),
+			TextColumn::make('latitude'),
 			TextColumn::make('longitude'),
 			MapColumn::make('location')
 				->extraImgAttributes(
-					fn ($record): array => ['title' => $record->latitude . ',' . $record->longitude]
+					fn($record): array => ['title' => $record->latitude . ',' . $record->longitude]
 				)
 				->height('150')
 				->width('250')
@@ -61,7 +63,7 @@ class DemandMap extends MapTableWidget
 			RadiusFilter::make('location')
 				->section('Radius Filter')
 				->selectUnit(),
-            MapIsFilter::make('map'),
+			MapIsFilter::make('map'),
 		];
 	}
 
@@ -69,7 +71,9 @@ class DemandMap extends MapTableWidget
 	{
 		return [
 			Tables\Actions\ViewAction::make(),
-			Tables\Actions\EditAction::make(),
+			//Tables\Actions\EditAction::make(),
+			Tables\Actions\EditAction::make()
+				->url(fn($record) => EditDemand::getUrl(['record' => $record])),
 			GoToAction::make()
 				->zoom(14),
 			RadiusAction::make(),
@@ -82,14 +86,13 @@ class DemandMap extends MapTableWidget
 
 		$data = [];
 
-		foreach ($locations as $location)
-		{
+		foreach ($locations as $location) {
 			$data[] = [
 				'location' => [
 					'lat' => $location->latitude ? round(floatval($location->latitude), static::$precision) : 0,
-                    'lng' => $location->longitude ? round(floatval($location->longitude), static::$precision) : 0,
+					'lng' => $location->longitude ? round(floatval($location->longitude), static::$precision) : 0,
 				],
-                'id'      => $location->id,
+				'id'      => $location->id,
 			];
 		}
 

@@ -58,7 +58,7 @@ class DemandMap extends MapTableWidget
 					fn($record): array => ['title' => $record->latitude . ',' . $record->longitude]
 				)
 				->height('150')
-				->width('250')
+				->width('150')
 				->type('hybrid')
 				->zoom(16),
 		];

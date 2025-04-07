@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\DemandResource\Widgets\DemandMap;
 use App\Filament\Resources\DemandResource\Widgets\DemandsChart;
 use App\Filament\Resources\DemandResource\Widgets\StatsOverview;
 use App\Filament\Resources\DemandResource\Widgets\UsersDemandDistributionPieChart;
@@ -47,6 +48,7 @@ class AppPanelProvider extends PanelProvider
                 DemandsChart::class,
                 UsersDemandDistributionPieChart::class,
                 StatsOverview::class,
+                DemandMap::class,
                 //Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([

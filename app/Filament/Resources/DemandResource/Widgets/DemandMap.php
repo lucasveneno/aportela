@@ -72,9 +72,9 @@ class DemandMap extends MapTableWidget
 		$locations = $this->getRecords();
 
 		//$query = Demand::query();
-        if (!auth()->user()->isAdmin()) {
+        //if (!auth()->user()->isAdmin()) {
             $locations->where('user_id', auth()->id());
-        }
+        //}
 
 		$data = [];
 

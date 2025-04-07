@@ -4,6 +4,7 @@ namespace App\Filament\Resources\DemandResource\Widgets;
 
 use App\Filament\Resources\DemandResource\Pages\EditDemand;
 use App\Filament\Resources\DemandResource\Pages\ViewDemand;
+use App\Models\Area;
 use App\Models\Demand;
 use Cheesegrits\FilamentGoogleMaps\Actions\GoToAction;
 use Cheesegrits\FilamentGoogleMaps\Actions\RadiusAction;
@@ -45,6 +46,10 @@ class DemandMap extends MapTableWidget
 	{
 		return [
 			TextColumn::make('demand_code'),
+			TextColumn::make('area_id')
+				->label(__('resources.categories.area'))
+				->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
+				->sortable(),
 			TextColumn::make('latitude'),
 			TextColumn::make('latitude'),
 			TextColumn::make('longitude'),

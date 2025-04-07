@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\DemandResource\Widgets;
 
+use App\Models\Demand;
 use Cheesegrits\FilamentGoogleMaps\Actions\GoToAction;
 use Cheesegrits\FilamentGoogleMaps\Actions\RadiusAction;
 use Cheesegrits\FilamentGoogleMaps\Filters\RadiusFilter;
@@ -27,7 +28,14 @@ class DemandMap extends MapTableWidget
 
 	protected function getTableQuery(): Builder
 	{
-		return \App\Models\Demand::query()->latest();
+		$query = Demand::query();
+        if (!auth()->user()->isAdmin()) {
+            $query->where('user_id', auth()->id());
+        }
+
+		return $query->latest();
+		
+		//return \App\Models\Demand::query()->latest();
 	}
 
 	protected function getTableColumns(): array
@@ -70,11 +78,6 @@ class DemandMap extends MapTableWidget
 	protected function getData(): array
 	{
 		$locations = $this->getRecords();
-
-		//$query = Demand::query();
-        //if (!auth()->user()->isAdmin()) {
-            $locations->where('user_id', auth()->id());
-        //}
 
 		$data = [];
 

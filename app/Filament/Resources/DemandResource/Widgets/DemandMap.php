@@ -60,7 +60,7 @@ class DemandMap extends MapTableWidget
 				->height('150')
 				->width('250')
 				->type('hybrid')
-				->zoom(25),
+				->zoom(16),
 		];
 	}
 

@@ -17,7 +17,7 @@ class DemandMap extends MapWidget
 
     protected static ?bool $fitToBounds = true;
 
-    protected static ?int $zoom = 12;
+    protected static ?int $zoom = 15;
 
     protected static ?string $mapId = 'incidents';
 
@@ -31,16 +31,17 @@ class DemandMap extends MapWidget
          * You can use whatever query you want here, as long as it produces a set of records with your
          * lat and lng fields in them.
          */
-        $locations = Demand::all();
+        //$locations = Demand::all();
 
-        //$locations = Demand::query();
+        $locations = Demand::query();
 
         if (!auth()->user()->isAdmin()) {
             $locations->where('user_id', auth()->id());
         }
 
-        //$locations->latest();
 
+        // Get the results (removed ->all() which was causing issues)
+        $locations = $locations->latest()->get();
 
         $data = [];
 
@@ -64,10 +65,10 @@ class DemandMap extends MapWidget
                 'id' => $location->getKey(),
 
                 /**
-                 * Optionally you can provide custom icons for the map markers,
-                 * either as scalable SVG's, or PNG, which doesn't support scaling.
-                 * If you don't provide icons, the map will use the standard Google marker pin.
-                 */
+             * Optionally you can provide custom icons for the map markers,
+             * either as scalable SVG's, or PNG, which doesn't support scaling.
+             * If you don't provide icons, the map will use the standard Google marker pin.
+             */
                 //'icon' => [
                 //    'url' => url('images/dealership.svg'),
                 //    'type' => 'svg',

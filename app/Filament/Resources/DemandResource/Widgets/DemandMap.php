@@ -68,12 +68,11 @@ class DemandMap extends MapWidget
                  * either as scalable SVG's, or PNG, which doesn't support scaling.
                  * If you don't provide icons, the map will use the standard Google marker pin.
                  */
-                'icon' => [
-                    'url' => url('images/dealership.svg'),
-                    'type' => 'svg',
-                    'scale' => [35, 35],
-
-                ],
+                //'icon' => [
+                //    'url' => url('images/dealership.svg'),
+                //    'type' => 'svg',
+                //    'scale' => [35, 35],
+                //],
             ];
         }
 

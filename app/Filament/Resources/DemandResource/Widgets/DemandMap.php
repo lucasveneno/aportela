@@ -89,7 +89,7 @@ class DemandMap extends MapTableWidget
 				->after(function () {
 					$this->js(<<<JS
 						setTimeout(() => {
-							const section = document.getElementById('map-section');
+							const section = document.getElementById('map-incidents');
 							if (section) {
 								section.scrollIntoView({
 									behavior: 'smooth',

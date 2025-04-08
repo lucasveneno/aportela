@@ -31,9 +31,9 @@ class DemandMap extends MapWidget
          * You can use whatever query you want here, as long as it produces a set of records with your
          * lat and lng fields in them.
          */
-        //$locations = \App\Models\Demand::all()->limit(500);
+        $locations = \App\Models\Demand::all()->limit(500);
 
-        $locations = Demand::query();
+        //$locations = Demand::query();
 
         if (!auth()->user()->isAdmin()) {
             $locations->where('user_id', auth()->id());

@@ -33,10 +33,10 @@ class DemandMap extends MapWidget
     	 */
         //$locations = \App\Models\Demand::all()->limit(500);
 
-        $query = Demand::query();
-        
+        $locations = Demand::query();
+
 		if (!auth()->user()->isAdmin()) {
-			$query->where('user_id', auth()->id());
+			$locations->where('user_id', auth()->id());
 		}
 
 

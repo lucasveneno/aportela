@@ -68,15 +68,20 @@ class DemandMap extends MapWidget
                 'id' => $location->getKey(),
 
                 /**
-             * Optionally you can provide custom icons for the map markers,
-             * either as scalable SVG's, or PNG, which doesn't support scaling.
-             * If you don't provide icons, the map will use the standard Google marker pin.
-             */
-                //'icon' => [
-                //    'url' => url('images/dealership.svg'),
-                //    'type' => 'svg',
-                //    'scale' => [35, 35],
-                //],
+                 * Optionally you can provide custom icons for the map markers,
+                 * either as scalable SVG's, or PNG, which doesn't support scaling.
+                 * If you don't provide icons, the map will use the standard Google marker pin.
+                 */
+                'icon' => [
+                    //'url' => url('images/dealership.svg'),
+                    //'type' => 'svg',
+                    'scale' => [35, 35],
+                    //path: faBus.icon[4] as string,
+                    'fillColor'=> "#0000ff",
+                    'fillOpacity'=> 1,
+                    'strokeWeight'=> 1,
+                    'strokeColor'=> "#ffffff",
+                ],
 
             ];
         }

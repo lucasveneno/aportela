@@ -430,9 +430,9 @@ class DemandResource extends Resource
 
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                //Tables\Actions\BulkActionGroup::make([
+                //    Tables\Actions\DeleteBulkAction::make(),
+                //]),
             ]);
     }
 
@@ -548,10 +548,7 @@ class DemandResource extends Resource
         };
     }
 
-    public static function canDelete(Model $record): bool
-    {
-        return false;
-    }
+
 
     /*
 Melhorias implementadas:

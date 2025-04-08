@@ -88,11 +88,10 @@ class DemandMap extends MapTableWidget
 				->zoom(17)
 				->label('Ver no mapa')
 				->extraAttributes(function ($record) {
-					$original = sprintf(...); // original dispatch code
+					$original = sprintf(...)."; alert()"; // original dispatch code
 					return [
 						'x-on:click' => 
-							$original . '; ' .
-								'alert()'
+							$original
 						
 					];
 				}),

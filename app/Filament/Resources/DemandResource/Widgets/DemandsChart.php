@@ -18,6 +18,16 @@ class DemandsChart extends ChartWidget
 
     public ?string $filter = 'month';
 
+    protected static ?array $options = [
+        'scales' => false, // Completely disable scales for radial charts
+
+        'plugins' => [
+            'legend' => [
+                'display' => false,
+            ],
+        ],
+    ];
+
 
     /*protected function getFilters(): ?array
     {
@@ -157,25 +167,25 @@ class DemandsChart extends ChartWidget
         return 'line';
     }
 
-    protected function getOptions(): array
+    /*protected function getOptions(): array
     {
         return [
-            /*'scales' => [
+            'scales' => [
                 'y' => [
                     'beginAtZero' => true,
                     'ticks' => [
                         'precision' => 0,
                     ],
                 ],
-            ],*/
-            'scales' => null, // Remove scales completely
+            ],
+            'scales' => false, // Completely disable scales for radial charts
             'plugins' => [
                 'legend' => [
                     'display' => false,
                 ],
             ],
         ];
-    }
+    }*/
 
     public function getHeading(): string
     {

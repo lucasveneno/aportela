@@ -86,20 +86,15 @@ class DemandMap extends MapTableWidget
 			GoToAction::make()
 				->zoom(17)
 				->label('Ver no mapa')
-				->action(function () {
-					// Your action logic here (if any)
-					
-					// Use JavaScript for smooth scrolling without page reload
+
+				->after(function () {
 					$this->js(<<<JS
 						setTimeout(() => {
-							const section = document.getElementById('map-incidents');
-							if (section) {
-								section.scrollIntoView({
-									behavior: 'smooth',
-									block: 'start'
-								});
-							}
-						}, 100)
+							document.getElementById('map-incidents')?.scrollIntoView({
+								behavior: 'smooth',
+								block: 'start'
+							});
+						}, 300)
 					JS);
 				}),
 				/*->after(function () {

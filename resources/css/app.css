@@ -2,14 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* Custom CSS goes below */
 html,
 body {
   touch-action: manipulation;
   -webkit-text-size-adjust: 100%;
 }
-
 
 [x-cloak] {
     display: none;

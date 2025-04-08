@@ -1,7 +1,8 @@
 @php
     seo()
     ->title('Filament - Laravel Admin Panel')
-    ->description('An admin panel built with Laravel and Livewire.');
+    ->description('An admin panel built with Laravel and Livewire.')
+    ->viewport('width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
 @endphp
 
 <x-layouts.app>

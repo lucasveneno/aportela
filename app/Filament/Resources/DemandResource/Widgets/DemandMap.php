@@ -92,7 +92,7 @@ class DemandMap extends MapTableWidget
 					return [
 						'x-on:click' => new HtmlString(
 							$original . '; ' . 
-							'setTimeout(() => alert("ok"), 300)'
+							'setTimeout(() => document.getElementById("map-incidents").scrollIntoView(), 300)'
 						)
 					];
 				}),

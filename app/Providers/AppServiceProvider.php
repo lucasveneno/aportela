@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
             Filament::registerRenderHook(
                 'head.start',
                 fn () => <<<'HTML'
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+                    <meta name="viewportx" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
                 HTML
             );
         });

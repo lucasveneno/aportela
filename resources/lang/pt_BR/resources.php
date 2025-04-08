@@ -131,7 +131,7 @@ return [
             'total_demands' => 'Demandas totais',
             'total_demands_description' => 'Todas deste mês',
             'pending_demands' => 'Demandas pendentes',
-            'pending_demands_description' => 'Demandas pendentes',
+            'pending_demands_description' => 'Requer ação "Rascunhos"',
             'completed_demands' => 'Demandas finalizadas',
             'completed_demands_description' => 'Demandas finalizadas',
         ],

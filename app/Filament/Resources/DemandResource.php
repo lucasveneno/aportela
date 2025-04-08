@@ -290,9 +290,7 @@ class DemandResource extends Resource
                             ->label('')
                             ->image()
                             ->disk('public') // The disk where files will be stored
-
                             ->directory('demand_files')
-
                             ->maxSize(2048)
                             ->acceptedFileTypes(['image/*'])
                             ->extraAttributes([

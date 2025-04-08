@@ -170,7 +170,7 @@ class DemandsChart extends ChartWidget
             ],
             'plugins' => [
                 'legend' => [
-                    'display' => false,
+                    'display' => true,
                 ],
             ],
         ];

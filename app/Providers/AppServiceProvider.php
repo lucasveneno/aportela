@@ -39,13 +39,12 @@ class AppServiceProvider extends ServiceProvider
             fn() => <<<'HTML'
                 <style>
                     :root {
-                        touch-action: manipulation !important;
+                        touch-action: none !important;
                         height: 100% 
                     }
                     
                     
                     html, body {                      
-                        touch-action: manipulation !important;
                         overflow-x: hidden;
                         -webkit-text-size-adjust: 100% !important;
                         -ms-text-size-adjust: 100% !important;

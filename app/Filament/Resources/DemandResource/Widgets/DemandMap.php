@@ -103,7 +103,7 @@ class DemandMap extends MapTableWidget
 							}, 300)"
 						),
 					]);
-				})
+				}),
 			/*->after(function () {
 					return redirect()->to(url()->current() . '#map-incidents');
 				}),*/

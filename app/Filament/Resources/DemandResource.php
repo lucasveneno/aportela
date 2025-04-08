@@ -60,7 +60,7 @@ class DemandResource extends Resource
                         ->disabled()
                         
                         ->dehydrated(fn(?string $context) => in_array($context, ['create']))
-                        ->unique(ignoreRecord: true)
+                        //->unique(ignoreRecord: true)
                         ->helperText('Código gerado automaticamente'),
 
                     /*TextInput::make('demand_code')

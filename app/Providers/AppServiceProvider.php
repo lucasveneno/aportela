@@ -8,7 +8,7 @@ use App\Models\Plugin;
 use App\Models\Star;
 use App\Services\PackageDownloadStats;
 use App\Services\PackageGitHubStarsStats;
-use Filament\Facades\Filament;
+use Filament\Support\Facades\FilamentView;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -22,30 +22,29 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             'package-github-stars-stats',
-            fn () => new PackageGitHubStarsStats(),
+            fn() => new PackageGitHubStarsStats(),
         );
 
         $this->app->bind(
             'package-download-stats',
-            fn () => new PackageDownloadStats(),
+            fn() => new PackageDownloadStats(),
         );
     }
 
     public function boot(): void
     {
-        Filament::serving(function () {
-            Filament::registerRenderHook(
-                'head.start',
-                fn () => <<<'HTML'
-                    <meta name="viewportx" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-                HTML
-            );
-        });
 
+        FilamentView::registerRenderHook(
+            'panels::head.start',
+            fn() => <<<'HTML'
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            HTML
+        );
+        
         seo()
             ->site(config('app.name'))
             ->title(
-                modify: fn (string $title) => $title . ' - ' . config('app.name'),
+                modify: fn(string $title) => $title . ' - ' . config('app.name'),
                 default: 'Filament - Accelerated Laravel development framework: admin panel, form builder, table builder and more',
             )
             ->description(default: 'A collection of beautiful full-stack components for Laravel. The perfect starting point for your next app. Using Livewire, Alpine.js and Tailwind CSS.')
@@ -64,9 +63,9 @@ class AppServiceProvider extends ServiceProvider
         RateLimiter::for('vpn_api', function (CheckIfIpIsVpn $job): Limit {
             if (
                 Star::query()
-                    ->where('ip', $job->ip)
-                    ->whereNotNull('is_vpn_ip')
-                    ->exists()
+                ->where('ip', $job->ip)
+                ->whereNotNull('is_vpn_ip')
+                ->exists()
             ) {
                 return Limit::none();
             }

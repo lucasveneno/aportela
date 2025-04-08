@@ -229,7 +229,7 @@ class DemandResource extends Resource
                             ->maxLength(1024)
                             //->prefix('Choose:')
                             ->placeholder('Start typing an address ...')
-                            ->geolocate() // add a suffix button which requests and reverse geocodes the device location
+                            ->geolocate(fn (?string $context) => in_array($context, ['create', 'edit'])) // add a suffix button which requests and reverse geocodes the device location
                             ->geolocateIcon('heroicon-o-map-pin'), // override the default icon for the geolocate button
                         //->geocodeOnLoad(), // server side geocode of lat/lng to address when form is loaded
 

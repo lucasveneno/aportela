@@ -222,7 +222,7 @@ class DemandResource extends Resource
 
                     ->schema([
                         Geocomplete::make('full_address')
-                        ->label(__('resources.demands.full_address'))
+                            ->label(__('resources.demands.full_address'))
                             //->isLocation()
                             ->countries(['br']) // restrict autocomplete results to these countries
                             //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats
@@ -236,6 +236,8 @@ class DemandResource extends Resource
 
 
                         TextInput::make('latitude')
+                            ->label(__('resources.demands.latitude'))
+
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
                                 $set('location', [
@@ -245,6 +247,8 @@ class DemandResource extends Resource
                             })
                             ->lazy(), // important to use lazy, to avoid updates as you type
                         TextInput::make('longitude')
+                            ->label(__('resources.demands.longitude'))
+
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $get, callable $set) {
                                 $set('location', [
@@ -255,6 +259,8 @@ class DemandResource extends Resource
                             ->lazy(), // important to use lazy, to avoid updates as you type
 
                         Map::make('location')
+                            ->label(__('resources.demands.location'))
+
                             ->mapControls([
                                 'mapTypeControl'    => false,
                                 'scaleControl'      => false,

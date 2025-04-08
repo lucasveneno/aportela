@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
                     
                     html, body, .fi-ta-header-toolbar, .fi-ta-table {
                         touch-action: pan-x pan-y; /* Allows scrolling but disables pinch-zoom */
-                        overscroll-behavior: none; /* Prevents pull-to-refresh */
+                        /* overscroll-behavior: none;  Prevents pull-to-refresh */
                     }
                 </style>
                 <script>

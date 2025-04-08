@@ -57,7 +57,6 @@ class AppServiceProvider extends ServiceProvider
                     input, textarea, select {
                         font-size: 16px;
                     }
-
                     
                 </style>
             HTML

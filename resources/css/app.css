@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  touch-action: manipulation;
-  -webkit-text-size-adjust: 100%;
-}
-
 [x-cloak] {
     display: none;
 }

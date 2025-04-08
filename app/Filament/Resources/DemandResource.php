@@ -306,8 +306,8 @@ class DemandResource extends Resource
                             ->inline(), // Makes it update in real-time
 
 
-                    ]),
-            ])->hidden(fn(string $context): bool => in_array($context, ['create', 'edit']));
+                    ])->visible(fn(string $context): bool => in_array($context, ['create', 'edit'])),
+            ]);
     }
 
     public static function table(Table $table): Table

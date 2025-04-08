@@ -90,10 +90,10 @@ class DemandMap extends MapTableWidget
 				->extraAttributes(function ($record) {
 					$original = sprintf(...); // original dispatch code
 					return [
-						'x-on:click' => new HtmlString(
+						'x-on:click' => 
 							$original . '; ' .
 								'alert()'
-						)
+						
 					];
 				}),
 			//RadiusAction::make(),

@@ -160,17 +160,17 @@ class DemandsChart extends ChartWidget
     protected function getOptions(): array
     {
         return [
-            'scales' => [
+            /*'scales' => [
                 'y' => [
                     'beginAtZero' => true,
                     'ticks' => [
                         'precision' => 0,
                     ],
                 ],
-            ],
+            ],*/
             'plugins' => [
                 'legend' => [
-                    'display' => true,
+                    'display' => false,
                 ],
             ],
         ];

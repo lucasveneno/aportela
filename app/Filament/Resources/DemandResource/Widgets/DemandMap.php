@@ -76,9 +76,7 @@ class DemandMap extends MapWidget
                     //'url' => url('images/dealership.svg'),
                     //'type' => 'svg',
                     //'scale' => [35, 35],
-                    //path: faBus.icon[4] as string,
-                                        
-                    'url' => url('https://maps.google.com/mapfiles/ms/icons/green-dot.png'),
+                    'url' => url('images/black.png'),
 
                 ],
 

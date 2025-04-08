@@ -63,28 +63,27 @@ class DemandMap extends MapWidget
                     'lng' => $location->longitude ? round(floatval($location->longitude), static::$precision) : 0,
                 ],
 
-                //'label'     => $location->latitude . ',' . $location->longitude,
+                'label'     => 'Código: '.$location->demand_code.' '. $location->latitude . ',' . $location->longitude,
 
-                'label' => $location
-                    ? view('filament-panels::widgets.map-label', [
-                        'dealershipId' => $location->demand_code,
-                        'dealershipName' => $location->status,
-                        'dealershipIcon' => $location->icon,
-                    ])->render()
-                    : $location->latitude . ',' . $location->longitude,
 
                 'id' => $location->getKey(),
 
                 /**
-             * Optionally you can provide custom icons for the map markers,
-             * either as scalable SVG's, or PNG, which doesn't support scaling.
-             * If you don't provide icons, the map will use the standard Google marker pin.
-             */
+                 * Optionally you can provide custom icons for the map markers,
+                 * either as scalable SVG's, or PNG, which doesn't support scaling.
+                 * If you don't provide icons, the map will use the standard Google marker pin.
+                 */
                 //'icon' => [
                 //    'url' => url('images/dealership.svg'),
                 //    'type' => 'svg',
                 //    'scale' => [35, 35],
                 //],
+                'icon' => view('filament-panels::widgets.map-label', [
+                    'dealershipId' => $location->demand_code,
+                    'dealershipName' => $location->status,
+                    'dealershipIcon' => $location->icon,
+                ])->render(),
+
 
 
             ];

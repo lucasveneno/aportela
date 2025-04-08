@@ -46,7 +46,7 @@ class StatsOverview extends BaseWidget
 
                 Stat::make(__('resources.widgets.stats_overview.total_demands'), $totalDemands)
                     ->description(__('resources.widgets.stats_overview.total_demands_description'))
-                    ->descriptionIcon('heroicon-o-clipboard-document-check')
+                    ->descriptionIcon('heroicon-o-clipboard-document-list')
                     ->chart([7, 3, 4, 5, 6, 3, 5])
                     ->color('warning'),
 

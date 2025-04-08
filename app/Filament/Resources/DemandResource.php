@@ -364,7 +364,7 @@ class DemandResource extends Resource
                         default => 'heroicon-o-question-mark-circle',
                     })
                     ->formatStateUsing(fn(string $state): string => match ($state) {
-                        '0' => 'Publicado',
+                        '0' => 'Finalizado',
                         '1' => 'Pendente',
                         default => ucfirst($state),
                     }),

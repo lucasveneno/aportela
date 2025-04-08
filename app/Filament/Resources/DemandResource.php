@@ -289,6 +289,7 @@ class DemandResource extends Resource
                         FileUpload::make('files')
                             ->label('')
                             ->image()
+                            ->multiple()
                             ->disk('public') // The disk where files will be stored
                             ->directory('demand_files')
                             ->acceptedFileTypes(['image/*'])

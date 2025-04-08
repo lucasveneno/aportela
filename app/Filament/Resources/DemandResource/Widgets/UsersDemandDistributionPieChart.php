@@ -79,7 +79,10 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                 [
                     'label' => 'Demands by User',
                     'data' => $usersWithDemands->pluck('demands_count')->toArray(),
-                    'backgroundColor' => array_slice($colors, 0, $usersWithDemands->count()),
+                    //'backgroundColor' => array_slice($colors, 0, $usersWithDemands->count()),
+                    'backgroundColor' => $colors,
+                    'borderColor' => $colors,
+                    'borderWidth' => 1,
                 ],
             ],
             'labels' => $usersWithDemands->pluck('name')->toArray(),

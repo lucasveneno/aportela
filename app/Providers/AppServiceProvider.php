@@ -42,6 +42,22 @@ class AppServiceProvider extends ServiceProvider
         );
         */
 
+        FilamentView::registerRenderHook(
+            'panels::head.end',
+            fn() => <<<'HTML'
+                <style>
+                    html, body {
+                        touch-action: manipulation;
+                        -webkit-text-size-adjust: 100%;
+                    }
+        
+                    input, textarea, select {
+                        font-size: 16px;
+                    }
+                </style>
+            HTML
+        );
+        
         seo()
             ->site(config('app.name'))
             ->title(

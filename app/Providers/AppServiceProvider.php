@@ -52,12 +52,7 @@ class AppServiceProvider extends ServiceProvider
                         -webkit-text-size-adjust: 100%;
                         -ms-text-size-adjust: 100%;
                         text-size-adjust: 100%;
-                    }
-        
-                    input, textarea, select {
-                        font-size: 16px;
-                    }
-                    
+                    }                    
                 </style>
             HTML
         );

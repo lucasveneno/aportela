@@ -206,7 +206,7 @@ class DemandResource extends Resource
                             Hidden::make('priority')
                                 ->default(__('resources.demands.low')),
                             TextInput::make('priority')
-                                ->label('Nível de priority')
+                                ->label(__('resources.demands.priority_level'))
                                 ->disabled()
                                 ->dehydrated(),
                             Placeholder::make('priority_description')

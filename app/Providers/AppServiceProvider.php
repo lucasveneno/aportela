@@ -33,14 +33,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        /*
-        FilamentView::registerRenderHook(
-            'panels::head.start',
-            fn() => <<<'HTML'
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-            HTML
-        );
-        */
 
         FilamentView::registerRenderHook(
             'panels::head.end',

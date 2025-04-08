@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\DemandResource\Widgets;
 
+use App\Models\Demand;
 use Cheesegrits\FilamentGoogleMaps\Widgets\MapWidget;
 
 class DemandMap extends MapWidget
@@ -18,13 +19,26 @@ class DemandMap extends MapWidget
 
     protected static ?int $zoom = 12;
 
+    protected static ?string $mapId = 'incidents';
+
+
+    protected int|string|array $columnSpan = 'full';
+
+
     protected function getData(): array
     {
     	/**
     	 * You can use whatever query you want here, as long as it produces a set of records with your
     	 * lat and lng fields in them.
     	 */
-        $locations = \App\Models\Demand::all()->limit(500);
+        //$locations = \App\Models\Demand::all()->limit(500);
+
+        $query = Demand::query();
+        
+		if (!auth()->user()->isAdmin()) {
+			$query->where('user_id', auth()->id());
+		}
+
 
         $data = [];
 

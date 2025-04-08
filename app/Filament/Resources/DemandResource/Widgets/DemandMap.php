@@ -33,15 +33,15 @@ class DemandMap extends MapWidget
          */
         //$locations = Demand::all();
 
-        $locations = Demand::query();
+        $query = Demand::query();
 
         if (!auth()->user()->isAdmin()) {
-            $locations->where('user_id', auth()->id());
+            $query->where('user_id', auth()->id());
         }
 
 
         // Get the results (removed ->all() which was causing issues)
-        $locations = $locations->latest()->get();
+        $locations = $query->latest()->get();
 
         $data = [];
 

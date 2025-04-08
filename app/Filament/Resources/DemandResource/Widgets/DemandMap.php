@@ -77,10 +77,9 @@ class DemandMap extends MapWidget
                     //'type' => 'svg',
                     //'scale' => [35, 35],
                     //path: faBus.icon[4] as string,
-                    'fillColor'=> "#0000ff",
-                    'fillOpacity'=> 1,
-                    'strokeWeight'=> 1,
-                    'strokeColor'=> "#ffffff",
+                                        
+                    'url' => url('https://maps.google.com/mapfiles/ms/icons/green-dot.png'),
+
                 ],
 
             ];

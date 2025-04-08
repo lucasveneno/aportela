@@ -43,12 +43,20 @@ class AppServiceProvider extends ServiceProvider
                         height: 100% 
                     }
                     
-                    
-                    html, body {                      
-                        overflow-x: hidden;
-                        -webkit-text-size-adjust: 100% !important;
-                        -ms-text-size-adjust: 100% !important;
-                        text-size-adjust: 100% !important;
+                    @media screen and (-webkit-min-device-pixel-ratio:0) {
+                        select,
+                        textarea,
+                        input {
+                            font-size: 16px;
+                        }
+                    }
+
+                    @media screen and (-webkit-min-device-pixel-ratio:0) {
+                        select:focus,
+                        textarea:focus,
+                        input:focus {
+                            font-size: 16px;
+                        }
                     }
                 </style>
             HTML

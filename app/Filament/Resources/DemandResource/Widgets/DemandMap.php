@@ -79,7 +79,7 @@ class DemandMap extends MapWidget
                 //    'scale' => [35, 35],
                 //],
 
-                'label'     => view(
+                'icon'     => view(
                     'filament-panels::widgets.map-label',
                     [
                         'dealershipId'   => $location->demand_code,

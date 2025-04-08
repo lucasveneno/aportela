@@ -91,8 +91,13 @@ class DemandMap extends MapTableWidget
 					$original = sprintf(...); // original dispatch code
 					return [
 						'x-on:click' => new HtmlString(
-							$original . '; ' . 
-							'setTimeout(() => document.getElementById("map-incidents").scrollIntoView(), 300)'
+							$original . '; ' .
+								"setTimeout(() => { " .
+								"   document.getElementById('map-section')?.scrollIntoView({ " .
+								"       behavior: 'smooth', " .
+								"       block: 'start' " .
+								"   }); " .
+								"}, 500);"
 						)
 					];
 				}),

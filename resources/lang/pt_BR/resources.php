@@ -124,6 +124,16 @@ return [
         'draft_input' => 'Salvar demanda como rascunho?',
     ],
 
+    'widgets' => [
+        'stats_overview' => [
+            'new_demands' => 'Novas demandas',
+            'total_demands' => 'Demandas totais neste mês',
+            'pending_demands' => 'Demandas pendentes',
+            'completed_demands ' => 'Demandas finalizadas',
+
+        ],
+    ],
+
 
 
 ];

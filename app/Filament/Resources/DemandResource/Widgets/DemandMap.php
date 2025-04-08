@@ -86,9 +86,25 @@ class DemandMap extends MapTableWidget
 			GoToAction::make()
 				->zoom(17)
 				->label('Ver no mapa')
-				->after(function () {
-					return redirect()->to(url()->current() . '#map-incidents');
+				->action(function () {
+					// Your action logic here (if any)
+					
+					// Use JavaScript for smooth scrolling without page reload
+					$this->js(<<<JS
+						setTimeout(() => {
+							const section = document.getElementById('map-incidents');
+							if (section) {
+								section.scrollIntoView({
+									behavior: 'smooth',
+									block: 'start'
+								});
+							}
+						}, 100)
+					JS);
 				}),
+				/*->after(function () {
+					return redirect()->to(url()->current() . '#map-incidents');
+				}),*/
 			//RadiusAction::make(),
 		];
 	}

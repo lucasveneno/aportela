@@ -38,24 +38,26 @@ class StatsOverview extends BaseWidget
         $completedDemands = $baseQuery->clone()->where('status', 'completed')->count();
 
         return [
+
+            // non-admin users
             Stat::make(__('resources.widgets.stats_overview.new_demands'), $newDemands)
                 ->description('Today')
                 ->descriptionIcon('heroicon-o-arrow-trending-up')
                 ->color('info') //(primary, success, warning, danger, info)
                 ->chart([7, 3, 4, 5, 6, 3, 5]),
-
-            Stat::make(__('resources.widgets.stats_overview.total_demands'), $totalDemands.' / 100')
+            // non-admin users
+            Stat::make(__('resources.widgets.stats_overview.total_demands'), $totalDemands . ' / 100')
                 ->description('All demands')
                 ->descriptionIcon('heroicon-o-document-text')
                 ->chart([7, 3, 4, 5, 6, 3, 5])
                 ->color('warning'),
-
+            // non-admin users
             Stat::make(__('resources.widgets.stats_overview.pending_demands'), $pendingDemands)
                 ->description('Require action')
                 ->descriptionIcon('heroicon-o-clock')
                 ->chart([3, 5, 2, 4, 6, 3, 2])
                 ->color('danger'),
-
+            // non-admin users
             Stat::make(__('resources.widgets.stats_overview.completed_demands'), $completedDemands)
                 ->description('Finished work')
                 ->descriptionIcon('heroicon-o-check-circle')

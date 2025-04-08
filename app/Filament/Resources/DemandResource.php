@@ -51,7 +51,11 @@ class DemandResource extends Resource
                 Section::make([
                     TextInput::make('demand_code')
                         ->label('Código da demanda')
-                        ->default(fn() => 'DEM-' . date('Ymd') . '-' . Str::upper(Str::random(8)))
+                       // ->default(fn(?string $context) => 'DEM-' . date('Ymd') . '-' . Str::upper(Str::random(8)))
+
+                        ->default(fn(?string $context) => in_array($context, ['create'])
+                            ? 'DEM-' . date('Ymd') . '-' . Str::upper(Str::random(8))
+                            : null)
                         ->disabled()
                         ->dehydrated(fn(?string $context) => in_array($context, ['create']))
                         ->unique(ignoreRecord: true)

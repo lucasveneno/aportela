@@ -29,12 +29,8 @@ class DemandMap extends MapTableWidget
 
 	protected static ?string $mapId = 'incidents';
 
-	protected int|string|array $columnSpan = 'lg';
+	protected int|string|array $columnSpan = 'full';
 
-	protected function getColumns(): int | array
-	{
-		return 2; // This will split the full-width widget into two columns
-	}
 
 	protected function getTableQuery(): Builder
 	{

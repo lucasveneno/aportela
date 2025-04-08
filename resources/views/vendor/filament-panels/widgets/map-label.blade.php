@@ -17,13 +17,13 @@
             <span style="font-size: 12px; color: #5f6368; margin-right: 5px;">ID:</span>
             <span style="font-size: 13px; font-weight: 500;">{{ $dealershipId }}</span>
         </div>
-        <!--
+        
         <div style="margin-top: 10px; text-align: center;">
-            <a href="{{ route('dealerships.show', $dealershipId) }}"
+            <a href="{{ route('/view', $dealershipId) }}"
                 style="display: inline-block; padding: 6px 12px; background: #1a73e8; 
                       color: white; text-decoration: none; border-radius: 4px; font-size: 13px;">
                 View Details
             </a>
-        </div>-->
+        </div>
     </div>
 </div>

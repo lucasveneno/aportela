@@ -53,7 +53,7 @@ class DemandResource extends Resource
                         ->label('Código da demanda')
                         ->default(fn() => 'DEM-' . date('Ymd') . '-' . Str::upper(Str::random(8)))
                         ->disabled()
-                        ->dehydrated(fn($state, $livewire) => $livewire instanceof \Filament\Resources\Pages\CreateRecord)
+                        ->dehydrated(fn(?string $context) => in_array($context, ['create']))
                         ->unique(ignoreRecord: true)
                         ->helperText('Código gerado automaticamente'),
                 ]),

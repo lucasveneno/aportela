@@ -80,6 +80,7 @@ class DemandsChart extends ChartWidget
             ],
 
             'labels' => $data->map(fn(TrendValue $value) => $this->formatLabel($value->date, $groupBy)),
+            'hoverOffset'=> 4
         ];
     }
 

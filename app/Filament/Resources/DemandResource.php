@@ -307,7 +307,7 @@ class DemandResource extends Resource
 
 
                     ]),
-            ])->visible(fn(string $context): bool => in_array($context, ['create', 'edit']));
+            ])->hidden(fn(string $context): bool => in_array($context, ['create', 'edit']));
     }
 
     public static function table(Table $table): Table

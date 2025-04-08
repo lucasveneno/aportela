@@ -34,7 +34,7 @@ class StatsOverview extends BaseWidget
             $monthlyDemands = $monthlyQuery->count();
             $newDemands = $baseQuery->clone()->whereDate('created_at', today())->count();
             $pendingDemands = $baseQuery->clone()->where('draft', '1')->count();
-            $completedDemands = $baseQuery->clone()->where('status', 'completed')->count();
+            $completedDemands = $baseQuery->clone()->where('draft', '0')->count();
 
             return [
 

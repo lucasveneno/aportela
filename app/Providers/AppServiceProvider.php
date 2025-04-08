@@ -40,7 +40,6 @@ class AppServiceProvider extends ServiceProvider
                 <style>
                     :root {
                         touch-action: pan-x pan-y !important;
-                        height: 100% 
                     }
                     
                     html, body, .fi-ta-table {

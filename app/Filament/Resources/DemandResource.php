@@ -58,8 +58,7 @@ class DemandResource extends Resource
                             : null)
                         ->disabled()
                         ->dehydrated(fn(?string $context) => in_array($context, ['create']))
-                       //->unique(ignoreRecord: fn(?string $context) => in_array($context, ['create']) )
-                        ->unique(ignoreRecord: fn(?string $context) => in_array($context, ['create']))
+                        ->unique(ignoreRecord: true)
                         ->helperText('Código gerado automaticamente'),
                 ]),
 

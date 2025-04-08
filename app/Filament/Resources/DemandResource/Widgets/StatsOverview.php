@@ -48,13 +48,13 @@ class StatsOverview extends BaseWidget
                 ->description('All demands')
                 ->descriptionIcon('heroicon-o-document-text')
                 ->chart([7, 3, 4, 5, 6, 3, 5])
-                ->color('gray'),
+                ->color('warning'),
 
             Stat::make('Pending Demands', $pendingDemands)
                 ->description('Require action')
                 ->descriptionIcon('heroicon-o-clock')
                 ->chart([3, 5, 2, 4, 6, 3, 2])
-                ->color('warning'),
+                ->color('danger'),
 
             Stat::make('Completed Demands', $completedDemands)
                 ->description('Finished work')

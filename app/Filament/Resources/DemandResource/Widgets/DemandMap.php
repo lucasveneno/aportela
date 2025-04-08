@@ -92,7 +92,7 @@ class DemandMap extends MapTableWidget
 					return [
 						'x-on:click' => new HtmlString(
 							$original . '; ' . 
-							'setTimeout(() => alert(\'ok\'), 300)'
+							'setTimeout(() => alert("ok"), 300)'
 						)
 					];
 				}),

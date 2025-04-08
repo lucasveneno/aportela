@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
             fn() => <<<'HTML'
                 <style>
                     :root {
-                        touch-action: manipulation !important;
+                        touch-action: pan-x pan-y !important;
                         height: 100% 
                     }
                     

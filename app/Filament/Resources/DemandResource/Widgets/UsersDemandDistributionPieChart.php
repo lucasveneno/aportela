@@ -61,16 +61,6 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             Color::Purple[400],
             Color::Sky[400],
             Color::Gray[400],
-            '#6366f1',
-            '#ec4899',
-            '#10b981',
-            '#f59e0b',
-            '#ef4444',
-            '#8b5cf6',
-            '#3b82f6',
-            '#14b8a6',
-            '#f97316',
-            '#64748b'
         ];
 
 

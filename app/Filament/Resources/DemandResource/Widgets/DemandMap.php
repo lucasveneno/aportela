@@ -24,6 +24,21 @@ class DemandMap extends MapWidget
 
     protected int|string|array $columnSpan = 'full';
 
+    protected function getIconByPriority($priority): string
+    {
+        switch ($priority) {
+            case 'Prioridade Máxima (Ação imediata)':
+                return 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
+            case 'Prioridade Alta (Planejamento rápido)':
+                return 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png';
+            case 'Prioridade Média (Médio prazo)':
+                return 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+            case 'Prioridade Baixa (Longo prazo)':
+            default:
+                return 'https://maps.google.com/mapfiles/marker_grey.png';
+        }
+    }
+
 
     protected function getData(): array
     {
@@ -76,8 +91,8 @@ class DemandMap extends MapWidget
                     //'url' => url('images/dealership.svg'),
                     //'type' => 'svg',
                     //'scale' => [35, 35],
-                    'url' => url('images/maps/markers/black.png'),
-
+                    // 'url' => url('images/maps/markers/black.png'),
+                    'url' => url($this->getIconByPriority($location->priority)),
                 ],
 
             ];

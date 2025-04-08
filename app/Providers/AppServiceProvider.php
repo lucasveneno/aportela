@@ -46,6 +46,10 @@ class AppServiceProvider extends ServiceProvider
             'panels::head.end',
             fn() => <<<'HTML'
                 <style>
+                    :root {
+                        touch-action: pan-x pan-y;
+                        height: 100% 
+                    }
                     html, body {                      
                         touch-action: manipulation !important;
                         overflow-x: hidden;

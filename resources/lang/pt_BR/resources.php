@@ -127,7 +127,7 @@ return [
     'widgets' => [
         'stats_overview' => [
             'new_demands' => 'Novas demandas',
-            'total_demands' => 'Demandas totais neste mês',
+            'total_demands' => 'Demandas totais',
             'pending_demands' => 'Demandas pendentes',
             'completed_demands ' => 'Demandas finalizadas',
         ],

@@ -80,7 +80,7 @@ class DemandsChart extends ChartWidget
             ],
 
             'labels' => $data->map(fn(TrendValue $value) => $this->formatLabel($value->date, $groupBy)),
-            'hoverOffset'=> 4
+            'hoverOffset' => 4
         ];
     }
 
@@ -168,7 +168,19 @@ class DemandsChart extends ChartWidget
                     ],
                 ],
             ],*/
-            'scales' => false,
+            'scales' => [
+                'y' => [
+                    'ticks' => [
+                        'display' => false, // Hide tick labels
+                    ],
+                    'grid' => [
+                        'display' => false, // Hide grid lines
+                    ],
+                    'border' => [
+                        'display' => false, // Hide axis line
+                    ],
+                ],
+            ],
             'plugins' => [
                 'legend' => [
                     'display' => false,

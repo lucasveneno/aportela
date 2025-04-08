@@ -111,8 +111,7 @@ class UsersDemandDistributionPieChart  extends ChartWidget
     protected function getOptions(): array
     {
         return [
-            'scales' => false, // Completely disable scales for radial charts
-
+            'scales' => null, // Remove scales completely
             'responsive' => true,
             'plugins' => [
                 'legend' => [

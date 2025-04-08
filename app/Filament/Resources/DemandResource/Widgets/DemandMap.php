@@ -15,8 +15,6 @@ use Cheesegrits\FilamentGoogleMaps\Filters\MapIsFilter;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\HtmlString;
 
 class DemandMap extends MapTableWidget
 {
@@ -88,27 +86,9 @@ class DemandMap extends MapTableWidget
 			GoToAction::make()
 				->zoom(17)
 				->label('Ver no mapa')
-
-				->extraAttributes(function (Model $record) {
-					$originalAttributes = parent::extraAttributes($record);
-
-					return array_merge($originalAttributes, [
-						'@click' => new HtmlString(
-							// Original x-on:click event will run first
-							"{$originalAttributes['x-on:click']}; " .
-								// Then our new scroll behavior
-								"setTimeout(() => { 
-								document.getElementById('map-section')?.scrollIntoView({ 
-									behavior: 'smooth', 
-									block: 'start' 
-								}); 
-							}, 300)"
-						),
-					]);
-				}),
-			/*->after(function () {
+				->after(function () {
 					return redirect()->to(url()->current() . '#map-incidents');
-				}),*/
+				}),
 			//RadiusAction::make(),
 		];
 	}

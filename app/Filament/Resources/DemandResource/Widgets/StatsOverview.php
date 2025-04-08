@@ -56,7 +56,7 @@ class StatsOverview extends BaseWidget
                 ->chart([3, 5, 2, 4, 6, 3, 2])
                 ->color('danger'),
 
-            Stat::make(__('resources.widgets.stats_overview.pending_demands'), $completedDemands)
+            Stat::make(__('resources.widgets.stats_overview.completed_demands'), $completedDemands)
                 ->description('Finished work')
                 ->descriptionIcon('heroicon-o-check-circle')
                 ->chart([2, 4, 3, 1, 5, 6, 7])

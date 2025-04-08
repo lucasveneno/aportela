@@ -132,15 +132,6 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                 ],
 
             ],
-            'tooltip' => [
-                'callbacks' => [
-                    'label' => function ($context) {
-                        $label = $context->raw || ' xxx';
-
-                        return $label.'iuibiu';
-                    }
-                ]
-            ],
 
             /*'tooltip' => [
                 'callbacks' => [

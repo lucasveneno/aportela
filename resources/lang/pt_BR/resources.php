@@ -129,7 +129,7 @@ return [
             'new_demands' => 'Novas demandas',
             'total_demands' => 'Demandas totais',
             'pending_demands' => 'Demandas pendentes',
-            'completed_demands ' => 'Demandas finalizadas',
+            'completed_demands' => 'Demandas finalizadas',
         ],
     ],
 

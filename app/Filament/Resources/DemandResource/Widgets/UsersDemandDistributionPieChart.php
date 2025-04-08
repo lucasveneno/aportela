@@ -111,7 +111,14 @@ class UsersDemandDistributionPieChart  extends ChartWidget
     protected function getOptions(): array
     {
         return [
-            'scales' => null, // Remove scales completely
+            'scales' => [
+                'x' => [
+                    'display' => false,
+                ],
+                'y' => [
+                    'display' => false,
+                ],
+            ],
             'responsive' => true,
             'plugins' => [
                 'legend' => [

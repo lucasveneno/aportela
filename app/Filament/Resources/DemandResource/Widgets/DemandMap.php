@@ -85,35 +85,9 @@ class DemandMap extends MapTableWidget
 				->url(fn($record) => EditDemand::getUrl(['record' => $record])),
 			GoToAction::make()
 				->zoom(17)
-				->label('Ver no mapa')
-				->extraAttributes([
-					'click' => "\$wire.dispatch('scrollToMapSection')"
-				]),
-				
+				->label('Ver no mapa'),
 			//RadiusAction::make(),
 		];
-	}
-
-	protected function getListeners(): array
-	{
-		return [
-			'scrollToMapSection' => 'scrollToMapSection',
-		];
-	}
-
-	public function scrollToMapSection(): void
-	{
-		$this->js(<<<JS
-        setTimeout(() => {
-            const section = document.getElementById('map-incidents');
-            if (section) {
-                section.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }, 500)
-    JS);
 	}
 
 	protected function getData(): array

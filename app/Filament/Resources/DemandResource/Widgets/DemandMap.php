@@ -78,7 +78,7 @@ class DemandMap extends MapWidget
                     'lng' => $location->longitude ? round(floatval($location->longitude), static::$precision) : 0,
                 ],
 
-                'label'     => 'Código: ' . $location->demand_code . ' ' . $location->latitude . ',' . $location->longitude,
+                'label'     => 'Código: ' . $location->demand_code . ' | ' . $location->priority . ' | ' . $location->latitude . ',' . $location->longitude,
 
                 'id' => $location->getKey(),
 

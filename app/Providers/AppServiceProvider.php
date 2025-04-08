@@ -37,6 +37,17 @@ class AppServiceProvider extends ServiceProvider
         FilamentView::registerRenderHook(
             'panels::head.end',
             fn() => <<<'HTML'
+                <style>
+                    :root {
+                        touch-action: pan-x pan-y !important;
+                        height: 100% 
+                    }
+                    
+                    html, body {
+                        touch-action: pan-x pan-y; /* Allows scrolling but disables pinch-zoom */
+                        overscroll-behavior: none; /* Prevents pull-to-refresh */
+                    }
+                </style>
                 <script>
                     // Prevent zooming with more than one finger
                     document.addEventListener('touchstart', function(e) {

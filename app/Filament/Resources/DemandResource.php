@@ -355,11 +355,12 @@ class DemandResource extends Resource
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
                         '0' => 'success',  // Green
-                        default   => 'danger',  // Red
+                        default     => 'gray',     // Fallback
                     })
                     ->icon(fn(string $state): string => match ($state) {
                         '0' => 'heroicon-o-check-circle',
-                        default     => 'heroicon-o-pencil',
+                        
+                        default     => 'heroicon-o-question-mark-circle',
                     })
                     ->formatStateUsing(fn(string $state): string => ucfirst($state)),
 

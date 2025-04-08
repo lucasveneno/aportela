@@ -37,40 +37,19 @@ class AppServiceProvider extends ServiceProvider
         FilamentView::registerRenderHook(
             'panels::head.end',
             fn() => <<<'HTML'
-                <style>
-                    :root {
-                        touch-action: pan-x pan-y !important;
-                        height: 100% 
-                    }
-                    
-
-                    /* resources/css/filament/admin/theme.css */
-                    html, body {
-                        touch-action: pan-x pan-y; /* Allows scrolling but disables pinch-zoom */
-                        overscroll-behavior: none; /* Prevents pull-to-refresh */
-                    }
-
-                    /* Optional: Target specific elements if you want more granular control */
-                    .filament-app-layout {
-                        touch-action: pan-x pan-y;
-                    }
-
-                    @media screen and (-webkit-min-device-pixel-ratio:0) {
-                        select,
-                        textarea,
-                        input {
-                            font-size: 16px;
+                <script>
+                    // Prevent zooming with more than one finger
+                    document.addEventListener('touchstart', function(e) {
+                        if (e.touches.length > 1) {
+                            e.preventDefault(); // Prevent zoom
                         }
-                    }
+                    }, { passive: false });
 
-                    @media screen and (-webkit-min-device-pixel-ratio:0) {
-                        select:focus,
-                        textarea:focus,
-                        input:focus {
-                            font-size: 16px;
-                        }
-                    }
-                </style>
+                    // Prevent pinch zooming with gestures
+                    document.addEventListener('gesturestart', function(e) {
+                        e.preventDefault(); // Prevent zoom gesture
+                    }, { passive: false });
+                </script>
             HTML
         );
 

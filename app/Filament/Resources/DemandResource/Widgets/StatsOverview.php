@@ -31,10 +31,11 @@ class StatsOverview extends BaseWidget
         }
 
 
+        // non-admin stats
         $totalDemands = $baseQuery->count();
         $monthlyDemands = $monthlyQuery->count();
         $newDemands = $baseQuery->clone()->whereDate('created_at', today())->count();
-        $pendingDemands = (!$isAdmin) ? $baseQuery->clone()->where('draft', '1')->count() : $baseQuery->clone()->where('status', 'pending')->count();
+        $pendingDemands = $baseQuery->clone()->where('draft', '1')->count();
         $completedDemands = $baseQuery->clone()->where('status', 'completed')->count();
 
         return [
@@ -46,7 +47,7 @@ class StatsOverview extends BaseWidget
                 ->color('info') //(primary, success, warning, danger, info)
                 ->chart([7, 3, 4, 5, 6, 3, 5]),
             // non-admin users
-            Stat::make(__('resources.widgets.stats_overview.total_demands'), $totalDemands . ' / 100')
+            Stat::make(__('resources.widgets.stats_overview.total_demands'), $totalDemands)
                 ->description(__('resources.widgets.stats_overview.total_demands_description'))
                 ->descriptionIcon('heroicon-o-document-text')
                 ->chart([7, 3, 4, 5, 6, 3, 5])
@@ -58,7 +59,7 @@ class StatsOverview extends BaseWidget
                 ->chart([3, 5, 2, 4, 6, 3, 2])
                 ->color('danger'),
             // non-admin users
-            Stat::make(__('resources.widgets.stats_overview.completed_demands'), $completedDemands)
+            Stat::make(__('resources.widgets.stats_overview.completed_demands'), $completedDemands . ' / 100')
                 ->description(__('resources.widgets.stats_overview.completed_demands_description'))
                 ->descriptionIcon('heroicon-o-check-circle')
                 ->chart([2, 4, 3, 1, 5, 6, 7])

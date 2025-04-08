@@ -46,18 +46,23 @@ class AppServiceProvider extends ServiceProvider
             'panels::head.end',
             fn() => <<<'HTML'
                 <style>
-                    html, body {
+                    html, body {                      
                         touch-action: manipulation;
+                        overflow-x: hidden;
                         -webkit-text-size-adjust: 100%;
+                        -ms-text-size-adjust: 100%;
+                        text-size-adjust: 100%;
                     }
         
                     input, textarea, select {
                         font-size: 16px;
                     }
+
+                    
                 </style>
             HTML
         );
-        
+
         seo()
             ->site(config('app.name'))
             ->title(

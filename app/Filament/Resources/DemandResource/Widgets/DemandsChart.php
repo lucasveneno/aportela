@@ -14,7 +14,7 @@ class DemandsChart extends ChartWidget
 
     protected static ?string $maxHeight = '300px';
 
-    protected int|string|array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'lg';
 
     public ?string $filter = 'month';
 

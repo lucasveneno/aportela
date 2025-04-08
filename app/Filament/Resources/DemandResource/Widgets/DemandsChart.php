@@ -168,19 +168,7 @@ class DemandsChart extends ChartWidget
                     ],
                 ],
             ],*/
-            'scales' => [
-                'y' => [
-                    'ticks' => [
-                        'display' => false, // Hide tick labels
-                    ],
-                    'grid' => [
-                        'display' => false, // Hide grid lines
-                    ],
-                    'border' => [
-                        'display' => false, // Hide axis line
-                    ],
-                ],
-            ],
+            'scales' => null, // Remove scales completely
             'plugins' => [
                 'legend' => [
                     'display' => false,

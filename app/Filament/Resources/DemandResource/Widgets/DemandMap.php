@@ -39,7 +39,7 @@ class DemandMap extends MapWidget
             $locations->where('user_id', auth()->id());
         }
 
-        $locations->latest();
+        //$locations->latest();
 
 
         $data = [];

@@ -54,13 +54,16 @@ class UsersDemandDistributionPieChart  extends ChartWidget
         $this->totalDemands = $usersWithDemands->sum('demands_count');
 
         $colors = [
-            Color::Blue[400],
-            Color::Emerald[400],
-            Color::Orange[400],
-            Color::Red[400],
-            Color::Purple[400],
-            Color::Sky[400],
-            Color::Gray[400],
+            '#6366f1',
+            '#ec4899',
+            '#10b981',
+            '#f59e0b',
+            '#ef4444',
+            '#8b5cf6',
+            '#3b82f6',
+            '#14b8a6',
+            '#f97316',
+            '#64748b'
         ];
 
 
@@ -69,9 +72,8 @@ class UsersDemandDistributionPieChart  extends ChartWidget
                 [
                     'label' => 'Demands by User',
                     'data' => $usersWithDemands->pluck('demands_count')->toArray(),
-                    //'backgroundColor' => array_slice($colors, 0, $usersWithDemands->count()),
-                    'backgroundColor' => $colors,
-                    'borderColor' => $colors,
+                    'backgroundColor' => array_slice($colors, 0, $usersWithDemands->count()),
+                    'borderColor' => array_slice($colors, 0, $usersWithDemands->count()),
                     'borderWidth' => 1,
                 ],
             ],

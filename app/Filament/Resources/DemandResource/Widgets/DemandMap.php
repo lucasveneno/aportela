@@ -92,7 +92,7 @@ class DemandMap extends MapTableWidget
 					return [
 						'x-on:click' => new HtmlString(
 							$original . '; ' .
-								"alert()"
+								'alert()'
 						)
 					];
 				}),

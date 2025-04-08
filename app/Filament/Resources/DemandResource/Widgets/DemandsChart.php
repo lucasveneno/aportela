@@ -168,6 +168,7 @@ class DemandsChart extends ChartWidget
                     ],
                 ],
             ],*/
+            'scales' => false,
             'plugins' => [
                 'legend' => [
                     'display' => false,

@@ -4,6 +4,7 @@ namespace App\Filament\Resources\DemandResource\Widgets;
 
 use App\Models\Demand;
 use App\Models\User;
+use Filament\Support\Colors\Color;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,6 +54,13 @@ class UsersDemandDistributionPieChart  extends ChartWidget
         $this->totalDemands = $usersWithDemands->sum('demands_count');
 
         $colors = [
+            Color::Blue[400],
+            Color::Emerald[400],
+            Color::Orange[400],
+            Color::Red[400],
+            Color::Purple[400],
+            Color::Sky[400],
+            Color::Gray[400],
             '#6366f1',
             '#ec4899',
             '#10b981',
@@ -64,6 +72,7 @@ class UsersDemandDistributionPieChart  extends ChartWidget
             '#f97316',
             '#64748b'
         ];
+
 
         $data = [
             'datasets' => [

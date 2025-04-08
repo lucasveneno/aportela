@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class StatsOverview extends BaseWidget
 {
-    protected static ?string $heading = 'Demand Distribution by User';
-
     protected function getStats(): array
     {
         $user = Auth::user();

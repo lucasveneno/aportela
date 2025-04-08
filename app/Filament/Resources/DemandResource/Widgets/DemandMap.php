@@ -75,7 +75,7 @@ class DemandMap extends MapWidget
                 'icon' => [
                     //'url' => url('images/dealership.svg'),
                     //'type' => 'svg',
-                    'scale' => [35, 35],
+                    //'scale' => [35, 35],
                     //path: faBus.icon[4] as string,
                     'fillColor'=> "#0000ff",
                     'fillOpacity'=> 1,

@@ -354,11 +354,11 @@ class DemandResource extends Resource
                     ->label('Status')
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
-                        'pending' => 'success',  // Green
+                        '0' => 'success',  // Green
                         default     => 'gray',     // Fallback
                     })
                     ->icon(fn(string $state): string => match ($state) {
-                        '0' => 'heroicon-o-check-circle',
+                        'Pendente' => 'heroicon-o-check-circle',
                         
                         default     => 'heroicon-o-question-mark-circle',
                     })

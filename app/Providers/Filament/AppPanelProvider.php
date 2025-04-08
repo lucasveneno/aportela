@@ -32,7 +32,7 @@ class AppPanelProvider extends PanelProvider
             
             ->id('app')
             ->brandName('Solicitação de demandas')
-            ->viteTheme('resources/css/app.css') // <-- points to your custom theme
+            //->viteTheme('resources/css/app.css') // <-- points to your custom theme
             ->path('app')
             ->login()
             ->colors([

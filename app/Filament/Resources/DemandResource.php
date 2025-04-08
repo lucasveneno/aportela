@@ -50,10 +50,10 @@ class DemandResource extends Resource
 
                 Section::make([
                     TextInput::make('demand_code')
-                        ->label('Código da Demanda')
-                        ->default('DEM-' . date('Ymd') . '-' .  Str::upper(Str::random(8)))
+                        ->label('Código da demanda')
+                        ->default(fn() => 'DEM-' . date('Ymd') . '-' . Str::upper(Str::random(8)))
                         ->disabled()
-                        ->dehydrated()
+                        ->dehydrated(fn($state, $livewire) => $livewire instanceof \Filament\Resources\Pages\CreateRecord)
                         ->unique(ignoreRecord: true)
                         ->helperText('Código gerado automaticamente'),
                 ]),

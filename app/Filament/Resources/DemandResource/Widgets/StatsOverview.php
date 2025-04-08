@@ -58,7 +58,7 @@ class StatsOverview extends BaseWidget
 
                 Stat::make(__('resources.widgets.stats_overview.completed_demands'), $completedDemands . ' / 100')
                     ->description(__('resources.widgets.stats_overview.completed_demands_description'))
-                    ->descriptionIcon('heroicon-o-check-circle')
+                    ->descriptionIcon('heroicon-o-document-check')
                     ->chart([2, 4, 3, 1, 5, 6, 7])
                     ->color('success'),
 

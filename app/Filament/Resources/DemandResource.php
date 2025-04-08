@@ -279,11 +279,25 @@ class DemandResource extends Resource
                 Section::make(__('resources.demands.section_files_title'))
                     ->description(__('resources.demands.section_files_description'))
                     ->schema([
-                        FileUpload::make('files')
+                        /* FileUpload::make('files')
                             ->label('')
                             ->multiple()
                             ->disk('public') // The disk where files will be stored
                             ->directory('demand_files'), // Directory within the disk
+                            */
+
+                        FileUpload::make('files')
+                            ->label('')
+                            ->image()
+                            ->disk('public') // The disk where files will be stored
+
+                            ->directory('demand_files')
+
+                            ->maxSize(2048)
+                            ->acceptedFileTypes(['image/*'])
+                            ->extraAttributes([
+                                'capture' => 'environment', // or 'user' for front-facing camera
+                            ]),
                     ])->columns(1),
                 Section::make([
                     ToggleButtons::make('requires_councilor')

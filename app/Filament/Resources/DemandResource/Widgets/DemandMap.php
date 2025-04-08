@@ -15,6 +15,7 @@ use Cheesegrits\FilamentGoogleMaps\Filters\MapIsFilter;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\HtmlString;
 
 class DemandMap extends MapTableWidget
 {
@@ -86,10 +87,37 @@ class DemandMap extends MapTableWidget
 			GoToAction::make()
 				->zoom(17)
 				->label('Ver no mapa')
-				->after(function () {
-					$this->js(<<<JS
-						alert('ok')
-					JS);
+				->extraAttributes(function ($record) {
+					$originalAttributes = [
+						'x-on:click' => new HtmlString(
+							sprintf("\$dispatch('filament-google-maps::widget/setMapCenter', {lat: %f, lng: %f, zoom: %d})",
+								round(floatval($record->latitude), 8),
+								round(floatval($record->longitude), 8),
+								17
+							)
+						)
+					];
+					
+					return array_merge($originalAttributes, [
+						'@click' => <<<JS
+							setTimeout(() => {
+								const section = document.getElementById('map-section');
+								if (section) {
+									// First scroll to section
+									section.scrollIntoView({
+										behavior: 'smooth',
+										block: 'start'
+									});
+									
+									// Then highlight it
+									section.classList.add('bg-blue-50');
+									setTimeout(() => {
+										section.classList.remove('bg-blue-50');
+									}, 1000);
+								}
+							}, 300)
+						JS
+					]);
 				}),
 			//RadiusAction::make(),
 		];

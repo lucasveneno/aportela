@@ -349,7 +349,21 @@ class DemandResource extends Resource
                     ->formatStateUsing(fn($state): string => Area::find($state)?->name ?? 'N/A')
                     ->sortable(),
 
-                TextColumn::make('status')
+                //Non-admins
+                TextColumn::make('draft')
+                    ->label('Status')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        '0' => 'success',  // Green
+                        default   => 'danger',  // Red
+                    })
+                    ->icon(fn(string $state): string => match ($state) {
+                        '0' => 'heroicon-o-check-circle',
+                        default     => 'heroicon-o-pencil',
+                    })
+                    ->formatStateUsing(fn(string $state): string => ucfirst($state)),
+
+                /*TextColumn::make('status')
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
                         'published' => 'success',  // Green
@@ -363,7 +377,7 @@ class DemandResource extends Resource
                         'draft'     => 'heroicon-o-pencil',
                         default     => 'heroicon-o-question-mark-circle',
                     })
-                    ->formatStateUsing(fn(string $state): string => ucfirst($state)),
+                    ->formatStateUsing(fn(string $state): string => ucfirst($state)),*/
 
                 //IconColumn::make('draft')->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

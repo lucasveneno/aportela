@@ -41,25 +41,25 @@ class StatsOverview extends BaseWidget
 
             // non-admin users
             Stat::make(__('resources.widgets.stats_overview.new_demands'), $newDemands)
-                ->description('Today')
+                ->description(__('resources.widgets.stats_overview.new_demands_description'))
                 ->descriptionIcon('heroicon-o-arrow-trending-up')
                 ->color('info') //(primary, success, warning, danger, info)
                 ->chart([7, 3, 4, 5, 6, 3, 5]),
             // non-admin users
             Stat::make(__('resources.widgets.stats_overview.total_demands'), $totalDemands . ' / 100')
-                ->description('All demands')
+                ->description(__('resources.widgets.stats_overview.total_demands_description'))
                 ->descriptionIcon('heroicon-o-document-text')
                 ->chart([7, 3, 4, 5, 6, 3, 5])
                 ->color('warning'),
             // non-admin users
             Stat::make(__('resources.widgets.stats_overview.pending_demands'), $pendingDemands)
-                ->description('Require action')
+                ->description(__('resources.widgets.stats_overview.pending_demands_description'))
                 ->descriptionIcon('heroicon-o-clock')
                 ->chart([3, 5, 2, 4, 6, 3, 2])
                 ->color('danger'),
             // non-admin users
             Stat::make(__('resources.widgets.stats_overview.completed_demands'), $completedDemands)
-                ->description('Finished work')
+                ->description(__('resources.widgets.stats_overview.completed_demands_description'))
                 ->descriptionIcon('heroicon-o-check-circle')
                 ->chart([2, 4, 3, 1, 5, 6, 7])
                 ->color('success'),

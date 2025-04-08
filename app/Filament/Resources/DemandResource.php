@@ -354,15 +354,20 @@ class DemandResource extends Resource
                     ->label('Status')
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
-                        '0' => 'success',  // Green
-                        default     => 'gray',     // Fallback
+                        '0' => 'success',    // Published - Green
+                        '1' => 'warning',    // Pending - Yellow
+                        default => 'gray',
                     })
                     ->icon(fn(string $state): string => match ($state) {
-                        'Pendente' => 'heroicon-o-check-circle',
-                        
-                        default     => 'heroicon-o-question-mark-circle',
+                        '0' => 'heroicon-o-check-circle',          // Published
+                        '1' => 'heroicon-o-clock',                 // Pending
+                        default => 'heroicon-o-question-mark-circle',
                     })
-                    ->formatStateUsing(fn(string $state): string => ucfirst($state)),
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                        '0' => 'Publicado',
+                        '1' => 'Pendente',
+                        default => ucfirst($state),
+                    }),
 
                 /*TextColumn::make('status')
                     ->badge()

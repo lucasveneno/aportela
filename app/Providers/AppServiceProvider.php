@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
                         height: 100% 
                     }
                     
-                    html, body {
+                    html, body, .fi-ta-table {
                         touch-action: pan-x pan-y; /* Allows scrolling but disables pinch-zoom */
                         overscroll-behavior: none; /* Prevents pull-to-refresh */
                     }

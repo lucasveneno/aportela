@@ -222,6 +222,7 @@ class DemandResource extends Resource
 
                     ->schema([
                         Geocomplete::make('full_address')
+                        ->label(__('resources.demands.full_address'))
                             //->isLocation()
                             ->countries(['br']) // restrict autocomplete results to these countries
                             //->debug() // output the results of reverse geocoding in the browser console, useful for figuring out symbol formats

@@ -78,6 +78,8 @@ return [
     ],
 
     'demands' => [
+        'full_address' => 'Endereço completo',
+
         'label' => 'Demanda',
         'plural_label' => 'Demandas',
         // Classify box

@@ -52,7 +52,7 @@ class DemandPolicy
      */
     public function delete(User $user, Demand $demand): bool
     {
-        return false;
+        return $user->is_admin === '1' || in_array($user->role, ['user', 'assessor']);
 
     }
 
@@ -70,7 +70,7 @@ class DemandPolicy
      */
     public function forceDelete(User $user, Demand $demand): bool
     {
-        return false;
+        return $user->is_admin === '1' || in_array($user->role, ['user', 'assessor']);
 
     }
 }

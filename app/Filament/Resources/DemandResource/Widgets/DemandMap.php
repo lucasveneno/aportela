@@ -66,7 +66,7 @@ class DemandMap extends MapWidget
                 //'label'     => $location->latitude . ',' . $location->longitude,
 
                 'label' => $location
-                    ? view('widgets.map-label', [
+                    ? view('filament-panels::widgets.map-label', [
                         'dealershipId' => $location->demand_code,
                         'dealershipName' => $location->status,
                         'dealershipIcon' => $location->icon,

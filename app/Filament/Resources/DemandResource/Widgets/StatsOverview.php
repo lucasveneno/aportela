@@ -73,6 +73,9 @@ class StatsOverview extends BaseWidget
                 ->color('info') : null,*/
             ];
         }
+
+
+        return [];
     }
 
     // Optional: Card customization

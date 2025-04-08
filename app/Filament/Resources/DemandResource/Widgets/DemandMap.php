@@ -76,7 +76,7 @@ class DemandMap extends MapWidget
                     //'url' => url('images/dealership.svg'),
                     //'type' => 'svg',
                     //'scale' => [35, 35],
-                    'url' => url('images/black.png'),
+                    'url' => url('images/maps/markers/black.png'),
 
                 ],
 

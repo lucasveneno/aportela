@@ -88,25 +88,7 @@ class DemandMap extends MapTableWidget
 				->label('Ver no mapa')
 				->after(function () {
 					$this->js(<<<JS
-						setTimeout(() => {
-							const section = document.getElementById('map-incidents');
-							if (section) {
-								section.scrollIntoView({
-									behavior: 'smooth',
-									block: 'start'
-								});
-								
-								// Pulse effect for better visibility
-								section.animate([
-									{ backgroundColor: 'transparent' },
-									{ backgroundColor: 'rgba(99, 102, 241, 0.1)' },
-									{ backgroundColor: 'transparent' }
-								], {
-									duration: 1000,
-									iterations: 1
-								});
-							}
-						}, 300)
+						alert('ok')
 					JS);
 				}),
 			//RadiusAction::make(),

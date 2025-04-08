@@ -15,6 +15,8 @@ use Cheesegrits\FilamentGoogleMaps\Filters\MapIsFilter;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\HtmlString;
 
 class DemandMap extends MapTableWidget
 {

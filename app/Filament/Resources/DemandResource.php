@@ -33,6 +33,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
@@ -54,9 +55,9 @@ class DemandResource extends Resource
                         ->label('Código da demanda')
                         ->default('DEM-' . date('Ymd') . '-' . Str::upper(Str::random(8)))
 
-                        
+
                         ->disabled()
-                        
+
                         ->dehydrated(fn(?string $context) => in_array($context, ['create']))
                         //->unique(ignoreRecord: true)
                         ->helperText('Código gerado automaticamente'),
@@ -545,6 +546,11 @@ class DemandResource extends Resource
             $pontuacao >= 10 =>  __('resources.demands.medium_description'),
             default =>  __('resources.demands.low_description'),
         };
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return false;
     }
 
     /*

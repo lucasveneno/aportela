@@ -130,7 +130,6 @@ return [
             'total_demands' => 'Demandas totais neste mês',
             'pending_demands' => 'Demandas pendentes',
             'completed_demands ' => 'Demandas finalizadas',
-
         ],
     ],
 

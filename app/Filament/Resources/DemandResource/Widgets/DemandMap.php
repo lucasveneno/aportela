@@ -97,7 +97,7 @@ class DemandMap extends MapTableWidget
 								"       behavior: 'smooth', " .
 								"       block: 'start' " .
 								"   }); " .
-								"}, 500);"
+								"}, 500)"
 						)
 					];
 				}),

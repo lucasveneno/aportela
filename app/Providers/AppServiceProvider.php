@@ -47,11 +47,11 @@ class AppServiceProvider extends ServiceProvider
             fn() => <<<'HTML'
                 <style>
                     html, body {                      
-                        touch-action: manipulation;
+                        touch-action: manipulation !important;
                         overflow-x: hidden;
-                        -webkit-text-size-adjust: 100%;
-                        -ms-text-size-adjust: 100%;
-                        text-size-adjust: 100%;
+                        -webkit-text-size-adjust: 100% !important;
+                        -ms-text-size-adjust: 100% !important;
+                        text-size-adjust: 100% !important;
                     }                    
                 </style>
             HTML

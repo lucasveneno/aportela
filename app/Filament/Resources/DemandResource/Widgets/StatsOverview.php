@@ -44,7 +44,7 @@ class StatsOverview extends BaseWidget
                 ->color('info') //(primary, success, warning, danger, info)
                 ->chart([7, 3, 4, 5, 6, 3, 5]),
 
-            Stat::make('Total Demands', $totalDemands)
+            Stat::make('Total Demands', $totalDemands.' / 100')
                 ->description('All demands')
                 ->descriptionIcon('heroicon-o-document-text')
                 ->chart([7, 3, 4, 5, 6, 3, 5])

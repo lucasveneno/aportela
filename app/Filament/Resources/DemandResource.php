@@ -50,19 +50,20 @@ class DemandResource extends Resource
             ->schema([
 
                 Section::make([
-                    /*TextInput::make('demand_code')
+                    TextInput::make('demand_code')
                         ->label('Código da demanda')
                         // ->default(fn(?string $context) => 'DEM-' . date('Ymd') . '-' . Str::upper(Str::random(8)))
 
-                        ->default(fn(?string $context) => in_array($context, ['create'])
+                        ->default(fn(?string $context, $state) => in_array($context, ['create'])
                             ? 'DEM-' . date('Ymd') . '-' . Str::upper(Str::random(8))
-                            : null)
+                            : $state)
                         ->disabled()
+                        
                         ->dehydrated(fn(?string $context) => in_array($context, ['create']))
                         ->unique(ignoreRecord: true)
-                        ->helperText('Código gerado automaticamente'),*/
+                        ->helperText('Código gerado automaticamente'),
 
-                    TextInput::make('demand_code')
+                    /*TextInput::make('demand_code')
                         ->label('Código da demanda')
                         ->default(
                             fn(?string $context) =>
@@ -73,7 +74,7 @@ class DemandResource extends Resource
                         ->disabled()
                         ->dehydrated(fn(?string $context) => in_array($context, ['create']))
                         ->rule(fn($record) => Rule::unique('demands', 'demand_code')->ignore($record?->id))
-                        ->helperText('Código gerado automaticamente'),
+                        ->helperText('Código gerado automaticamente'),*/
                 ]),
 
                 Section::make(__('resources.demands.classify_demand'))

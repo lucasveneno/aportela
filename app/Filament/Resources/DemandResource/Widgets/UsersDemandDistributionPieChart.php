@@ -13,7 +13,7 @@ class UsersDemandDistributionPieChart  extends ChartWidget
     protected static ?string $heading = 'Demand Distribution by User';
     protected static ?string $maxHeight = '300px';
     protected static ?string $pollingInterval = null;
-    protected int|string|array $columnSpan = 'lg';
+    protected int|string|array $columnSpan = 'full';
 
     public ?string $filter = 'month'; // Global filter property
     public int $totalDemands = 0;

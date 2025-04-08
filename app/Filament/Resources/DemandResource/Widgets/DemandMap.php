@@ -31,6 +31,11 @@ class DemandMap extends MapTableWidget
 
 	protected int|string|array $columnSpan = 'full';
 
+	protected function getColumns(): int | array
+	{
+		return 2; // This will split the full-width widget into two columns
+	}
+
 	protected function getTableQuery(): Builder
 	{
 		$query = Demand::query();

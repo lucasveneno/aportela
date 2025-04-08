@@ -87,17 +87,24 @@ class DemandMap extends MapTableWidget
 				->zoom(17)
 				->label('Ver no mapa')
 
-				->after(function () {
-					$this->js(<<<JS
-						setTimeout(() => {
-							document.getElementById('map-incidents')?.scrollIntoView({
-								behavior: 'smooth',
-								block: 'start'
-							});
-						}, 300)
-					JS);
-				}),
-				/*->after(function () {
+				->extraAttributes(function (Model $record) {
+					$originalAttributes = parent::extraAttributes($record);
+
+					return array_merge($originalAttributes, [
+						'@click' => new HtmlString(
+							// Original x-on:click event will run first
+							"{$originalAttributes['x-on:click']}; " .
+								// Then our new scroll behavior
+								"setTimeout(() => { 
+								document.getElementById('map-section')?.scrollIntoView({ 
+									behavior: 'smooth', 
+									block: 'start' 
+								}); 
+							}, 300)"
+						),
+					]);
+				})
+			/*->after(function () {
 					return redirect()->to(url()->current() . '#map-incidents');
 				}),*/
 			//RadiusAction::make(),

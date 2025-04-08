@@ -52,7 +52,7 @@ class StatsOverview extends BaseWidget
 
                 Stat::make(__('resources.widgets.stats_overview.pending_demands'), $pendingDemands)
                     ->description(__('resources.widgets.stats_overview.pending_demands_description'))
-                    ->descriptionIcon('heroicon-o-clock')
+                    ->descriptionIcon('heroicon-o-pencil-square')
                     ->chart([3, 5, 2, 4, 6, 3, 2])
                     ->color('danger'),
 

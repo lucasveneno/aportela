@@ -86,6 +86,7 @@ return [
         'category' => 'Categoria',
         'description' => 'Descrição da demanda',
         // Priority box
+        'priority_level'=> 'Nível de prioridade',
         'section_priority_title' => 'Prioridade',
         'section_priority_description' => 'Selecione os critérios para definição de prioridade',
         'max' => 'Prioridade Máxima (Ação imediata)',

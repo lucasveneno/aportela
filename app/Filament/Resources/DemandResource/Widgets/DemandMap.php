@@ -63,7 +63,15 @@ class DemandMap extends MapWidget
                     'lng' => $location->longitude ? round(floatval($location->longitude), static::$precision) : 0,
                 ],
 
-                'label'     => $location->latitude . ',' . $location->longitude,
+                //'label'     => $location->latitude . ',' . $location->longitude,
+
+                'label' => $location
+                    ? view('widgets.map-label', [
+                        'dealershipId' => $location->demand_code,
+                        'dealershipName' => $location->status,
+                        'dealershipIcon' => $location->icon,
+                    ])->render()
+                    : $location->latitude . ',' . $location->longitude,
 
                 'id' => $location->getKey(),
 
@@ -77,6 +85,8 @@ class DemandMap extends MapWidget
                 //    'type' => 'svg',
                 //    'scale' => [35, 35],
                 //],
+
+
             ];
         }
 

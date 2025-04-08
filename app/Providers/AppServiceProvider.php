@@ -8,6 +8,7 @@ use App\Models\Plugin;
 use App\Models\Star;
 use App\Services\PackageDownloadStats;
 use App\Services\PackageGitHubStarsStats;
+use Filament\Facades\Filament;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -32,6 +33,13 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        Filament::serving(function () {
+            Filament::registerRenderHook(
+                'head.start',
+                fn () => '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">'
+            );
+        });
+
         seo()
             ->site(config('app.name'))
             ->title(

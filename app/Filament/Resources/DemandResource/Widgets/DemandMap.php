@@ -15,6 +15,7 @@ use Cheesegrits\FilamentGoogleMaps\Filters\MapIsFilter;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\HtmlString;
 
 class DemandMap extends MapTableWidget
 {
@@ -85,7 +86,16 @@ class DemandMap extends MapTableWidget
 				->url(fn($record) => EditDemand::getUrl(['record' => $record])),
 			GoToAction::make()
 				->zoom(17)
-				->label('Ver no mapa'),
+				->label('Ver no mapa')
+				->extraAttributes(function ($record) {
+					$original = sprintf(...); // original dispatch code
+					return [
+						'x-on:click' => new HtmlString(
+							$original . '; ' . 
+							'setTimeout(() => alert(\'ok\'), 300)'
+						)
+					];
+				}),
 			//RadiusAction::make(),
 		];
 	}

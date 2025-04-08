@@ -24,8 +24,10 @@ class StatsOverview extends BaseWidget
             now()->startOfMonth(),
             now()->endOfMonth()
         ]);
-
+        
+        // Non-admin users
         if (!$isAdmin) {
+
             $baseQuery->where('user_id', $user->id);
             $monthlyQuery->where('user_id', $user->id);
 

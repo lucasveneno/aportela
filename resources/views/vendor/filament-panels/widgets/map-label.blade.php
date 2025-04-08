@@ -19,7 +19,7 @@
         </div>
         
         <div style="margin-top: 10px; text-align: center;">
-            <a href="{{ route('/view', $dealershipId) }}"
+            <a href="https://projus.app/app/demands/{{ $dealershipId }}/view"
                 style="display: inline-block; padding: 6px 12px; background: #1a73e8; 
                       color: white; text-decoration: none; border-radius: 4px; font-size: 13px;">
                 View Details

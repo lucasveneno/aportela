@@ -35,6 +35,9 @@ class DemandMap extends MapWidget
 
         $query = Demand::query();
 
+        $query->where('draft', '0');
+
+
         if (!auth()->user()->isAdmin()) {
             $query->where('user_id', auth()->id());
         }

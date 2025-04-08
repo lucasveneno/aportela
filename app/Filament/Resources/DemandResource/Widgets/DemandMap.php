@@ -81,7 +81,7 @@ class DemandMap extends MapWidget
                 'icon' => view('filament-panels::widgets.map-label', [
                     'dealershipId' => $location->demand_code,
                     'dealershipName' => $location->status,
-                    'dealershipIcon' => $location->icon,
+                    //'dealershipIcon' => $location->icon,
                 ])->render(),
 
 
